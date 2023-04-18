@@ -20,7 +20,7 @@
 	 <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Market</a>
 	 <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Notice</a>   -->
 		<div class="w3-dropdown-hover w3-hide-small">
-			<button class="w3-button" title="Notifications">KGC <i class="fa fa-caret-down"></i></button>
+			<button class="w3-button" title="Notifications">KGC  <i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block">
 				<a href="#" class="w3-bar-item w3-button">인삼공사소개</a> 
 				<a href="#" class="w3-bar-item w3-button">오시는 길</a>
