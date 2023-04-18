@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/*webapp/20230324/csstest.css*/
+h2 {
+	font-size: 25px
+}
+
+span {
+	text-decoration: underline;
+	font-size: 15px
+}
+
+li {
+	list-style-type: decimal;
+}
+table{
+	width:500px;
+	height: 100px;
+	text-align: center;
+}
+table, tr, td, th {
+	padding: 8px;
+	border-spacing: 0;
+}
+th{ 
+	background: #BDC3C7;
+}
+td{
+	background: #E5E7E9	
+}
+.menu{
+    height: 40px;
+}
+
+.light-green{
+	background: #0BFF6D;
+	border-top-left-radius: 15px; 
+    border-bottom-left-radius: 15px; 
+}
+
+.blue{
+	background: #0B4DFF;
+}
+
+.light-blue{
+	background: #CCFFFF;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.none {
+	text-decoration:none;
+	color: white;
+}
+
+.data {
+	border-collapse: collapse;
+}
+
+.data tr,.data td, .data th{
+	border: solid 3px gray;
+}
+select {
+	padding: 2px 130px;
+}
+
+input[type=text]{
+	padding: 2px 90px;
+}
+
