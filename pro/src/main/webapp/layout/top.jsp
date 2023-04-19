@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,23 +22,23 @@
 		<div class="w3-dropdown-hover w3-hide-small">
 			<button class="w3-button" title="Notifications">KGC <i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-				<a href="#" class="w3-bar-item w3-button">ÀÎ»ï°ø»ç¼Ò°³</a> 
-				<a href="#" class="w3-bar-item w3-button">¿À½Ã´Â ±æ</a>
+				<a href="#" class="w3-bar-item w3-button">ì¸ì‚¼ê³µì‚¬ì†Œê°œ</a> 
+				<a href="#" class="w3-bar-item w3-button">ì˜¤ì‹œëŠ” ê¸¸</a>
 			</div>
 		</div>
 		<div class="w3-dropdown-hover w3-hide-small">
 			<button class="w3-button" title="Notifications">Player <i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-				<a href="#" class="w3-bar-item w3-button">¼±¼ö´Ü</a> 
-				<a href="#" class="w3-bar-item w3-button">°æ±âÀÏÁ¤</a> 
-				<a href="#" class="w3-bar-item w3-button">ÀÀ¿ø°¡</a>
+				<a href="#" class="w3-bar-item w3-button">ì„ ìˆ˜ë‹¨</a> 
+				<a href="#" class="w3-bar-item w3-button">ê²½ê¸°ì¼ì •</a> 
+				<a href="#" class="w3-bar-item w3-button">ì‘ì›ê°€</a>
 			</div>
 		</div>
 		<div class="w3-dropdown-hover w3-hide-small">
 			<button class="w3-button" title="Notifications">Community<i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-				<a href="#" class="w3-bar-item w3-button">ÆÒµé¿¡°Ô</a> 
-				<a href="#" class="w3-bar-item w3-button">¼±¼öµé¿¡°Ô</a>
+				<a href="#" class="w3-bar-item w3-button">íŒ¬ë“¤ì—ê²Œ</a> 
+				<a href="#" class="w3-bar-item w3-button">ì„ ìˆ˜ë“¤ì—ê²Œ</a>
 			</div>
 		</div>
 		<div class="w3-dropdown-hover w3-hide-small">
