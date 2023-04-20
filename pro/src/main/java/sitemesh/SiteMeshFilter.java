@@ -11,7 +11,9 @@ import org.sitemesh.config.ConfigurableSiteMeshFilter;
 public class SiteMeshFilter extends ConfigurableSiteMeshFilter {
 	@Override
 	protected void applyCustomConfiguration (SiteMeshFilterBuilder builder) {
-		  builder.addDecoratorPath("/member/*","/layout/kiclayout.jsp");
+		builder.addDecoratorPath("/view/*","/layout/vlayout.jsp");
+		
+		builder.addDecoratorPath("member/*","/layout/kiclayout.jsp");
 
 	//	builder.addDecoratorPath("/member/*", "/layout/kiclayout.jsp");
 		
