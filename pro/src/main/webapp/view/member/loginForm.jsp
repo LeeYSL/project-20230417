@@ -46,28 +46,36 @@
 </script>
 </head>
 <body>
-	<form action="login" method="post" name="f"
-		onsubmit="return input_check(this)">
-		<div class="container">
-			<h2 id="center">로그인</h2>
+	<h2 class="w3-center">로그인</h2>
+	<div class="container">
+		<form action="join" method="post" name="f"
+			enctype="multipart-formdata">
 			<div class="form-group">
-				<label for="usr">ID:</label><input type="text" class="form-control"
-					id="usr" name="id"> <label for="pwd">Password:</label><input
-					type="password" class="form-control" id="pwd" name="pass">
-				<div class="checkbox mb-3">
-					<label> <input type="checkbox" id="remember">
-						Remember me
-					</label>
-				</div>
+				<table class="w3-table w3-border ">
+					<tr>
+						<td>아이디</td>
+						<td><input type="text" name="id" class="w3-input"></td>
+						<td rowspan="2" style="text-align: center">
+							<button type="button" style="padding: 20px;" >로그인</button>
+					</tr>
+					<tr>
+						<td>비밀번호</td>
+						<td><input type="text" name="pass" class="w3-input"></td>
+					</tr>
+					<tr>
+					<td colspan="3" class="w3-center">
+					<button type="button" onclick="win_open('idForm')"
+						class="btn btn-dark">아이디찾기</button>
+					<button type="button" onclick="win_open('pwForm')"
+						class="btn btn-dark">비밀번호찾기</button>
+					</td>
+					</tr>
+				</table>
 			</div>
-			<div id="center" style="padding: 3px;">
-				<button type="submit" class="btn btn-dark">로그인</button>
-				<button type="button" onclick="win_open('idForm')"
-					class="btn btn-dark">아이디찾기</button>
-				<button type="button" onclick="win_open('pwForm')"
-					class="btn btn-dark">비밀번호찾기</button>
-			</div>
-		</div>
-	</form>
+
+
+
+		</form>
+	</div>
 </body>
 </html>
