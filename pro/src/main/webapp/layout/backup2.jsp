@@ -23,7 +23,7 @@
 			<i class="fa fa-bars"></i>
 		</a>
 
-		<a href="#" class="w3-bar-item w3-button w3-white"><img src="../image/kgclogo2.png" width="100%" height="40px" ></a>
+		<a href="#" class="w3-bar-item w3-button w3-white"><img src="C:\Users\user\git\project-20230418\pro\src\main\webapp\image\kgclogo2.png" width="100%" height="40px" ></a>
 		<div class="w3-dropdown-hover w3-hide-small">
 			<button class="w3-button" title="Notifications">KGC <i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block">
