@@ -64,7 +64,7 @@
 					</tr>
 					<tr>
 					<td colspan="3" class="w3-center">
-					<button type="button" onclick="win_open('idForm')"
+					<button type="button" onclick="win_open('idForm.jsp')"
 						class="btn btn-dark">아이디찾기</button>
 					<button type="button" onclick="win_open('pwForm')"
 						class="btn btn-dark">비밀번호찾기</button>
@@ -72,10 +72,7 @@
 					</tr>
 				</table>
 			</div>
-
-
-
-		</form>
+		</form> 
 	</div>
 </body>
 </html>
