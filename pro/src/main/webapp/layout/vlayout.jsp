@@ -10,6 +10,50 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<link rel=stylesheet
+   href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js">
+<link rel="stylesheet"
+	href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--css 초기화-->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+
+<!-- SWIPER 외부 라이브러리 연결-->
+<link rel="stylesheet"
+	href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<style>
+.swiper {
+	height: 350px;
+	position: relative;
+}
+
+.swiper .swiper-slide {
+	width: 80%;
+	height: 90%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.swiper .swiper-slide .w3-quarter {
+	width: 100%;
+}
+
+.swiper .swiper-slide .w3-quarter img {
+	width: 45%;
+}
+
+.swiper .swiper-slide .w3-quarter h3 {
+	font-family: "Segoe UI", Arial, sans-serif;
+	font-weight: 400;
+	margin: 5px 0;
+}
+</style>
 </head>
 <body id="myPage">
 
@@ -40,37 +84,37 @@
 		<div class="w3-dropdown-hover w3-hide-small">
 			<button class="w3-button" title="Notifications">KGC <i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-				<a href="#" class="w3-bar-item w3-button">인삼공사소개</a> 
-				<a href="#" class="w3-bar-item w3-button">오시는 길</a>
+				<a href="../view/kgc/kgcInfo.jsp" class="w3-bar-item w3-button">인삼공사소개</a> 
+				<a href="../view/kgc/map.jsp" class="w3-bar-item w3-button">오시는 길</a>
 			</div>
 		</div>
 		<div class="w3-dropdown-hover w3-hide-small">
 			<button class="w3-button" title="Notifications">PLAYER <i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block"> 
-				<a href="#" class="w3-bar-item w3-button">선수단</a> 
-				<a href="#" class="w3-bar-item w3-button">경기일정</a> 
-				<a href="#" class="w3-bar-item w3-button">응원가</a>
+				<a href="../view/kgc/player.jsp" class="w3-bar-item w3-button">선수단</a> 
+				<a href="../view/kgc/game.jsp" class="w3-bar-item w3-button">경기일정</a> 
+				<a href="../view/kgc/song.jsp" class="w3-bar-item w3-button">응원가</a>
 			</div>
 		</div>
 		<div class="w3-dropdown-hover w3-hide-small">
 			<button class="w3-button" title="Notifications">COMMUNITY<i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-				<a href="#" class="w3-bar-item w3-button">팬들에게</a> 
-				<a href="#" class="w3-bar-item w3-button">선수들에게</a>
+				<a href="../view/member/writeForm.jsp" class="w3-bar-item w3-button">팬들에게</a> 
+				<a href="../view/member/writeForm.jsp" class="w3-bar-item w3-button">선수들에게</a>
 			</div>
 		</div>
 		<div class="w3-dropdown-hover w3-hide-small">
 			<button class="w3-button" title="Notifications">MARKET<i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-				<a href="#" class="w3-bar-item w3-button">TICKET</a> 
-				<a href="#" class="w3-bar-item w3-button">GOODS</a>
+				<a href="https://www.vticket.co.kr/kgc-schedule-round1" class="w3-bar-item w3-button">TICKET</a> 
+				<a href="../view/member/marketForm.jsp" class="w3-bar-item w3-button">GOODS</a>
 			</div>
 		</div>
 		<div class="w3-dropdown-hover w3-hide-small">
 			<button class="w3-button" title="Notifications">NOTICE<i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-				<a href="#" class="w3-bar-item w3-button">NOTICE</a> 
-				<a href="#" class="w3-bar-item w3-button">QNA</a>
+				<a href="../view/member/writeForm.jsp" class="w3-bar-item w3-button">NOTICE</a> 
+				<a href="../view/member/writeForm.jsp" class="w3-bar-item w3-button">QNA</a>
 			</div>
 		</div>
 		<a href="../view/member/joinForm.jsp" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Join">JOIN</a>
@@ -116,34 +160,152 @@
 <h2>OUR TEAM</h2>
 <p>슬로건 넣기?</p>
 
-<div class="w3-row"><br>
+<!-- Slider main container start -->
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/1.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>이 소 영</h3>
+            <p>아웃사이드 히터</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/3.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>염 혜 선</h3>
+            <p>세터</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/4.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>이 예 솔</h3>
+            <p>아포짓</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/5.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>노 란</h3>
+            <p>리베로</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/6.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>박 은 진</h3>
+            <p>미들 블로커</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/7.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>고 민 지</h3>
+            <p>리베로</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/9.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>서 유 경</h3>
+            <p>리베로</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/11.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>박 혜 민</h3>
+            <p>아웃사이드 히터</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/12.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>한 송 이</h3>
+            <p>미들 블로커</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/13.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>박 은 지</h3>
+            <p>세터</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/14.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>김 채 나</h3>
+            <p>세터</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/15.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>이 선 우</h3>
+            <p>아웃사이드 히터</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/16.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>고 의 정</h3>
+            <p>아웃사이드 히터</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/17.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>정 호 영</h3>
+            <p>미들 블로커</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/18.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>이 지 수</h3>
+            <p>미들 블로커</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w3-quarter">
+            <img src="../image/playerImg/20.jpg" alt="Boss"
+              class="w3-circle w3-hover-opacity">
+            <h3>최 효 서</h3>
+            <p>리베로</p>
+          </div>
+        </div>
+      </div>
 
-<div class="w3-quarter">
-  <img src="../image/playerImg/1.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>Lee So Young</h3>
-  <p>아웃사이드 히터</p>
-</div> 
+      <!-- Slider 하단 버튼-->
+      <div class="swiper-pagination"></div>
 
-<div class="w3-quarter">
-  <img src="../image/playerImg/3.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>염 혜 선</h3>
-  <p>세터</p>
-</div>
-
-<div class="w3-quarter">
-  <img src="../image/playerImg/4.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>이 예 솔</h3>
-  <p>아포짓</p>
-</div>
-
-<div class="w3-quarter">
-  <img src="../image/playerImg/5.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>노 란</h3>
-  <p>리베로</p>
-</div>
-
-</div>
-</div>
+      <!-- Slider 이전, 다음 버튼-->
+      <div class="swiper-button-prev">
+        <div class="material-icons"></div>
+      </div>
+      <div class="swiper-button-next">
+        <div class="material-icons"></div>
+      </div>
+    </div>
+    <!-- Slider main container end-->
+  </div>
 
 <!-- Work Row 뉴스기사? -->
 <div class="w3-row-padding w3-padding-64 w3-theme-l1 w3-center" id="work">
@@ -230,6 +392,26 @@
 </footer>
 
 <script>
+	new Swiper('.swiper', {
+		//자동 재생
+		autoplay : {
+			delay : 3000, //재생 시간
+       disableOnInteraction: false,
+		},
+		loop : true, //반복
+		slidesPerView : 3, //한 페이지에 보여줄 항목 개수 지정
+		spaceBetween : 0, //슬라이드끼리의 간격
+		centeredSlides : true, //슬라이드 가운데정렬
+		pagination : { //하단 버튼
+			el : '.swiper-pagination',
+			clickable : true
+		},
+		navigation : { //이전, 다음 버튼
+			prevEl : '.swiper-button-prev',
+			nextEl : '.swiper-button-next'
+		}
+	})
+
 // Script for side navigation
 function w3_open() {
   var x = document.getElementById("mySidebar");
