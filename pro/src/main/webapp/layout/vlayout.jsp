@@ -26,8 +26,9 @@
 
 <style>
 .swiper {
-	height: 350px;
+	height: 30%;
 	position: relative;
+	z-index:0;
 }
 
 .swiper .swiper-slide {
@@ -83,8 +84,8 @@
 		<div class="w3-dropdown-hover w3-hide-small">
 			<button class="w3-button" title="Notifications">KGC <i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-				<a href="../view/kgc/kgcInfo.jsp" class="w3-bar-item w3-button">인삼공사소개</a> 
 				<a href="../view/kgc/map.jsp" class="w3-bar-item w3-button">오시는 길</a>
+			    <a href="../view/kgc/kgcInfo.jsp" class="w3-bar-item w3-button">구단 기록</a> 
 			</div>
 		</div>
 		<div class="w3-dropdown-hover w3-hide-small">

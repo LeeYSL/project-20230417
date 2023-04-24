@@ -1,18 +1,27 @@
 @charset "UTF-8";
 
+#contents {
+	margin-top: 65px;
+	padding: 15px 40px 15px 40px;
+}
+
+.center {
+    text-align: center;
+}
+
 .h3Txt {
     padding: 15px 0 20px;
     font-size: 30px;
     color: #111;
-    text-align: center;
 }
 .h5Txt{
-    padding: 15px 0 20px;
-    font-size: 30px;
+    padding: 15px 0px 0px 0px;
+    font-size: 20px;
     color: #111;
 }
-img-map {
-  width: 300px;
-  height: 150px;
-  object-fit: cover;
+
+.logoimg {
+	width: 50px
 }
+
+
