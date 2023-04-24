@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.h3Txt {
+    padding: 15px 0 20px;
+    font-size: 30px;
+    color: #111;
+    text-align: center;
+}
+.h5Txt{
+    padding: 15px 0 20px;
+    font-size: 30px;
+    color: #111;
+}
+img-map {
+  width: 300px;
+  height: 150px;
+  object-fit: cover;
+}
