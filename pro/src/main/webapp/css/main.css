@@ -11,8 +11,11 @@
     font-size: 30px;
     color: #111;
 }
-img-map {
+.img-map {
   width: 300px;
   height: 150px;
   object-fit: cover;
+}
+.logoimg {
+	width: 50px
 }
