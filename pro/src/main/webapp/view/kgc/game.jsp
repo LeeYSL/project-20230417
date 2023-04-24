@@ -7,6 +7,6 @@
 <title>경기일정</title>
 </head>
 <body>
-
+git test
 </body>
 </html>
