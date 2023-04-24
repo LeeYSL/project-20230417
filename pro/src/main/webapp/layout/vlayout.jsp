@@ -99,8 +99,8 @@
 		<div class="w3-dropdown-hover w3-hide-small">
 			<button class="w3-button" title="Notifications">COMMUNITY<i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-				<a href="../view/member/writeForm.jsp" class="w3-bar-item w3-button">팬들에게</a> 
-				<a href="../view/member/writeForm.jsp" class="w3-bar-item w3-button">선수들에게</a>
+				<a href="../view/board/boardlist.jsp" class="w3-bar-item w3-button">팬들에게</a> 
+				<a href="../view/board/boardlist.jsp" class="w3-bar-item w3-button">선수들에게</a>
 			</div>
 		</div>
 		<div class="w3-dropdown-hover w3-hide-small">
@@ -113,8 +113,8 @@
 		<div class="w3-dropdown-hover w3-hide-small">
 			<button class="w3-button" title="Notifications">NOTICE<i class="fa fa-caret-down"></i></button>
 			<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-				<a href="../view/member/writeForm.jsp" class="w3-bar-item w3-button">NOTICE</a> 
-				<a href="../view/member/writeForm.jsp" class="w3-bar-item w3-button">QNA</a>
+				<a href="../view/board/boardlist.jsp"  class="w3-bar-item w3-button">NOTICE</a> 
+				<a href="../view/board/boardlist.jsp" class="w3-bar-item w3-button">QNA</a>
 			</div>
 		</div>
 		<a href="../view/member/joinForm.jsp" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Join">JOIN</a>

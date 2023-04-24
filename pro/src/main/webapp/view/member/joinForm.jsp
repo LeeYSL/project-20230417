@@ -8,6 +8,8 @@
 </head>
 <body>
 	<h2 class="w3-center">회원가입</h2>
+	<br>
+	<br>
 	<div class="container">
 		<form action="join" method="post" name="f"
 			enctype="multipart-formdata">
@@ -45,8 +47,9 @@
 						<td><input type="text" name="email" class="w3-input"></td>
 					</tr>
 					<tr>
-						<td colspan="2" style="text-align: center"><a
-							href="javascript:inputcheck()">[등록]</a></td>
+						<td colspan="2" style="text-align:center">
+							<button type="button"class="btn btn-dark" onclick="join()">회원가입</button>
+						</td>
 					</tr>
 				</table>
 			</div>
