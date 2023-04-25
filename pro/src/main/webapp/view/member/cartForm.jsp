@@ -22,7 +22,7 @@
 </head>
 <body>
  
-	<div class="container">
+	<div class="w3-container">
 		<h2 class="w3-center">장바구니</h2>
 		<br> <br>
 		<form name="f" method="post" action="cartForm" onsubmit="return input_check(this)">

@@ -46,6 +46,7 @@ footer {
     position: absolute;  
     bottom: 0;
     left: 0;
+   
 }
 /* footer 하단 고정 [E] */
 
