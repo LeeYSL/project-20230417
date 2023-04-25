@@ -13,6 +13,8 @@ public class SiteMeshFilter extends ConfigurableSiteMeshFilter {
 	protected void applyCustomConfiguration (SiteMeshFilterBuilder builder) {
 	//	builder.addDecoratorPath("/view/*","/layout/vlayout.jsp");
 		builder.addDecoratorPath("/kgc/*","/layout/vlayout.jsp");
+		builder.addDecoratorPath("/member/*","/layout/vlayout.jsp");
+		builder.addDecoratorPath("/board/*","/layout/vlayout.jsp");
 
 	//	builder.addDecoratorPath("/member/*", "/layout/kiclayout.jsp");
 		

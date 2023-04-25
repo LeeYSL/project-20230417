@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +26,7 @@
 				<dd>
 					<ul>
 						<li><a href="player_profile.php?no=t06"><img
-								src="/images/volleyball/2223/player_list_t06.png?ver=3.1"
+								src="${path}/images/volleyball/2223/player_list_t06.png?ver=3.1"
 								alt="No.4 이예솔" /><span class="bg_name"><em>No.4</em><strong>이예솔</strong></span></a></li>
 					</ul>
 				</dd>

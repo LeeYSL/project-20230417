@@ -98,8 +98,8 @@ footer {
 					COMMUNITY<i class="fa fa-caret-down"></i>
 				</button>
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-					<a href="${path}/board/boardlist.jsp" class="w3-bar-item w3-button">팬들에게</a>
-					<a href="${path}/board/boardlist.jsp" class="w3-bar-item w3-button">선수들에게</a>
+					<a href="${path}/board/boardList" class="w3-bar-item w3-button">팬들에게</a>
+					<a href="${path}/board/writeForm" class="w3-bar-item w3-button">선수들에게</a>
 				</div>
 			</div>
 			<div class="w3-dropdown-hover w3-hide-small">
@@ -109,7 +109,7 @@ footer {
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
 					<a href="https://www.vticket.co.kr/kgc-schedule-round1"
 						class="w3-bar-item w3-button">TICKET</a> <a
-						href="${path}/member/marketForm.jsp" class="w3-bar-item w3-button">GOODS</a>
+						href="${path}/market/buyForm" class="w3-bar-item w3-button">GOODS</a>
 				</div>
 			</div>
 			<div class="w3-dropdown-hover w3-hide-small">
@@ -117,13 +117,13 @@ footer {
 					NOTICE<i class="fa fa-caret-down"></i>
 				</button>
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-					<a href="${path}/board/boardlist.jsp" class="w3-bar-item w3-button">NOTICE</a>
-					<a href="${path}/view/board/boardlist.jsp" class="w3-bar-item w3-button">QNA</a>
+					<a href="${path}/board/boardList" class="w3-bar-item w3-button">NOTICE</a>
+					<a href="${path}/board/boardList" class="w3-bar-item w3-button">QNA</a>
 				</div>
 			</div>
-			<a href="../view/member/joinForm.jsp"
+			<a href="${path}/member/joinForm"
 				class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal"
-				title="Join">JOIN</a> <a href="../view/member/loginForm.jsp"
+				title="Join">JOIN</a> <a href="${path}/member/loginForm"
 				class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal"
 				title="Login">LOGIN</a>
 		</div>
@@ -153,15 +153,15 @@ footer {
 		<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center" id="footer">
 			<h4>Follow Us</h4>
 			<a href="https://www.facebook.com/VolleyballKgc/" title="Facebook"><img
-				src="../image/sns_facebook.png"></a> <a
+				src="${path}/image/sns_facebook.png"></a> <a
 				href="https://www.youtube.com/@volleyballkgc"><img
-				src="../image/sns_youtube.png"></a> <a
+				src="${path}/image/sns_youtube.png"></a> <a
 				href="https://m.post.naver.com/my.nhn?memberNo=44010406&navigationType=push"
 				title="naver"><img src="../image/sns_navertv.png"></a> <a
 				href="https://www.instagram.com/kgcvolley/" title="instagram +"><img
-				src="../image/sns_insta.png"></a> <a
+				src="${path}/image/sns_insta.png"></a> <a
 				href="https://tv.naver.com/kgcvolley" title="naver"><img
-				src="../image/sns_navertv.png"></a>
+				src="${path}/image/sns_navertv.png"></a>
 			<p>주소넣기</p>
 			<p>
 				<a href="https://www.w3schools.com/w3css/default.asp"

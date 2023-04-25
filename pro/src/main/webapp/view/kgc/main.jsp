@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +52,7 @@
 
 <!-- Image Header -->
 <div class="w3-display-container w3-animate-opacity">
-  <img src="../../image/kgcimg1.jpg" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+  <img src="${path}/image/kgcimg1.jpg" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
 </div>
 
 
@@ -62,7 +66,7 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/1.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/1.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>이 소 영</h3>
             <p>아웃사이드 히터</p>
@@ -70,7 +74,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/3.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/3.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>염 혜 선</h3>
             <p>세터</p>
@@ -78,7 +82,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/4.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/4.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>이 예 솔</h3>
             <p>아포짓</p>
@@ -86,7 +90,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/5.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/5.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>노 란</h3>
             <p>리베로</p>
@@ -94,7 +98,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/6.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/6.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>박 은 진</h3>
             <p>미들 블로커</p>
@@ -102,7 +106,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/7.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/7.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>고 민 지</h3>
             <p>리베로</p>
@@ -110,7 +114,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/9.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/9.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>서 유 경</h3>
             <p>리베로</p>
@@ -118,7 +122,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/11.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/11.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>박 혜 민</h3>
             <p>아웃사이드 히터</p>
@@ -126,7 +130,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/12.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/12.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>한 송 이</h3>
             <p>미들 블로커</p>
@@ -134,7 +138,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/13.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/13.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>박 은 지</h3>
             <p>세터</p>
@@ -142,7 +146,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/14.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/14.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>김 채 나</h3>
             <p>세터</p>
@@ -150,7 +154,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/15.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/15.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>이 선 우</h3>
             <p>아웃사이드 히터</p>
@@ -158,7 +162,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/16.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/16.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>고 의 정</h3>
             <p>아웃사이드 히터</p>
@@ -166,7 +170,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/17.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/17.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>정 호 영</h3>
             <p>미들 블로커</p>
@@ -174,7 +178,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/18.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/18.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>이 지 수</h3>
             <p>미들 블로커</p>
@@ -182,7 +186,7 @@
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
-            <img src="../../image/playerImg/20.jpg" alt="Boss"
+            <img src="${path}/image/playerImg/20.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
             <h3>최 효 서</h3>
             <p>리베로</p>
