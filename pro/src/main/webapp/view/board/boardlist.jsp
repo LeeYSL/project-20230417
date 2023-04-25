@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<h2 class="w3-center">게시판 리스트</h2>
@@ -21,11 +22,16 @@
 		<tr>
 			<td>${boardnum}</td>
 			<td>${b.title}</td>
-			<td>${b.writer}</td>	
-<%-- 오늘 등록된 게시물 날짜 format대로 출력하기 --%>			
+			<td>${b.writer}</td>
+			<%-- 오늘 등록된 게시물 날짜 format대로 출력하기 --%>
 			<td></td>
 			<td>${b.readcnt}</td>
 
+		</tr>
+		<tr>
+			<td colspan="5" style="text-align: right">
+				<button type="button" class="btn btn-dark" onclick="write()">게시글 작성</button>
+			</td>
 		</tr>
 	</table>
 
