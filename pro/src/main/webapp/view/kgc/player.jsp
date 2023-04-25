@@ -16,11 +16,7 @@
 		</div>
 
 		<h3 class="h3Txt">선수</h3>
-		<p class="subtxt">KGC인삼공사 프로배구단을 빛내는 자랑스러운 선수들을 소개합니다.</p>
-
-		<!-- 컨텐츠시작 -->
-		<!-- RIGHT -->
-		<div class="plist">
+		<div class="list">
 			<dl>
 				<dt>
 					Opposite<br>(Spiker)
@@ -36,7 +32,7 @@
 		</div>
 		<!-- //RIGHT -->
 		<!-- LEFT -->
-		<div class="plist">
+		<div class="list">
 			<dl>
 				<dt>
 					Outside<br>Hitter
@@ -63,7 +59,7 @@
 				</dd>
 			</dl>
 		</div>
-		<div class="plist">
+		<div class="list">
 			<dl>
 				<dt>
 					Middle<br>Blocker
@@ -92,7 +88,7 @@
 		</div>
 		<!-- //CENTER -->
 		<!-- SETTER -->
-		<div class="plist">
+		<div class="list">
 			<dl>
 				<dt>Setter</dt>
 				<dd>
@@ -118,7 +114,7 @@
 			</dl>
 		</div>
 
-		<div class="plist">
+		<div class="list">
 			<dl>
 				<dt>Libero</dt>
 				<dd>
