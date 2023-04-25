@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html>
@@ -64,7 +68,7 @@ footer {
 				href="javascript:void(0);" onclick="openNav()"> <i
 				class="fa fa-bars"></i>
 			</a> <a href="#" class="w3-bar-item w3-button w3-white"><img
-				src="../image/kgclogo2.png" width="100%" height="40px"></a>
+				src="${path}/image/kgclogo2.png" width="100%" height="40px"></a>
 			<!-- <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">KGC</a>
 	 <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Player</a>
 	 <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Community</a>
@@ -75,9 +79,8 @@ footer {
 					KGC <i class="fa fa-caret-down"></i>
 				</button>
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-					<a href="../view/kgc/map.jsp" class="w3-bar-item w3-button">오시는
-						길</a> <a href="../view/kgc/kgcInfo.jsp" class="w3-bar-item w3-button">구단
-						기록</a>
+					<a href="${path}/kgc/map" class="w3-bar-item w3-button">오시는길</a> 
+					<a href="${path}/kgc/kgcInfo" class="w3-bar-item w3-button">구단기록</a>
 				</div>
 			</div>
 			<div class="w3-dropdown-hover w3-hide-small">
@@ -85,9 +88,9 @@ footer {
 					PLAYER <i class="fa fa-caret-down"></i>
 				</button>
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-					<a href="../view/kgc/player.jsp" class="w3-bar-item w3-button">선수단</a>
-					<a href="../view/kgc/game.jsp" class="w3-bar-item w3-button">경기일정</a>
-					<a href="../view/kgc/song.jsp" class="w3-bar-item w3-button">응원가</a>
+					<a href="${path}/kgc/player" class="w3-bar-item w3-button">선수단</a>
+					<a href="${path}/kgc/game" class="w3-bar-item w3-button">경기일정</a>
+					<a href="${path}/kgc/song" class="w3-bar-item w3-button">응원가</a>
 				</div>
 			</div>
 			<div class="w3-dropdown-hover w3-hide-small">
@@ -95,8 +98,8 @@ footer {
 					COMMUNITY<i class="fa fa-caret-down"></i>
 				</button>
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-					<a href="../view/board/boardlist.jsp" class="w3-bar-item w3-button">팬들에게</a>
-					<a href="../view/board/boardlist.jsp" class="w3-bar-item w3-button">선수들에게</a>
+					<a href="${path}/board/boardlist.jsp" class="w3-bar-item w3-button">팬들에게</a>
+					<a href="${path}/board/boardlist.jsp" class="w3-bar-item w3-button">선수들에게</a>
 				</div>
 			</div>
 			<div class="w3-dropdown-hover w3-hide-small">
@@ -106,7 +109,7 @@ footer {
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
 					<a href="https://www.vticket.co.kr/kgc-schedule-round1"
 						class="w3-bar-item w3-button">TICKET</a> <a
-						href="../view/member/marketForm.jsp" class="w3-bar-item w3-button">GOODS</a>
+						href="${path}/member/marketForm.jsp" class="w3-bar-item w3-button">GOODS</a>
 				</div>
 			</div>
 			<div class="w3-dropdown-hover w3-hide-small">
@@ -114,8 +117,8 @@ footer {
 					NOTICE<i class="fa fa-caret-down"></i>
 				</button>
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-					<a href="../view/board/boardlist.jsp" class="w3-bar-item w3-button">NOTICE</a>
-					<a href="../view/board/boardlist.jsp" class="w3-bar-item w3-button">QNA</a>
+					<a href="${path}/board/boardlist.jsp" class="w3-bar-item w3-button">NOTICE</a>
+					<a href="${path}/view/board/boardlist.jsp" class="w3-bar-item w3-button">QNA</a>
 				</div>
 			</div>
 			<a href="../view/member/joinForm.jsp"
@@ -167,27 +170,6 @@ footer {
 		</footer>
 	</div>
 		<script>
-
-			// Script for side navigation
-			function w3_open() {
-				var x = document.getElementById("mySidebar");
-				x.style.width = "300px";
-				x.style.paddingTop = "10%";
-				x.style.display = "block";
-			}
-			// Close side navigation
-			function w3_close() {
-				document.getElementById("mySidebar").style.display = "none";
-			}
-			// Used to toggle the menu on smaller screens when clicking on the menu button
-			function openNav() {
-				var x = document.getElementById("navDemo");
-				if (x.className.indexOf("w3-show") == -1) {
-					x.className += " w3-show";
-				} else {
-					x.className = x.className.replace(" w3-show", "");
-				}
-			}
 		</script>
 </body>
 </html>

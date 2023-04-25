@@ -8,11 +8,6 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript">
-function write(){
-	//로그인 안했으면 로그인창 뜨게해야함
-}
-</script>
 </head>
 <body>
 	<h2 class="w3-center">게시판 리스트</h2>
@@ -35,7 +30,7 @@ function write(){
 		</tr>
 		<tr>
 			<td colspan="5" style="text-align: right">
-				<button type="button" class="btn btn-dark" onclick="write()"><a href="writeForm.jsp">게시글 작성</a></button>
+				<button type="button" class="btn btn-dark" onclick="write()">게시글 작성</button>
 			</td>
 		</tr>
 	</table>

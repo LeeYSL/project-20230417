@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+ <c:set var="path" value="${pageContext.request.contextPath}" />
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +17,7 @@
 			<!-- location menu -->
 			<h3 class="h3Txt center">홈구장 충무체육관 안내</h3>
 			<div class="center">
-				<img src="../../image/map2.jpg"alt="좌석배치도" />
+				<img src="${path}/image/map2.jpg"alt="좌석배치도" />
 			</div>
 			<h4 class="center">좌석배치도</h4>
 
@@ -68,7 +71,7 @@
 			<br> <br><br><br>
 
 			<h4 class="h4Txt">찾아오시는 길</h4>
-			<img src="../../image/map1.png" alt="약도 이미지" />
+			<img src="${path}/image/map1.png" alt="약도 이미지" />
 			<h5>교통편</h5>
 			<ul class="ul_type1">
 				<li>대중교통 : 대전역 3분출구 건너편 2번버스 → 한밭종합운동장 하차후 4분 도보</li>

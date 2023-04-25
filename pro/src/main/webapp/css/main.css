@@ -25,7 +25,7 @@
 }
 
 
- dl dd ul li {
+.list dl dd ul li {
     width: 180px;
     height: 204px;
     float: left;
@@ -33,12 +33,4 @@
     background-color: #f5f5f5;
 }
 
-#list {
-	width :100%;
-	height: 300px;
-	border-bottom-style: solid ;
-}
-li {
-	list-style-type: none;
-}
 

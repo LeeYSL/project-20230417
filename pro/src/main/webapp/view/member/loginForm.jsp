@@ -46,21 +46,20 @@
 </script>
 </head>
 <body>
-	<div style=margin-top:100px;>
 	<h2 class="w3-center">로그인</h2>
-	<div class="w3-container" >
+	<div class="container">
 		<form action="join" method="post" name="f"
 			enctype="multipart-formdata">
-			<div class="form-group" style=padding-left:340px;>
-				<table class="w3-table w3-border" style=height:400px;width:80%;>
+			<div class="form-group">
+				<table class="w3-table w3-border ">
 					<tr>
-						<th>아이디</th>
+						<td>아이디</td>
 						<td><input type="text" name="id" class="w3-input"></td>
 						<td rowspan="2" style="text-align: center">
-						<button type="button" style="padding: 20px;" class="btn btn-dark" >로그인</button></td>
+							<button type="button" style="padding: 20px;" >로그인</button>
 					</tr>
 					<tr>
-						<th>비밀번호</th>
+						<td>비밀번호</td>
 						<td><input type="text" name="pass" class="w3-input"></td>
 					</tr>
 					<tr>
@@ -74,7 +73,6 @@
 				</table>
 			</div>
 		</form> 
-	</div>
 	</div>
 </body>
 </html>

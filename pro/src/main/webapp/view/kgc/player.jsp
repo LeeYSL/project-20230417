@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>ì„ ìˆ˜ë‹¨</title>
+<meta charset="EUC-KR">
+<title>¼±¼ö´Ü</title>
 <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
@@ -13,11 +12,11 @@
 		<!-- location menu -->
 		<div class="page_location">
 			<span><img src="/images/common/ico_home.gif" alt="Home" /></span> <span>PLAYER</span>
-			<span class="active">ì„ ìˆ˜</span>
+			<span class="active">¼±¼ö</span>
 		</div>
 
-		<h3 class="h3Txt">ì„ ìˆ˜</h3>
-		<div class="w3-list" id="list">
+		<h3 class="h3Txt">¼±¼ö</h3>
+		<div class="list">
 			<dl>
 				<dt>
 					Opposite<br>(Spiker)
@@ -26,14 +25,14 @@
 					<ul>
 						<li><a href="player_profile.php?no=t06"><img
 								src="/images/volleyball/2223/player_list_t06.png?ver=3.1"
-								alt="No.4 ì´ì˜ˆì†”" /><span class="bg_name"><em>No.4</em><strong>ì´ì˜ˆì†”</strong></span></a></li>
+								alt="No.4 ÀÌ¿¹¼Ö" /><span class="bg_name"><em>No.4</em><strong>ÀÌ¿¹¼Ö</strong></span></a></li>
 					</ul>
 				</dd>
 			</dl>
 		</div>
 		<!-- //RIGHT -->
 		<!-- LEFT -->
-		<div class="w3-list" id="list">
+		<div class="list">
 			<dl>
 				<dt>
 					Outside<br>Hitter
@@ -42,25 +41,25 @@
 					<ul>
 						<li><a href="player_profile.php?no=fa11"><img
 								src="/images/volleyball/2223/player_list_fa11.png?ver=3.1"
-								alt="No.1 ì´ì†Œì˜" /><span class="bg_name"><em>No.1</em><strong>ì´ì†Œì˜</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.1 ÀÌ¼Ò¿µ" /><span class="bg_name"><em>No.1</em><strong>ÀÌ¼Ò¿µ</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 						<li><a href="player_profile.php?no=fa12"><img
 								src="/images/volleyball/2223/player_list_fa12.png?ver=3.1"
-								alt="No.11 ë°•í˜œë¯¼" /><span class="bg_name"><em>No.11</em><strong>ë°•í˜œë¯¼</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.11 ¹ÚÇý¹Î" /><span class="bg_name"><em>No.11</em><strong>¹ÚÇý¹Î</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 						<li><a href="player_profile.php?no=n01"><img
 								src="/images/volleyball/2223/player_list_n01.png?ver=3.1"
-								alt="No.15 ì´ì„ ìš°" /><span class="bg_name"><em>No.15</em><strong>ì´ì„ ìš°</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.15 ÀÌ¼±¿ì" /><span class="bg_name"><em>No.15</em><strong>ÀÌ¼±¿ì</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 						<li><a href="player_profile.php?no=t05"><img
 								src="/images/volleyball/2223/player_list_t05.png?ver=3.1"
-								alt="No.16 ê³ ì˜ì •" /><span class="bg_name"><em>No.16</em><strong>ê³ ì˜ì •</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.16 °íÀÇÁ¤" /><span class="bg_name"><em>No.16</em><strong>°íÀÇÁ¤</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 					</ul>
 				</dd>
 			</dl>
 		</div>
-		<div class="w3-list" id="list">
+		<div class="list">
 			<dl>
 				<dt>
 					Middle<br>Blocker
@@ -69,73 +68,73 @@
 					<ul>
 						<li><a href="player_profile.php?no=t08"><img
 								src="/images/volleyball/2223/player_list_t08.png?ver=3.1"
-								alt="No.6 ë°•ì€ì§„" /><span class="bg_name"><em>No.6</em><strong>ë°•ì€ì§„</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.6 ¹ÚÀºÁø" /><span class="bg_name"><em>No.6</em><strong>¹ÚÀºÁø</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 						<li><a href="player_profile.php?no=fa01"><img
 								src="/images/volleyball/2223/player_list_fa01.png?ver=3.1"
-								alt="No.12 í•œì†¡ì´" /><span class="bg_name"><em>No.12</em><strong>í•œì†¡ì´</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.12 ÇÑ¼ÛÀÌ" /><span class="bg_name"><em>No.12</em><strong>ÇÑ¼ÛÀÌ</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 						<li><a href="player_profile.php?no=n191"><img
 								src="/images/volleyball/2223/player_list_n191.png?ver=3.1"
-								alt="No.17 ì •í˜¸ì˜" /><span class="bg_name"><em>No.17</em><strong>ì •í˜¸ì˜</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.17 Á¤È£¿µ" /><span class="bg_name"><em>No.17</em><strong>Á¤È£¿µ</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 						<li><a href="player_profile.php?no=new21"><img
 								src="/images/volleyball/2223/player_list_new21.png?ver=3.1"
-								alt="No.18 ì´ì§€ìˆ˜" /><span class="bg_name"><em>No.18</em><strong>ì´ì§€ìˆ˜</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.18 ÀÌÁö¼ö" /><span class="bg_name"><em>No.18</em><strong>ÀÌÁö¼ö</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 					</ul>
 				</dd>
 			</dl>
 		</div>
 		<!-- //CENTER -->
 		<!-- SETTER -->
-		<div class="w3-list" id="list">
+		<div class="list">
 			<dl>
 				<dt>Setter</dt>
 				<dd>
 					<ul>
 						<li><a href="player_profile.php?no=t11"><img
 								src="/images/volleyball/2223/player_list_t11.png?ver=3.1"
-								alt="No.3 ì—¼í˜œì„ " /><span class="bg_name"><em>No.3</em><strong>ì—¼í˜œì„ </strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.3 ¿°Çý¼±" /><span class="bg_name"><em>No.3</em><strong>¿°Çý¼±</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 						<li><a href="player_profile.php?no=c02"><img
 								src="/images/volleyball/2223/player_list_c02.png?ver=3.1"
-								alt="No.13 ë°•ì€ì§€" /><span class="bg_name"><em>No.13</em><strong>ë°•ì€ì§€</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.13 ¹ÚÀºÁö" /><span class="bg_name"><em>No.13</em><strong>¹ÚÀºÁö</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 						<li><a href="player_profile.php?no=khw21"><img
 								src="/images/volleyball/2223/player_list_khw21.png?ver=3.1"
-								alt="No.14 ê¹€ì±„ë‚˜" /><span class="bg_name"><em>No.14</em><strong>ê¹€ì±„ë‚˜</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.14 ±èÃ¤³ª" /><span class="bg_name"><em>No.14</em><strong>±èÃ¤³ª</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 						<li><a href="player_profile.php?no=t41"><img
 								src="/images/volleyball/2223/player_list_t41.png?ver=3.1"
-								alt="No.19 ê¹€í˜„ì§€" /><span class="bg_name"><em>No.19</em><strong>ê¹€í˜„ì§€</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.19 ±èÇöÁö" /><span class="bg_name"><em>No.19</em><strong>±èÇöÁö</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 					</ul>
 				</dd>
 			</dl>
 		</div>
 
-		<div class="w3-list" id="list">
+		<div class="list">
 			<dl>
 				<dt>Libero</dt>
 				<dd>
 					<ul>
 						<li><a href="player_profile.php?no=n81"><img
 								src="/images/volleyball/2223/player_list_n81.png?ver=3.1"
-								alt="No.5 ë…¸ëž€" /><span class="bg_name"><em>No.5</em><strong>ë…¸ëž€</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.5 ³ë¶õ" /><span class="bg_name"><em>No.5</em><strong>³ë¶õ</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 						<li><a href="player_profile.php?no=t01"><img
 								src="/images/volleyball/2223/player_list_t01.png?ver=3.1"
-								alt="No.7 ê³ ë¯¼ì§€" /><span class="bg_name"><em>No.7</em><strong>ê³ ë¯¼ì§€</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.7 °í¹ÎÁö" /><span class="bg_name"><em>No.7</em><strong>°í¹ÎÁö</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 						<li><a href="player_profile.php?no=n02"><img
 								src="/images/volleyball/2223/player_list_n02.png?ver=3.1"
-								alt="No.9 ì„œìœ ê²½" /><span class="bg_name"><em>No.9</em><strong>ì„œìœ ê²½</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.9 ¼­À¯°æ" /><span class="bg_name"><em>No.9</em><strong>¼­À¯°æ</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 						<li><a href="player_profile.php?no=c03"><img
 								src="/images/volleyball/2223/player_list_c03.png?ver=3.1"
-								alt="No.20 ìµœíš¨ì„œ" /><span class="bg_name"><em>No.20</em><strong>ìµœíš¨ì„œ</strong></span></a></li>
-						<!-- ì´ë¯¸ì§€ì‚¬ì´ì¦ˆ 180*204px -->
+								alt="No.20 ÃÖÈ¿¼­" /><span class="bg_name"><em>No.20</em><strong>ÃÖÈ¿¼­</strong></span></a></li>
+						<!-- ÀÌ¹ÌÁö»çÀÌÁî 180*204px -->
 					</ul>
 				</dd>
 			</dl>
