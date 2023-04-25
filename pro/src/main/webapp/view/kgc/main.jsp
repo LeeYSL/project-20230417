@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>kgc ÀÎ»ï°ø»ç</title>
-<!--css ÃÊ±âÈ­-->
+<meta charset="UTF-8">
+<title>kgc ì¸ì‚¼ê³µì‚¬</title>
+<!--css ì´ˆê¸°í™”-->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
 
-<!-- SWIPER ¿ÜºÎ ¶óÀÌºê·¯¸® ¿¬°á-->
+<!-- SWIPER ì™¸ë¶€ ë¼ì´ë¸ŒëŸ¬ë¦¬ ì—°ê²°-->
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
@@ -54,7 +54,7 @@
 <!-- Team Container -->
 <div class="w3-container w3-padding-64 w3-center" id="team">
 <h2>OUR TEAM</h2>
-<p>½½·Î°Ç ³Ö±â?</p>
+<p>ìŠ¬ë¡œê±´ ë„£ê¸°?</p>
 
 <!-- Slider main container start -->
     <div class="swiper">
@@ -63,136 +63,136 @@
           <div class="w3-quarter">
             <img src="../../image/playerImg/1.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>ÀÌ ¼Ò ¿µ</h3>
-            <p>¾Æ¿ô»çÀÌµå È÷ÅÍ</p>
+            <h3>ì´ ì†Œ ì˜</h3>
+            <p>ì•„ì›ƒì‚¬ì´ë“œ ížˆí„°</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/3.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>¿° Çý ¼±</h3>
-            <p>¼¼ÅÍ</p>
+            <h3>ì—¼ í˜œ ì„ </h3>
+            <p>ì„¸í„°</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/4.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>ÀÌ ¿¹ ¼Ö</h3>
-            <p>¾ÆÆ÷Áþ</p>
+            <h3>ì´ ì˜ˆ ì†”</h3>
+            <p>ì•„í¬ì§“</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/5.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>³ë ¶õ</h3>
-            <p>¸®º£·Î</p>
+            <h3>ë…¸ ëž€</h3>
+            <p>ë¦¬ë² ë¡œ</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/6.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>¹Ú Àº Áø</h3>
-            <p>¹Ìµé ºí·ÎÄ¿</p>
+            <h3>ë°• ì€ ì§„</h3>
+            <p>ë¯¸ë“¤ ë¸”ë¡œì»¤</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/7.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>°í ¹Î Áö</h3>
-            <p>¸®º£·Î</p>
+            <h3>ê³  ë¯¼ ì§€</h3>
+            <p>ë¦¬ë² ë¡œ</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/9.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>¼­ À¯ °æ</h3>
-            <p>¸®º£·Î</p>
+            <h3>ì„œ ìœ  ê²½</h3>
+            <p>ë¦¬ë² ë¡œ</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/11.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>¹Ú Çý ¹Î</h3>
-            <p>¾Æ¿ô»çÀÌµå È÷ÅÍ</p>
+            <h3>ë°• í˜œ ë¯¼</h3>
+            <p>ì•„ì›ƒì‚¬ì´ë“œ ížˆí„°</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/12.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>ÇÑ ¼Û ÀÌ</h3>
-            <p>¹Ìµé ºí·ÎÄ¿</p>
+            <h3>í•œ ì†¡ ì´</h3>
+            <p>ë¯¸ë“¤ ë¸”ë¡œì»¤</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/13.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>¹Ú Àº Áö</h3>
-            <p>¼¼ÅÍ</p>
+            <h3>ë°• ì€ ì§€</h3>
+            <p>ì„¸í„°</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/14.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>±è Ã¤ ³ª</h3>
-            <p>¼¼ÅÍ</p>
+            <h3>ê¹€ ì±„ ë‚˜</h3>
+            <p>ì„¸í„°</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/15.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>ÀÌ ¼± ¿ì</h3>
-            <p>¾Æ¿ô»çÀÌµå È÷ÅÍ</p>
+            <h3>ì´ ì„  ìš°</h3>
+            <p>ì•„ì›ƒì‚¬ì´ë“œ ížˆí„°</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/16.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>°í ÀÇ Á¤</h3>
-            <p>¾Æ¿ô»çÀÌµå È÷ÅÍ</p>
+            <h3>ê³  ì˜ ì •</h3>
+            <p>ì•„ì›ƒì‚¬ì´ë“œ ížˆí„°</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/17.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>Á¤ È£ ¿µ</h3>
-            <p>¹Ìµé ºí·ÎÄ¿</p>
+            <h3>ì • í˜¸ ì˜</h3>
+            <p>ë¯¸ë“¤ ë¸”ë¡œì»¤</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/18.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>ÀÌ Áö ¼ö</h3>
-            <p>¹Ìµé ºí·ÎÄ¿</p>
+            <h3>ì´ ì§€ ìˆ˜</h3>
+            <p>ë¯¸ë“¤ ë¸”ë¡œì»¤</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="w3-quarter">
             <img src="../../image/playerImg/20.jpg" alt="Boss"
               class="w3-circle w3-hover-opacity">
-            <h3>ÃÖ È¿ ¼­</h3>
-            <p>¸®º£·Î</p>
+            <h3>ìµœ íš¨ ì„œ</h3>
+            <p>ë¦¬ë² ë¡œ</p>
           </div>
         </div>
       </div>
 
-      <!-- Slider ÇÏ´Ü ¹öÆ°-->
+      <!-- Slider í•˜ë‹¨ ë²„íŠ¼-->
       <div class="swiper-pagination"></div>
 
-      <!-- Slider ÀÌÀü, ´ÙÀ½ ¹öÆ°-->
+      <!-- Slider ì´ì „, ë‹¤ìŒ ë²„íŠ¼-->
       <div class="swiper-button-prev">
         <div class="material-icons"></div>
       </div>
@@ -203,7 +203,7 @@
     <!-- Slider main container end-->
   </div>
 
-<!-- Work Row ´º½º±â»ç? -->
+<!-- Work Row ë‰´ìŠ¤ê¸°ì‚¬? -->
 <div class="w3-row-padding w3-padding-64 w3-theme-l1 w3-center" id="work">
 <h2>NEWS</h2>
 <br>
@@ -212,7 +212,7 @@
 <div class="w3-card w3-white">
   <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007158800&plink=ORI&cooper=NAVER" target="blank"><img src="../image/news1.jpg" alt="Snow" style="width:100%"></a>
   <div class="w3-container">
-  <p>¿©ÀÚ¹è±¸ KGCÀÎ»ï°ø»ç, FA ÇÑ¼ÛÀÌ ¡¤ ¿°Çý¼±°ú Àç°è¾à</p>
+  <p>ì—¬ìžë°°êµ¬ KGCì¸ì‚¼ê³µì‚¬, FA í•œì†¡ì´ Â· ì—¼í˜œì„ ê³¼ ìž¬ê³„ì•½</p>
   </div>
   </div>
 </div>
@@ -266,20 +266,20 @@
 
 <script>
 	new Swiper('.swiper', {
-		//ÀÚµ¿ Àç»ý
+		//ìžë™ ìž¬ìƒ
 		autoplay : {
-			delay : 3000, //Àç»ý ½Ã°£
+			delay : 3000, //ìž¬ìƒ ì‹œê°„
        disableOnInteraction: false,
 		},
-		loop : true, //¹Ýº¹
-		slidesPerView : 3, //ÇÑ ÆäÀÌÁö¿¡ º¸¿©ÁÙ Ç×¸ñ °³¼ö ÁöÁ¤
-		spaceBetween : 0, //½½¶óÀÌµå³¢¸®ÀÇ °£°Ý
-		centeredSlides : true, //½½¶óÀÌµå °¡¿îµ¥Á¤·Ä
-		pagination : { //ÇÏ´Ü ¹öÆ°
+		loop : true, //ë°˜ë³µ
+		slidesPerView : 3, //í•œ íŽ˜ì´ì§€ì— ë³´ì—¬ì¤„ í•­ëª© ê°œìˆ˜ ì§€ì •
+		spaceBetween : 0, //ìŠ¬ë¼ì´ë“œë¼ë¦¬ì˜ ê°„ê²©
+		centeredSlides : true, //ìŠ¬ë¼ì´ë“œ ê°€ìš´ë°ì •ë ¬
+		pagination : { //í•˜ë‹¨ ë²„íŠ¼
 			el : '.swiper-pagination',
 			clickable : true
 		},
-		navigation : { //ÀÌÀü, ´ÙÀ½ ¹öÆ°
+		navigation : { //ì´ì „, ë‹¤ìŒ ë²„íŠ¼
 			prevEl : '.swiper-button-prev',
 			nextEl : '.swiper-button-next'
 		}
