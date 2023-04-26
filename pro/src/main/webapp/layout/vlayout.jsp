@@ -99,7 +99,7 @@ footer {
 				</button>
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
 					<a href="${path}/board/boardList" class="w3-bar-item w3-button">팬들에게</a>
-					<a href="${path}/board/writeForm" class="w3-bar-item w3-button">선수들에게</a>
+					<a href="${path}/board/boardList" class="w3-bar-item w3-button">선수들에게</a>
 				</div>
 			</div>
 			<div class="w3-dropdown-hover w3-hide-small">
@@ -123,7 +123,8 @@ footer {
 			</div>
 			<a href="${path}/member/joinForm"
 				class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal"
-				title="Join">JOIN</a> <a href="${path}/member/loginForm"
+				title="Join">JOIN</a> 
+		    <a href="${path}/member/loginForm"
 				class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal"
 				title="Login">LOGIN</a>
 		</div>

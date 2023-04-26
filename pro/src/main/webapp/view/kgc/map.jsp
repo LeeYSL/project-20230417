@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>오시는 길</title>
-<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
 	<!-- CONTENTS START -->

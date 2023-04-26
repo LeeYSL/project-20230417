@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>기록실</title>
-<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
 <div id="contents">
@@ -62,7 +64,7 @@
             <tbody>
                         <tr class="">
                 <td>1</td>
-                <td><p><img class=logoimg src="../../image/logo/logo_pink.png" alt="흥국생명" class="logo" />흥국생명</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
+                <td><p><img class=logoimg src="${path}/image/logo/logo_pink.png" alt="흥국생명" class="logo" />흥국생명</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
                 <td>36</td>
                 <td>27</td>
                 <td>9</td>
@@ -70,7 +72,7 @@
            
                             <tr class="">
                 <td>2</td>
-                <td><p><img class=logoimg src="../../image/logo/logo_HD.png" alt="현대건설" class="logo" />현대건설</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
+                <td><p><img class=logoimg src="${path}/image/logo/logo_HD.png" alt="현대건설" class="logo" />현대건설</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
                 <td>36</td>
                 <td>24</td>
                 <td>12</td>
@@ -78,7 +80,7 @@
          
                             <tr class="">
                 <td>3</td>
-                <td><p><img class=logoimg src="../../image/logo/logo_pass.png" alt="한국도로공사" class="logo" />한국도로공사</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
+                <td><p><img class=logoimg src="${path}/image/logo/logo_pass.png" alt="한국도로공사" class="logo" />한국도로공사</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
                 <td>36</td>
                 <td>20</td>
                 <td>16</td>
@@ -86,7 +88,7 @@
   
                             <tr class="current">
                 <td>4</td>
-                <td><p><img class=logoimg src="../../image/logo/logo_kgc.png" alt="KGC인삼공사" class="logo" />KGC인삼공사</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
+                <td><p><img class=logoimg src="${path}/image/logo/logo_kgc.png" alt="KGC인삼공사" class="logo" />KGC인삼공사</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
                 <td>36</td>
                 <td>19</td>
                 <td>17</td>
@@ -94,7 +96,7 @@
          
                             <tr class="">
                 <td>5</td>
-                <td><p><img class=logoimg src="../../image/logo/logo_gs.png" alt="GS칼텍스" class="logo" />GS칼텍스</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
+                <td><p><img class=logoimg src="${path}/image/logo/logo_gs.png" alt="GS칼텍스" class="logo" />GS칼텍스</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
                 <td>36</td>
                 <td>16</td>
                 <td>20</td>
@@ -102,7 +104,7 @@
              
                             <tr class="">
                 <td>6</td>
-                <td><p><img class=logoimg src="../../image/logo/logo_IBK.png" alt="IBK기업은행" class="logo" />IBK기업은행</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
+                <td><p><img class=logoimg src="${path}/image/logo/logo_IBK.png" alt="IBK기업은행" class="logo" />IBK기업은행</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
                 <td>36</td>
                 <td>15</td>
                 <td>21</td>
@@ -110,7 +112,7 @@
                 
                             <tr class="">
                 <td>7</td>
-                <td><p><img class=logoimg  src="../../image/logo/logo_AI.png" alt="페퍼저축은행" class="logo" />페퍼저축은행</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
+                <td><p><img class=logoimg  src="${path}/image/logo/logo_AI.png" alt="페퍼저축은행" class="logo" />페퍼저축은행</p></td> <!-- alt값은 팀명에 따라 변경됨 -->
                 <td>36</td>
                 <td>5</td>
                 <td>31</td>
