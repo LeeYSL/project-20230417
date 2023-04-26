@@ -7,7 +7,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>선수단</title>
-<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="${path}css/main.css">
 </head>
 <body>
 	<div id="contents">

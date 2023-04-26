@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
 
-@WebServlet(urlPatterns = {"/board/*"}, initParams = { @WebInitParam(name = "view", value="/veiw/") })
+@WebServlet(urlPatterns = {"/board/*"}, initParams = { @WebInitParam(name = "view", value="/view/") })
 public class BoardController extends MskimRequestMapping {
 	
 	@RequestMapping("boardList")
