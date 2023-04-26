@@ -21,7 +21,7 @@
 		<div class="list">
 			<dl>
 				<dt>
-					Opposite<br>(Spiker)
+					Opposite<br>(Spiker) 
 				</dt>
 				<dd>
 					<ul>
