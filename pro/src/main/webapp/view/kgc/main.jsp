@@ -8,9 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>kgc 인삼공사</title>
-<!--css 초기화--
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
 
 <!-- SWIPER 외부 라이브러리 연결-->
 <link rel="stylesheet"
