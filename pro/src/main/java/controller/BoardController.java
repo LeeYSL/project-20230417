@@ -2,6 +2,7 @@ package controller;
 
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
 
 import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
@@ -10,18 +11,18 @@ import gdu.mskim.RequestMapping;
 public class BoardController extends MskimRequestMapping {
 	
 	@RequestMapping("boardList")
-	public String goboardList() {
+	public String goBoardList(HttpServletRequest request) {
 		return "board/boardList";
 		
 	}
 	@RequestMapping("writeForm")
-	public String gowriteForm() {
+	public String goWriteForm() {
 		return "board/writeForm";
 		
 	}
 	
 	@RequestMapping("boardInfo")
-	public String goboardInfo() {
+	public String goBoardInfo() {
 		return "board/boardInfo";
 		
 	}
