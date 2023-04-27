@@ -46,7 +46,7 @@ html, body {
 
 footer {
     width: 100%;
-    height: 300px; /* footer의 높이 */
+    height: 200px; /* footer의 높이 */
     position: absolute;  
     bottom: 0;
     left: 0;
@@ -144,7 +144,7 @@ footer {
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main"  id="body-wrapper" style="margin-top: 100px;">
 
-		<div class="w3-panel1" id="body-content">
+		<div class="w3-panel" id="body-content">
 			<sitemesh:write property="body" />
 		</div>
 
