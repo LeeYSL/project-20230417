@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html>
@@ -34,7 +36,7 @@ function write(){
 		</tr>
 		<tr>
 			<td colspan="5" style="text-align: right">
-				<button type="button" class="btn btn-dark" onclick="write()"><a href="writeForm.jsp">게시글 작성</a></button>
+				<button type="button" class="btn btn-dark" onclick="write()"><a href="writeForm">게시글 작성</a></button>
 			</td>
 		</tr>
 	</table>

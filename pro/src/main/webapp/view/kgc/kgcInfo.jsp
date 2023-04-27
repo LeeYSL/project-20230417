@@ -28,7 +28,7 @@
                             <option value="014" >- µµµå¶÷ 2017-2018 V-¸®±×</option>
                             <option value="013" >- NH³óÇù 2016-2017 V-¸®±×</option>
                             <option value="012" >- NH³óÇù 2015-2016 V-¸®±×</option>
-                            <option value="011" selected='selected'>- NH³óÇù 2014-2015 V-¸®±×</option>
+                            <option value="011" selected='selected'>- NH³óÇù 2022-2023 V-¸®±×</option>
                             <option value="010" >- NH³óÇù 2013-2014 V-¸®±×</option>
                             <option value="009" >- NH³óÇù 2012-2013 V-¸®±×</option>
                             <option value="008" >- NH³óÇù 2011-2012 V-¸®±×</option>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,14 +33,20 @@
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td>
-					<c:if test="${empty board_file1}">
+				<td><c:if test="${empty board_file1}">
 						&nbsp;
-					</c:if>
-					<c:if test="${!empty board_file1}">
-						 <a href="../upload/board/${board_file1}">${board_file1}</a> <!-- 머슨말이지... -->
-					</c:if>
-				</td>
+					</c:if> <c:if test="${!empty board_file1}">
+						<a href="../upload/board/${board_file1}">${board_file1}</a>
+						<!-- 머슨말이지... -->
+					</c:if></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="w3-center"><a
+					href="replyForm?num=${b.num}">[답변]</a> <c:if
+						test="${boardid !='1' || sessionScpoe.login == 'admin'}">
+						<a href="updateForm?num=${b.num}">[수정]</a>
+						<a href="deleteForm?num=${b.num}">[삭제]</a>
+					</c:if> <a href="list">[목록]</a></td>
 			</tr>
 		</table>
 	</div>
