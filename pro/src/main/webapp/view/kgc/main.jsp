@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+
 <title>kgc 인삼공사</title>
 <!--css 초기화--
 <link rel="stylesheet"
@@ -51,7 +52,7 @@
 
 <!-- Image Header -->
 <div class="w3-display-container w3-animate-opacity">
-  <img src="${path}/image/kgcimg1.jpg" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+  <img src="${path}/image/kgcimg1.jpg" alt="boat" style="width:100%;min-height:250px;max-height:600px;">
 </div>
 
 
@@ -208,7 +209,7 @@
   </div>
 
 <!-- Work Row 뉴스기사? -->
-<div class="w3-row-padding w3-padding-64 w3-theme-l1 w3-center" id="work">
+<div class="w3-row-padding w3-padding-164 w3-theme-l1 w3-center" id="work">
 <h2>NEWS</h2>
 <br>
 
