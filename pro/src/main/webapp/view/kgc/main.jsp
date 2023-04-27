@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>kgc 인삼공사</title>
 <!--css 초기화--
 <link rel="stylesheet"
@@ -47,8 +47,12 @@
 }
 .w3-container-news {
 	height :70px;
-	text-align: center;
 }
+#news{
+	text-align: center;
+	padding-top: 25px;
+}
+
 </style>
 </head>
 <body>
@@ -218,7 +222,7 @@
 <div class="w3-card w3-white">
   <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007158800&plink=ORI&cooper=NAVER" target="blank"><img src="../image/news1.jpg" alt="Snow" style="width:100%"></a>
   <div class="w3-container-news">
-  <p>여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
+  <p id="news">여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
   </div>
   </div>
 </div>
@@ -227,7 +231,7 @@
 <div class="w3-card w3-white">
   <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007158800&plink=ORI&cooper=NAVER" target="blank"><img src="../image/news1.jpg" alt="Snow" style="width:100%"></a>
   <div class="w3-container-news">
-  <p>여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
+   <p id="news">여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
   </div>
   </div>
 </div>
@@ -236,7 +240,7 @@
 <div class="w3-card w3-white">
   <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007158800&plink=ORI&cooper=NAVER" target="blank"><img src="../image/news1.jpg" alt="Snow" style="width:100%"></a>
   <div class="w3-container-news">
-  <p>여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
+   <p id="news">여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
   </div>
   </div>
 </div>
@@ -245,7 +249,7 @@
 <div class="w3-card w3-white">
   <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007158800&plink=ORI&cooper=NAVER" target="blank"><img src="../image/news1.jpg" alt="Snow" style="width:100%"></a>
   <div class="w3-container-news">
-  <p>여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
+   <p id="news">여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
   </div>
   </div>
 </div>
