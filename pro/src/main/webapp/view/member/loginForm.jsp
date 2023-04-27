@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="path" value="${pageContext.request.contextPath}" />OCTYPE html>	
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,9 +68,9 @@
 						</tr>
 						<tr>
 							<td colspan="3" class="w3-center">
-								<button type="button" onclick="win_open('idForm.jsp')"
+								<button type="button" onclick="win_open('idForm')"
 									class="btn btn-dark">아이디찾기</button>
-								<button type="button" onclick="win_open('pwForm.jsp')"
+								<button type="button" onclick="win_open('pwForm')"
 									class="btn btn-dark">비밀번호찾기</button>
 							</td>
 						</tr>

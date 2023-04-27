@@ -16,7 +16,7 @@
 	<h2 class="w3-center">공식 응원가</h2>
 	<div class="container">
 		<form action="song" method="post" name="f" enctype="multipart-formdata">
-			<div class="form-group w3-table w3-border">
+			<div class="w3-form-group w3-table w3-border">
 				<div class="w3-half ">
 
 					<img src="${path}/image/kgclogo1.jpg" style="width: 60%">
