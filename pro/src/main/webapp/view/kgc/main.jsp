@@ -19,7 +19,7 @@
 
 <style>
 .swiper {
-	height: 350px;
+	height: 450px;
 	position: relative;
 	z-index:0;
 }
@@ -37,13 +37,17 @@
 }
 
 .swiper .swiper-slide .w3-quarter img {
-	width: 45%;
+	width: 35%;
 }
 
 .swiper .swiper-slide .w3-quarter h3 {
 	font-family: "Segoe UI", Arial, sans-serif;
 	font-weight: 400;
 	margin: 5px 0;
+}
+.w3-container-news {
+	height :70px;
+	text-align: center;
 }
 </style>
 </head>
@@ -57,8 +61,6 @@
 
 <!-- Team Container -->
 <div class="w3-container w3-padding-64 w3-center" id="team">
-<h2>OUR TEAM</h2>
-<p>슬로건 넣기?</p>
 
 <!-- Slider main container start -->
     <div class="swiper">
@@ -215,7 +217,7 @@
 <div class="w3-quarter">
 <div class="w3-card w3-white">
   <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007158800&plink=ORI&cooper=NAVER" target="blank"><img src="../image/news1.jpg" alt="Snow" style="width:100%"></a>
-  <div class="w3-container">
+  <div class="w3-container-news">
   <p>여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
   </div>
   </div>
@@ -224,7 +226,7 @@
 <div class="w3-quarter">
 <div class="w3-card w3-white">
   <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007158800&plink=ORI&cooper=NAVER" target="blank"><img src="../image/news1.jpg" alt="Snow" style="width:100%"></a>
-  <div class="w3-container">
+  <div class="w3-container-news">
   <p>여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
   </div>
   </div>
@@ -233,7 +235,7 @@
 <div class="w3-quarter">
 <div class="w3-card w3-white">
   <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007158800&plink=ORI&cooper=NAVER" target="blank"><img src="../image/news1.jpg" alt="Snow" style="width:100%"></a>
-  <div class="w3-container">
+  <div class="w3-container-news">
   <p>여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
   </div>
   </div>
@@ -242,7 +244,7 @@
 <div class="w3-quarter">
 <div class="w3-card w3-white">
   <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007158800&plink=ORI&cooper=NAVER" target="blank"><img src="../image/news1.jpg" alt="Snow" style="width:100%"></a>
-  <div class="w3-container">
+  <div class="w3-container-news">
   <p>여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
   </div>
   </div>

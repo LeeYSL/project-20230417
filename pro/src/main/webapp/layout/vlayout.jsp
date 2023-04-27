@@ -40,17 +40,21 @@ html, body {
 }
 
 #body-content {
-    margin-top: 100px;
-    padding-bottom: 200px; /* footer의 높이 */
+    margin-top: 56px;
+    padding-bottom: 250px; /* footer의 높이 */
 }
 
-footer {
+#footer {
     width: 100%;
-    height: 200px; /* footer의 높이 */
+    height: 250px; /* footer의 높이 */
     position: absolute;  
     bottom: 0;
     left: 0;
    
+}
+
+#divfooter {
+	margin : 60px;
 }
 /* footer 하단 고정 [E] */
 
@@ -108,7 +112,7 @@ footer {
 				</button>
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
 					<a href="https://www.vticket.co.kr/kgc-schedule-round1"
-						class="w3-bar-item w3-button">TICKET</a> <a
+						class="w3-bar-item w3-button" target="_blank">TICKET</a> <a
 						href="${path}/market/buyForm" class="w3-bar-item w3-button">GOODS</a>
 				</div>
 			</div>
@@ -142,7 +146,7 @@ footer {
 	</div>
 
 	<!-- !PAGE CONTENT! -->
-	<div class="w3-main"  id="body-wrapper" style="margin-top: 100px;">
+	<div class="w3-main"  id="body-wrapper">
 
 		<div  id="body-content">
 			<sitemesh:write property="body" />
@@ -152,7 +156,7 @@ footer {
 	
 		<!-- Footer -->
 		<footer class="w3-container w3-padding-1 w3-theme-d1 w3-center" id="footer">
-			<h4>Follow Us</h4>
+		<div id="divfooter">
 			<a href="https://www.facebook.com/VolleyballKgc/" title="Facebook"><img
 				src="${path}/image/sns_facebook.png"></a> <a
 				href="https://www.youtube.com/@volleyballkgc"><img
@@ -163,11 +167,12 @@ footer {
 				src="${path}/image/sns_insta.png"></a> <a
 				href="https://tv.naver.com/kgcvolley" title="naver"><img
 				src="${path}/image/sns_navertv.png"></a>
-			<p>주소넣기</p>
+			<br>
+			<br>
 			<p>
-				<a href="https://www.w3schools.com/w3css/default.asp"
-					target="_blank">kgc 인삼공사</a>
+			GDJ62기 공공데이터 융합 자바/스프링 개발자 양성과정 프로젝트
 			</p>
+			</div>
 		</footer>
 	</div>
 		<script>

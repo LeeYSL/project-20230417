@@ -52,15 +52,15 @@
 	<div id="main_div">
 		<h2 class="w3-center">로그인</h2>
 		<div class="w3-container">
-			<form action="join" method="post" name="f"
+			<form action="join" method="post" name="f" 
 				enctype="multipart-formdata">
 				<div class="form-group">
 					<table class="w3-table w3-border ">
 						<tr>
 							<td>아이디</td>
 							<td><input type="text" name="id" class="w3-input"></td>
-							<td rowspan="2" style="text-align: center">
-								<button type="button" style="padding: 20px;">로그인</button>
+							<td rowspan="2" style="padding-top: 40px;">
+								<button type="button" class="btn btn-dark" style="padding: 20px;">로그인</button>
 						</tr>
 						<tr>
 							<td>비밀번호</td>
