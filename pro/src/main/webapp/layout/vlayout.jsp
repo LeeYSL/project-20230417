@@ -144,14 +144,14 @@ footer {
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main"  id="body-wrapper" style="margin-top: 100px;">
 
-		<div class="w3-panel" id="body-content">
+		<div  id="body-content">
 			<sitemesh:write property="body" />
 		</div>
 
 	
 	
 		<!-- Footer -->
-		<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center" id="footer">
+		<footer class="w3-container w3-padding-1 w3-theme-d1 w3-center" id="footer">
 			<h4>Follow Us</h4>
 			<a href="https://www.facebook.com/VolleyballKgc/" title="Facebook"><img
 				src="${path}/image/sns_facebook.png"></a> <a
