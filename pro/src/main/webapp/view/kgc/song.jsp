@@ -21,7 +21,7 @@
 
 					<img src="${path}/image/kgclogo1.jpg" style="width: 60%">
 					<audio controls loop>
-						<source src="${path}/kgc/teamsong.wav" type="audio/wav" >
+						<source src="${path}/song/teamsong.wav" type="audio/wav" >
 					</audio>
 
 				</div>

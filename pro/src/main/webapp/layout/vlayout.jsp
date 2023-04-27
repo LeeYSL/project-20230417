@@ -67,7 +67,7 @@ footer {
 				class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2"
 				href="javascript:void(0);" onclick="openNav()"> <i
 				class="fa fa-bars"></i>
-			</a> <a href="#" class="w3-bar-item w3-button w3-white"><img
+			</a> <a href="${path}/kgc/main" class="w3-bar-item w3-button w3-white"><img
 				src="${path}/image/kgclogo2.png" width="100%" height="40px"></a>
 			<!-- <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">KGC</a>
 	 <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Player</a>
