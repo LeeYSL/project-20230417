@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>비밀번호 찾기</title>
 </head>
 <body>
 
 	<h2 class="w3-center">비밀번호 찾기</h2>
 	<br>
 	<br>
-	<div class="container">
+	<div class="w3-container">
 		<form action="pw" method="post" name="f"
 			enctype="multipart-formdata">
 			<div class="form-group">

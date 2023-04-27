@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+OCTYPE html>
 
 <%--/jspstudy2/src/main/webapp/view/member/list.jsp
 	1. 관리자만 사용가능 페이지 => 검증
@@ -17,40 +19,40 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 목록</title>
+<link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
+	<div id="main_div">
+		<h2 class="w3-center">회원목록</h2>
+		<div class="w3-container">
+			<form name="f" method="post" action="mailForm">
+				<table class="table table-hover">
+					<tr>
+						<th>아이디</th>
+						<th>이름</th>
+						<th>전화번호</th>
+						<th>주소</th>
+						<th>이메일</th>
+						<th>비고</th>
+						<th>전체선택</th>
+					</tr>
+					<tr>
+						<td>${m.id}</td>
+						<td>${m.name}</td>
+						<td>${m.tel}</td>
+						<td>${m.address}</td>
+						<td>${m.email}</td>
+						<td><a href="updateForm?id=${m.id}">수정</a> <c:if
+								test="${m.id != 'admin'}">
+								<a href="deleteForm?id=${m.id}">강제탈퇴</a>
+							</c:if></td>
+						<td><input type="checkbox" name="idchks" class="idchk"
+							value="${m.id}"></td>
+					</tr>
 
-	<h2 class="w3-center">회원목록</h2>
-	<br>
-	<br>
-	<div class="container">
-		<form name="f" method="post" action="mailForm">
-			<table class="table table-hover">
-				<tr>
-					<th>아이디</th>
-					<th>이름</th>
-					<th>전화번호</th>
-					<th>주소</th>
-					<th>이메일</th>
-					<th>비고</th>
-					<th>전체선택</th>
-				</tr>
-				<tr>
-					<td>${m.id}</td>
-					<td>${m.name}</td>
-					<td>${m.tel}</td>
-					<td>${m.address}</td>
-					<td>${m.email}</td>
-					<td><a href="updateForm?id=${m.id}">수정</a> <c:if
-							test="${m.id != 'admin'}">
-							<a href="deleteForm?id=${m.id}">강제탈퇴</a>
-						</c:if></td>
-					<td><input type="checkbox" name="idchks" class="idchk"
-						value="${m.id}"></td>
-				</tr>
-
-			</table>
-		</form>
+				</table>
+			</form>
+		</div>
 	</div>
 </body>
 </html>

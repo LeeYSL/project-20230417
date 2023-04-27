@@ -13,7 +13,7 @@
    .disable { color:red; font-size: 20px;}
 </style>
 <body>
-<div class="container">
+<div class="w3-container">
 <table> <tr><td>아이디</td><td>"${param.id}"</td></tr>
   <tr><td colspan="2"><div id="msg">"${msg}"</div></td></tr>
   <tr><td colspan="2"><button onclick="self.close()"

@@ -12,18 +12,17 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
+	<div id="main_div">
 	<h2 class="w3-center">공식 응원가</h2>
-	<br>
-	<br>
 	<div class="container">
-		<form action="pw" method="post" name="f" enctype="multipart-formdata">
+		<form action="song" method="post" name="f" enctype="multipart-formdata">
 			<div class="form-group w3-table w3-border">
 				<div class="w3-half ">
 
 					<img src="${path}/image/kgclogo1.jpg" style="width: 60%">
-					<audio
-						src="${path }/kgc/teamsong.wav"
-						controls loop></audio>
+					<audio controls loop>
+						<source src="${path}/kgc/teamsong.wav" type="audio/wav" >
+					</audio>
 
 				</div>
 				<div class="w3-half w3-center">
@@ -38,6 +37,7 @@
 
 			</div>
 		</form>
+	</div>
 	</div>
 </body>
 </html>

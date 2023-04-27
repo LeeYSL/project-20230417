@@ -8,8 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 답글 쓰기</title>
+<link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
+
+	<div id="main_div">
 	<form action="reply" method="post" name="f">
 
 		<table class="w3-table-all">
@@ -38,5 +41,6 @@
 			</tr>
 		</table>
 	</form>
+	</div>
 </body>
 </html>

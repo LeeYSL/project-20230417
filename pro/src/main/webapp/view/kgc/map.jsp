@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
+	<div id="main_div">
 	<!-- CONTENTS START -->
 	<div id="contents">
 		<form action="join" method="post" name="f" onsubmit="return input_check(this)">
@@ -79,5 +80,6 @@
 		</form>
 	</div>
 	<!-- //CONTENTS -->
+	</div>
 </body>
 </html>

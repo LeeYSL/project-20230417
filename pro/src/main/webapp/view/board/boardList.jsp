@@ -9,6 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판</title>
+<link rel="stylesheet" href="${path}/css/main.css">
+
 <script type="text/javascript">
 function write(){
 	//로그인 안했으면 로그인창 뜨게해야함
@@ -16,7 +18,9 @@ function write(){
 </script>
 </head>
 <body>
+	<div id="main_div">
 	<h2 class="w3-center">게시판 리스트</h2>
+	<div class=w3-container>
 	<table class="w3-table-all">
 		<tr>
 			<th>번호</th>
@@ -40,6 +44,7 @@ function write(){
 			</td>
 		</tr>
 	</table>
-
+	</div>
+</div>
 </body>
 </html>

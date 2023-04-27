@@ -1,126 +1,158 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>±â·Ï½Ç</title>
+<meta charset="UTF-8">
+<title>ê¸°ë¡ì‹¤</title>
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
-<div id="contents">
-<!-- location menu -->
-<div class="page_location">
-    <span class="active">±â·Ï½Ç</span>
-</div>
+	<div id="main_div">
+		<div id="contents">
+			<!-- location menu -->
+			<div class="page_location">
+				<span class="active">ê¸°ë¡ì‹¤</span>
+			</div>
 
-<p class="subtxt">°æ±â °á°ú</p>
-<form name="form" action="">
-    <fieldset>
-        <select name="sg" onchange="form.submit();" title="½ÃÁð¼±ÅÃ" style="width:220px" class="selec">
-                            <option value="019" >- µµµå¶÷ 2022-2023 V-¸®±×</option>
-                            <option value="018" >- µµµå¶÷ 2021-2022 V-¸®±×</option>
-                            <option value="017" >- µµµå¶÷ 2020-2021 V-¸®±×</option>
-                            <option value="016" >- µµµå¶÷ 2019-2020 V-¸®±×</option>
-                            <option value="015" >- µµµå¶÷ 2018-2019 V-¸®±×</option>
-                            <option value="014" >- µµµå¶÷ 2017-2018 V-¸®±×</option>
-                            <option value="013" >- NH³óÇù 2016-2017 V-¸®±×</option>
-                            <option value="012" >- NH³óÇù 2015-2016 V-¸®±×</option>
-                            <option value="011" selected='selected'>- NH³óÇù 2022-2023 V-¸®±×</option>
-                            <option value="010" >- NH³óÇù 2013-2014 V-¸®±×</option>
-                            <option value="009" >- NH³óÇù 2012-2013 V-¸®±×</option>
-                            <option value="008" >- NH³óÇù 2011-2012 V-¸®±×</option>
-                            <option value="007" >- NH³óÇù 2010-2011 V-¸®±×</option>
-                            <option value="006" >- NH³óÇù 2009-2010 V-¸®±×</option>
-                            <option value="005" >- NH³óÇù 2008-2009 V-¸®±×</option>
-                            <option value="004" >- NH³óÇù 2007-2008 V-¸®±×</option>
-                            <option value="003" >- HILLSTATE 2006-2007 V-¸®±×</option>
-                            <option value="002" >- KT&G 2005-2006 V-¸®±×</option>
-                            <option value="001" >- KT&G 2005 V-¸®±×</option>
-                    </select>
-    </fieldset>
-</form>
+			<p class="subtxt">ê²½ê¸° ê²°ê³¼</p>
+			<form name="form" action="">
+				<fieldset>
+					<select name="sg" onchange="form.submit();" title="ì‹œì¦Œì„ íƒ"
+						style="width: 220px" class="selec">
+						<option value="019">- ë„ë“œëžŒ 2022-2023 V-ë¦¬ê·¸</option>
+						<option value="018">- ë„ë“œëžŒ 2021-2022 V-ë¦¬ê·¸</option>
+						<option value="017">- ë„ë“œëžŒ 2020-2021 V-ë¦¬ê·¸</option>
+						<option value="016">- ë„ë“œëžŒ 2019-2020 V-ë¦¬ê·¸</option>
+						<option value="015">- ë„ë“œëžŒ 2018-2019 V-ë¦¬ê·¸</option>
+						<option value="014">- ë„ë“œëžŒ 2017-2018 V-ë¦¬ê·¸</option>
+						<option value="013">- NHë†í˜‘ 2016-2017 V-ë¦¬ê·¸</option>
+						<option value="012">- NHë†í˜‘ 2015-2016 V-ë¦¬ê·¸</option>
+						<option value="011" selected='selected'>- NHë†í˜‘ 2022-2023
+							V-ë¦¬ê·¸</option>
+						<option value="010">- NHë†í˜‘ 2013-2014 V-ë¦¬ê·¸</option>
+						<option value="009">- NHë†í˜‘ 2012-2013 V-ë¦¬ê·¸</option>
+						<option value="008">- NHë†í˜‘ 2011-2012 V-ë¦¬ê·¸</option>
+						<option value="007">- NHë†í˜‘ 2010-2011 V-ë¦¬ê·¸</option>
+						<option value="006">- NHë†í˜‘ 2009-2010 V-ë¦¬ê·¸</option>
+						<option value="005">- NHë†í˜‘ 2008-2009 V-ë¦¬ê·¸</option>
+						<option value="004">- NHë†í˜‘ 2007-2008 V-ë¦¬ê·¸</option>
+						<option value="003">- HILLSTATE 2006-2007 V-ë¦¬ê·¸</option>
+						<option value="002">- KT&G 2005-2006 V-ë¦¬ê·¸</option>
+						<option value="001">- KT&G 2005 V-ë¦¬ê·¸</option>
+					</select>
+				</fieldset>
+			</form>
 
-    <h4 class="h4Txt mt0">ÆÀ¼øÀ§</h4>
-    <div class="tbl1 record" >
-        <table cellspacing="0" summary="¼øÀ§, ÆÀ¸í, °æ±â¼ö, ½Â, ÆÐ, ½ÂÁ¡, Á¤º¸°¡ ÀÖ½À´Ï´Ù.">
-            <caption>ÆÀ¼øÀ§Ç¥</caption>
-            <colgroup>
-                <col width="80px" /><col width="206px" /><col width="109px" /><col width="93px" /><col width="100px" />
-                <col width="100px" /><col width="141px" /><col width="*" />
-            </colgroup>
-            <thead>
-            <tr>
-                <th scope="col">¼øÀ§</th>
-                <th scope="col">ÆÀ¸í</th>
-                <th scope="col">°æ±â¼ö</th>
-                <th scope="col">½Â</th>
-                <th scope="col">ÆÐ</th>
-                <th scope="col">½ÂÁ¡</th>
-            </tr>
-               </thead>
-            <tbody>
-                        <tr class="">
-                <td>1</td>
-                <td><p><img class=logoimg src="${path}/image/logo/logo_pink.png" alt="Èï±¹»ý¸í" class="logo" />Èï±¹»ý¸í</p></td> <!-- alt°ªÀº ÆÀ¸í¿¡ µû¶ó º¯°æµÊ -->
-                <td>36</td>
-                <td>27</td>
-                <td>9</td>
-                <td>82</td>
-           
-                            <tr class="">
-                <td>2</td>
-                <td><p><img class=logoimg src="${path}/image/logo/logo_HD.png" alt="Çö´ë°Ç¼³" class="logo" />Çö´ë°Ç¼³</p></td> <!-- alt°ªÀº ÆÀ¸í¿¡ µû¶ó º¯°æµÊ -->
-                <td>36</td>
-                <td>24</td>
-                <td>12</td>
-                <td>70</td>
-         
-                            <tr class="">
-                <td>3</td>
-                <td><p><img class=logoimg src="${path}/image/logo/logo_pass.png" alt="ÇÑ±¹µµ·Î°ø»ç" class="logo" />ÇÑ±¹µµ·Î°ø»ç</p></td> <!-- alt°ªÀº ÆÀ¸í¿¡ µû¶ó º¯°æµÊ -->
-                <td>36</td>
-                <td>20</td>
-                <td>16</td>
-                <td>60</td>
-  
-                            <tr class="current">
-                <td>4</td>
-                <td><p><img class=logoimg src="${path}/image/logo/logo_kgc.png" alt="KGCÀÎ»ï°ø»ç" class="logo" />KGCÀÎ»ï°ø»ç</p></td> <!-- alt°ªÀº ÆÀ¸í¿¡ µû¶ó º¯°æµÊ -->
-                <td>36</td>
-                <td>19</td>
-                <td>17</td>
-                <td>56</td>
-         
-                            <tr class="">
-                <td>5</td>
-                <td><p><img class=logoimg src="${path}/image/logo/logo_gs.png" alt="GSÄ®ÅØ½º" class="logo" />GSÄ®ÅØ½º</p></td> <!-- alt°ªÀº ÆÀ¸í¿¡ µû¶ó º¯°æµÊ -->
-                <td>36</td>
-                <td>16</td>
-                <td>20</td>
-                <td>48</td>
-             
-                            <tr class="">
-                <td>6</td>
-                <td><p><img class=logoimg src="${path}/image/logo/logo_IBK.png" alt="IBK±â¾÷ÀºÇà" class="logo" />IBK±â¾÷ÀºÇà</p></td> <!-- alt°ªÀº ÆÀ¸í¿¡ µû¶ó º¯°æµÊ -->
-                <td>36</td>
-                <td>15</td>
-                <td>21</td>
-                <td>48</td>
-                
-                            <tr class="">
-                <td>7</td>
-                <td><p><img class=logoimg  src="${path}/image/logo/logo_AI.png" alt="ÆäÆÛÀúÃàÀºÇà" class="logo" />ÆäÆÛÀúÃàÀºÇà</p></td> <!-- alt°ªÀº ÆÀ¸í¿¡ µû¶ó º¯°æµÊ -->
-                <td>36</td>
-                <td>5</td>
-                <td>31</td>
-                <td>14</td>
-             
-                            </tbody>
-        </table>
-    </div>
+			<h4 class="h4Txt mt0">íŒ€ìˆœìœ„</h4>
+			<div class="tbl1 record">
+				<table cellspacing="0" summary="ìˆœìœ„, íŒ€ëª…, ê²½ê¸°ìˆ˜, ìŠ¹, íŒ¨, ìŠ¹ì , ì •ë³´ê°€ ìžˆìŠµë‹ˆë‹¤.">
 
+					<colgroup>
+						<col width="80px" />
+						<col width="206px" />
+						<col width="109px" />
+						<col width="93px" />
+						<col width="100px" />
+						<col width="100px" />
+						<col width="141px" />
+						<col width="*" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">ìˆœìœ„</th>
+							<th scope="col">íŒ€ëª…</th>
+							<th scope="col">ê²½ê¸°ìˆ˜</th>
+							<th scope="col">ìŠ¹</th>
+							<th scope="col">íŒ¨</th>
+							<th scope="col">ìŠ¹ì </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="">
+							<td>1</td>
+							<td><p>
+									<img class=logoimg src="${path}/image/logo/logo_pink.png"
+										alt="í¥êµ­ìƒëª…" class="logo" />í¥êµ­ìƒëª…
+								</p></td>
+							<!-- altê°’ì€ íŒ€ëª…ì— ë”°ë¼ ë³€ê²½ë¨ -->
+							<td>36</td>
+							<td>27</td>
+							<td>9</td>
+							<td>82</td>
+						<tr class="">
+							<td>2</td>
+							<td><p>
+									<img class=logoimg src="${path}/image/logo/logo_HD.png"
+										alt="í˜„ëŒ€ê±´ì„¤" class="logo" />í˜„ëŒ€ê±´ì„¤
+								</p></td>
+							<!-- altê°’ì€ íŒ€ëª…ì— ë”°ë¼ ë³€ê²½ë¨ -->
+							<td>36</td>
+							<td>24</td>
+							<td>12</td>
+							<td>70</td>
+						<tr class="">
+							<td>3</td>
+							<td><p>
+									<img class=logoimg src="${path}/image/logo/logo_pass.png"
+										alt="í•œêµ­ë„ë¡œê³µì‚¬" class="logo" />í•œêµ­ë„ë¡œê³µì‚¬
+								</p></td>
+							<!-- altê°’ì€ íŒ€ëª…ì— ë”°ë¼ ë³€ê²½ë¨ -->
+							<td>36</td>
+							<td>20</td>
+							<td>16</td>
+							<td>60</td>
+						<tr class="current">
+							<td>4</td>
+							<td><p>
+									<img class=logoimg src="${path}/image/logo/logo_kgc.png"
+										alt="KGCì¸ì‚¼ê³µì‚¬" class="logo" />KGCì¸ì‚¼ê³µì‚¬
+								</p></td>
+							<!-- altê°’ì€ íŒ€ëª…ì— ë”°ë¼ ë³€ê²½ë¨ -->
+							<td>36</td>
+							<td>19</td>
+							<td>17</td>
+							<td>56</td>
+						<tr class="">
+							<td>5</td>
+							<td><p>
+									<img class=logoimg src="${path}/image/logo/logo_gs.png"
+										alt="GSì¹¼í…ìŠ¤" class="logo" />GSì¹¼í…ìŠ¤
+								</p></td>
+							<!-- altê°’ì€ íŒ€ëª…ì— ë”°ë¼ ë³€ê²½ë¨ -->
+							<td>36</td>
+							<td>16</td>
+							<td>20</td>
+							<td>48</td>
+						<tr class="">
+							<td>6</td>
+							<td><p>
+									<img class=logoimg src="${path}/image/logo/logo_IBK.png"
+										alt="IBKê¸°ì—…ì€í–‰" class="logo" />IBKê¸°ì—…ì€í–‰
+								</p></td>
+							<!-- altê°’ì€ íŒ€ëª…ì— ë”°ë¼ ë³€ê²½ë¨ -->
+							<td>36</td>
+							<td>15</td>
+							<td>21</td>
+							<td>48</td>
+						<tr class="">
+							<td>7</td>
+							<td><p>
+									<img class=logoimg src="${path}/image/logo/logo_AI.png"
+										alt="íŽ˜í¼ì €ì¶•ì€í–‰" class="logo" />íŽ˜í¼ì €ì¶•ì€í–‰
+								</p></td>
+							<!-- altê°’ì€ íŒ€ëª…ì— ë”°ë¼ ë³€ê²½ë¨ -->
+							<td>36</td>
+							<td>5</td>
+							<td>31</td>
+							<td>14</td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
