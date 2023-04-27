@@ -48,7 +48,7 @@
    }
 </script>
 </head>
-<body>
+<body> 
 	<div id="main_div">
 		<h2 class="w3-center">로그인</h2>
 		<div class="w3-container">

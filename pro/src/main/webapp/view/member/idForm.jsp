@@ -10,7 +10,7 @@
 <title>아이디 찾기</title>
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
-<body>
+<body>  
 	<div id="idForm">
 		<h2 class="w3-center">아이디 찾기</h2>
 		<div class="w3-container">

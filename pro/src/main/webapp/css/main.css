@@ -58,12 +58,24 @@
     border-collapse : collapse;
 };
 
-.w3-container,.w3-panel1 {
+.w3-panel1 {
     padding: 0.01em 0
 }
 
 .w3-padding-1 {
-
     padding-bottom: 32px!important;
+}
+#main_div {
+	padding-top:100px;
+	margin-left:200px;
+	margin-right:200px;
+}
+
+.w3-input {
+    padding: 8px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 70%;
 }
 

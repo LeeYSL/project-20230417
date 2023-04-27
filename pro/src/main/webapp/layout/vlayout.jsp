@@ -120,7 +120,7 @@ html, body {
 			<div class="w3-dropdown-hover w3-hide-small">
 				<button class="w3-button" title="Notifications">
 					NOTICE<i class="fa fa-caret-down"></i>
-				</button>
+				</button>  
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
 					<a href="${path}/board/boardList?id=notice" class="w3-bar-item w3-button">NOTICE</a>
 					<a href="${path}/board/boardList?id=qna" class="w3-bar-item w3-button">QNA</a>

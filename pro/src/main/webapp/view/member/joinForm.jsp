@@ -23,7 +23,7 @@
 								<button type="button" class="btn btn-dark float-right"
 									onclick="idchk()">중복체크</button></td>
 						</tr>
-						<tr>
+						<tr>  
 							<td rowspan="2">비밀번호</td>
 							<td><input type="text" name="pass1" class="w3-input"></td>
 						</tr>
