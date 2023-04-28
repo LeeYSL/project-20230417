@@ -15,7 +15,7 @@
 		<h2 class="w3-center">아이디 찾기</h2>
 		<div class="w3-container">
 			<form action="id" method="post" name="f" enctype="multipart-formdata">
-				<div class="w3-form-group">
+				<div class="form-group">
 					<table class="w3-table w3-border ">
 
 						<tr>

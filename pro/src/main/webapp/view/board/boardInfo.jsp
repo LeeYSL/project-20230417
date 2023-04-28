@@ -13,7 +13,7 @@
 	<div id="main_div">
 		<div class="w3-container w3-center">
 			<h2 class="w3-center">${board_name}</h2>
-			<table class="w3-table-all">
+			<table class="w3-table-all" style="height: 400px">
 				<tr>
 					<th>작성일:</th>
 					<td>${board}</td>
@@ -30,7 +30,7 @@
 					<th>제목</th>
 					<td>${board_title}</td>
 				</tr>
-				<tr>
+				<tr style="height: 400px">
 					<th>내용</th>
 					<td>${board_content}</td>
 				</tr>
@@ -50,6 +50,28 @@
 							<a href="updateForm?num=${b.num}">[수정]</a>
 							<a href="deleteForm?num=${b.num}">[삭제]</a>
 						</c:if> <a href="boardList">[목록]</a></td>
+				</tr>
+			</table>
+
+			<table class="w3-table-all">
+				<tr>
+					<th>작성자 : ${id}</th>
+					<th><input type="text" name="comment" class="w3-input">
+					</th>
+					<th><button type="button" class="btn btn-dark"
+							style="margin-top: 5px;">댓글등록</button>
+				</tr>
+			</table>
+			<table class="w3-table-all">
+				<tr>
+					<th colspan="3" class="w3-center">댓글 목록</th>
+				</tr>
+				
+				<tr>
+					<th>작성자 : ${id}</th>
+					<th>${comment}</th>
+					<th ><button type="button" class="btn btn-dark"
+							style="margin-top: 5px;margin-left:1355px; padding-left:25px; padding-right:25px;">삭제</button>
 				</tr>
 			</table>
 		</div>
