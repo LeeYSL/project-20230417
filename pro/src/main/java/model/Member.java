@@ -1,18 +1,15 @@
 package model;
 
-import javax.management.loading.PrivateClassLoader;
-
 public class Member {
 	private String memId;
 	private String memPw;
 	private String memName;
 	private String memPhone;
-	@Override
-	public String toString() {
-		return "Member [memId=" + memId + ", memPw=" + memPw + ", memName=" + memName + ", memPhone=" + memPhone
-				+ ", memEmail=" + memEmail + ", memAdress=" + memAdress + ", memPosition=" + memPosition + ", memPoint="
-				+ memPoint + "]";
-	}
+	private String memEmail;
+	private String memAdress;
+	private int memPosition;
+	private int memPoint;
+
 	public String getMemId() {
 		return memId;
 	}
@@ -61,9 +58,11 @@ public class Member {
 	public void setMemPoint(int memPoint) {
 		this.memPoint = memPoint;
 	}
-	private String memEmail;
-	private String memAdress;
-	private int memPosition;
-	private int memPoint;
 
+	@Override
+	public String toString() {
+		return "Member [memId=" + memId + ", memPw=" + memPw + ", memName=" + memName + ", memPhone=" + memPhone
+				+ ", memEmail=" + memEmail + ", memAdress=" + memAdress + ", memPosition=" + memPosition + ", memPoint="
+				+ memPoint + "]";
+	}
 }

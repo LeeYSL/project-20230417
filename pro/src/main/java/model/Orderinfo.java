@@ -1,7 +1,5 @@
 package model;
 
-import javax.management.loading.PrivateClassLoader;
-
 public class Orderinfo {
 	private String memId;
 	private String memAddress;
