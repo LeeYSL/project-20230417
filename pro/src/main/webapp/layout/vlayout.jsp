@@ -25,7 +25,7 @@
 	href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>	
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 /* footer 하단 고정 [S] */
@@ -103,8 +103,8 @@ html, body {
 					COMMUNITY<i class="fa fa-caret-down"></i>
 				</button>
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-					<a href="${path}/board/boardList" class="w3-bar-item w3-button">팬들에게</a>
-					<a href="${path}/board/boardList" class="w3-bar-item w3-button">선수들에게</a>
+					<a href="${path}/board/boardList?id=FAN" class="w3-bar-item w3-button">팬들에게</a>
+					<a href="${path}/board/boardList?id=PLAYER" class="w3-bar-item w3-button">선수들에게</a>
 				</div>
 			</div>
 			<div class="w3-dropdown-hover w3-hide-small">
@@ -122,8 +122,8 @@ html, body {
 					NOTICE<i class="fa fa-caret-down"></i>
 				</button>  
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-					<a href="${path}/board/boardList?id=notice" class="w3-bar-item w3-button">NOTICE</a>
-					<a href="${path}/board/boardList?id=qna" class="w3-bar-item w3-button">QNA</a>
+					<a href="${path}/board/boardList?id=NOTICE" class="w3-bar-item w3-button">NOTICE</a>
+					<a href="${path}/board/boardList?id=QNA" class="w3-bar-item w3-button">QNA</a>
 				</div>
 			</div>
 			<a href="${path}/member/joinForm"

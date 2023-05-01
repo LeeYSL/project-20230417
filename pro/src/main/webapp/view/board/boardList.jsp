@@ -17,17 +17,27 @@
 <script type="text/javascript">
 	$(function() {
 		//게시판 목록 이름을 파라미터의 ID로 변경
-		$('#title').text("${param.id}");
+		let title = '${param.id}'; //같은변수명 재사용X , 값 변경 가능
+		//const test = ""; //같은 변수명 재사용X , 값 변경 불가능
+		//var test2 = ""; //같은 변수명 재사용 , 값 변경 가능
+		
+		if(title === 'FAN') {
+			title = '팬들에게';
+		} else if(title === 'PLAYER') {
+			title = '선수들에게';
+		}
+		$('#title').text(title);
 		
 		//게시글 작성 버튼 클릭 시 이벤트 호출
 		$('.btn').on('click', function() { 
 			//로그인 안했으면 로그인창 뜨게해야함
+			location.href="${path}/board/writeForm";
 		})
 	});
 
 </script>
 	<div id="main_div">
-	<h2 id="title" class="w3-center">게시판 리스트</h2>
+	<h2 id="title" class="w3-center"></h2>
 	<div class=w3-container>
 	<table class="w3-table-all">
 		<tr>
