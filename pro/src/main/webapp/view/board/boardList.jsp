@@ -15,11 +15,16 @@
 </head>
 <body>
 <script type="text/javascript">
-	$('#title').text = "${param.id}";
+	$(function() {
+		//게시판 목록 이름을 파라미터의 ID로 변경
+		$('#title').text("${param.id}");
+		
+		//게시글 작성 버튼 클릭 시 이벤트 호출
+		$('.btn').on('click', function() { 
+			//로그인 안했으면 로그인창 뜨게해야함
+		})
+	});
 
-	function write(){
-		//로그인 안했으면 로그인창 뜨게해야함
-	}
 </script>
 	<div id="main_div">
 	<h2 id="title" class="w3-center">게시판 리스트</h2>
@@ -43,7 +48,7 @@
 		</tr>
 		<tr>
 			<td colspan="5" style="text-align: right">
-				<button type="button" class="btn btn-dark" ><a href="${path}/board/writeForm">게시글 작성</a></button>
+				<button type="button" class="btn btn-dark">게시글 작성</button>
 			</td>
 		</tr>
 	</table>
