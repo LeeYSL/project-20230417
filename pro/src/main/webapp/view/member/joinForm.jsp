@@ -27,11 +27,7 @@
 							<td>비밀번호</td>
 							<td><input type="text" name="pass1" class="w3-input"></td>
 						</tr>
-						<tr>
-							<td>비밀번호 재확인</td>
-							<td><input type="text" name="pass2" class="w3-input"></td>
-						</tr>
-						<tr>
+					   	<tr>
 							<td>이름</td>
 							<td><input type="text" name="name" class="w3-input"></td>
 						</tr>
@@ -48,8 +44,12 @@
 							<td><input type="text" name="email" class="w3-input"></td>
 						</tr>
 						<tr>
+							<td>회원 유형</td>
+							<td><input type="text" name="type" class="w3-input"></td>
+						</tr>
+						<tr>
 							<td colspan="2" style="text-align: center">
-								<button type="button" class="btn btn-dark" onclick="join()">회원가입</button>
+								<button type="submit" class="btn btn-dark" onclick="join()">회원가입</button>
 							</td>
 						</tr>
 					</table>
