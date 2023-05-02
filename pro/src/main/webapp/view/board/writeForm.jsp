@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>인삼공사</title>
+<title>글쓰기</title>
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
@@ -20,11 +20,7 @@
 					<table class="w3-table w3-border ">
 						<tr>
 							<td>작성자</td>
-							<td><input type="text" name="writer" class="w3-input"></td>
-						</tr>
-						<tr>
-							<td>비밀번호</td>
-							<td><input type="text" name="pass" class="w3-input"></td>
+							<td>${memId}</td>
 						</tr>
 						<tr>
 							<td>제목</td>
@@ -40,8 +36,9 @@
 							<td><input type="file" name="file1" class="w3-input"
 								id="file1">
 						<tr>
-							<td colspan="2" style="text-align: center"><a
-								href="javascript:inputcheck()">[등록]</a></td>
+							<td colspan="2" style="text-align: center">
+								<button type="button" class="btn btn-dark">등록</button>
+							</td>
 						</tr>
 					</table>
 				</div>
