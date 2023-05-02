@@ -19,9 +19,10 @@
 					<table class="w3-table w3-border ">
 						<tr>
 							<td>아이디</td>
-							<td style="padding-right: 360px;"><input type="text" name="id" class="w3-input">
-								<button type="button" class="btn btn-dark float-right" 
-									onclick="idchk()">중복체크</button></td>
+							<td style="padding-right: 360px;">
+								<input type="text" name="id" class="w3-input">
+									<button type="button" class="btn btn-dark float-right" onclick="idchk()">중복체크</button>
+							</td>
 						</tr>
 						<tr>  
 							<td>비밀번호</td>

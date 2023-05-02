@@ -32,8 +32,7 @@ public class MemberController extends MskimRequestMapping {
 	}
 	
 	@RequestMapping("join")
-	public String join(HttpServletRequest request ,
-			HttpServletResponse response) {
+	public String join(HttpServletRequest request ,HttpServletResponse response) {
 		try {
 			request.setCharacterEncoding("UTF-8");
 		}catch (UnsupportedEncodingException e) {
@@ -67,6 +66,30 @@ public class MemberController extends MskimRequestMapping {
 	@RequestMapping("loginForm")
 	public String goLoginForm() {
 		return "member/loginForm";
+	}
+	@RequestMapping("login")
+	public String login(HttpServletRequest request, HttpServletResponse response) {
+		String id = request.getParameter("id");
+		String pass = request.getParameter("pass");
+		System.out.println(id + " : " + pass);
+		
+		Member mem = dao.selectOne(id, pass);
+
+		String msg = null;
+		String url = null;
+		if(mem==null) {
+		 msg="아이디 또는 비밀번호를 확인하세요";
+		 url="loginForm";
+		}else {
+			 request.getSession().setAttribute("login", id);
+			 request.getSession().setAttribute("memType", mem.getMemPosition());
+			 msg = "반갑습니다." + mem.getMemName() + "님";
+			 url = "main";
+		 }
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		return "alert/alert";
 	}
 	
 	@RequestMapping("pwForm")
