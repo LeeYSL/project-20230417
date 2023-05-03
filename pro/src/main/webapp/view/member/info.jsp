@@ -48,8 +48,8 @@
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">
-								<button type="button" class="btn btn-dark" onclick="update">수정</button>
-								<button type="button" class="btn btn-dark" onclick="delete">탈퇴</button>
+								<button type="submit" class="btn btn-dark" onclick="update">수정</button>
+								<button type="submit" class="btn btn-dark" onclick="delete">탈퇴</button>
 							</td>
 						</tr>
 					</table>

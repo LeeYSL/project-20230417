@@ -60,4 +60,18 @@ public class MemberMybatisDao {
 		}
 		return false;
 	}
+	public String idSearch(String memEmail, String memName) {
+		System.out.println("memEmail : " + memEmail);
+		System.out.println("memName : " + memName);
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			System.out.println("id : " + session.getMapper(cls).idSearch(memEmail,memName));
+			return session.getMapper(cls).idSearch(memEmail,memName);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			MybatisConnection.close(session);
+		}
+		return null;
+	}
 }

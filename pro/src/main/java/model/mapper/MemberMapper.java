@@ -25,5 +25,9 @@ public interface MemberMapper {
 			+ " mem_email=#{memEmail},mem_adress=#{memAdress}"
 			+ " where mem_id=#{memId}")
 	int update(Member mem);
+    
+	@Select("select mem_id from member "
+			+ " where mem_email=#{memEmail} and mem_name=#{memName}")
+	String idSearch(@Param("memEmail")String memEmail,@Param("memName") String memName);
 
 }

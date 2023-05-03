@@ -21,6 +21,31 @@ public class MemberController extends MskimRequestMapping {
 		return "member/idChk";
 	}
 	
+	@RequestMapping("idSearch")
+	public String idSearch(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String email = request.getParameter("email");
+		String name = request.getParameter("name");
+
+		String id = dao.idSearch(email, name); // dao에서 email,name 으로 찾아낸 id를 가져와서 String id에 담아줌
+		System.out.println("********************* " + id);
+		if (id != null) {
+			String showId = id.substring(0, id.length() - 2) + "**";
+			request.setAttribute("showId", showId); // 가져온 id를 잘라서 **를 포함해서 showid 넣고 member/id로 리턴함
+		} else {
+			request.setAttribute("msg", "아이디를 찾을 수 없습니다.");
+			request.setAttribute("url", "idForm");
+			return "alert/alert";
+
+		}
+
+		return "member/id";
+	}
+	
 	@RequestMapping("idForm")
 	public String goIdForm() {
 		return "member/idForm";
