@@ -67,11 +67,11 @@ public class MemberController extends MskimRequestMapping {
 	public String goLoginForm() {
 		return "member/loginForm";
 	}
+	
 	@RequestMapping("login")
 	public String login(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
-		String pass = request.getParameter("pass");
-		System.out.println(id + " : " + pass);	
+		String pass = request.getParameter("pass");	
 		Member mem = dao.selectOne(id, pass);
 		String msg = null;
 		String url = null;
@@ -82,7 +82,7 @@ public class MemberController extends MskimRequestMapping {
 			 request.getSession().setAttribute("login", id);
 			 request.getSession().setAttribute("memType", mem.getMemPosition());
 			 msg = "반갑습니다." + mem.getMemName() + "님";
-			 url = "main";
+			 url = "../kgc/main";
 		 }
 		
 		request.setAttribute("msg", msg);
