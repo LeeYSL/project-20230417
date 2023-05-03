@@ -17,7 +17,7 @@
 <script type="text/javascript">
 	$(function() {
 		//게시판 목록 이름을 파라미터의 ID로 변경
-		let title = '${param.id}'; //같은변수명 재사용X , 값 변경 가능
+		let title = '${param.boardId}'; //같은변수명 재사용X , 값 변경 가능
 		//const test = ""; //같은 변수명 재사용X , 값 변경 불가능
 		//var test2 = ""; //같은 변수명 재사용 , 값 변경 가능
 		
@@ -58,7 +58,7 @@
 		</tr>
 		<tr>
 			<td colspan="5" style="text-align: right">
-				<button type="button" class="btn btn-dark">게시글 작성</button>
+				<button type="submit" class="btn btn-dark" onclick="write()">게시글 작성</button>
 			</td>
 		</tr>
 	</table>

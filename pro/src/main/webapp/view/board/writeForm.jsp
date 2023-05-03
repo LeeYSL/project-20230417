@@ -11,6 +11,15 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
+<script type="text/javascript">
+	$(function() {
+		$('.btn').on('click',function() {
+			location.href="${path}/board/write";
+		})
+	})
+</script>
+
+
 	<div id="main_div">
 		<h2 class="w3-center">게시판 글쓰기</h2>
 		<div class="w3-container">
@@ -20,7 +29,7 @@
 					<table class="w3-table w3-border ">
 						<tr>
 							<td>작성자</td>
-							<td>${memId}</td>
+							<td>${sessionScope.login}</td> <!--${sessionScope.login}:아이디 가져오기 login은 멤버컨트롤러에서 정했었음  -->
 						</tr>
 						<tr>
 							<td>제목</td>
