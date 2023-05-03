@@ -15,6 +15,14 @@ import model.BoardMybatisDao;
 public class BoardController extends MskimRequestMapping {
 	private BoardMybatisDao dao = new BoardMybatisDao();
 	
+	@RequestMapping("boardList")
+	public String boardList(HttpServletRequest request, HttpServletResponse response) {
+		String boardId =request.getParameter("boardId");
+		if(boardId==null) boardId= "NOTICE";
+		request.getSession().setAttribute("boardId", boardId);
+		return "board/boardList";	
+	}
+	
 	@RequestMapping("writeForm")
 	public String writeForm(HttpServletRequest request, HttpServletResponse response) {
 		String boardId = (String)request.getSession().getAttribute("boardId"); //session의 boardId값을 가져온다.
@@ -30,7 +38,7 @@ public class BoardController extends MskimRequestMapping {
 			}
 		}
 		if(boardId.equals("FAN")) {
-			if(login == null || !login.equals("2")) {
+			if(login == null ) {
 				request.setAttribute("msg", "선수만 글쓰기가 가능합니다.");
 				request.setAttribute("url", request.getContextPath() + "/board/boardList?boardId=" + boardId);
 				return "alert/alert";
@@ -44,14 +52,6 @@ public class BoardController extends MskimRequestMapping {
 			}
 		}
 		return "board/writeForm";
-		
-	}
-	@RequestMapping("boardList")
-	public String goBoardList(HttpServletRequest request, HttpServletResponse response) {
-		String boardId =request.getParameter("boardId");
-		if(boardId==null) boardId= "NOTICE";
-		request.getSession().setAttribute("boardId", boardId);
-		return "board/boardList";
 		
 	}
 	
