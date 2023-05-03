@@ -103,8 +103,8 @@ html, body {
 					COMMUNITY<i class="fa fa-caret-down"></i>
 				</button>
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-					<a href="${path}/board/boardList?id=FAN" class="w3-bar-item w3-button">팬들에게</a>
-					<a href="${path}/board/boardList?id=PLAYER" class="w3-bar-item w3-button">선수들에게</a>
+					<a href="${path}/board/boardList?boardId=FAN" class="w3-bar-item w3-button">팬들에게</a>
+					<a href="${path}/board/boardList?boardId=PLAYER" class="w3-bar-item w3-button">선수들에게</a>
 				</div>
 			</div>
 			<div class="w3-dropdown-hover w3-hide-small">
@@ -122,8 +122,8 @@ html, body {
 					NOTICE<i class="fa fa-caret-down"></i>
 				</button>  
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-					<a href="${path}/board/boardList?id=NOTICE" class="w3-bar-item w3-button">NOTICE</a>
-					<a href="${path}/board/boardList?id=QNA" class="w3-bar-item w3-button">QNA</a>
+					<a href="${path}/board/boardList?boardId=NOTICE" class="w3-bar-item w3-button">NOTICE</a>
+					<a href="${path}/board/boardList?boardId=QNA" class="w3-bar-item w3-button">QNA</a>
 				</div>
 			</div>
 			<a href="${path}/member/joinForm"

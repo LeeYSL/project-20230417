@@ -8,7 +8,7 @@
     	response.sendRedirect("$(list)");
     }else
       alert("게시물 등록 실패")
-      location.href="writeForm.jsp" 
+      location.href="writeForm" 
    </script>
   
    
