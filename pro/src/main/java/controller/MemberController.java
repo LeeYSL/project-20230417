@@ -95,7 +95,9 @@ public class MemberController extends MskimRequestMapping {
 		return "member/pwForm";
 	}
 	
-
-	
+	@RequestMapping("update")
+	public String update() {
+		return "loginForm";
+	}
 
 }

@@ -27,7 +27,6 @@ public class MemberMybatisDao {
 		return false;
 	}
 	public Member selectOne(String memId,String memPw) {
-		System.out.println(memId + " ==== " + memPw);
 		SqlSession session = MybatisConnection.getConnection();
 		try {
 			return session.getMapper(cls).selectOne(memId,memPw);
@@ -37,5 +36,17 @@ public class MemberMybatisDao {
 			MybatisConnection.close(session);
 		}
 		return null;
+	}
+	public boolean update(Member mem) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			int cnt = session.getMapper(cls).update(mem);
+			return cnt > 0;		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			MybatisConnection.close(session);
+		}
+		return false;
 	}
 }
