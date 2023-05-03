@@ -8,13 +8,19 @@
 <meta charset="UTF-8">
 <title>회원 상세 정보</title>
 <link rel="stylesheet" href="${path}/css/main.css">
+<script type="text/javascript">
+	function deleteForm() {	
+		var op = "width=500, height=250, left=50, top=150";
+		open("deleteForm","",op);
+	}
 
+</script>
 </head>
 <body>
 	<div id="main_div">
 		<h2 class="w3-center">회원 상세 정보</h2>
 		<div class="w3-container">
-			<form action="update" method="post" name="f"
+			<form action="updateForm" method="post" name="f"
 				enctype="multipart-formdata">
 				<div class="form-group">
 					<table class="w3-table-all w3-border ">
@@ -48,8 +54,8 @@
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">
-								<button type="submit" class="btn btn-dark" onclick="update">수정</button>
-								<button type="submit" class="btn btn-dark" onclick="delete">탈퇴</button>
+								<button type="submit" class="btn btn-dark" onclick="update()">수정</button>
+								<button type="button" class="btn btn-dark" onclick="deleteForm()">탈퇴</button>
 							</td>
 						</tr>
 					</table>

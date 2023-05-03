@@ -19,4 +19,17 @@ public class BoardMybatisDao {
 		}
 		return 0;
 	}
+	public boolean insert(Board board) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+		
+			return session.getMapper(cls).insert(board) > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return false;
+	}
+	
 }

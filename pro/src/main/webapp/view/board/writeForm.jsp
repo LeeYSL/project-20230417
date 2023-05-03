@@ -14,7 +14,7 @@
 <script type="text/javascript">
 	$(function() {
 		$('.btn').on('click',function() {
-			location.href="${path}/board/write";
+			location.href="${path}/board/boardInfo";
 		})
 	})
 </script>
@@ -23,7 +23,8 @@
 	<div id="main_div">
 		<h2 class="w3-center">게시판 글쓰기</h2>
 		<div class="w3-container">
-			<form action="write" method="post" name="f"
+		<%--form action="write" : 내용을 wirte로 전송한다 --%>
+			<form action="write" method="post" name="f" 
 				enctype="multipart-formdata">
 				<div class="form-group">
 					<table class="w3-table w3-border ">
@@ -42,11 +43,11 @@
 						</tr>
 						<tr>
 							<td>첨부파일</td>
-							<td><input type="file" name="file1" class="w3-input"
-								id="file1">
+							<td><input type="file" name="file" class="w3-input"
+								id="file">
 						<tr>
 							<td colspan="2" style="text-align: center">
-								<button type="button" class="btn btn-dark">등록</button>
+								<button type="submit" class="btn btn-dark">등록</button>
 							</td>
 						</tr>
 					</table>

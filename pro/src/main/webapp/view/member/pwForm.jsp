@@ -5,12 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
+<title>회원 탈퇴</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://www.w3schools.com/lib/w3-theme-black.css">
 </head>
 <body>
 
 	<h2 class="w3-center">비밀번호 찾기</h2>
-	<br>
-	<br>
 	<div class="w3-container">
 		<form action="pw" method="post" name="f"
 			enctype="multipart-formdata">

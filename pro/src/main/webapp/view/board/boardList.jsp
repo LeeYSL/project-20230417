@@ -58,7 +58,7 @@
 		</tr>
 		<tr>
 			<td colspan="5" style="text-align: right">
-				<button type="submit" class="btn btn-dark" onclick="write()">게시글 작성</button>
+				<button type="submit" class="btn btn-dark" ">게시글 작성</button>
 			</td>
 		</tr>
 	</table>

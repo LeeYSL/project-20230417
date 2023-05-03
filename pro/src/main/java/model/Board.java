@@ -3,17 +3,17 @@ package model;
 import java.util.Date;
 
 public class Board {
-	private int boardNum;
-	private String boardContent;
-	private String boardFile;
-	private String boardTitle;
-	private Date boardTime;
-	private int boardReadCnt;
-	private String boardId;
-	private int boardGrp;
-	private int boardGrpLevel;
-	private int boardGrpStep;
-	private String memId;
+	private int boardNum; //게시글번호
+	private String boardContent; //글내용
+	private String boardFile; //첨부파일명
+	private String boardTitle; //글제목
+	private Date boardTime; //게시글등록일시
+	private int boardReadCnt; //조회수. 상세보기 시 1씩 증가
+	private String boardId; //게시판종류
+	private int boardGrp; //답글 작성시 원글의 게시글번호
+	private int boardGrpLevel; //답글의 레벨
+	private int boardGrpStep; //그룹의 출력 순서
+	private String memId; //작성자 이름
 	public int getBoardNum() {
 		return boardNum;
 	}

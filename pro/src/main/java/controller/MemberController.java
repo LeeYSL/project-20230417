@@ -164,5 +164,26 @@ public class MemberController extends MskimRequestMapping {
 	return "alert";
 
 	}
+	
+	@RequestMapping("logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+		request.getSession().invalidate(); //invalidate(): 모든내용이 없어짐
+		return "redirect:loginForm"; // 로그인폼으로 페이지 이동 만약 return "member/loginFrom" 으로 하면 로그아웃 했을때 url logout으로 됨
+		// return request.sendRedirect("loginForm") == return "redirect:loginForm"
+
+	}
+	
+	/*
+	 * 1. id 파라미터값을 조회 2. 로그인 상태 검증 - 로그아웃상태 : '로그인하세요' 메세지 출력 후 loginForm 페이지 호출 -
+	 * 로그인 상태 : - 다른 id 조회시(관리자 제외) : '내정보만 수정 가능합니다.' 메세지 출력 후 main 호출 3. db에서 id에
+	 * 해당하는 데이터 조회하기 4. 조회된 내용 화면 출력하기 => 이전데이터를 화면 출력. 수정전화면 출력
+	 */
+	@RequestMapping("updateForm")
+	public String updateForm(HttpServletRequest request, HttpServletResponse response) {
+		String id = (String)request.getSession().getAttribute("login");
+		Member mem = dao.selectOne(id);
+		request.setAttribute("mem", mem);
+		return "member/updateForm";
+	}
 
 }

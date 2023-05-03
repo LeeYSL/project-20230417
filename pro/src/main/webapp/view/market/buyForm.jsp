@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>굿즈구매</title>
 <link rel="stylesheet" href="${path}/css/main.css">
+<%--
+<script type="text/javascript">
+	function checkInfo() {
+		if($("#checkinfo").is(":checked")) {		
+		}	
+	}
+</script>
+ --%>
 </head>
 <body>
 	<div id="main_div">
@@ -18,8 +26,8 @@
 					<table class="w3-table w3-border ">
 						<tr>
 							<th colspan="2" style="text-align: right"><input
-								type="checkbox" class="w3-right" name="infochk"
-								onchange="infochk(this)"> 내 정보 가져오기
+								type="checkbox" class="w3-right" id="checkinfo"
+								onclick="checkInfo()"> 내 정보 가져오기
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						</tr>
 						<tr>
@@ -28,19 +36,19 @@
 						</tr>
 						<tr>
 							<th>이름</th>
-							<td><input type="text" name="name" class="w3-input"></td>
+							<td><input type="text" name="name" class="w3-input" value="${mem.memName}"></td>
 						</tr>
 						<tr>
 							<th>전화번호</th>
-							<td><input type="text" name="tel" class="w3-input"></td>
+							<td><input type="text" name="tel" class="w3-input" value="${mem.memPhone}"></td>
 						</tr>
 						<tr>
 							<th>주소</th>
-							<td><input type="text" name="adress" class="w3-input"></td>
+							<td><input type="text" name="adress" class="w3-input" value="${mem.memAdress}"></td>
 						</tr>
 						<tr>
 							<th>이메일</th>
-							<td><input type="text" name="email" class="w3-input"></td>
+							<td><input type="text" name="email" class="w3-input" value="${mem.memEmail}"></td>
 						</tr>
 						<tr>
 							<th>배송시 요청사항</th>
@@ -66,7 +74,7 @@
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">
-								<button type="button" class="btn btn-dark" onclick="join()">결제하기</button>
+								<button type="button" class="btn btn-dark" onclick="payment()">결제하기</button>
 							</td>
 						</tr>
 					</table>

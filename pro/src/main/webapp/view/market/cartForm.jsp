@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="path" value="${pageContext.request.contextPath}" />OCTYPE html>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+OCTYPE html>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,15 +10,11 @@
 <title>장바구니</title>
 <link rel="stylesheet" href="${path}/css/main.css">
 <script type="text/javascript">
-	function allchkbox(chk){
-		if(chk.checked) {
-			document.querySelectorAll(".prochk").forEach((prochk)=>{
-				prochk.setAttribute("checked","checked")
-			})
+	function checkAll() {
+		if ($("#check").is(":checked")) {
+			$("input[type='checkbox']").prop("checked", true);
 		} else {
-			document.querySelectorAll(".prochk").forEach((prochk)=>{
-				prochk.removeAttribute("checked")
-			})
+			$("input[type='checkbox']").prop("checked", false);
 		}
 	}
 </script>
@@ -26,12 +23,11 @@
 	<div id="main_div">
 		<h2 class="w3-center">장바구니</h2>
 		<div class="w3-container">
-			<form name="f" method="post" action="cartForm"
-				onsubmit="return input_check(this)">
+			<form name="f" method="post" action="buyForm">
 				<table class="table table-hover">
 					<tr>
-						<th><input type="checkbox" name="allchk"
-							onchange="allchkbox(this)"></th>
+						<th><input type="checkbox" id="check"
+							onchange="checkAll()"></th>
 						<th>상품</th>
 						<th>가격</th>
 						<th>수량</th>
@@ -49,7 +45,7 @@
 					</tr>
 					<tr>
 						<td colspan="6" style="text-align: center">
-							<button type="button" class="btn btn-dark" onclick="pro_buy()">구매하기</button>
+							<button type="submit" class="btn btn-dark" onclick="buy()">구매하기</button>
 						</td>
 					</tr>
 

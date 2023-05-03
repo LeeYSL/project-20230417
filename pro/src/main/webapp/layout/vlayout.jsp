@@ -114,7 +114,7 @@ html, body {
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
 					<a href="https://www.vticket.co.kr/kgc-schedule-round1"
 						class="w3-bar-item w3-button" target="_blank">TICKET</a> <a
-						href="${path}/market/buyForm" class="w3-bar-item w3-button">GOODS</a>
+						href="${path}/market/marketList" class="w3-bar-item w3-button">GOODS</a>
 				</div>
 			</div>
 			<div class="w3-dropdown-hover w3-hide-small">
@@ -126,12 +126,29 @@ html, body {
 					<a href="${path}/board/boardList?boardId=QNA" class="w3-bar-item w3-button">QNA</a>
 				</div>
 			</div>
+			<c:if test="${empty sessionScope.login}">
 			<a href="${path}/member/joinForm"
 				class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal"
 				title="Join">JOIN</a> 
 		    <a href="${path}/member/loginForm"
 				class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal"
 				title="Login">LOGIN</a>
+			</c:if>
+			<c:if test="${!empty sessionScope.login}">
+			<a href="${path}/member/logout"
+				class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal"
+				title="Logout">LOGOUT</a>
+			<div class="w3-dropdown-hover w3-hide-small w3-right">
+				<button class="w3-button" title="Mypage">
+					${sessionScope.login}님 MYPAGE<i class="fa fa-caret-down"></i>
+				</button>  
+				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
+					<a href="${path}/member/info" class="w3-bar-item w3-button">회원정보</a>
+					<a href="${path}/market/cartForm" class="w3-bar-item w3-button">장바구니</a>
+					<a href="${path}/market/buyList" class="w3-bar-item w3-button">구매목록</a>
+				</div>
+			</div>	
+			</c:if>
 		</div>
 
 		<!-- Navbar on small screens -->
