@@ -72,7 +72,7 @@ public class MemberController extends MskimRequestMapping {
 	public String login(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");	
-		Member mem = dao.selectOne(id, pass);
+		Member mem = dao.selectLogin(id, pass);
 		String msg = null;
 		String url = null;
 		if(mem==null) {
@@ -82,7 +82,8 @@ public class MemberController extends MskimRequestMapping {
 			 request.getSession().setAttribute("login", id);
 			 request.getSession().setAttribute("memType", mem.getMemPosition());
 			 msg = "반갑습니다." + mem.getMemName() + "님";
-			 url = "../kgc/main";
+			 url = "info";
+//			 url = "../kgc/main";
 		 }
 		
 		request.setAttribute("msg", msg);
@@ -90,24 +91,25 @@ public class MemberController extends MskimRequestMapping {
 		return "alert/alert";
 	}
 	
+	@RequestMapping("info")
+	public String info(HttpServletRequest request, HttpServletResponse response) {
+		String id = (String)request.getSession().getAttribute("login");
+		Member mem = dao.selectOne(id);
+		request.setAttribute("mem", mem);
+		return "member/info";
+	}
+	
 	@RequestMapping("pwForm")
 	public String goPwForm() {
 		return "member/pwForm";
 	}
-	@RequestMapping("updateForm")
-	public String updayeForm(HttpServletRequest request, HttpServletResponse response) {
-	String id = request.getParameter("id");
-	String pass = request.getParameter("pass");
-	Member mem = dao.selectOne(id, pass);
-	request.setAttribute("mem", mem);
-	return "updateForm";
-	}
+
 	
 	@RequestMapping("update")
 	public String update(HttpServletRequest request,
 			HttpServletResponse response) {
 		Member mem = new Member();
-		mem.setMemPw(request.getParameter("pass"));
+		mem.setMemPw(request.getParameter("pass1"));  //변경할 비밀번호
 		mem.setMemName(request.getParameter("name"));
 		mem.setMemPhone(request.getParameter("tel"));		
 		mem.setMemAdress(request.getParameter("adress"));
@@ -116,13 +118,13 @@ public class MemberController extends MskimRequestMapping {
 		String login =(String) request.getSession().getAttribute("login");
 		
 		String id = request.getParameter("id");
-		String pass = request.getParameter("pass");	
-		Member dbMem = dao.selectOne(id, pass);
+		String pass = request.getParameter("pass");	// 변경 전 입력하는 비밀번호
+		Member dbMem = dao.selectLogin(id, pass);
 		
 		String msg = "비밀번호가 틀렸습니다.";
 		String url ="updateForm?id=" + mem.getMemId();
 		
-		if (mem.getMemPw().equals(dbMem.getMemPw())) {
+		if (pass.equals(dbMem.getMemPw())) {
 			if(dao.update(mem)) {
 				msg = "회원정보 수정 완료";
 				url= "info?id=" + mem.getMemId();

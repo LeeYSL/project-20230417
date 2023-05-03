@@ -16,10 +16,12 @@ public interface MemberMapper {
 	int insert(Member mem);
 
 	@Select("select * from member where mem_id=#{memId} and mem_pw=#{memPw}")
-	Member selectOne(@Param("memId")String memId, @Param("memPw")String memPw);
-
+	Member selectLogin(@Param("memId")String memId, @Param("memPw")String memPw);
 	
-	@Update("update member set mem_pw=#{memId},mem_name=#{memName},mem_phone=#{memPhone}, "
+	@Select("select * from member where mem_id=#{value}")
+	Member selectOne(String id);
+	
+	@Update("update member set mem_pw=#{memPw},mem_name=#{memName},mem_phone=#{memPhone}, "
 			+ " mem_email=#{memEmail},mem_adress=#{memAdress}"
 			+ " where mem_id=#{memId}")
 	int update(Member mem);

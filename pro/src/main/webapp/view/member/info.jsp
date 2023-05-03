@@ -20,31 +20,31 @@
 					<table class="w3-table-all w3-border ">
 						<tr>
 							<td>아이디</td>
-							<td>${mem_id}</td>
+							<td>${mem.memId}</td>
 						</tr>
 						<tr>  
 							<td>비밀번호</td>
-							<td>${mem_id}</td>
+							<td>${mem.memPw}</td>
 						</tr>
 					   	<tr>
 							<td>이름</td>
-							<td>${mem_id}</td>
+							<td>${mem.memName}</td>
 						</tr>
 						<tr>
 							<td>전화번호</td>
-							<td>${mem_id}</td>
+							<td>${mem.memPhone}</td>
 						</tr>
 						<tr>
 							<td>주소</td>
-							<td>${mem_id}</td>
+							<td>${mem.memAdress}</td>
 						</tr>
 						<tr>
 							<td>이메일</td>
-							<td>${mem_id}</td>
+							<td>${mem.memEmail}</td>
 						</tr>
 						<tr>
 							<td>회원 유형</td>
-							<td>${mem_id}</td>
+							<td>${mem.memPosition}</td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">

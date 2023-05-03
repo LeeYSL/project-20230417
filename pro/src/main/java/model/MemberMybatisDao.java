@@ -26,10 +26,21 @@ public class MemberMybatisDao {
 		}
 		return false;
 	}
-	public Member selectOne(String memId,String memPw) {
+	public Member selectLogin(String memId,String memPw) {
 		SqlSession session = MybatisConnection.getConnection();
 		try {
-			return session.getMapper(cls).selectOne(memId,memPw);
+			return session.getMapper(cls).selectLogin(memId,memPw);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			MybatisConnection.close(session);
+		}
+		return null;
+	}
+	public Member selectOne(String memId) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			return session.getMapper(cls).selectOne(memId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
