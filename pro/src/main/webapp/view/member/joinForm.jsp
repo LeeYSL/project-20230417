@@ -26,7 +26,7 @@
 						</tr>
 						<tr>  
 							<td>비밀번호</td>
-							<td><input type="text" name="pass1" class="w3-input"></td>
+							<td><input type="password" name="pass1" class="w3-input"></td>
 						</tr>
 					   	<tr>
 							<td>이름</td>

@@ -71,10 +71,8 @@ public class MemberController extends MskimRequestMapping {
 	public String login(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
-		System.out.println(id + " : " + pass);
-		
+		System.out.println(id + " : " + pass);	
 		Member mem = dao.selectOne(id, pass);
-
 		String msg = null;
 		String url = null;
 		if(mem==null) {
