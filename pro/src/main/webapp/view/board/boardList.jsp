@@ -38,7 +38,7 @@
 </script>
 	<div id="main_div">
 	<h2 id="title" class="w3-center"></h2>
-	<div class=w3-container>
+	<div class="w3-container">
 	<table class="w3-table-all">
 		<tr>
 			<th>번호</th>

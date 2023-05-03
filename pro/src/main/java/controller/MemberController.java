@@ -185,5 +185,49 @@ public class MemberController extends MskimRequestMapping {
 		request.setAttribute("mem", mem);
 		return "member/updateForm";
 	}
+	
+	@RequestMapping("delete")
+	public String delete(HttpServletRequest request, HttpServletResponse response) {
+		// 파라미터 정보 저장
+		String id = request.getParameter("id");
+		String pass = request.getParameter("pass");
+		// 로그인 정보 가져오기(비밀번호 때문에 가져옴)
+		String login = (String) request.getSession().getAttribute("login");
+		String msg = null;
+		String url = null;
+
+		// 관리자 탈퇴 검증
+		if (id.equals("admin")) {
+			request.setAttribute("msg", "관리자는 탈퇴 못합니다.");
+			request.setAttribute("url", "list");
+			return "alert";
+		}
+		Member dbMem = dao.selectOne(login); // 로그인된 사용자의 비밀번호로 검증
+		if (!pass.equals(dbMem.getMemPw())) {
+			request.setAttribute("msg", "비밀번호 오류");
+			request.setAttribute("url", "deleteForm?id=" + id);
+			return "alert";
+		}
+		// 비밀번호 일치 => 고객정보 삭제
+		if (dao.delete(id)) { // 삭제 성공
+			msg = id + "고객님 탈퇴성공";
+			if (login.equals("admin")) {
+				url = "list";
+			} else { // 일반사용자
+				request.getSession().invalidate(); // 로그아웃
+				url = "loginForm";
+			}
+		} else { // 삭제 실패
+			msg = id + "고객님 탈퇴시 오류 발생. 탈퇴 실패";
+			if (login.equals("admin")) {
+				url = "list";
+			} else {
+				url = "info?id=" + id;
+			}
+		}
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		return "alert";
+	}
 
 }

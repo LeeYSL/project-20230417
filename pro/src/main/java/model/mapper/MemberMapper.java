@@ -1,5 +1,6 @@
 package model.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -29,5 +30,8 @@ public interface MemberMapper {
 	@Select("select mem_id from member "
 			+ " where mem_email=#{memEmail} and mem_name=#{memName}")
 	String idSearch(@Param("memEmail")String memEmail,@Param("memName") String memName);
+
+	@Delete("delete from member where mem_id=#{value}")
+	int delete(String id);
 
 }

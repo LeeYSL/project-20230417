@@ -74,4 +74,17 @@ public class MemberMybatisDao {
 		}
 		return null;
 	}
+	public boolean delete(String id) {
+		SqlSession session = MybatisConnection.getConnection();
+		
+		try {
+			int cnt = session.getMapper(cls).delete(id);
+			return cnt > 0; // 한레코드는 삭제가 됐다?
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return false;
+	}
 }
