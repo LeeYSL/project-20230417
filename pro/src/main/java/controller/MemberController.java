@@ -94,10 +94,48 @@ public class MemberController extends MskimRequestMapping {
 	public String goPwForm() {
 		return "member/pwForm";
 	}
+	@RequestMapping("updateForm")
+	public String updayeForm(HttpServletRequest request, HttpServletResponse response) {
+	String id = request.getParameter("id");
+	String pass = request.getParameter("pass");
+	Member mem = dao.selectOne(id, pass);
+	request.setAttribute("mem", mem);
+	return "updateForm";
+	}
 	
 	@RequestMapping("update")
-	public String update() {
-		return "loginForm";
+	public String update(HttpServletRequest request,
+			HttpServletResponse response) {
+		Member mem = new Member();
+		mem.setMemPw(request.getParameter("pass"));
+		mem.setMemName(request.getParameter("name"));
+		mem.setMemPhone(request.getParameter("tel"));		
+		mem.setMemAdress(request.getParameter("adress"));
+		mem.setMemEmail(request.getParameter("email"));
+		
+		String login =(String) request.getSession().getAttribute("login");
+		
+		String id = request.getParameter("id");
+		String pass = request.getParameter("pass");	
+		Member dbMem = dao.selectOne(id, pass);
+		
+		String msg = "비밀번호가 틀렸습니다.";
+		String url ="updateForm?id=" + mem.getMemId();
+		
+		if (mem.getMemPw().equals(dbMem.getMemPw())) {
+			if(dao.update(mem)) {
+				msg = "회원정보 수정 완료";
+				url= "info?id=" + mem.getMemId();
+				
+			}else {
+				msg = "회원정보 수정 실패";
+			}
+			
+	}
+	request.setAttribute("msg", msg);
+	request.setAttribute("url", url);
+	return "alert";
+
 	}
 
 }
