@@ -4,7 +4,7 @@
 <%@page import="org.jsoup.select.Elements"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -15,21 +15,18 @@
 </head>
 <body>
 	<div id="contents">
-		<!-- location menu -->
-		<div class="page_location">
-			<span><img src="/images/common/ico_home.gif" alt="Home" /></span> <span>PLAYER</span>
-			<span class="active">선수</span>
-		</div>
-
 		<h3 class="h3Txt">선수</h3>
-		<div class="list">
+		<div class="plist">
 			<dl>
 				<dt>
-					Opposite<br>(Spiker) 
+					Opposite<br>(Spiker)
 				</dt>
 				<dd>
 					<ul>
-						<li><a href="player_profile.php?no=t06"><img
+						<li><img
+								src="${path}/images/0.jpg"
+								alt="No.- 메가왓티 퍼티위" /><span class="bg_name"><em>No.-</em><strong>메가왓티퍼티위</strong></span></a></li>
+						<li><img
 								src="${path}/images/volleyball/2223/player_list_t06.png?ver=3.1"
 								alt="No.4 이예솔" /><span class="bg_name"><em>No.4</em><strong>이예솔</strong></span></a></li>
 					</ul>
@@ -150,3 +147,5 @@
 
 </body>
 </html>
+
+

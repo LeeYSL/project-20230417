@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import model.mapper.BoardMapper;
+
 public class BoardMybatisDao {
 	private Class<BoardMapper> cls =BoardMapper.class;
 	private Map<String,Object> map = new HashMap<>();
