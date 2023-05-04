@@ -14,7 +14,7 @@
 </style>
 <body>
 <div class="w3-container">
-<table> <tr><td>아이디</td><td>"${param.id}"</td></tr>
+<table> <tr><td>아이디</td><td>"${param.memId}"</td></tr>
   <tr><td colspan="2"><div id="msg">"${msg}"</div></td></tr>
   <tr><td colspan="2"><button onclick="self.close()"
         class="btn btn-primary">닫기</button>

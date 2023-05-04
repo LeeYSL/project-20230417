@@ -29,9 +29,13 @@ public interface MemberMapper {
     
 	@Select("select mem_id from member "
 			+ " where mem_email=#{memEmail} and mem_name=#{memName}")
-	String idSearch(@Param("memEmail")String memEmail,@Param("memName") String memName);
+	String idSearch(@Param("memEmail")String memEmail,@Param("memName")String memName);
 
-	@Delete("delete from member where mem_id=#{value}")
+	@Delete("delete from member where mem_id=#{memId}")
 	int delete(String id);
+
+	@Select("select mem_pw from member "
+			+ " where mem_id=#{memId} and mem_email=#{memEmail} and mem_name=#{memName} ")
+	String pwSearch(@Param("memId")String memId,@Param("memEmail")String memEmail,@Param("memName")String memName);
 
 }

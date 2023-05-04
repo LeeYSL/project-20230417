@@ -9,40 +9,12 @@
 <title>회원정보수정</title>
 <link rel="stylesheet" href="${path}/css/main.css">
 
-<script type="text/javascript">
-	function inputcheck(f) {
-		if (f.pass1.value == "") {
-			alert("비밀번호를 입력하세요");
-			f.pass1.focus();
-			return false;
-		}
-		if (f.pass2.value != "" || f.pass3.value != "") {
-			if(f.pass2.value == ""){
-				alert("변경할 비밀번호를 입력하세요.");
-				f.pass2.focus();
-				return false;
-			}
-			if(f.pass3.value == ""){
-				alert("변경할 비밀번호 재확인을 입력하세요.");
-				f.pass3.focus();
-				return false;
-			}
-			if (f.pass2.value != f.pass3.value) {
-				alert("변경할 비밀번호가 일치하지않습니다.");
-				f.pass2.value="";
-				f.pass3.value="";
-				f.pass2.focus();
-				return false;
-			}
-		}
-	}
-</script>
 </head>
 <body>
 	<div id="main_div">
 		<h2 class="w3-center">회원정보수정</h2>
 		<div class="w3-container">
-			<form action="info" method="post" name="f"
+			<form action="update" method="post" name="f"
 				onsubmit="return inputcheck(this)">
 				<div class="form-group">
 					<table class="w3-table-all w3-border ">

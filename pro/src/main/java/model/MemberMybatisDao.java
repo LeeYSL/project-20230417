@@ -87,4 +87,16 @@ public class MemberMybatisDao {
 		}
 		return false;
 	}
+	public String pwSearch(String memId, String memEmail,String memName) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			return session.getMapper(cls).pwSearch(memId,memEmail,memName);	
+		} catch (Exception e) {
+	 		e.printStackTrace();
+	 	} finally {
+	 		MybatisConnection.close(session);
+	 	}
+	 	return null;
+	}
+	
 }

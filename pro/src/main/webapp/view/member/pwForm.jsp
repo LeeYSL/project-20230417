@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
-<title>회원 탈퇴</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://www.w3schools.com/lib/w3-theme-black.css">
@@ -20,26 +19,26 @@
 
 	<h2 class="w3-center">비밀번호 찾기</h2>
 	<div class="w3-container">
-		<form action="pw" method="post" name="f"
+		<form action="pwSearch" method="post" name="f"
 			enctype="multipart-formdata">
 			<div class="form-group">
 				<table class="w3-table w3-border ">
 					<tr>
 						<td>이름</td>
-						<td><input type="text" name="name_find" class="w3-input"></td>
+						<td><input type="text" name="name" class="w3-input"></td>
 					</tr>
 					<tr>
 						<td>아이디</td>
-						<td><input type="text" name="id_find" class="w3-input"></td>
+						<td><input type="text" name="id" class="w3-input"></td>
 					</tr>
 					
 					<tr>
 						<td>이메일</td>
-						<td><input type="text" name="email_find" class="w3-input"></td>
+						<td><input type="text" name="email" class="w3-input"></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align:center">
-					<button type="button"class="btn btn-dark" onclick="pw_find()">비밀번호찾기</button>
+					<button type="submit"class="btn btn-dark">비밀번호찾기</button>
 						</td>
 					</tr>
 				</table>
