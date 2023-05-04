@@ -30,7 +30,7 @@
 					<table class="w3-table w3-border ">
 						<tr>
 							<td>작성자</td>
-							<td><input type="text" name="id" class="w3-input"></td> <!--${sessionScope.login}:아이디 가져오기 login은 멤버컨트롤러에서 정했었음  -->
+							<td>${sessionScope.login}</td> <!--${sessionScope.login}:아이디 가져오기 login은 멤버컨트롤러에서 정했었음  -->
 						</tr>
 						<tr>
 							<td>제목</td>

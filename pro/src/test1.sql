@@ -21,17 +21,16 @@ CREATE TABLE board
 	board_num int NOT NULL AUTO_INCREMENT,
 	board_content varchar(500) NOT NULL,
 	board_file varchar(200) NOT NULL,
-	board_time date NOT NULL,
+	board_time datetime NOT NULL,
 	-- 아이디
 	mem_id varchar(15) NOT NULL COMMENT '아이디',
 	board_title varchar(100),
 	board_readcnt int,
-	board_id varchar(2),
+	board_id varchar(30),
 	board_grp int,
 	board_grplevel int,
 	board_grpstep int,
-	PRIMARY KEY (board_num),
-	UNIQUE (mem_id)
+	PRIMARY KEY (board_num)
 );
 
 
@@ -54,8 +53,7 @@ CREATE TABLE comment
 	comment_time datetime NOT NULL,
 	-- 아이디
 	mem_id varchar(15) NOT NULL COMMENT '아이디',
-	PRIMARY KEY (board_num, comment_num),
-	UNIQUE (mem_id)
+	PRIMARY KEY (board_num, comment_num)
 );
 
 
@@ -65,8 +63,7 @@ CREATE TABLE delivery
 	mem_id varchar(15) NOT NULL COMMENT '아이디',
 	delivery_num int NOT NULL,
 	delivery_address varchar(200) NOT NULL,
-	PRIMARY KEY (mem_id, delivery_num),
-	UNIQUE (mem_id)
+	PRIMARY KEY (mem_id, delivery_num)
 );
 
 
