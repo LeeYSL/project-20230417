@@ -3,6 +3,8 @@ package controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -22,67 +24,47 @@ public class BoardController extends MskimRequestMapping {
 
 	
 	/*
-	 * 1. num 파라미터 저장. session에서 boardid 조회하기. 
 	 * 2. num값의 게시물을 db에서 조회. Board b =BoardDao.selectOne(num) 
 	 * 3. num값의 게시물의 조회수 증가시키기 void BoardDao.readcntAdd(num)
 	 * 4. 조회된 게시물 화면에 출력.
 	 */
 	@RequestMapping("boardList")
-	public String boardList(HttpServletRequest request, HttpServletResponse response) {
+	public String boardList(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+		//1.boardId 파라미터 저장. session에서 boardId 조회하기
+		if(request.getParameter("boardId") != null) {
+			request.getSession().setAttribute("boardId", request.getParameter("boardId"));//boardid파라미터값을 세션의 boardid에 저장?
+//			request.getSession().setAttribute("pageNum", "1"); // 현재페이지 번호
+		}
 		String boardId = request.getParameter("boardId");//서블릿에서 전달된 boardId 데이터 가져오기
 		if (boardId == null)
 			boardId = "NOTICE";
-		request.getSession().setAttribute("boardId", boardId); //세션에 boardid에 boardid 저장해라
+		int pageNum= 1; // 페이지 넘버 1로 설정
+		try {
+			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		} catch (NumberFormatException e) {
+		} // 페이지 넘버 1 로 할거다 -> 오류 무시할거다
 		
+//	//	request.getSession().setAttribute("boardId", boardId); //세션에 boardid에 boardid 저장해라
+//
 //		try {
 //			request.setCharacterEncoding("UTF-8");
-//		} catch (UnsupportedEncodingException e1) {
-//			e1.printStackTrace();
-//		} //post 타입이라? // 안적으면 게시판 검색할때 한글 깨짐
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}//post 타입이라? // 안적으면 게시판 검색할때 한글 깨짐 
 //		
-//		
-//		
-//		if (request.getParameter("boardId") != null) {
-//			// list에 boardid 라는 파라미터가 존재하니?
-//			// session에 게시판 종류 정보 등록
-//			request.getSession().setAttribute("boardId", request.getParameter("boardId"));//boardid파라미터값을 세션의 boardid에 저장?
-//			request.getSession().setAttribute("pageNum", "1"); // 현재페이지 번호
-//		}
-//		String boardid = (String) request.getSession().getAttribute("boardId");//boardid값을 세선에서 가져와라
-//		if (boardId == null)
-//		int pageNum = 1; // 페이지 넘버 1로 설정
-//		try {
-//			pageNum = Integer.parseInt(request.getParameter("pageNum"));
-//		} catch (NumberFormatException e) {
-//		} // 페이지 넘버 1 로 할거다 -> 오류 무시할거다
-//		
-//		String column = request.getParameter("column");
-//		String find = request.getParameter("find");
-//		//파라미터 둘다 있어야 처리가능하게 만들어야함
-//		/*
-//		 * column,find 파라미터 중 한개만 존재하는 경우 두개의 파라미터값은 없는 상태로 설정 - 강사님 주석
-//		 */
-//		if(column ==null || column.trim().equals("")) {
-//			column = null;
-//			find = null;		
-//		}
-//		if(find ==null || find.trim().equals("")) {
-//			column = null;
-//			find = null;		
-//		} //파인드가 널이거나 빈문자열인 경우 컬럼과 파인드 둘다 null로 처리함
-//		
-//		
+//			
 //		int limit = 10; // 한페이지에 보여질 게시물 건수 > 한페이지에 10 개만 보여줄거다
 //	
 //		// boardcount : 게시물종류별 게시물 등록 건수
-//		int boardcount = dao.boardCount(boardid,column,find); // 게시판 종류별 전체 게시물등록 건수 리턴
+//		int boardCount = dao.boardCount(boardId); // 게시판 종류별 전체 게시물등록 건수 리턴
 //		// list : 현재 페이지에 보여질 게시물 목록.
-//		List<Board> list = dao.list(boardid, pageNum, limit,column,find); //column,find 추가
+//		List<Board> list = dao.list(boardId, pageNum, limit); //column,find 추가
 //		/*
 //		 * maxpage : 필요한 페이지 갯수. 게미물 건수 | 필요한 페이지 3 1 3.0/10 => 0.3 + 0.95 => (int)1.25
 //		 * =>1 10 1 10.0/10 =>1.0 + 0.95 => (int)1.95 =>1 13 2 501 51
 //		 */
-//		int maxpage = (int) ((double) boardcount / limit + 0.95);
+//		int maxpage = (int) ((double) boardCount / limit + 0.95);
 //		/*
 //		 * startpage : 화면에 출력될 시작 페이지 현재페이지 | 시작페이지 1 1 1/10.0 => 0.1 + 0.9 => (int)1.0
 //		 * -1 => 0 * 10 +1 => 1 10 1 11 11 505 501 int startpage= ((int)(pageNum/10.0 +
@@ -96,28 +78,21 @@ public class BoardController extends MskimRequestMapping {
 //		// endpage 는 maxpage를 넘어가면 안됨
 //		if (endpage > maxpage)
 //			endpage = maxpage;
-//		// boardName : 게시판 이름 화면에 출력
-//		String boardName = "공지사항";
-//		switch (boardid) {
-//		case "2":
-//			boardName = "자유게시판";
-//			break;
-//		case "3":
-//			boardName = "QNA";
-//			break;
-//		}
 //
-//		int boardnum = boardcount - (pageNum - 1) * limit;
-//		request.setAttribute("boardName", boardName);
-//		request.setAttribute("boardcount", boardcount);
-//		request.setAttribute("boardid", boardid);
+//		int boardNum = boardCount - (pageNum - 1) * limit;
+//		request.setAttribute("boardCount", boardCount);
+//		request.setAttribute("boardId", boardId);
 //		request.setAttribute("pageNum", pageNum);
-//		request.setAttribute("boardnum", boardnum);
+//		request.setAttribute("boardNum", boardNum);
 //		request.setAttribute("list", list);
 //		request.setAttribute("startpage", startpage);
 //		request.setAttribute("endpage", endpage);
 //		request.setAttribute("maxpage", maxpage);
 //		request.setAttribute("today", new Date());
+		boardId = (String)request.getSession().getAttribute("boardId");
+		
+		Board b = dao.selectOne(boardId);
+		request.setAttribute("b", b);
 
 		return "board/boardList";
 	}

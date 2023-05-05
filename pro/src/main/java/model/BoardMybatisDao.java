@@ -1,6 +1,7 @@
 package model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -33,5 +34,31 @@ public class BoardMybatisDao {
 		}
 		return false;
 	}
-	
+	public int boardCount(String boardId) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			map.clear();
+			map.put("boardid", boardId);
+
+			return session.getMapper(cls).boardCount(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return 0;
+	}
+
+	public Board selectOne(String boardId) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			return session.getMapper(cls).selectOne(boardId);
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return null;
+	}
+
 }
