@@ -58,7 +58,7 @@ public class MemberController extends MskimRequestMapping {
 
 		String pw = dao.pwSearch(id, email, name);
 		if (pw != null) {
-			String showPass = pw.substring(2, pw.length())+ "**";
+			String showPass = pw.substring(2, pw.length()) + "**";
 			request.setAttribute("showPass", showPass);
 		} else {
 			request.setAttribute("msg", "비밀번호를 찾을 수 없습니다.");
@@ -89,7 +89,7 @@ public class MemberController extends MskimRequestMapping {
 		}
 		Member mem = new Member();
 		mem.setMemId(request.getParameter("id"));
-		mem.setMemPw(request.getParameter("pass1"));
+		mem.setMemPw(request.getParameter("pass"));
 		mem.setMemName(request.getParameter("name"));
 		mem.setMemPhone(request.getParameter("tel"));
 		mem.setMemAdress(request.getParameter("adress"));
@@ -128,7 +128,6 @@ public class MemberController extends MskimRequestMapping {
 			url = "loginForm";
 		} else {
 			request.getSession().setAttribute("login", id);
-			request.getSession().setAttribute("memType", mem.getMemPosition());
 			msg = "반갑습니다." + mem.getMemName() + "님";
 
 			url = "../kgc/main";
@@ -162,27 +161,38 @@ public class MemberController extends MskimRequestMapping {
 
 	@RequestMapping("update")
 	public String update(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String id = (String) request.getSession().getAttribute("login");
+
 		Member mem = new Member();
+		mem.setMemId(id);
 		mem.setMemPw(request.getParameter("pass1")); // 변경할 비밀번호
 		mem.setMemName(request.getParameter("name"));
 		mem.setMemPhone(request.getParameter("tel"));
 		mem.setMemAdress(request.getParameter("adress"));
 		mem.setMemEmail(request.getParameter("email"));
 
-		String login = (String) request.getSession().getAttribute("login");
+		System.out.println(mem);
+		
 
-		String id = request.getParameter("id");
+
 		String pass = request.getParameter("pass"); // 변경 전 입력하는 비밀번호
-		Member dbMem = dao.selectLogin(id, pass);
+		Member dbMem = dao.selectOne(id);
+		
+		mem.setMemPosition(dbMem.getMemPosition()); //회원 유형
+		mem.setMemPoint(dbMem.getMemPoint()); //회원 포인트
 
 		String msg = "비밀번호가 틀렸습니다.";
-		String url = "updateForm?id=" + mem.getMemId();
+		String url = "updateForm";
 
 		if (pass.equals(dbMem.getMemPw())) {
 			if (dao.update(mem)) {
 				msg = "회원정보 수정 완료";
-				url = "info?id=" + mem.getMemId();
-
+				url = "info";
 			} else {
 				msg = "회원정보 수정 실패";
 			}
@@ -190,7 +200,7 @@ public class MemberController extends MskimRequestMapping {
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		return "alert";
+		return "alert/alert";
 
 	}
 
@@ -208,22 +218,31 @@ public class MemberController extends MskimRequestMapping {
 
 	@RequestMapping("delete")
 	public String delete(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
-		String login = (String) request.getSession().getAttribute("login"); // id값이 들어있나?
+		String id = (String) request.getSession().getAttribute("login"); // id값이 들어있나?
 		String msg = null;
 		String url = null;
 		if (id.equals("admin")) {
 			request.setAttribute("msg", "관리자는 탈퇴 불가능");
 			request.setAttribute("url", "list");
-			return "alert";
+			return "alert/alert";
 		}
 
-		Member dbMem = dao.selectOne(login);
-		if(!pass.equals(dbMem.getMemPw())) {
+		Member dbMem = dao.selectOne(id); // 로그인된 사용자의 정보를 id로 조회해서 가져와?
+		if (!pass.equals(dbMem.getMemPw())) {
 			request.setAttribute("msg", "비밀번호 오류");
-			request.setAttribute("url", "");
+			request.setAttribute("url", "deldteForm");
+			return "alert/alert";
 		}
+		if (dao.delete(id)) {// id를 기준으로 지워
+			msg = id + "고객님 탈퇴 성공";
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", "../kgc/main");
+			request.getSession().invalidate(); // 모든 내용이 없어진다.
+			return "alert/alert";
+		
+		}
+			
 		return null;
 	}
 

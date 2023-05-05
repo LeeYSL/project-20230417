@@ -8,6 +8,15 @@
 <meta charset="UTF-8">
 <title>회원정보수정</title>
 <link rel="stylesheet" href="${path}/css/main.css">
+<script type="text/javascript">
+   function inputcheck(f) {
+	   if(f.pass1.value == "") {
+		   alert("비밀번호를 입력하세요");
+		   f.pass.fouse();
+		   return false;
+	   }
+   }
+</script>
 
 </head>
 <body>
@@ -23,16 +32,16 @@
 							<td>${mem.memId}</td>
 						</tr>
 						<tr>
-							<td>비밀번호</td>
-							<td><input type="password" name="pass1" class="w3-input"></td>
+							<td>현재비밀번호</td>
+							<td><input type="password" name="pass" class="w3-input"></td>
 						</tr>
 						<tr>
 							<td>변경비밀번호</td>
-							<td><input type="password" name="pass2" class="w3-input"></td>
+							<td><input type="password" name="pass1" class="w3-input"></td>
 						</tr>
 						<tr>
 							<td>변경비밀번호 재확인</td>
-							<td><input type="password" name="pass3" class="w3-input"></td>
+							<td><input type="password" name="pass2" class="w3-input"></td>
 						</tr>
 						<tr>
 							<td>이름</td>
@@ -60,7 +69,7 @@
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">
-								<button type="submit" class="btn btn-dark" onclick="update()">수정완료</button>
+								<button type="submit" class="btn btn-dark" >수정완료</button>
 							</td>
 						</tr>
 					</table>

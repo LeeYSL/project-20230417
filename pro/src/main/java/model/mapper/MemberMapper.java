@@ -32,7 +32,7 @@ public interface MemberMapper {
 	String idSearch(@Param("memEmail")String memEmail,@Param("memName")String memName);
 
 	@Delete("delete from member where mem_id=#{memId}")
-	int delete(String id);
+	int delete(String memId);
 
 	@Select("select mem_pw from member "
 			+ " where mem_id=#{memId} and mem_email=#{memEmail} and mem_name=#{memName} ")
