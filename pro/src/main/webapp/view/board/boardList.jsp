@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-     
+	pageEncoding="UTF-8"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
@@ -10,8 +9,6 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 <link rel="stylesheet" href="${path}/css/main.css">
-
-
 </head>
 <body>
 <script type="text/javascript">
@@ -48,12 +45,12 @@
 			<th>조회수</th>
 		</tr>
 		<tr>
-			<td>${boardnum}</td>
-			<td>${b.title}</td>
-			<td>${b.writer}</td>
+			<td>${b.boardNum}</td>
+			<td>${b.boardTitle}</td>
+			<td>${b.memId}</td>
 			<%-- 오늘 등록된 게시물 날짜 format대로 출력하기 --%>
-			<td></td>
-			<td>${b.readcnt}</td>
+			<td>${b.boardTime}</td>
+			<td>${b.boardReadCnt}</td>
 
 		</tr>
 		<tr>

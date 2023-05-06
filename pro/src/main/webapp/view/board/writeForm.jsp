@@ -25,7 +25,7 @@
 		<div class="w3-container">
 		<%--form action="write" : 내용을 wirte로 전송한다 --%>
 			<form action="write" method="post" name="f" 
-				enctype="multipart-formdata">
+				enctype="multipart/form-data">
 				<div class="form-group">
 					<table class="w3-table w3-border ">
 						<tr>
