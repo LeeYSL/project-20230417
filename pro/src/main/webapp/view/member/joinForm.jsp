@@ -14,7 +14,7 @@
 			f.id.focus()
 		} else {
 			let op = "width=500,height=200,left=50,top=150"
-			open("idChk?id=" + document.f.id.value, "", op)
+			open("idChk?id=" + document.f.id.value, "", op) //f이름을 가진 form 안에 name이 id인 값을 담아서 idChk로 id라는 변수에 담아서 이동
 		}
 
 	}
@@ -31,8 +31,8 @@
 					<table class="w3-table w3-border ">
 						<tr>
 							<td>아이디</td>
-							<td style="padding-right: 360px;"><input type="text"
-								name="id" class="w3-input">
+							<td style="padding-right: 360px;">
+								<input type="text" name="id" class="w3-input">
 								<button type="button" class="btn btn-dark float-right"
 									onclick="idChk()">중복체크</button></td>
 						</tr>

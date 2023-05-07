@@ -261,8 +261,11 @@ public class MemberController extends MskimRequestMapping {
 		} else {
 			msg = "이미 사용중인 아이디 입니다.";
 			able = false;
+		
 		}
 
+		System.out.println("able : " + able);
+	
 		request.setAttribute("able", able);
 		request.setAttribute("msg", msg);
 		return "member/idChk";

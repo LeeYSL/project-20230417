@@ -26,7 +26,7 @@
 				<td>"${param.id}"</td>
 			</tr>
 			<tr>
-				<td colspan="2"><div id="msg">"${param.msg}"</div></td>
+				<td colspan="2"><div id="msg">"${msg}"</div></td>
 			</tr>
 			<tr>
 				<td colspan="2"><button onclick="self.close()"
@@ -35,7 +35,7 @@
 	</div>
 	<script>
  if (${able}) {
-	 opener.document.f.id.style.color="green"
+	 opener.document.f.id.style.color=""
 	 
 	document.querySelector("#msg").setAttribute("class","able")
   } else {
