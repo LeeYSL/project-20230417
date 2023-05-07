@@ -6,6 +6,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
 
+import javax.print.DocFlavor.STRING;
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,70 +32,27 @@ public class BoardController extends MskimRequestMapping {
 	 */
 	@RequestMapping("boardList")
 	public String boardList(HttpServletRequest request, HttpServletResponse response) throws Exception  {
-		//1.boardId 파라미터 저장. session에서 boardId 조회하기
-		if(request.getParameter("boardId") != null) {
-			request.getSession().setAttribute("boardId", request.getParameter("boardId"));//boardid파라미터값을 세션의 boardid에 저장?
-//			request.getSession().setAttribute("pageNum", "1"); // 현재페이지 번호
-		}
-		String boardId = request.getParameter("boardId");//서블릿에서 전달된 boardId 데이터 가져오기
-		if (boardId == null)
-			boardId = "NOTICE";
-		int pageNum= 1; // 페이지 넘버 1로 설정
+		if (request.getParameter("boardId") != null) { //만약 boardid 가 null 이 아니면
+    		request.getSession().setAttribute("boardId", request.getParameter("boardId")); //보드 아이디를 가져와서 boardid라는 변수에 넣고
+    		request.getSession().setAttribute("pageNum", "1"); //기본 번호를 1로 설정
+    	}
+    	String boardId = (String) request.getSession().getAttribute("boardId"); //보드 id 기준으로 가져온 정보를 가져와서 boardid라는 변수에 넣고
+    	if(boardId == null) {
+    		boardId ="NOTICE"; // url에 id 값이 없으면 기본 notice 로 하고 1페이지 뜨게 설정
+    	}
+    	
+		int pageNum = 1; 
 		try {
 			pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		} catch (NumberFormatException e) {
-		} // 페이지 넘버 1 로 할거다 -> 오류 무시할거다
+		} 
+		int limit =10;
 		
-//	//	request.getSession().setAttribute("boardId", boardId); //세션에 boardid에 boardid 저장해라
-//
-//		try {
-//			request.setCharacterEncoding("UTF-8");
-//		} catch (UnsupportedEncodingException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}//post 타입이라? // 안적으면 게시판 검색할때 한글 깨짐 
-//		
-//			
-//		int limit = 10; // 한페이지에 보여질 게시물 건수 > 한페이지에 10 개만 보여줄거다
-//	
-//		// boardcount : 게시물종류별 게시물 등록 건수
-//		int boardCount = dao.boardCount(boardId); // 게시판 종류별 전체 게시물등록 건수 리턴
-//		// list : 현재 페이지에 보여질 게시물 목록.
-//		List<Board> list = dao.list(boardId, pageNum, limit); //column,find 추가
-//		/*
-//		 * maxpage : 필요한 페이지 갯수. 게미물 건수 | 필요한 페이지 3 1 3.0/10 => 0.3 + 0.95 => (int)1.25
-//		 * =>1 10 1 10.0/10 =>1.0 + 0.95 => (int)1.95 =>1 13 2 501 51
-//		 */
-//		int maxpage = (int) ((double) boardCount / limit + 0.95);
-//		/*
-//		 * startpage : 화면에 출력될 시작 페이지 현재페이지 | 시작페이지 1 1 1/10.0 => 0.1 + 0.9 => (int)1.0
-//		 * -1 => 0 * 10 +1 => 1 10 1 11 11 505 501 int startpage= ((int)(pageNum/10.0 +
-//		 * 0.9) -1)*10 +1; //10.0 -> 한페이지에 10개 보여줌
-//		 */
-//		int startpage = ((int) (pageNum / 10.0 + 0.9) - 1) * 10 + 1;
-//		/*
-//		 * endpage : 화면에 출력할 마지막 페이지 번호. 한 화면에 10개의 페이지를 보여줌
-//		 */
-//		int endpage = startpage + 9;
-//		// endpage 는 maxpage를 넘어가면 안됨
-//		if (endpage > maxpage)
-//			endpage = maxpage;
-//
-//		int boardNum = boardCount - (pageNum - 1) * limit;
-//		request.setAttribute("boardCount", boardCount);
-//		request.setAttribute("boardId", boardId);
-//		request.setAttribute("pageNum", pageNum);
-//		request.setAttribute("boardNum", boardNum);
-//		request.setAttribute("list", list);
-//		request.setAttribute("startpage", startpage);
-//		request.setAttribute("endpage", endpage);
-//		request.setAttribute("maxpage", maxpage);
-//		request.setAttribute("today", new Date());
-		boardId = (String)request.getSession().getAttribute("boardId");
+		int boardCount = dao.boardCount(boardId); // 게시판 종류별 전체 게시물 수 리턴
 		
-		Board b = dao.selectOne(boardId);
-		request.setAttribute("b", b);
-
+		List<Board> list = dao.list(boardId, pageNum, limit);//list를 만들건데 board 타입을 넣어서 만든다.
+		System.out.println("@@@@@@@@@@@@2 "+list);
+		request.setAttribute("list", list);
 		return "board/boardList";
 	}
 
@@ -162,16 +121,13 @@ public class BoardController extends MskimRequestMapping {
 		board.setBoardNum(++num); //최대값 +1
 		board.setBoardGrp(num); //grp컬럼 : 최초 게시물의 번호
 		if (dao.insert(board)) { //board 테이블에 게시물 등록했을경우
-			return "redirect:boardList?boardid=" + boardId; // 등록되면 list로 전달
+			return "redirect:boardList?boardId=" + boardId; // 등록되면 list로 전달
 		}
 		// 게시물 등록 실패시 실행되는 부분
 		request.setAttribute("msg", "게시물 등록 실패");
 		request.setAttribute("url", request.getContextPath() + "/board/writeForm");
 		return "alert/alert";
 	}
-
-
-
 	
 
 }

@@ -19,8 +19,9 @@ public interface BoardMapper {
 	int insert(Board board);
 
 	
-	@Select ({"<script>" ,"SELECT * FROM board b where board_id=#{boardId} " 
-			+ " order by board_grp desc, board_grpstep asc ",
+	@Select ({"<script>" ,"SELECT * FROM board where board_id=#{boardId} " 
+			+ " order by board_grp desc, board_grpstep asc"
+			+ " limit #{sLimit}, #{eLimit}",
 			"</script>"})
 	List<Board>list(Map<String, Object> map);
 

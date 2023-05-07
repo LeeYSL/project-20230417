@@ -20,32 +20,14 @@
 		   f.pass.focus()
 		   return false
 	   }
-	   if(remember.checked) {
-		   document.cookie="remember="+document.f.id.value
-	   } else {
-		   document.cookie="remember= "
-	   }	   
+   
 	   return true
    }
    function win_open(page) {
 	   let op="width=500,height=350,left=50,top=150"
 	   open(page,"",op)
    }
-   window.onload = function(){
-	  let cookies = document.cookie.split(";")
-	  for(let c of cookies) {
-		  k = c.substr(0, c.indexOf("="))
-		  v = c.substr(c.indexOf("=")+1)
-		  if(k=='remember') {
-			  document.f.id.value=v
-			  if(v.trim() != "")
-			     remember.checked = "checked"
-		      else   
-			     remember.checked = ""
-			  break
-		  }
-	  }
-   }
+
 </script>
 </head>
 <body> 
