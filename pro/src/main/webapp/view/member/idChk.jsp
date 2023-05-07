@@ -35,7 +35,7 @@
 	</div>
 	<script>
  if (${able}) {
-	 opener.document.f.id.style.color=""
+	 opener.document.f.id.className += " able";
 	 
 	document.querySelector("#msg").setAttribute("class","able")
   } else {

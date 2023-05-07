@@ -52,6 +52,10 @@
 							<td>${mem.memPosition}</td>
 						</tr>
 						<tr>
+							<td>포인트</td>
+							<td>${mem.memPoint}</td>
+						</tr>
+						<tr>
 							<td colspan="2" style="text-align: center">
 								<button type="submit" class="btn btn-dark" onclick="update()">수정</button>
 								<button type="button" class="btn btn-dark" onclick="deleteForm()">탈퇴</button>
