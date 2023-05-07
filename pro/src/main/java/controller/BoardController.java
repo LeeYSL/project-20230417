@@ -187,7 +187,7 @@ public class BoardController extends MskimRequestMapping {
 //		return "alert";
 //
 //	}
-	
+//	   
 	@RequestMapping("updateForm")
 	public String updateForm(HttpServletRequest request, HttpServletResponse response) {
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
