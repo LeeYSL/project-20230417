@@ -151,7 +151,7 @@ public class BoardController extends MskimRequestMapping {
 		request.setAttribute("url", request.getContextPath() + "/board/writeForm");
 		return "alert/alert";
 	}
-
+   
 	@RequestMapping("boardInfo")
 	public String boardInfo(HttpServletRequest request, HttpServletResponse response) {
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
