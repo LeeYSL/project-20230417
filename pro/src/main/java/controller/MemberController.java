@@ -66,12 +66,12 @@ public class MemberController extends MskimRequestMapping {
 	}
 
 	@RequestMapping("idForm")
-	public String goIdForm() {
+	public String goIdForm(HttpServletRequest request, HttpServletResponse response) {
 		return "member/idForm";
 	}
 
 	@RequestMapping("joinForm")
-	public String goJoinForm() {
+	public String goJoinForm(HttpServletRequest request, HttpServletResponse response) {
 		return "member/joinForm";
 	}
 
@@ -102,12 +102,12 @@ public class MemberController extends MskimRequestMapping {
 	}
 
 	@RequestMapping("list")
-	public String goList() {
+	public String goList(HttpServletRequest request, HttpServletResponse response) {
 		return "member/list";
 	}
 
 	@RequestMapping("loginForm")
-	public String goLoginForm() {
+	public String goLoginForm(HttpServletRequest request, HttpServletResponse response) {
 		return "member/loginForm";
 	}
 
@@ -142,7 +142,7 @@ public class MemberController extends MskimRequestMapping {
 	}
 
 	@RequestMapping("pwForm")
-	public String goPwForm() {
+	public String goPwForm(HttpServletRequest request, HttpServletResponse response) {
 		return "member/pwForm";
 	}
 
