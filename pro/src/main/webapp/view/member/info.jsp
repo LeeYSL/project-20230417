@@ -27,10 +27,6 @@
 							<td>아이디</td>
 							<td>${mem.memId}</td>
 						</tr>
-						<tr>  
-							<td>비밀번호</td>
-							<td>${mem.memPw}</td>
-						</tr>
 					   	<tr>
 							<td>이름</td>
 							<td>${mem.memName}</td>
