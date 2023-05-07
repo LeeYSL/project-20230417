@@ -10,11 +10,50 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 <script type="text/javascript">
    function inputcheck(f) {
-	   if(f.pass1.value == "") {
-		   alert("비밀번호를 입력하세요");
-		   f.pass.fouse();
+	   if(f.pass.value.trim() == "") {
+		   alert("현재 비밀번호를 입력하세요");
+		   f.pass.focus();
 		   return false;
 	   }
+	   if(f.pass1.value.trim() == "") {
+		   alert("변경 비밀번호를 입력하세요");
+		   f.pass1.focus();
+		   return false;
+	   }
+	   if(f.pass2.value.trim() == "") {
+		   alert("변경 비밀번호를 재확인 하세요");
+		   f.pass2.focus();
+		   return false;
+	   }
+	
+	   if (f.name.value.trim() == "") {
+			alert("이름을 입력하세요")
+			f.name.focus();
+			return false;
+		}
+
+		if (f.tel.value.trim() == "") {
+			alert("전화번호를 입력하세요")
+			f.tel.focus()
+			return false;
+		}
+		if (f.adress.value.trim() == "") {
+			alert("주소를 입력하세요")
+			f.adress.focus()
+			return false;
+		}
+		if (f.email.value.trim() == "") {
+			alert("이메일을 입력하세요")
+			f.email.focus()
+			return false;
+		}
+		  if(f.pass1.value.trim() != f.pass2.value.trim()) {
+			   alert("변경 비밀번호가 일치하지 않습니다.");
+			   f.pass1.focus();
+			   return false;
+		  }
+		return true;
+	   
    }
 </script>
 

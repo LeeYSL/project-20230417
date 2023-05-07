@@ -27,10 +27,6 @@
 							<td>아이디</td>
 							<td>${mem.memId}</td>
 						</tr>
-						<tr>  
-							<td>비밀번호</td>
-							<td>${mem.memPw}</td>
-						</tr>
 					   	<tr>
 							<td>이름</td>
 							<td>${mem.memName}</td>
@@ -50,6 +46,10 @@
 						<tr>
 							<td>회원 유형</td>
 							<td>${mem.memPosition}</td>
+						</tr>
+						<tr>
+							<td>포인트</td>
+							<td>${mem.memPoint}</td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">
