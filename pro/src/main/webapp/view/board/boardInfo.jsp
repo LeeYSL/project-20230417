@@ -15,7 +15,7 @@ function win_open() {
 }
 </script>
 </head>
-<body>
+<body> 
 	<div id="main_div">
 		<div class="w3-container w3-center">
 			<h2 class="w3-center">${board_name}</h2>
