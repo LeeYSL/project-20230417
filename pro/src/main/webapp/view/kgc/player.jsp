@@ -27,7 +27,7 @@
 								src="${path}/image/profile1/0.jpg"
 								alt="No.- 메가왓티 퍼티위" /><span class="bg_name"><em>No.-</em><strong>메가왓티퍼티위</strong></span></a></li>
 						<li><a href="profile"><img class="profileimg"
-								src="${path}/image/profile1/1.jpg"
+								src="${path}/image/playerImg/4.jpg"
 								alt="No.4 이예솔" /><span class="bg_name"><em>No.4</em><strong>이예솔</strong></span></a></li>
 					</ul>
 				</dd>

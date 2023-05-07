@@ -4,7 +4,7 @@
 	margin-top: 65px;
 	padding: 15px 40px 15px 40px;
 }
-
+ 
 .center {
     text-align: center;
 }
@@ -14,9 +14,10 @@
 }
 
 .h3Txt {
-    padding: 15px 0 20px;
+    padding: 15px 0px 20px 0px;
     font-size: 30px;
     color: #111;
+    list-style: none;
 }
 
 .h5Txt{
@@ -25,7 +26,10 @@
     font-size: 20px;
     color: #111;
 }
-
+.profileimg {
+	width: 180px;
+	height: 204px;
+}
 .logoimg {
 	width: 50px
 }
@@ -35,8 +39,6 @@
     height: 204px;
     float: left;
     margin: 0 0 30px 30px;
-    background-color: #f5f5f5;
-    list-style-type: none;
 }
 
 
@@ -45,7 +47,7 @@
 	height :300px;
 	border-bottom-style: solid;
 	border-bottom-color: black;
-
+	
 		
 }
 
@@ -82,8 +84,8 @@
     border-bottom: 1px solid #ccc;
     width: 70%;
 }
-
-.plist dl dd ul li a .bg_name {
+/*
+.list dl dd ul li a .bg_name {
     width: 180px;
     height: 38px;
     filter: alpha(opacity=80);
@@ -92,6 +94,8 @@
     top: 166px;
     left: 0;
     opacity: 0.80;
+    list-style: none;
 }
+*/
 
 

@@ -54,18 +54,6 @@ public class BoardMybatisDao {
 		return 0;
 	}
 
-	public Board selectOne(String boardId) {
-		SqlSession session = MybatisConnection.getConnection();
-		try {
-			return session.getMapper(cls).selectOne(boardId);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			MybatisConnection.close(session);
-		}
-		return null;
-	}
-
 	public List<Board> list(String boardId, int pageNum, int limit) {
 		SqlSession session = MybatisConnection.getConnection();
 
@@ -83,5 +71,19 @@ public class BoardMybatisDao {
 		}
 		return null;
 
+	}
+
+	public Board selectOne(int boardNum) {
+		SqlSession session = MybatisConnection.getConnection();
+		
+		try {
+			return session.getMapper(cls).selectOne(boardNum);
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		
+		return null;
 	}
 }

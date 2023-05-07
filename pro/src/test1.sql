@@ -53,7 +53,7 @@ CREATE TABLE comment
 	comment_time datetime NOT NULL,
 	-- 아이디
 	mem_id varchar(15) NOT NULL COMMENT '아이디',
-	PRIMARY KEY (board_num, comment_num)
+	PRIMARY KEY (board_num)
 );
 
 
@@ -75,6 +75,8 @@ CREATE TABLE goods
 	goods_img varchar(200) NOT NULL,
 	PRIMARY KEY (goods_code)
 );
+
+
 
 
 CREATE TABLE member

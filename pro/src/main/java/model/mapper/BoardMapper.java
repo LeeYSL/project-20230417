@@ -32,7 +32,8 @@ public interface BoardMapper {
 	int boardCount(Map<String, Object> map);
 
 
-	@Select("select * from board where board_id=#{value}") 
-	Board selectOne(String boardId);
+
+	@Select("select * from board where board_num=#{value}")
+	Board selectOne(int boardNum);
 
 }

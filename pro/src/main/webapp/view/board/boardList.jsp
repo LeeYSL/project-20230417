@@ -36,26 +36,44 @@
 		<h2 id="title" class="w3-center"></h2>
 		<div class="w3-container">
 			<table class="w3-table-all">
-			<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>등록일</th>
-					<th>조회수</th>
-			</tr>
-			<c:forEach var="b" items="${list}">
-				<tr>
-					<td>${b.boardNum}</td>
-					<td>${b.boardTitle}</td>
-					<td>${b.memId}</td>
-					<%-- 오늘 등록된 게시물 날짜 format대로 출력하기 --%>
-					<td>${b.boardTime}</td>
-					<td>${b.boardReadCnt}</td>
-				</tr>
-			</c:forEach>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>등록일</th>
+						<th>조회수</th>
+					</tr>
+					<c:forEach var="b" items="${list}">
+						<tr>
+							<td>${num}</td>
+							<c:set var="num" value="${num -1}" />
+							<td width="50%">
+							
+								<c:if test="${!empty b.boardFile}">
+									<a href="../upload/board/${b.boardFile}">@</a>
+								</c:if>
+								<c:if test="${empty b.boardFile}">
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								</c:if>
+								<c:if test="${b.boardGrpLevel > 0}">
+									<c:forEach var="i" begin="1" end="${b.boardGrpLevel > 0}">
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									</c:forEach> └ 
+								</c:if>
+								
+								<a href="boardInfo?boardNum=${b.boardNum}">${b.boardTitle}</a>
+							
+								</td>
+							<td>${b.memId}</td>
+							<%-- 오늘 등록된 게시물 날짜 format대로 출력하기 --%>
+							<td>${b.boardTime}</td>
+							<td>${b.boardReadCnt}</td>
+						</tr>
+					</c:forEach>
+
 				<tr>
 					<td colspan="5" style="text-align: right">
-						<button type="submit" class="btn btn-dark"">게시글 작성</button>
+						<button type="submit" class="btn btn-dark">게시글 작성</button>
 					</td>
 				</tr>
 			</table>

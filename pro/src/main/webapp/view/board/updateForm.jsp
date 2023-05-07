@@ -20,39 +20,32 @@
 				<h2 class="w3-center">${board_name}</h2>
 				<table class="w3-table-all">
 					<tr>
-						<th>작성일:</th>
-						<td><input type="text" value="${board}" class="w3-input"></td>
-					</tr>
-					<tr>
 						<th>작성자:</th>
-						<td><input type="text" value="${board_writer}"
+						<td><input type="text" value="${b.memId}"
 							class="w3-input"></td>
-					</tr>
-					<tr>
-						<th>조회수:</th>
-						<td><input type="text" value="${board}" class="w3-input"></td>
 					</tr>
 					<tr>
 						<th>제목</th>
-						<td><input type="text" value="${board_title}"
+						<td><input type="text" value="${b.boardTitle}"
 							class="w3-input"></td>
 					</tr>
-					<tr>
+					<tr style="height: 400px">
 						<th>내용</th>
-						<td><input type="text" value="${board_content}"
-							class="w3-input"></td>
+						<td><textarea rows="15" class="w3-input">${b.boardContent}</textarea></td>
+
+							
 					</tr>
 					<tr>
 						<!-- 몬말인지.... -->
 						<td>첨부파일</td>
-						<td style="text-align: left"><c:if test="${!empty b.file1 }">
-								<div id="file_desc">${b.file1}
+						<td style="text-align: left"><c:if test="${!empty b.boardFile}">
+								<div id="file_desc">${b.boardFile}
 									<a href="javascript:file_delete()">[첨부파일 삭제]</a>
 								</div>
 							</c:if> <input type="file" name="file1"></td>
 					</tr>
 					<tr>
-						<td colspan="2"><a href="javascript:document.f.submit()">[게시물수정]</a></td>
+						<td colspan="2" style="text-align: center" ><a href="javascript:document.f.submit()" class="btn btn-dark"  >게시물수정</a></td>
 					</tr>
 				</table>
 			</div>
