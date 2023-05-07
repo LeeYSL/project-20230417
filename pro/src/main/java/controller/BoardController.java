@@ -167,7 +167,7 @@ public class BoardController extends MskimRequestMapping {
 //		if(boardReadCnt==null || !boardReadCnt.equals("f"));
 
 		return "board/boardInfo";
-	}
+	} 
 
 //	@RequestMapping("comment")
 //	public String comment(HttpServletRequest request, HttpServletResponse response) {
