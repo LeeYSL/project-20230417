@@ -177,14 +177,12 @@ public class MemberController extends MskimRequestMapping {
 		mem.setMemEmail(request.getParameter("email"));
 
 		System.out.println(mem);
-		
-
 
 		String pass = request.getParameter("pass"); // 변경 전 입력하는 비밀번호
 		Member dbMem = dao.selectOne(id);
-		
-		mem.setMemPosition(dbMem.getMemPosition()); //회원 유형
-		mem.setMemPoint(dbMem.getMemPoint()); //회원 포인트
+
+		mem.setMemPosition(dbMem.getMemPosition()); // 회원 유형
+		mem.setMemPoint(dbMem.getMemPoint()); // 회원 포인트
 
 		String msg = "비밀번호가 틀렸습니다.";
 		String url = "updateForm";
@@ -240,10 +238,34 @@ public class MemberController extends MskimRequestMapping {
 			request.setAttribute("url", "../kgc/main");
 			request.getSession().invalidate(); // 모든 내용이 없어진다.
 			return "alert/alert";
-		
+
 		}
-			
+
 		return null;
 	}
 
+	@RequestMapping("idChk")
+	public String idChk(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String id = request.getParameter("id"); // 입력 받은 id를 가져와
+		Member mem = dao.selectOne(id);
+		String msg = null;
+		boolean able = true;
+
+		if (mem == null) {
+			msg = "사용가능한 아이디 입니다.";
+		} else {
+			msg = "이미 사용중인 아이디 입니다.";
+			able = false;
+		}
+
+		request.setAttribute("able", able);
+		request.setAttribute("msg", msg);
+		return "member/idChk";
+
+	}
 }

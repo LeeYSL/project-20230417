@@ -7,6 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<script type="text/javascript">
+	function idChk() {
+		if (document.f.id. value == '') {
+			alert("아이디를 입력하세요")
+			f.id.focus()
+		} else {
+			let op = "width=500,height=200,left=50,top=150"
+			open("idChk?id=" + document.f.id.value, "", op)
+		}
+
+	}
+</script>
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
@@ -19,16 +31,16 @@
 					<table class="w3-table w3-border ">
 						<tr>
 							<td>아이디</td>
-							<td style="padding-right: 360px;">
-								<input type="text" name="id" class="w3-input">
-									<button type="button" class="btn btn-dark float-right" onclick="idchk()">중복체크</button>
-							</td>
+							<td style="padding-right: 360px;"><input type="text"
+								name="id" class="w3-input">
+								<button type="button" class="btn btn-dark float-right"
+									onclick="idChk()">중복체크</button></td>
 						</tr>
-						<tr>  
+						<tr>
 							<td>비밀번호</td>
 							<td><input type="password" name="pass" class="w3-input"></td>
 						</tr>
-					   	<tr>
+						<tr>
 							<td>이름</td>
 							<td><input type="text" name="name" class="w3-input"></td>
 						</tr>
