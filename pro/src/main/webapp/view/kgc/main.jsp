@@ -218,27 +218,27 @@
 
 <div class="w3-quarter">
 <div class="w3-card w3-white">
-  <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007158800&plink=ORI&cooper=NAVER" target="blank"><img src="../image/news1.jpg" alt="Snow" style="width:100%"></a>
+  <a href="https://mksports.co.kr/view/2023/334771" target="blank"><img src="../image/news5.jpg" alt="Snow" style="width:100%"></a>
   <div class="w3-container-news">
-  <p id="news">여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
+  <p id="news">“10일 검사 후 재활 일정 잡는다”…KGC 캡틴 이소영, 다음 시즌 출발 함께 할 수 있을까</p>
   </div>
   </div>
 </div>
 
 <div class="w3-quarter">
 <div class="w3-card w3-white">
-  <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007158800&plink=ORI&cooper=NAVER" target="blank"><img src="../image/news1.jpg" alt="Snow" style="width:100%"></a>
+  <a href="http://www.newsworker.co.kr/news/articleView.html?idxno=201983" target="blank"><img src="../image/news4.jpg" alt="Snow" style="width:100%"></a>
   <div class="w3-container-news">
-   <p id="news">여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
+   <p id="news">여자배구 사상 첫 아시아쿼터...V리그에 히잡 쓴 선수 뜬다</p>
   </div>
   </div>
 </div>
 
 <div class="w3-quarter">
 <div class="w3-card w3-white">
-  <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007158800&plink=ORI&cooper=NAVER" target="blank"><img src="../image/news1.jpg" alt="Snow" style="width:100%"></a>
+  <a href="https://sports.news.naver.com/news?oid=410&aid=0000935364" target="blank"><img src="../image/news3.jpg" alt="Snow" style="width:100%"></a>
   <div class="w3-container-news">
-   <p id="news">여자배구 KGC인삼공사, FA 한송이 · 염혜선과 재계약</p>
+   <p id="news">신인 유일 올스타→女 최초 리베로 신인왕은 말했다…“더 열심히 준비하겠습니다”</p>
   </div>
   </div>
 </div>

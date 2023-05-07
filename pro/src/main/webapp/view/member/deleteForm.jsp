@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,7 @@
 		<div class="container">
 			<form action="delete" method="post"
 				onsubmit="return inputcheck(this)">
-				<h2 id="center">회원비밀번호 입력</h2>
+				<h2 class="w3-center">회원비밀번호 입력</h2>
 				<table class="table">
 					<tr>
 						<th>비밀번호</th>

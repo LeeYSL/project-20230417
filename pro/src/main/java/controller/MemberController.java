@@ -16,11 +16,6 @@ import model.MemberMybatisDao;
 public class MemberController extends MskimRequestMapping {
 	private MemberMybatisDao dao = new MemberMybatisDao();
 
-	@RequestMapping("idChk")
-	public String goIdChk() {
-		return "member/idChk";
-	}
-
 	@RequestMapping("idSearch")
 	public String idSearch(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -235,7 +230,7 @@ public class MemberController extends MskimRequestMapping {
 		if (dao.delete(id)) {// id를 기준으로 지워
 			msg = id + "고객님 탈퇴 성공";
 			request.setAttribute("msg", msg);
-			request.setAttribute("url", "../kgc/main");
+			request.setAttribute("url", "/pro");
 			request.getSession().invalidate(); // 모든 내용이 없어진다.
 			return "alert/alert";
 
@@ -261,11 +256,9 @@ public class MemberController extends MskimRequestMapping {
 		} else {
 			msg = "이미 사용중인 아이디 입니다.";
 			able = false;
-		
+
 		}
 
-		System.out.println("able : " + able);
-	
 		request.setAttribute("able", able);
 		request.setAttribute("msg", msg);
 		return "member/idChk";
