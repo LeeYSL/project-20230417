@@ -10,8 +10,7 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 <script type="text/javascript">
 	function deleteForm() {	
-		var op = "width=500, height=250, left=50, top=150";
-		open("deleteForm","",op);
+		location.href="member/deleteForm";
 	}
 
 </script>
