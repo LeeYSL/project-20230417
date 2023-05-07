@@ -51,7 +51,6 @@ public class BoardController extends MskimRequestMapping {
 		int boardCount = dao.boardCount(boardId); // 게시판 종류별 전체 게시물 수 리턴
 		
 		List<Board> list = dao.list(boardId, pageNum, limit);//list를 만들건데 board 타입을 넣어서 만든다.
-		System.out.println("@@@@@@@@@@@@2 "+list);
 		request.setAttribute("list", list);
 		return "board/boardList";
 	}

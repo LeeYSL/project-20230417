@@ -9,7 +9,7 @@
 <title>회원가입</title>
 <script type="text/javascript">
 	function idChk() {
-		if (document.f.id. value == '') {
+		if (document.f.id.value == '') {
 			alert("아이디를 입력하세요")
 			f.id.focus()
 		} else {
@@ -25,7 +25,7 @@
 	<div id="main_div">
 		<h2 class="w3-center">회원가입</h2>
 		<div class="w3-container">
-			<form action="join" method="post" name="f"
+			<form action="join" method="post" name="f" onsubmit="return input_check(this)"
 				enctype="multipart-formdata">
 				<div class="form-group">
 					<table class="w3-table w3-border ">
