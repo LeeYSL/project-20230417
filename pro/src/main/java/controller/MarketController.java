@@ -44,12 +44,12 @@ public class MarketController extends MskimRequestMapping {
 	@RequestMapping("marketForm")
 	public String marketForm(HttpServletRequest request, HttpServletResponse response) {
 		String login = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
-//	
-//			if (login == null || !login.equals("admin")) {// 로그인이 안돼있거나 관리자가 아니라면
-//				request.setAttribute("msg", "관리자만 글쓰기가 가능합니다.");
-//				request.setAttribute("url", request.getContextPath() + "/market/marketList");
-//				return "alert/alert";
-//			}
+	
+			if (login == null || !login.equals("admin")) {// 로그인이 안돼있거나 관리자가 아니라면
+				request.setAttribute("msg", "관리자만 글쓰기가 가능합니다.");
+				request.setAttribute("url", request.getContextPath() + "/market/marketList");
+				return "alert/alert";
+			}
 		return "market/marketForm";
 	}
 	@RequestMapping("market")
@@ -88,6 +88,10 @@ public class MarketController extends MskimRequestMapping {
 		request.setAttribute("url", request.getContextPath() + "/market/marketForm");
 		return "alert/alert";
 	}
+	@RequestMapping("cart")
+	public String cart(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	
    
-
+		return "alert/alert";
+	}
 }
