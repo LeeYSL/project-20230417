@@ -51,11 +51,11 @@ function win_open() {
 				</tr>
 				<tr>
 					<td colspan="2" class="w3-center"><a
-						href="replyForm?num=${b.boardNum}">[답변]</a> <c:if
+						href="replyForm?num=${b.boardNum}" class="btn btn-dark" >답변</a> <c:if
 							test="${boardid !='1' || sessionScpoe.login == 'admin'}">
 							<a href="updateForm?boardNum=${b.boardNum}" class="btn btn-dark">수정</a>
 							<a href="deleteForm?boardNum=${b.boardNum}" class="btn btn-dark" >삭제</a>
-						</c:if> <a href="boardList">[목록]</a></td>
+						</c:if> <a href="boardList?boardId=${b.boardId}" class="btn btn-dark">목록</a></td>
 				</tr>
 			</table>
 			<form action="comment" method="post">
