@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
        <script>
-    if($dao.insert(goods)}) {
+    if(${dao.insert(goods)}) {
     	response.sendRedirect("${list}");
     }else
       alert("게시물 등록 실패")

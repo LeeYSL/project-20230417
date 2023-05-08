@@ -6,10 +6,9 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import model.mapper.BoardMapper;
 import model.mapper.GoodsMapper;
 
-public class MarketMybatisDao {
+public class GoodsMybatisDao {
 	private Class<GoodsMapper> cls = GoodsMapper.class;
 	private Map<String, Object> map = new HashMap<>();
 
@@ -26,17 +25,17 @@ public class MarketMybatisDao {
 		return false;
 	}
 
-	public int maxnum() {
-		SqlSession session = MybatisConnection.getConnection();
-		try {
-			return session.getMapper(cls).maxnum();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			MybatisConnection.close(session);
-		}
-		return 0;
-	}
+//	public int maxnum() {
+//		SqlSession session = MybatisConnection.getConnection();
+//		try {
+//			return session.getMapper(cls).maxnum();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			MybatisConnection.close(session);
+//		}
+//		return 0;
+//	}
 
 	public List<Goods> list() {
 		SqlSession session = MybatisConnection.getConnection();

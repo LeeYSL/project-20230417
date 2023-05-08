@@ -21,20 +21,20 @@
 		<h2 class="w3-center">상품등록</h2>
 		<div class="w3-container">
 			<form action="market" method="post" name="f"
-				enctype="multipart-formdata">
+				enctype="multipart/form-data">
 				<div class="form-group">
 					<table class="w3-table w3-border ">
 						<tr>
 							<th>상품번호</th>
-							<td><input type="text" id="num" class="w3-input"></td>
+							<td><input type="text" name="num" class="w3-input"></td>
 						</tr>
 						<tr>
 							<th>상품명</th>
-							<td><input type="text" id="name" class="w3-input"></td>
+							<td><input type="text" name="name" class="w3-input"></td>
 						</tr>
 						<tr>
 							<th>가격</th>
-							<td><input type="text" id="price" class="w3-input"></td>
+							<td><input type="text" name="price" class="w3-input"></td>
 						</tr>
 						<tr>
 							<th>첨부파일</th>

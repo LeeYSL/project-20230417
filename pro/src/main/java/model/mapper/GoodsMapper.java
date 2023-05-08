@@ -17,7 +17,7 @@ public interface GoodsMapper {
 	int maxnum();
 
 	@Select({"<script>",
-		"select * from member",
+		"select * from goods",
 		"</script>"})
 	List<Goods> list(Object object);
 

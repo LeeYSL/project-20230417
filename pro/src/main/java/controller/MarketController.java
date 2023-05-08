@@ -16,13 +16,13 @@ import gdu.mskim.RequestMapping;
 import model.Board;
 import model.Cart;
 import model.Goods;
-import model.MarketMybatisDao;
+import model.GoodsMybatisDao;
 import model.Member;
 import model.MemberMybatisDao;
 
 @WebServlet(urlPatterns = { "/market/*" }, initParams = { @WebInitParam(name = "view", value = "/view/") })
 public class MarketController extends MskimRequestMapping {
-	private MarketMybatisDao dao = new MarketMybatisDao();
+	private GoodsMybatisDao dao = new GoodsMybatisDao();
 /*
 	@RequestMapping("buyForm")
 	public String buyForm(HttpServletRequest request, HttpServletResponse response) {
@@ -36,13 +36,6 @@ public class MarketController extends MskimRequestMapping {
 	@RequestMapping("marketList")
 	public String marketList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		int pageNum = 1;
-		try {
-			pageNum = Integer.parseInt(request.getParameter("pageNum"));
-		} catch (NumberFormatException e) {
-		}
-		int limit = 10;
-
 		List<Goods> list = dao.list();
 		request.setAttribute("list", list);
 		return "market/marketList";
@@ -51,17 +44,17 @@ public class MarketController extends MskimRequestMapping {
 	@RequestMapping("marketForm")
 	public String marketForm(HttpServletRequest request, HttpServletResponse response) {
 		String login = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
-	
-			if (login == null || !login.equals("admin")) {// 로그인이 안돼있거나 관리자가 아니라면
-				request.setAttribute("msg", "관리자만 글쓰기가 가능합니다.");
-				request.setAttribute("url", request.getContextPath() + "/market/marketList");
-				return "alert/alert";
-			}
+//	
+//			if (login == null || !login.equals("admin")) {// 로그인이 안돼있거나 관리자가 아니라면
+//				request.setAttribute("msg", "관리자만 글쓰기가 가능합니다.");
+//				request.setAttribute("url", request.getContextPath() + "/market/marketList");
+//				return "alert/alert";
+//			}
 		return "market/marketForm";
 	}
 	@RequestMapping("market")
-	public String write(HttpServletRequest request, HttpServletResponse response) {
-		String path = request.getServletContext().getRealPath("/") + "/upload/market/";
+	public String write(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		String path = request.getServletContext().getRealPath("/") + "/upload/goods/";
 		// getServletContext() : ServletContext 객체를 가져온다
 		// getRealPath("/") : 지정한 path에 해당되는 실제 경로를 반환
 		File f = new File(path);
@@ -76,16 +69,17 @@ public class MarketController extends MskimRequestMapping {
 		} // 파일업로드끝
 			// 파라미터 Board 객체에 저장
 		Goods goods = new Goods(); // db cart의 객체를 만든다?
-		int goodsCode=Integer.parseInt(request.getParameter("num")); // name이 title인 파라미터 값을 보드객체의 BoardTitle에 저장한다.
+		goods.setGoodsCode(Integer.parseInt(multi.getParameter("num")));
+		
+		goods.setGoodsPrice(Integer.parseInt(multi.getParameter("price")));
 		goods.setGoodsName(multi.getParameter("name"));// name이 content인 파라미터 값을 보드객체의 BoardTitle에 저장한다.
-		int goodsPrice=Integer.parseInt(request.getParameter("price"));// name이 content인 파라미터 값을 보드객체의 BoardTitle에 저장한다.
 		goods.setGoodsImg(multi.getFilesystemName("file"));// name이 file인 파라미터 값을 보드객체의 BoardTitle에 저장한다.
 		String id = (String) request.getSession().getAttribute("login");
 
-		if (goods.getGoodsImg() == null)
+		if (goods.getGoodsImg() == null) 
 			goods.setGoodsImg(""); // 업로드 파일이 없는 경우 빈문자열
-		int num = dao.maxnum(); // 등록된 게시글의 최대 num 값
-		goods.setGoodsNum(++num); // 최대값 +1
+//		int num = dao.maxnum(); // 등록된 게시글의 최대 num 값
+//		goods.setGoodsNum(++num); // 최대값 +1
 		if (dao.insert(goods)) { // board 테이블에 게시물 등록했을경우
 			return "redirect:marketList"; // 등록되면 list로 전달
 		}
