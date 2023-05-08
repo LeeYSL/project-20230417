@@ -1,5 +1,5 @@
 package controller;
-
+  
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -21,7 +21,7 @@ import model.Board;
 import model.BoardMybatisDao;
 import model.Comment;
 
-
+//
 @WebServlet(urlPatterns = { "/board/*" }, initParams = { @WebInitParam(name = "view", value = "/view/") })
 public class BoardController extends MskimRequestMapping {
 	private BoardMybatisDao dao = new BoardMybatisDao();

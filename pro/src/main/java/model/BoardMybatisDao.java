@@ -9,7 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import graphql.relay.Connection;
 import model.mapper.BoardMapper;
-
+//
 public class BoardMybatisDao {
 	private Class<BoardMapper> cls = BoardMapper.class;
 	private Map<String, Object> map = new HashMap<>();
