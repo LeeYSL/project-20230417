@@ -231,7 +231,6 @@ public class BoardController extends MskimRequestMapping {
 		if (board.getBoardFile() == null || board.getBoardFile().equals("")) {
 			board.setBoardFile(multi.getParameter("boardFile"));
 		}
-
 		Board dbBoard = dao.selectOne(board.getBoardNum());
 		String msg;
 		String url;
@@ -250,5 +249,5 @@ public class BoardController extends MskimRequestMapping {
 		request.setAttribute("url", url);
 		return "alert/alert";
 	}
-
+  
 }
