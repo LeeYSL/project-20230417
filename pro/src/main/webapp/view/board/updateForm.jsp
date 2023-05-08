@@ -17,11 +17,11 @@
 		<form action="update" method="post" enctype="multipart/form-data"
 			name="f">
 			<div class="w3-container w3-center">
-				<h2 class="w3-center">${board_name}</h2>
+				<h2 class="w3-center">${b.boardId}</h2>
 				<table class="w3-table-all">
 					<tr>
 						<th>작성자:</th>
-						<td><input type="text" value="${b.memId}"
+						<td><input type="text" value="${b.memId}" name="name"
 							class="w3-input"></td>
 					</tr>
 					<tr>
@@ -31,7 +31,7 @@
 					</tr>
 					<tr style="height: 400px">
 						<th>내용</th>
-						<td><textarea rows="15" class="w3-input" name="title">${b.boardContent}</textarea></td>
+						<td><textarea rows="15" class="w3-input" name="content">${b.boardContent}</textarea></td>
 
 							
 					</tr>

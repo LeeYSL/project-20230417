@@ -4,9 +4,11 @@ package model.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.checkerframework.checker.units.qual.degrees;
 
 import model.Board;
 public interface BoardMapper {
@@ -34,10 +36,13 @@ public interface BoardMapper {
 
 
 
-	@Select("select * from board where board_num=#{value}")
+	@Select("select * from board where board_num=#{boardNum}")
 	Board selectOne(int boardNum);
 
 	@Update("update board set mem_id=#{memId}, board_title=#{boardTitle}, board_content=#{boardContent},boardFile=#{boardFile} where board_num=#{boardNum}")
 	int update(Board board);
+   
+	@Delete("delete from board where board_num=#{boardNum}")
+	int delete(String boardNum);
 
 }
