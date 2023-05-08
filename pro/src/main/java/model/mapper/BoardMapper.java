@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
 import org.checkerframework.checker.units.qual.degrees;
 
 import model.Board;
+import model.Member;
 public interface BoardMapper {
 	@Select ("select ifnull(max(board_num),0) from board") //이게 뭔말인지...
 	int maxnum();
@@ -44,5 +45,10 @@ public interface BoardMapper {
    
 	@Delete("delete from board where board_num=#{boardNum}")
 	int delete(String boardNum);
+    
+	@Select("select * from board where mem_id=#{memId})")
+	Member selectOne(String memId);
+
+	int delete(int boardNum);
 
 }

@@ -20,6 +20,7 @@ import gdu.mskim.RequestMapping;
 import model.Board;
 import model.BoardMybatisDao;
 import model.Comment;
+import model.Member;
 
 //
 @WebServlet(urlPatterns = { "/board/*" }, initParams = { @WebInitParam(name = "view", value = "/view/") })
@@ -231,6 +232,7 @@ public class BoardController extends MskimRequestMapping {
 		if (board.getBoardFile() == null || board.getBoardFile().equals("")) {
 			board.setBoardFile(multi.getParameter("file"));
 		}
+		System.out.println(board);
 		Board dbBoard = dao.selectOne(board.getBoardNum());
 		String msg;
 		String url;
@@ -252,13 +254,31 @@ public class BoardController extends MskimRequestMapping {
 	@RequestMapping("delete") 
 	public String deldte(HttpServletRequest request, HttpServletResponse response) {
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-		String pass =  request.getParameter("");
+		String id = request.getParameter("id");
+		Member mem = dao.selectOne(id);
 		Board b = dao.selectOne(boardNum);
-		String msg = "비밀번호가 틀렸습니다.";
-		String url = "deleteForm?boardNum="+ boardNum;
-
-			
+		String msg = null;
+		String url = null;
+		if(!id.equals(mem.getMemId())) {
+			request.setAttribute(msg, "아이디가 달라 삭제 불가능 합니다.");
+			request.setAttribute("url", "deleteForm");
+			return "alert/alert";
 		}
+		if(dao.delete(boardNum)) {
+			msg = "삭제되었습니다.";
+			url = "list?boardid=" + board.getBoardid();
+			} else { // 삭제실패
+				msg = "게시글 삭제 실패";
+				url = "info.?num=" + num;
+			}
+		}
+
 	}
+	request.setAttribute("msg", msg);
+	request.setAttribute("url", url);
+	return "alert";
+	
+}
+}
   
 

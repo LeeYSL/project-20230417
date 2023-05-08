@@ -97,7 +97,7 @@ public class BoardMybatisDao {
 			MybatisConnection.close(session);
 		} return false;
 	}
-	public boolean deletd(String boardNum) {
+	public boolean delete(int boardNum) {
 		SqlSession session = MybatisConnection.getConnection();
  		try {
  			int cnt = session.getMapper(cls).delete(boardNum);
@@ -109,6 +109,18 @@ public class BoardMybatisDao {
  		}
  		return false;
  		}
-		
+
+	public Member selectOne(String memId) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			return session.getMapper(cls).selectOne(memId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			MybatisConnection.close(session);
+		}
+		return null;
+	}
+
 	}
 

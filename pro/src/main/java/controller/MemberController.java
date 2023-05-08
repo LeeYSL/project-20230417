@@ -224,7 +224,7 @@ public class MemberController extends MskimRequestMapping {
 		Member dbMem = dao.selectOne(id); // 로그인된 사용자의 정보를 id로 조회해서 가져와?
 		if (!pass.equals(dbMem.getMemPw())) {
 			request.setAttribute("msg", "비밀번호 오류");
-			request.setAttribute("url", "deldteForm");
+			request.setAttribute("url", "delteForm");
 			return "alert/alert";
 		}
 		if (dao.delete(id)) {// id를 기준으로 지워

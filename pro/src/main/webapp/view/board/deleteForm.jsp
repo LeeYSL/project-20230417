@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="container">
-		<form action="id" method="post" name="f" enctype="multipart-formdata">
+		<form action="delete" method="post" name="f" enctype="multipart-formdata">
 			<div class="form-group">
 				<table class="w3-table w3-border ">
 
