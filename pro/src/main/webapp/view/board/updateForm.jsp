@@ -18,6 +18,7 @@
 			name="f">
 			<div class="w3-container w3-center">
 				<h2 class="w3-center">${b.boardId}</h2>
+				<input type="hidden" name="boardNum" value="${b.boardNum}"> <!-- boardNum을 받아올  -->
 				<table class="w3-table-all">
 					<tr>
 						<th>작성자:</th>

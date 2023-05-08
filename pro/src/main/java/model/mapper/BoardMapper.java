@@ -35,20 +35,15 @@ public interface BoardMapper {
 		"</script>"})
 	int boardCount(Map<String, Object> map);
 
-
-
 	@Select("select * from board where board_num=#{boardNum}")
 	Board selectOne(int boardNum);
 
-	@Update("update board set mem_id=#{memId}, board_title=#{boardTitle}, board_content=#{boardContent},boardFile=#{boardFile} where board_num=#{boardNum}")
+	@Update("update board set mem_id=#{memId}, board_title=#{boardTitle}, board_content=#{boardContent},board_file=#{boardFile} where board_num=#{boardNum}")
 	int update(Board board);
    
 	@Delete("delete from board where board_num=#{boardNum}")
-	int delete(String boardNum);
+	int delete(int boardNum);
     
 	@Select("select * from board where mem_id=#{memId})")
-	Member selectOne(String memId);
-
-	int delete(int boardNum);
-
+	Board selectOneByMemId(String memId);
 }

@@ -110,10 +110,10 @@ public class BoardMybatisDao {
  		return false;
  		}
 
-	public Member selectOne(String memId) {
+	public Board selectOneByMemId(String memId) {
 		SqlSession session = MybatisConnection.getConnection();
 		try {
-			return session.getMapper(cls).selectOne(memId);
+			return session.getMapper(cls).selectOneByMemId(memId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

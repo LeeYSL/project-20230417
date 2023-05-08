@@ -1,5 +1,5 @@
 package controller;
-  
+
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -26,7 +26,6 @@ import model.Member;
 @WebServlet(urlPatterns = { "/board/*" }, initParams = { @WebInitParam(name = "view", value = "/view/") })
 public class BoardController extends MskimRequestMapping {
 	private BoardMybatisDao dao = new BoardMybatisDao();
-
 
 	/*
 	 * 2. num값의 게시물을 db에서 조회. Board b =BoardDao.selectOne(num) 3. num값의 게시물의 조회수
@@ -115,6 +114,7 @@ public class BoardController extends MskimRequestMapping {
 	@RequestMapping("write")
 	public String write(HttpServletRequest request, HttpServletResponse response) {
 		String path = request.getServletContext().getRealPath("/") + "/upload/board/";
+		System.out.println("path : " + path);
 		// getServletContext() : ServletContext 객체를 가져온다
 		// getRealPath("/") : 지정한 path에 해당되는 실제 경로를 반환
 		File f = new File(path);
@@ -152,7 +152,7 @@ public class BoardController extends MskimRequestMapping {
 		request.setAttribute("url", request.getContextPath() + "/board/writeForm");
 		return "alert/alert";
 	}
-   
+
 	@RequestMapping("boardInfo")
 	public String boardInfo(HttpServletRequest request, HttpServletResponse response) {
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
@@ -168,7 +168,7 @@ public class BoardController extends MskimRequestMapping {
 //		if(boardReadCnt==null || !boardReadCnt.equals("f"));
 
 		return "board/boardInfo";
-	} 
+	}
 
 //	@RequestMapping("comment")
 //	public String comment(HttpServletRequest request, HttpServletResponse response) {
@@ -193,8 +193,9 @@ public class BoardController extends MskimRequestMapping {
 	public String updateForm(HttpServletRequest request, HttpServletResponse response) {
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 		String boardId = (String) request.getSession().getAttribute("boardId");
-		if (boardId == null)
+		if (boardId == null) {
 			boardId = "NOTICE";
+		}
 		String id = (String) request.getSession().getAttribute("login");
 
 		if (boardId.equals("NOTICE")) {
@@ -209,7 +210,7 @@ public class BoardController extends MskimRequestMapping {
 		request.setAttribute("boardId", boardId);
 		return "board/updateForm";
 	}
-	
+
 	@RequestMapping("update")
 	public String update(HttpServletRequest request, HttpServletResponse response) {
 		// 1
@@ -224,11 +225,13 @@ public class BoardController extends MskimRequestMapping {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+		int boardNum = Integer.parseInt(multi.getParameter("boardNum"));
 		board.setMemId(multi.getParameter("name"));
 		board.setBoardTitle(multi.getParameter("title"));
 		board.setBoardContent(multi.getParameter("content"));
 		board.setBoardFile(multi.getFilesystemName("file"));
+		board.setBoardNum(boardNum);
+		
 		if (board.getBoardFile() == null || board.getBoardFile().equals("")) {
 			board.setBoardFile(multi.getParameter("file"));
 		}
@@ -236,49 +239,48 @@ public class BoardController extends MskimRequestMapping {
 		Board dbBoard = dao.selectOne(board.getBoardNum());
 		String msg;
 		String url;
-			// 3
-			if (dao.update(board)) { // db의 게시물 수정
-				msg = "게시물 수정 완료";
-				url = "boardInfo?boardNum=" + board.getBoardNum();
-				return "redirect:" + url;
-			} else {
-				msg = "게시물 수정 실패";
-				url = "updateForm?boardNum=" + board.getBoardNum();
-				
-			}
-		
+		// 3
+		if (dao.update(board)) { // db의 게시물 수정
+			msg = "게시물 수정 완료";
+			url = "boardInfo?boardNum=" + board.getBoardNum();
+			return "redirect:" + url;
+		} else {
+			msg = "게시물 수정 실패";
+			url = "updateForm?boardNum=" + boardNum;
+
+		}
+
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 		return "alert/alert";
 	}
-	@RequestMapping("delete") 
-	public String deldte(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping("deleteForm")
+	public String deleteForm(HttpServletRequest request, HttpServletResponse response) {
+		//request.setAttribute("boardNum", request.getParameter("boardNum"));
+		return "board/deleteForm";
+	}
+	@RequestMapping("delete")
+	public String delete(HttpServletRequest request, HttpServletResponse response) {
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-		String id = request.getParameter("id");
-		Member mem = dao.selectOne(id);
+		String id = (String) request.getSession().getAttribute("login");
 		Board b = dao.selectOne(boardNum);
 		String msg = null;
 		String url = null;
-		if(!id.equals(mem.getMemId())) {
-			request.setAttribute(msg, "아이디가 달라 삭제 불가능 합니다.");
-			request.setAttribute("url", "deleteForm");
-			return "alert/alert";
-		}
-		if(dao.delete(boardNum)) {
-			msg = "삭제되었습니다.";
-			url = "list?boardid=" + board.getBoardid();
+		if (!id.equals(b.getMemId())) {
+			msg = "아이디가 달라 삭제 불가능 합니다.";
+			url = "boardInfo?boardNum=" + boardNum;
+			
+		} else {
+			if (dao.delete(boardNum)) {
+				msg = "삭제되었습니다.";
+				url = "boardList?boardId=" + b.getBoardId();
 			} else { // 삭제실패
 				msg = "게시글 삭제 실패";
-				url = "info.?num=" + num;
+				url = "boardInfo?boardNum=" + boardNum;
 			}
 		}
-
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		return "alert/alert";
 	}
-	request.setAttribute("msg", msg);
-	request.setAttribute("url", url);
-	return "alert";
-	
 }
-}
-  
-
