@@ -17,10 +17,10 @@ function win_open() {
 </script>  
 </head>  
 <body>   
-	<div id="main_div">
+	<div id="main_div" style="padding-bottom: 400px;">
 		<div class="w3-container w3-center">
 			<h2 class="w3-center">${board_name}</h2>
-			<table class="w3-table-all" style="height: 400px">
+			<table class="w3-table-all" style="height: 100px">
 				<tr>
 					<th>작성일:</th>
 					<td>${b.boardTime}</td>
