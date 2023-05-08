@@ -69,11 +69,16 @@ public class BoardController extends MskimRequestMapping {
 		// endpage 는 maxpage를 넘어가면 안됨
 		if (endpage > maxpage)
 			endpage = maxpage;
-
+		
+		//글 번호
+		int boardnum = boardCount - (pageNum - 1) * limit;
+		
 		request.setAttribute("list", list);
 		request.setAttribute("startpage", startpage);
 		request.setAttribute("endpage", endpage);
 		request.setAttribute("maxpage", maxpage);
+		request.setAttribute("boardId", boardId);
+		request.setAttribute("boardnum", boardnum);
 		request.setAttribute("pageNum", pageNum);
 
 		return "board/boardList";
@@ -171,24 +176,20 @@ public class BoardController extends MskimRequestMapping {
 	}
 
 //	@RequestMapping("comment")
-//	public String comment(HttpServletRequest request, HttpServletResponse response) {
-//		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-//		String url = "boardInfo?boardNum=" + boardNum;
-//		Comment com = new Comment();
-//		com.setBoardNum(boardNum);
-//		com.setMemId(request.getParameter("memId"));
-//		com.setCommentContent(request.getParameter("commentContent"));
-//		int seq = cdao.maxseq(boardNum);
-//		com.setSeq(++seq);
-//		if (cdao.insert(com)) { // comment 테이블에 insert
-//			return "redirect:" + url;
+//	public String comment(HttpServletRequest request, 
+//			HttpServletResponse response) {
+//		try {
+//			request.setCharacterEncoding("UTF-8");
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
 //		}
-//		request.setAttribute("msg", "답글 등록시 오류 발생");
-//		request.setAttribute("url", url);
-//		return "alert";
-//
-//	}
-//	   
+//		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+//		String url = "info?boardNum="+boardNum; //$readcnt=f"
+//		Comment comm = new Comment();
+//		comm.setBoardNum(boardNum);
+//		comm.setMemId(request.getParameter("memId"));
+//		comm.setCommentContent(request.getParameter("content"));
+//	
 	@RequestMapping("updateForm")
 	public String updateForm(HttpServletRequest request, HttpServletResponse response) {
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
@@ -247,7 +248,6 @@ public class BoardController extends MskimRequestMapping {
 		} else {
 			msg = "게시물 수정 실패";
 			url = "updateForm?boardNum=" + boardNum;
-
 		}
 
 		request.setAttribute("msg", msg);

@@ -60,6 +60,7 @@ function win_open() {
 				</tr>
 			</table>
 			<form action="comment" method="post">
+			<input type="hidden" name="boardNum" value="${b.boardNum}">
 				<table class="w3-table-all">
 					<tr>
 						<th>작성자 : ${sessionScope.login}</th>
@@ -67,6 +68,7 @@ function win_open() {
 						</th>
 						<th><button type="submit" class="btn btn-dark"
 								style="margin-top: 5px;">댓글등록</button>
+								
 					</tr>
 				</table>
 				<table class="w3-table-all">

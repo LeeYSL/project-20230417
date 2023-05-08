@@ -39,11 +39,14 @@
 					<tr>
 						<!-- 몬말인지.... -->
 						<td>첨부파일</td>
-						<td style="text-align: left"><c:if test="${!empty b.boardFile}">
+						<td style="text-align: left">
+							<c:if test="${!empty b.boardFile}">
 								<div id="file_desc">${b.boardFile}
 									<a href="javascript:file_delete()">[첨부파일 삭제]</a>
 								</div>
-							</c:if> <input type="file" name="file"></td>
+							</c:if> 
+							<input type="file" name="file">
+						</td>
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align: center" ><a href="javascript:document.f.submit()" class="btn btn-dark"  >게시물수정</a></td>

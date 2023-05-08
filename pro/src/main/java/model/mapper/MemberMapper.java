@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import model.Comment;
 import model.Member;
 
 public interface MemberMapper {
@@ -37,5 +38,7 @@ public interface MemberMapper {
 	@Select("select mem_pw from member "
 			+ " where mem_id=#{memId} and mem_email=#{memEmail} and mem_name=#{memName} ")
 	String pwSearch(@Param("memId")String memId,@Param("memEmail")String memEmail,@Param("memName")String memName);
+
+
 
 }

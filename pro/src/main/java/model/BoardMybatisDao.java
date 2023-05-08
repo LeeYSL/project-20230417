@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import graphql.relay.Connection;
 import model.mapper.BoardMapper;
+
 //
 public class BoardMybatisDao {
 	private Class<BoardMapper> cls = BoardMapper.class;
@@ -62,7 +63,7 @@ public class BoardMybatisDao {
 			map.put("boardId", boardId);
 			map.put("sLimit", (pageNum - 1) * limit);
 			map.put("eLimit", limit);
-			
+
 			return session.getMapper(cls).list(map);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,40 +76,42 @@ public class BoardMybatisDao {
 
 	public Board selectOne(int boardNum) {
 		SqlSession session = MybatisConnection.getConnection();
-		
+
 		try {
 			return session.getMapper(cls).selectOne(boardNum);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			MybatisConnection.close(session);
 		}
-		
+
 		return null;
 	}
 
 	public boolean update(Board board) {
 		SqlSession session = MybatisConnection.getConnection();
 		try {
-			return session.getMapper(cls).update(board)>0;
+			return session.getMapper(cls).update(board) > 0;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			MybatisConnection.close(session);
-		} return false;
+		}
+		return false;
 	}
+
 	public boolean delete(int boardNum) {
 		SqlSession session = MybatisConnection.getConnection();
- 		try {
- 			int cnt = session.getMapper(cls).delete(boardNum);
- 			return cnt > 0; 
- 		}catch(Exception e) {
- 			e.printStackTrace();
- 		}finally {
- 			MybatisConnection.close(session);
- 		}
- 		return false;
- 		}
+		try {
+			int cnt = session.getMapper(cls).delete(boardNum);
+			return cnt > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return false;
+	}
 
 	public Board selectOneByMemId(String memId) {
 		SqlSession session = MybatisConnection.getConnection();
@@ -116,11 +119,10 @@ public class BoardMybatisDao {
 			return session.getMapper(cls).selectOneByMemId(memId);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			MybatisConnection.close(session);
 		}
 		return null;
 	}
 
-	}
-
+}

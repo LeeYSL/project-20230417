@@ -47,8 +47,8 @@
 				</tr>
 				<c:forEach var="b" items="${list}">
 					<tr>
-						<td>${num}</td>
-						<c:set var="num" value="${num -1}" />
+						<td>${boardnum}</td>
+						<c:set var="boardnum" value="${boardnum-1}" />
 						<td width="50%"><c:if test="${!empty b.boardFile}">
 								<a href="../upload/board/${b.boardFile}">@</a>
 							</c:if> <c:if test="${empty b.boardFile}">
@@ -70,25 +70,24 @@
 				<tr>
 					<td colspan="5" style="text-align: right">
 				<tr>
+					<td colspan="5" style="text-align: center;"><c:if
+							test="${pageNum <=1 }">[이전]</c:if> <c:if test="${pageNum > 1 }">
+							<a href="boardList?boardId=${boardId}&pageNum=${pageNum-1}">[이전]</a>
+						</c:if> <c:forEach var="a" begin="${startpage}" end="${endpage}">
+							<c:if test="${a==pageNum}">[${a}]</c:if>
+							<c:if test="${a != pageNum }">
+								<a href="boardList?boardId=${boardId}&pageNum=${a}">[${a}]</a>
+							</c:if>
+						</c:forEach> <c:if test="${pageNum >= maxpage}">[다음]</c:if> <c:if
+							test="${pageNum < maxpage}">
+							<a href="boardList?boardId=${boardId}&pageNum=${pageNum+1}">[다음]</a>
+						</c:if></td>
+				</tr>
+				<tr>
 					<td colspan="5" style="text-align: center;">
-					     <c:if test="${pageNum <=1 }">[이전]</c:if> 
-					         <c:if test="${pageNum > 1 }">
-							    <a href="list?pageNum=${pageNum}">[이전]</a>
-						     </c:if> 
-						<c:forEach var="a" begin="${startpage}" end="${endpage}">
-							   <c:if test="${a==pageNum}">[${a}]</c:if>
-							     <c:if test="${a != pageNum }">
-								 <a href="list?pageNum=${a}">[${a}]</a>
-							   </c:if>
-						</c:forEach> 
-						   <c:if test="${pageNum >= maxpage}">[다음]</c:if> 
-						   <c:if test="${pageNum < maxpage}">
-							 <a href="list?pageNum=${pageNum + 1}">[다음]</a>
-						   </c:if>
-						   <button type="submit" class="btn btn-dark"> 게시글 작성</button> 
+						<button type="submit" class="btn btn-dark">게시글 작성</button>
 					</td>
 				</tr>
-				
 			</table>
 		</div>
 	</div>
