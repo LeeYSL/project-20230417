@@ -26,8 +26,7 @@
 			<div class="w3-container">
 				<table class="w3-table-all">
 					<tr>
-						<c:forEach var="c" items="${list}">
-							<td width="25%">${c.marketFile}</td>
+						<c:forEach var="g" items="${list}">
 							<td width="25%">${c.marketTitle}</td>
 						</c:forEach>
 					</tr>
