@@ -86,4 +86,15 @@ public class BoardMybatisDao {
 		
 		return null;
 	}
+
+	public boolean update(Board board) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			return session.getMapper(cls).update(board)>0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		} return false;
+	}
 }

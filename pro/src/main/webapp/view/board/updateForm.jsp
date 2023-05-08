@@ -26,12 +26,12 @@
 					</tr>
 					<tr>
 						<th>제목</th>
-						<td><input type="text" value="${b.boardTitle}"
+						<td><input type="text" value="${b.boardTitle}" name="title"
 							class="w3-input"></td>
 					</tr>
 					<tr style="height: 400px">
 						<th>내용</th>
-						<td><textarea rows="15" class="w3-input">${b.boardContent}</textarea></td>
+						<td><textarea rows="15" class="w3-input" name="title">${b.boardContent}</textarea></td>
 
 							
 					</tr>
@@ -42,7 +42,7 @@
 								<div id="file_desc">${b.boardFile}
 									<a href="javascript:file_delete()">[첨부파일 삭제]</a>
 								</div>
-							</c:if> <input type="file" name="file1"></td>
+							</c:if> <input type="file" name="file"></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align: center" ><a href="javascript:document.f.submit()" class="btn btn-dark"  >게시물수정</a></td>

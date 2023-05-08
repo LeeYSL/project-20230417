@@ -208,4 +208,47 @@ public class BoardController extends MskimRequestMapping {
 		request.setAttribute("boardId", boardId);
 		return "board/updateForm";
 	}
+	
+	@RequestMapping("update")
+	public String update(HttpServletRequest request, HttpServletResponse response) {
+		// 1
+		Board board = new Board();
+		String path = request.getServletContext().getRealPath("/") + "upload/board/file/";
+		File f = new File(path);
+		if (!f.exists())
+			f.mkdirs();
+		MultipartRequest multi = null;
+		try {
+			multi = new MultipartRequest(request, path, 10 * 1024 * 1024, "UTF-8");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		board.setBoardNum(Integer.parseInt(multi.getParameter("boardNum")));
+		board.setMemId(multi.getParameter("memId"));
+		board.setBoardTitle(multi.getParameter("boardTitle"));
+		board.setBoardContent(multi.getParameter("boardContent"));
+		board.setBoardFile(multi.getFilesystemName("boardFile"));
+		if (board.getBoardFile() == null || board.getBoardFile().equals("")) {
+			board.setBoardFile(multi.getParameter("boardFile"));
+		}
+
+		Board dbBoard = dao.selectOne(board.getBoardNum());
+		String msg;
+		String url;
+			// 3
+			if (dao.update(board)) { // db의 게시물 수정
+				msg = "게시물 수정 완료";
+				url = "boardInfo?boardNum=" + board.getBoardNum();
+				return "redirect:" + url;
+			} else {
+				msg = "게시물 수정 실패";
+				url = "updateForm?boardNum=" + board.getBoardNum();
+				
+			}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		return "alert/alert";
+	}
+
 }

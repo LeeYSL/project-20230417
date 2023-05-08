@@ -87,6 +87,7 @@ public class Board {
 				+ ", boardId=" + boardId + ", boardGrp=" + boardGrp + ", boardGrpLevel=" + boardGrpLevel
 				+ ", boardGrpStep=" + boardGrpStep + ", memId=" + memId + "]";
 	}
+
 	
 	
 
