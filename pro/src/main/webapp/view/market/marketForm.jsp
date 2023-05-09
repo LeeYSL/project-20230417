@@ -10,13 +10,13 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
-<script type="text/javascript">
-	$(function() {
-		$('.btn').on('click',function() {
-			location.href="${path}/market/marketInfo";
+	<script type="text/javascript">
+		$(function() {
+			$('.btn').on('click', function() {
+				location.href = "${path}/market/marketInfo";
+			})
 		})
-	})
-</script>
+	</script>
 	<div id="main_div">
 		<h2 class="w3-center">상품등록</h2>
 		<div class="w3-container">

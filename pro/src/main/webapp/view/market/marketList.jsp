@@ -38,7 +38,7 @@
 							</c:if>
 						<td width="25%">
 							<div class="goodsdiv w3-center">
-								<img src="${path}/image/playerimg/${g.goodsImg}" class="goodsimg">
+								<img src="${path}/upload/goods/${g.goodsImg}" class="goodsimg">
 								<div class="w3-center">${g.goodsName}</div>
 								<div class="w3-center">${g.goodsPrice}</div>
 								<div>
