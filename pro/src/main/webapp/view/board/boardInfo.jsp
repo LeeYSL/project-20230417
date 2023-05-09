@@ -64,32 +64,31 @@
 					<tr>
 						<th>
 						<td>${sessionScope.login}</td>
-						<th><input type="text" name="comment" class="w3-input">
-							<input type="hidden" name="memId" value="${b.memId}"></th>
-							<c:if test="${memId != null}">
+						<c:if test="${sessionScope.login != null}">
+						<th><input type="text" name="comment" class="w3-input"></c:if>
+							<c:if test="${sessionScope.login != null}">
 						<th><button type="submit" class="btn btn-dark" 
 								style="margin-top: 5px;">댓글등록</button></c:if>
 					</tr>
 				</table>
+			</form>
+			<div>
+			
 				<table class="w3-table-all">
 					<tr>
-						<th colspan="3" class="w3-center">댓글 목록</th>
+						<th colspan="3" class="w3-center" style="text-align:center; ">댓글 목록</th>
 					</tr>
 					<c:forEach var="c" items="${commList}">
-
-						<tr>
-							
-							
+						<tr >
 							<th>작성자:${c.memId}</th>
 							<th>${c.commentContent}</th>
-							<th><button type="button" class="btn btn-dark"
-									style="margin-top: 5px; margin-left: 1355px; padding-left: 25px; padding-right: 25px;"
-									onclick="win_open()">삭제</button></th>
+							<th class="w3-right">
+							  <a class="btn btn-dark" 
+				               	href="commdel?boardNum=${param.boardNum}&commentNum=${c.commentNum}">삭제</a></th>
 						</tr>
-
 					</c:forEach>
 				</table>
-			</form>
+				</div>
 		</div>
 	</div>
 </body>

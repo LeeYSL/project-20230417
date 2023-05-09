@@ -29,8 +29,8 @@ import model.MemberMybatisDao;
 @WebServlet(urlPatterns = { "/board/*" }, initParams = { @WebInitParam(name = "view", value = "/view/") })
 public class BoardController extends MskimRequestMapping {
 	private BoardMybatisDao dao = new BoardMybatisDao();
-    private CommentMybatisDao cdao = new CommentMybatisDao();
-    private MemberMybatisDao mdao = new MemberMybatisDao();
+	private CommentMybatisDao cdao = new CommentMybatisDao();
+	private MemberMybatisDao mdao = new MemberMybatisDao();
 
 	/*
 	 * 2. num값의 게시물을 db에서 조회. Board b =BoardDao.selectOne(num) 3. num값의 게시물의 조회수
@@ -74,10 +74,10 @@ public class BoardController extends MskimRequestMapping {
 		// endpage 는 maxpage를 넘어가면 안됨
 		if (endpage > maxpage)
 			endpage = maxpage;
-		
-		//글 번호
+
+		// 글 번호
 		int boardnum = boardCount - (pageNum - 1) * limit;
-		
+
 		request.setAttribute("list", list);
 		request.setAttribute("startpage", startpage);
 		request.setAttribute("endpage", endpage);
@@ -93,30 +93,30 @@ public class BoardController extends MskimRequestMapping {
 	public String writeForm(HttpServletRequest request, HttpServletResponse response) {
 		String boardId = (String) request.getSession().getAttribute("boardId"); // session의 boardId값을 가져온다.
 		String id = (String) request.getSession().getAttribute("login");
-	//	Member id = mdao.selectOne(id); 왜 안 돼?
-		Member mem = mdao.selectOne(id); 
-		String pos = (String) request.getAttribute("memPosition");
-	
+		// Member id = mdao.selectOne(id); 왜 안 돼?
+		Member mem = mdao.selectOne(id);
+
 		if (boardId == null) {
 			boardId = "NOTICE";
 		}
-		String login = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
+		// String login = (String) request.getSession().getAttribute("login"); //
+		// session의 login값 가져온다.
 		if (boardId.equals("NOTICE")) {
-			if (login == null || 1!=(mem.getMemPosition())) {// 로그인이 안돼있거나 관리자가 아니라면
+			if (id == null || 1 != (mem.getMemPosition())) {// 로그인이 안돼있거나 관리자가 아니라면
 				request.setAttribute("msg", "관리자만 글쓰기가 가능합니다.");
 				request.setAttribute("url", request.getContextPath() + "/board/boardList?boardId=" + boardId);
 				return "alert/alert";
 			}
 		}
 		if (boardId.equals("FAN")) {
-			if (login == null || 2!=(mem.getMemPosition())) {
+			if (id == null || 2 != (mem.getMemPosition())) {
 				request.setAttribute("msg", "선수만 글쓰기가 가능합니다.");
 				request.setAttribute("url", request.getContextPath() + "/board/boardList?boardId=" + boardId);
 				return "alert/alert";
 			}
 		}
 		if (boardId.equals("PLAYER")) {
-			if (login == null) {
+			if (id == null) {
 				request.setAttribute("msg", "회원만 글쓰기가 가능합니다.");
 				request.setAttribute("url", request.getContextPath() + "/board/boardList?boardId=" + boardId);
 				return "alert/alert";
@@ -184,25 +184,24 @@ public class BoardController extends MskimRequestMapping {
 //		request.setAttribute("boardTime", boardTime);
 
 //		if(boardReadCnt==null || !boardReadCnt.equals("f"));
-        List<Comment> commList = cdao.list(boardNum);
-        System.out.println("commlist:"+commList);
-        request.setAttribute("commList", commList);
+		List<Comment> commList = cdao.list(boardNum);
+		System.out.println("commlist:" + commList);
+		request.setAttribute("commList", commList);
 		return "board/boardInfo";
 	}
 
 	@RequestMapping("comment")
-	public String comment(HttpServletRequest request, 
-			HttpServletResponse response) {
+	public String comment(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-	//	String memId = (String) request.getSession().getAttribute("login");
-		String url = "boardInfo?boardNum="+boardNum; //$readcnt=f"
-		//request.setAttribute(memId, memId);
-		
+		// String memId = (String) request.getSession().getAttribute("login");
+		String url = "boardInfo?boardNum=" + boardNum; // $readcnt=f"
+		// request.setAttribute(memId, memId);
+
 		Comment comm = new Comment();
 		int commentNum = cdao.maxseq(boardNum);
 		comm.setBoardNum(boardNum);
@@ -211,33 +210,33 @@ public class BoardController extends MskimRequestMapping {
 		String id = (String) request.getSession().getAttribute("login");
 		comm.setMemId(id);
 		comm.setCommentNum(++commentNum);
-		if(comm.getMemId() == null) {
-			request.setAttribute("msg", "로그인 하셔야 댓글을 달 수 있습니다.");		
-			
+		if (comm.getMemId() == null) {
+			request.setAttribute("msg", "로그인 하셔야 댓글을 달 수 있습니다.");
+
 		}
 		if (cdao.insert(comm)) {
-			return "redirect:"+url;
+			return "redirect:" + url;
 		}
 		request.setAttribute("msg", "댓글 작성 시 오류 발생");
 		request.setAttribute("url", url);
 		return "alert/alert";
-		
+
 	}
-		@RequestMapping("commdel") 
-		public String commdel(HttpServletRequest request, HttpResponse response) {
-			int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-			int commentNum = Integer.parseInt(request.getParameter("commentNum"));
-			String url = "boardInfo?boardNum="+boardNum;
-			if(cdao.delete(boardNum, commentNum)) {
-				  return "redirect:" + url;
-			}
-			request.setAttribute("msg", "댓글 삭제 시 오류 발생");
-			request.setAttribute(url, url);
-			return "alert/alert";	
-			
+
+	@RequestMapping("commdel")
+	public String commdel(HttpServletRequest request, HttpResponse response) {
+		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+		int commentNum = Integer.parseInt(request.getParameter("commentNum"));
+		String url = "boardInfo?boardNum=" + boardNum;
+
+		if (cdao.delete(boardNum, commentNum)) {
+			return "redirect:" + url;
 		}
-	
-	
+		request.setAttribute("msg", "답글 삭제 시 오류 발생");
+		request.setAttribute(url, url);
+		return "alert/alert";
+	}
+
 	@RequestMapping("updateForm")
 	public String updateForm(HttpServletRequest request, HttpServletResponse response) {
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
@@ -305,11 +304,13 @@ public class BoardController extends MskimRequestMapping {
 		request.setAttribute("url", url);
 		return "alert/alert";
 	}
+
 	@RequestMapping("deleteForm")
 	public String deleteForm(HttpServletRequest request, HttpServletResponse response) {
-		//request.setAttribute("boardNum", request.getParameter("boardNum"));
+		// request.setAttribute("boardNum", request.getParameter("boardNum"));
 		return "board/deleteForm";
 	}
+
 	@RequestMapping("delete")
 	public String delete(HttpServletRequest request, HttpServletResponse response) {
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
@@ -320,7 +321,7 @@ public class BoardController extends MskimRequestMapping {
 		if (!id.equals(b.getMemId())) {
 			msg = "아이디가 달라 삭제 불가능 합니다.";
 			url = "boardInfo?boardNum=" + boardNum;
-			
+
 		} else {
 			if (dao.delete(boardNum)) {
 				msg = "삭제되었습니다.";
