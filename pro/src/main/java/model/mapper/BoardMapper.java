@@ -38,7 +38,15 @@ public interface BoardMapper {
 	@Select("select * from board where board_num=#{boardNum}")
 	Board selectOne(int boardNum);
 
-	@Update("update board set mem_id=#{memId}, board_title=#{boardTitle}, board_content=#{boardContent},board_file=#{boardFile} where board_num=#{boardNum}")
+	@Update({"<script>"
+			+ "update board set mem_id=#{memId} "
+			+ ",board_title=#{boardTitle} "
+			+ ",board_content=#{boardContent}"
+			+ "<if test='boardFile != null'>"
+			+ ",board_file=#{boardFile} "
+			+ "</if>"
+			+ "where board_num=#{boardNum}"
+			+ "</script>"})
 	int update(Board board);
    
 	@Delete("delete from board where board_num=#{boardNum}")

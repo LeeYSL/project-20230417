@@ -231,7 +231,7 @@ public class BoardController extends MskimRequestMapping {
 			if(cdao.delete(boardNum, commentNum)) {
 				  return "redirect:" + url;
 			}
-			request.setAttribute("msg", "답글 삭제 시 오류 발생");
+			request.setAttribute("msg", "댓글 삭제 시 오류 발생");
 			request.setAttribute(url, url);
 			return "alert/alert";	
 			
@@ -266,26 +266,29 @@ public class BoardController extends MskimRequestMapping {
 		Board board = new Board();
 		String path = request.getServletContext().getRealPath("/") + "upload/board/file/";
 		File f = new File(path);
-		if (!f.exists())
+		if (!f.exists()) {
 			f.mkdirs();
+		}
 		MultipartRequest multi = null;
 		try {
 			multi = new MultipartRequest(request, path, 10 * 1024 * 1024, "UTF-8");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		int boardNum = Integer.parseInt(multi.getParameter("boardNum"));
 		board.setMemId(multi.getParameter("name"));
 		board.setBoardTitle(multi.getParameter("title"));
 		board.setBoardContent(multi.getParameter("content"));
-		board.setBoardFile(multi.getFilesystemName("file"));
 		board.setBoardNum(boardNum);
 		
-		if (board.getBoardFile() == null || board.getBoardFile().equals("")) {
-			board.setBoardFile(multi.getParameter("file"));
+		//input type=file로 선택한 첨부파일이 없으면 기존의 첨부파일을 가져옴
+		if (multi.getFilesystemName("file") == null) {
+			board.setBoardFile(multi.getParameter("boardFile")); //DB첨부파일
+		} else {
+			board.setBoardFile(multi.getFilesystemName("file")); //새로 첨부한 첨부파일
 		}
-		System.out.println(board);
-		Board dbBoard = dao.selectOne(board.getBoardNum());
+		
 		String msg;
 		String url;
 		// 3

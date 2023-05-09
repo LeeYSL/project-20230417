@@ -12,13 +12,23 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
-
+	<script type="text/javascript">
+		$(function() {
+			//첨부파일 삭제 버튼 클릭 시 이벤트 호출
+			$('#btnDelete').on('click', function() {
+				$('#file_desc').text("");
+				$('input[name="boardFile"]').val("");
+				$(this).hide();
+			})
+		});
+	</script>
 	<div id="main_div">
 		<form action="update" method="post" enctype="multipart/form-data"
 			name="f">
 			<div class="w3-container w3-center">
 				<h2 class="w3-center">${b.boardId}</h2>
-				<input type="hidden" name="boardNum" value="${b.boardNum}"> <!-- boardNum을 받아올  -->
+				<input type="hidden" name="boardNum" value="${b.boardNum}">
+				<!-- boardNum을 받아올  -->
 				<table class="w3-table-all">
 					<tr>
 						<th>작성자:</th>
@@ -34,22 +44,24 @@
 						<th>내용</th>
 						<td><textarea rows="15" class="w3-input" name="content">${b.boardContent}</textarea></td>
 
-							
+
 					</tr>
 					<tr>
 						<!-- 몬말인지.... -->
 						<td>첨부파일</td>
 						<td style="text-align: left">
 							<c:if test="${!empty b.boardFile}">
-								<div id="file_desc">${b.boardFile}
-									<a href="javascript:file_delete()">[첨부파일 삭제]</a>
-								</div>
+								<span id="file_desc">${b.boardFile}</span>
+								<button type="button" id="btnDelete">삭제</button>
 							</c:if> 
 							<input type="file" name="file">
+							<input type="hidden" name="boardFile" value="${b.boardFile}">
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" style="text-align: center" ><a href="javascript:document.f.submit()" class="btn btn-dark"  >게시물수정</a></td>
+						<td colspan="2" style="text-align: center">
+							<button type="submit" class="btn btn-dark">게시물수정</button>
+						</td>
 					</tr>
 				</table>
 			</div>
