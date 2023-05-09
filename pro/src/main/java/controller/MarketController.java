@@ -103,7 +103,7 @@ public class MarketController extends MskimRequestMapping {
 		cart.setMemId(memId);
 		cart.setGoodsCode(code);
 		cart.setCartQuantity(1);
-		request.getSession().setAttribute("cart1", cart);
+	//	request.getSession().setAttribute("cart1", cart);
 		if (cartdao.insert(cart)) { // cart 테이블에 게시물 등록했을경우
 			request.setAttribute("msg", "장바구니 추가 완료");
 			request.setAttribute("url", request.getContextPath() + "/market/marketList");
@@ -118,21 +118,26 @@ public class MarketController extends MskimRequestMapping {
 	@RequestMapping("cartForm")
 	public String cartForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
+		
 		if (id == null) {// 로그인이 안돼있거나 관리자가 아니라면
 			request.setAttribute("msg", "로그인 해야 합니다..");
 			request.setAttribute("url", request.getContextPath() + "/market/marketList");
 			return "alert/alert";
 		}
-	//	String memId = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
-		Member mem = mdao.selectOne(id);
-		
-		String cart1 = (String)request.getSession().getAttribute("cart1.memId");
-		String memId = (String)request.getSession().getAttribute("mem.memId");
-		if(memId.equals(cart1){
+//		String memId = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
+		System.out.println("memId:"+ id);
+//		if (memId.equals)
 			
-		}
-		List<Cart> cartlist = cartdao.cartlist(memId);
+//		Member mem = mdao.selectOne(id);
+//		
+//		String cart1 = (String)request.getSession().getAttribute("cart1.memId");
+//		String memId = (String)request.getSession().getAttribute("mem.memId");
+//		if(memId.equals(cart1){
+//			
+//		}
+		List<Cart> cartlist = cartdao.cartlist(id);
 		
+		System.out.println("cartlist:" + cartlist);
 //		request.getSession().setAttribute("code", request.getParameter("goodsCode"));
 //		String code = (String) request.getSession().getAttribute("code");
 //		List<Cart> cartlist = cartdao.cartlist(code);

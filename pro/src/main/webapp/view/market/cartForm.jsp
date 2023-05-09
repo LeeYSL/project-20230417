@@ -33,6 +33,7 @@
 						<th>삭제<br>
 					</tr>
 						<c:forEach var="c" items="${cartlist}">
+				
 					<tr>
 							<td><input type="checkbox" name="prochk" class="prochk"></td>
 							<td><img src="${path}/upload/goods/${c.goodsImg}" class="goods"></td>
@@ -43,6 +44,7 @@
 							<td><button type="button" class="btn btn-dark"
 									onclick="pro_delete()">삭제</button></td>
 					</tr>
+					
 						</c:forEach>
 					<tr>
 						<td colspan="6" style="text-align: center">

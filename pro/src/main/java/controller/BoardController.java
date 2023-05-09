@@ -204,9 +204,10 @@ public class BoardController extends MskimRequestMapping {
 		
 		Comment comm = new Comment();
 		comm.setBoardNum(boardNum);
-		comm.setMemId(request.getParameter("memId"));
-		comm.setCommentContent(request.getParameter("comment"));
 		int commentNum = cdao.maxseq(boardNum);
+		comm.setCommentContent(request.getParameter("comment"));
+		String id = (String) request.getSession().getAttribute("login");
+		comm.setMemId(id);
 		comm.setCommentNum(++commentNum);
 		if (cdao.insert(comm)) {
 			return "redirect:"+url;
