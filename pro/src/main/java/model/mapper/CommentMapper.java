@@ -23,8 +23,8 @@ public interface CommentMapper {
     @Delete("delete from comment where board_num=#{boardNum} and comment_num=#{commentNum}")
 	int delete(int boardNum, int commentNum);
     
-    @Select("select * from comment where board_num = #{commentNum}")
-    List<Comment> list(int commentNum);
+    @Select("select * from comment where board_num = #{boardNum}")
+    List<Comment> list(int boardNum);
 
 	
 

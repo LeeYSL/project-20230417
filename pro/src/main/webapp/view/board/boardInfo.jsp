@@ -4,19 +4,19 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <%-- --%>
 <!DOCTYPE html>
-<html>  
+<html>
 <head>
 <meta charset="UTF-8">
 <title>게시물 상세보기</title>
 <link rel="stylesheet" href="${path}/css/main.css">
 <script type="text/javascript">
-function win_open() {
-	   let op="width=500,height=350,left=50,top=150"
-	   open(page,"",op)
-}
-</script>  
-</head>  
-<body>   
+	function win_open() {
+		let op = "width=500,height=350,left=50,top=150"
+		open(page, "", op)
+	}
+</script>
+</head>
+<body>
 	<div id="main_div" style="padding-bottom: 400px;">
 		<div class="w3-container w3-center">
 			<h2 class="w3-center">${board_name}</h2>
@@ -51,28 +51,24 @@ function win_open() {
 						</c:if></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="w3-center"><a
-						href="replyForm?num=${b.boardNum}" class="btn btn-dark" >답변</a> <c:if
+					<td colspan="2" class="w3-center"><c:if
 							test="${boardid !='1' || sessionScpoe.login == 'admin'}">
 							<a href="updateForm?boardNum=${b.boardNum}" class="btn btn-dark">수정</a>
-							<a href="deleteForm?boardNum=${b.boardNum}" class="btn btn-dark" >삭제</a>
+							<a href="deleteForm?boardNum=${b.boardNum}" class="btn btn-dark">삭제</a>
 						</c:if> <a href="boardList?boardId=${b.boardId}" class="btn btn-dark">목록</a></td>
 				</tr>
 			</table>
 			<form action="comment" method="post">
-			<input type="hidden" name="boardNum" value="${b.boardNum}">
+				<input type="hidden" name="boardNum" value="${b.boardNum}">
 				<table class="w3-table-all">
 					<tr>
 						<th>
-						    <td>${sessionScope.login}
-					<!--  	 <input type="text" value="${sessionScope.test}"  class="w3-input w3-border"> -->
-						 	</td>
-						</th> 
+						<td>${sessionScope.login}</td>
 						<th><input type="text" name="comment" class="w3-input">
-						</th>
-						<th><button type="submit" class="btn btn-dark"
-								style="margin-top: 5px;">댓글등록</button>
-								
+							<input type="hidden" name="memId" value="${b.memId}"></th>
+							<c:if test="${memId != null}">
+						<th><button type="submit" class="btn btn-dark" 
+								style="margin-top: 5px;">댓글등록</button></c:if>
 					</tr>
 				</table>
 				<table class="w3-table-all">
@@ -80,14 +76,18 @@ function win_open() {
 						<th colspan="3" class="w3-center">댓글 목록</th>
 					</tr>
 					<c:forEach var="c" items="${commList}">
- 
-					<tr>
-						<th>작성자:${c.memId}</th>
-						<th>${c.commentContent}</th>
-						<th><button type="button" class="btn btn-dark"
-								style="margin-top: 5px; margin-left: 1355px; padding-left: 25px; padding-right: 25px;" onclick="win_open()">삭제</button>
-					</tr>
-</c:forEach>
+
+						<tr>
+							
+							
+							<th>작성자:${c.memId}</th>
+							<th>${c.commentContent}</th>
+							<th><button type="button" class="btn btn-dark"
+									style="margin-top: 5px; margin-left: 1355px; padding-left: 25px; padding-right: 25px;"
+									onclick="win_open()">삭제</button></th>
+						</tr>
+
+					</c:forEach>
 				</table>
 			</form>
 		</div>

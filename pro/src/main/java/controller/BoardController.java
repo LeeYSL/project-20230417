@@ -17,6 +17,7 @@ import com.oreilly.servlet.MultipartRequest;
 
 import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
+import io.netty.handler.codec.http.HttpResponse;
 import model.Board;
 import model.BoardMybatisDao;
 import model.Comment;
@@ -170,7 +171,7 @@ public class BoardController extends MskimRequestMapping {
 	@RequestMapping("boardInfo")
 	public String boardInfo(HttpServletRequest request, HttpServletResponse response) {
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-		int commentNum =Integer.parseInt(request.getParameter("boardNum"));
+//		int commentNum =Integer.parseInt(request.getParameter("commentNum"));
 //		int  boardTime =Integer.parseInt(request.getParameter("boardTime"));
 
 		String boardId = (String) request.getSession().getAttribute("boardId");
@@ -183,7 +184,7 @@ public class BoardController extends MskimRequestMapping {
 //		request.setAttribute("boardTime", boardTime);
 
 //		if(boardReadCnt==null || !boardReadCnt.equals("f"));
-        List<Comment> commList = cdao.list(commentNum);
+        List<Comment> commList = cdao.list(boardNum);
         System.out.println("commlist:"+commList);
         request.setAttribute("commList", commList);
 		return "board/boardInfo";
@@ -203,20 +204,38 @@ public class BoardController extends MskimRequestMapping {
 		//request.setAttribute(memId, memId);
 		
 		Comment comm = new Comment();
-		comm.setBoardNum(boardNum);
 		int commentNum = cdao.maxseq(boardNum);
+		comm.setBoardNum(boardNum);
 		comm.setCommentContent(request.getParameter("comment"));
+		comm.setMemId(request.getParameter("memId"));
 		String id = (String) request.getSession().getAttribute("login");
 		comm.setMemId(id);
 		comm.setCommentNum(++commentNum);
+		if(comm.getMemId() == null) {
+			request.setAttribute("msg", "로그인 하셔야 댓글을 달 수 있습니다.");		
+			
+		}
 		if (cdao.insert(comm)) {
 			return "redirect:"+url;
 		}
 		request.setAttribute("msg", "댓글 작성 시 오류 발생");
 		request.setAttribute("url", url);
 		return "alert/alert";
-	}
 		
+	}
+		@RequestMapping("commdel") 
+		public String commdel(HttpServletRequest request, HttpResponse response) {
+			int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+			int commentNum = Integer.parseInt(request.getParameter("commentNum"));
+			String url = "boardInfo?boardNum="+boardNum;
+			if(cdao.delete(boardNum, commentNum)) {
+				  return "redirect:" + url;
+			}
+			request.setAttribute("msg", "답글 삭제 시 오류 발생");
+			request.setAttribute(url, url);
+			return "alert/alert";	
+			
+		}
 	
 	
 	@RequestMapping("updateForm")
