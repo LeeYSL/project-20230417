@@ -63,7 +63,11 @@ function win_open() {
 			<input type="hidden" name="boardNum" value="${b.boardNum}">
 				<table class="w3-table-all">
 					<tr>
-						<th>작성자 : ${sessionScope.login}</th>
+						<th>
+						    <td>${sessionScope.login}
+					<!--  	 <input type="text" value="${sessionScope.test}"  class="w3-input w3-border"> -->
+						 	</td>
+						</th> 
 						<th><input type="text" name="comment" class="w3-input">
 						</th>
 						<th><button type="submit" class="btn btn-dark"
@@ -75,14 +79,15 @@ function win_open() {
 					<tr>
 						<th colspan="3" class="w3-center">댓글 목록</th>
 					</tr>
-
+					<c:forEach var="c" items="${commList}">
+ 
 					<tr>
-						<th>작성자 : ${c.memId}</th>
+						<th>작성자:${c.memId}</th>
 						<th>${c.commentContent}</th>
 						<th><button type="button" class="btn btn-dark"
 								style="margin-top: 5px; margin-left: 1355px; padding-left: 25px; padding-right: 25px;" onclick="win_open()">삭제</button>
 					</tr>
-
+</c:forEach>
 				</table>
 			</form>
 		</div>

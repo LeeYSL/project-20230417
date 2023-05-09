@@ -1,22 +1,31 @@
 package model.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import model.Comment;
 
 public interface CommentMapper {
 	
-	@Select("insert into Comment"
-			+ "(board_num, comment_num, comment_time, mem_id) "
-			+ "values (#{boardNum},#{commentNum},#{commentTime},#{memId})") 
+	@Insert ("insert into comment "
+			+ " (board_num, comment_num, comment_time, mem_id , comment_content) "
+			+ " values (#{boardNum},#{commentNum},now(),#{memId},#{commentContent})") 
 	int insert(Comment comm);
 
-	@Select("select ifnull(max(seq),0) from comment where num=#{num}") //#{num}는 value 값 num 값을 담겠다
-	int maxseq(int num);
+	@Select("select ifnull(max(comment_num),0) from comment where board_num=#{boardNum}") //#{num}는 value 값 num 값을 담겠다
+	int maxseq(int boardNum);
 	
 	
-    @Delete("delete from Comment where num=#{num} and seq=#{seq}")
-	int delete(int num, int seq);
+    @Delete("delete from comment where board_num=#{boardNum} and comment_num=#{commentNum}")
+	int delete(int boardNum, int commentNum);
+    
+    @Select("select * from comment where board_num = #{commentNum}")
+    List<Comment> list(int commentNum);
+
+	
 
 }

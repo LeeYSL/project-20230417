@@ -23,7 +23,7 @@
 				<div class="sel_area">
 					<select name="yy" onchange="form.submit();" title="연도선택"
 						class="selec" style="width: 120px">
-						<option value="2005">2005</option>
+						<option value="${leagueYar}">${leagueName}</option>
 						<option value="2006">2006</option>
 						<option value="2007">2007</option>
 						<option value="2008">2008</option>

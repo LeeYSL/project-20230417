@@ -101,9 +101,10 @@
 						</tr>
 						<tr>
 							<td>회원 유형</td>
-							<td><input type="radio" name="type" value="1">관리자 <input
-								type="radio" name="type" value="2">선수 <input
-								type="radio" name="type" checked value="3">일반</td>
+							<td>
+							<input type="radio" name="type" value="1">관리자 
+							<input type="radio" name="type" value="2">선수 
+							<input type="radio" name="type" checked value="3">일반</td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">*회원가입을 하시면
