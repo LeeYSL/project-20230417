@@ -15,6 +15,7 @@ import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
 import model.Board;
 import model.Cart;
+import model.CartMybatisDao;
 import model.Goods;
 import model.GoodsMybatisDao;
 import model.Member;
@@ -23,6 +24,8 @@ import model.MemberMybatisDao;
 @WebServlet(urlPatterns = { "/market/*" }, initParams = { @WebInitParam(name = "view", value = "/view/") })
 public class MarketController extends MskimRequestMapping {
 	private GoodsMybatisDao dao = new GoodsMybatisDao();
+	private CartMybatisDao cartdao = new CartMybatisDao();
+	private MemberMybatisDao mdao = new MemberMybatisDao();
 	/*
 	 * @RequestMapping("buyForm") public String buyForm(HttpServletRequest request,
 	 * HttpServletResponse response) { String id = (String)
@@ -66,14 +69,16 @@ public class MarketController extends MskimRequestMapping {
 			e.printStackTrace();
 		} // 파일업로드끝
 			// 파라미터 Board 객체에 저장
-		Goods goods = new Goods(); // db cart의 객체를 만든다?
+		Goods goods = new Goods(); // db goods의 객체를 만든다?
 		goods.setGoodsCode(Integer.parseInt(multi.getParameter("num")));
-
 		goods.setGoodsPrice(Integer.parseInt(multi.getParameter("price")));
 		goods.setGoodsName(multi.getParameter("name"));// name이 content인 파라미터 값을 보드객체의 BoardTitle에 저장한다.
 		goods.setGoodsImg(multi.getFilesystemName("file"));// name이 file인 파라미터 값을 보드객체의 BoardTitle에 저장한다.
 		String id = (String) request.getSession().getAttribute("login");
-
+		request.getSession().setAttribute("goods", goods); // 세션저장
+		
+		
+		
 		if (goods.getGoodsImg() == null)
 			goods.setGoodsImg(""); // 업로드 파일이 없는 경우 빈문자열
 //		int num = dao.maxnum(); // 등록된 게시글의 최대 num 값
@@ -86,38 +91,58 @@ public class MarketController extends MskimRequestMapping {
 		request.setAttribute("url", request.getContextPath() + "/market/marketForm");
 		return "alert/alert";
 	}
-
+	
+	
 	@RequestMapping("cart")
 	public String cart(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+		Cart cart = new Cart();
+		Goods goodsCode = (Goods) request.getSession().getAttribute("goods");
+		String memId = (String) request.getSession().getAttribute("login");
+		int code = Integer.parseInt(request.getParameter("code"));
+		cart.setMemId(memId);
+		cart.setGoodsCode(code);
+		cart.setCartQuantity(1);
+		request.getSession().setAttribute("cart1", cart);
+		if (cartdao.insert(cart)) { // cart 테이블에 게시물 등록했을경우
+			request.setAttribute("msg", "장바구니 추가 완료");
+			request.setAttribute("url", request.getContextPath() + "/market/marketList");
+			return "alert/alert";
+		//	return "redirect:marketList"; // 등록되면 list로 전달
+		}
+		request.setAttribute("msg", "장바구니에 있는 상품입니다.");
+		request.setAttribute("url", request.getContextPath() + "/market/marketList");
 		return "alert/alert";
 	}
 
-//	@RequestMapping("file")
-//	public String file(HttpServletRequest request, HttpServletResponse response) {
-//		// this.getServletContext() : application 객체(application은 jsp에 있고 servlet에는 없다)
-//		// request.getServletContext().getRealPath("/")
-//		// : 실제 웹어플리케이션 경로.
-//		// D:\20230125\html\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\jspstudy2\picture
-//		String path = request.getServletContext().getRealPath("/") + "/file/";
-//		String fname = null;
-//		File f = new File(path);
-//		if (!f.exists()) {
-//			f.mkdirs();
-//		} // 업로드 폴더가 없는 경우 폴더 생성
-//		MultipartRequest multi = null;
-//		try {
-//			// request : 요청객체. 파라미터, 파일의내용, 파일이름
-//			// path : 업로드된 파일이 저장될 폴더
-//			// 10*1024*1024 : 업로드 할 최대 파일 크기 바이트 수 =>10MB 까지 가능
-//			// utf-8 : 파라미터 있을 때 인코딩 코드
-//			multi = new MultipartRequest(request, path, 10 * 1024 * 1024, "utf-8");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		// fname : 업로드된 파일 이름
-//		fname = multi.getFilesystemName("file"); // 업로드된 파일의 이름
-//		request.setAttribute("fname", fname);
-//		return "market/file";
-//	}
+	@RequestMapping("cartForm")
+	public String cartForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
+		if (id == null) {// 로그인이 안돼있거나 관리자가 아니라면
+			request.setAttribute("msg", "로그인 해야 합니다..");
+			request.setAttribute("url", request.getContextPath() + "/market/marketList");
+			return "alert/alert";
+		}
+	//	String memId = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
+		Member mem = mdao.selectOne(id);
+		
+		String cart1 = (String)request.getSession().getAttribute("cart1.memId");
+		String memId = (String)request.getSession().getAttribute("mem.memId");
+		if(memId.equals(cart1){
+			
+		}
+		List<Cart> cartlist = cartdao.cartlist(memId);
+		
+//		request.getSession().setAttribute("code", request.getParameter("goodsCode"));
+//		String code = (String) request.getSession().getAttribute("code");
+//		List<Cart> cartlist = cartdao.cartlist(code);
+	
+		request.setAttribute("cartlist", cartlist);
+		
+		return "market/cartForm";
+	}
+
+
+	
+	
 }

@@ -15,15 +15,17 @@
 		$(function() {
 			//게시글 작성 버튼 클릭 시 이벤트 호출
 			$('#btn').on('click', function() {
-				//로그인 안했으면 로그인창 뜨게해야함
 				location.href = "${path}/market/marketForm";
 			})
 		});
-		$(function(){
-			$('#cart').on('click', function() {
-				loaction.href = "${path}/market/cart";
-			})
-		});
+//		$(function(){
+//			$('#cart').on('click', function() {
+//				loaction.href = "${path}/market/cart";
+	//		})
+//		});
+		function cartAdd(code) {
+			location.href = "${path}/market/cart?code="+code;
+		}
 	</script>
 	<div id="main_div">
 		<div class="w3-container w3-center">
@@ -42,7 +44,7 @@
 								<div class="w3-center">${g.goodsName}</div>
 								<div class="w3-center">${g.goodsPrice}</div>
 								<div>
-									<button type="button" class="btn btn-dark w3-center" id="cart">장바구니 추가</button>
+									<button type="button" class="btn btn-dark w3-center" id="cart" onclick="cartAdd(${g.goodsCode})">장바구니 추가</button>
 								</div>
 							</div>
 						</td>

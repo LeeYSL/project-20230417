@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-OCTYPE html>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,23 +25,25 @@ OCTYPE html>
 			<form name="f" method="post" action="buyForm">
 				<table class="table table-hover">
 					<tr>
-						<th><input type="checkbox" id="check"
-							onchange="checkAll()"></th>
+						<th><input type="checkbox" id="check" onchange="checkAll()"></th>
 						<th>상품</th>
-						<th>가격</th>
+						<th>이름</th>
 						<th>수량</th>
 						<th>가격<br>
 						<th>삭제<br>
 					</tr>
+						<c:forEach var="c" items="${cartlist}">
 					<tr>
-						<td><input type="checkbox" name="prochk" class="prochk"></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td><button type="button" class="btn btn-dark"
-								onclick="pro_delete()">삭제</button></td>
+							<td><input type="checkbox" name="prochk" class="prochk"></td>
+							<td><img src="${path}/upload/goods/${c.goodsImg}" class="goods"></td>
+							<td>${c.goodsName}</td>
+							<td><input type="text" value="1" name="quantity"
+								style="width: 40px"></td>
+							<td>${c.goodsPrice}</td>
+							<td><button type="button" class="btn btn-dark"
+									onclick="pro_delete()">삭제</button></td>
 					</tr>
+						</c:forEach>
 					<tr>
 						<td colspan="6" style="text-align: center">
 							<button type="submit" class="btn btn-dark" onclick="buy()">구매하기</button>

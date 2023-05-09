@@ -25,17 +25,6 @@ public class GoodsMybatisDao {
 		return false;
 	}
 
-//	public int maxnum() {
-//		SqlSession session = MybatisConnection.getConnection();
-//		try {
-//			return session.getMapper(cls).maxnum();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			MybatisConnection.close(session);
-//		}
-//		return 0;
-//	}
 
 	public List<Goods> list() {
 		SqlSession session = MybatisConnection.getConnection();
@@ -48,6 +37,8 @@ public class GoodsMybatisDao {
 		}
 		return null;
 	}
+
+
 
 
 

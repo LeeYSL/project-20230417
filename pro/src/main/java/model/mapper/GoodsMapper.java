@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
+import model.Cart;
 import model.Goods;
 
 public interface GoodsMapper {
@@ -20,5 +21,6 @@ public interface GoodsMapper {
 		"select * from goods",
 		"</script>"})
 	List<Goods> list(Object object);
+
 
 }
