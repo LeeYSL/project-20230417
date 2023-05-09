@@ -43,6 +43,77 @@ public class CartMybatisDao {
 			return false;
 		}
 
+		public boolean delete(Cart cart) {
+			SqlSession session = MybatisConnection.getConnection();
+			try {
+				int cnt = session.getMapper(cls).delete(cart);
+				if (cnt > 0)
+					return true;
+				else
+					return false;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				MybatisConnection.close(session);
+			}
+			return false;
+		}
+
+		public List<Cart> selectGoodsName(String[] names) {
+			SqlSession session = MybatisConnection.getConnection();
+			try {
+				map.clear();
+				map.put("names", names);
+				return session.getMapper(cls).list(map);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				MybatisConnection.close(session);
+			}
+			return null;
+		}
+		}
+
+//		public String find(String memId) {
+//			System.out.println("id : " + memId);
+//			SqlSession session = MybatisConnection.getConnection();
+//			try {
+//				System.out.println("id : " + session.getMapper(cls).find(memId));
+//				return session.getMapper(cls).find(memId);
+//			}catch (Exception e) {
+//				e.printStackTrace();
+//			}finally {
+//				MybatisConnection.close(session);
+//			}
+//			return null;
+//		}
+//
+//		public Cart selectFind(String memId) {
+//			SqlSession session = MybatisConnection.getConnection();
+//			try {
+//				return session.getMapper(cls).selectFind(memId);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}finally {
+//				MybatisConnection.close(session);
+//			}
+//		
+//			return null;
+//		}
+
+//		public Cart selectOne(int goodsCode) {
+//			SqlSession session = MybatisConnection.getConnection();
+//
+//			try {
+//				return session.getMapper(cls).selectOne(goodsCode);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			} finally {
+//				MybatisConnection.close(session);
+//			}
+//
+//			return null;
+//		}
 
 
-}
+

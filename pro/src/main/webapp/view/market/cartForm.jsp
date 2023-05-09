@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>장바구니</title>
 <link rel="stylesheet" href="${path}/css/main.css">
+</head>
+<body>
 <script type="text/javascript">
 	function checkAll() {
 		if ($("#check").is(":checked")) {
@@ -16,9 +18,11 @@
 			$("input[type='checkbox']").prop("checked", false);
 		}
 	}
+	function cartRemove(code) {
+		location.href = "${path}/market/delete?code="+code;
+	}
+
 </script>
-</head>
-<body>
 	<div id="main_div">
 		<h2 class="w3-center">장바구니</h2>
 		<div class="w3-container">
@@ -35,14 +39,13 @@
 						<c:forEach var="c" items="${cartlist}">
 				
 					<tr>
-							<td><input type="checkbox" name="prochk" class="prochk"></td>
+							<td><input type="checkbox" name="prochks" class="prochk"></td>
 							<td><img src="${path}/upload/goods/${c.goodsImg}" class="goods"></td>
 							<td>${c.goodsName}</td>
 							<td><input type="text" value="1" name="quantity"
 								style="width: 40px"></td>
 							<td>${c.goodsPrice}</td>
-							<td><button type="button" class="btn btn-dark"
-									onclick="pro_delete()">삭제</button></td>
+							<td><button type="button" class="btn btn-dark" onclick="cartRemove(${c.goodsCode})">삭제</button></td>
 					</tr>
 					
 						</c:forEach>

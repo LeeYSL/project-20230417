@@ -22,14 +22,14 @@ public class Selenium {
 		("webdriver.chrome.driver", "D:/setup/chromedriver_win32/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		String url = 
-				"https://www.kgcsports.com/volleyball/player/player_list.php";
+				"https://www.kovomarket.co.kr/goods/goods_list.php?cateCd=013";
 		driver.get(url); //셀레늄에서 사진 띄우기
 		Thread.sleep(1000); //1초 쉬기
 		//findElements : 태그들 찾는다 (리턴타입 List)
 		//images  : img 태그 목록
 		//"div.wrap_thumb a > img" : div 태그 의 a 태그 바로 밑에 있는 img 태그 가져와
 		List<WebElement> images = driver.findElements
-				(By.cssSelector("div.plist a > img"));
+				(By.cssSelector("div.item_gallery_type a > img"));
 		//imgulr ArrayList 만든다
 		List<String> imgurl = new ArrayList<>(); //이미지 링크 저장
 		for(WebElement img : images) {
@@ -39,16 +39,16 @@ public class Selenium {
 			System.out.println(src);
 			
 			//이미지의 경로가 절대경로인 이미지만 src에 넣는다
-			if(src.startsWith("https://www.kgcsports.com/images/")) {
+			if(src.startsWith("https")) {
 				imgurl.add(src);
 				System.out.println(src);
 			}
 		}
-		File f = new File("images"); //img 파일 생성
+		File f = new File("goods"); //img 파일 생성
 		if(!f.exists()) f.mkdirs();//f가 존재하지 않을 때 img 폴더 생성
 		//mkdirs는 폴더 생성 함수임
 		
-		for(int i=0;i<imgurl.size();i++) {
+		for(int i=1;i<imgurl.size();i++) {
 			//URL : 네트워크 관련 클래스.
 			//imgurl.get(i) : 이미지의 절대 경로 저장
 			//Connection함
@@ -57,7 +57,7 @@ public class Selenium {
 			InputStream is = 
 					new URL(imgurl.get(i)).openConnection().getInputStream();
 			//fos : 이미지 저장할 파일 이름설정
-			FileOutputStream fos = new FileOutputStream("images/"+i+".jpg");
+			FileOutputStream fos = new FileOutputStream("goods/"+i+".jpg");
 			//8K 버퍼 만든다.
 			byte[] buf = new byte[8096];
 			int len = 0;

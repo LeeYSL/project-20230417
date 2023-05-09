@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="path" value="${pageContext.request.contextPath}" />OCTYPE html>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <html>
 <head>
 <meta charset="UTF-8">
@@ -30,9 +30,10 @@
 								onclick="checkInfo()"> 내 정보 가져오기
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						</tr>
+						
 						<tr>
 							<th>구매상품</th>
-							<td>${pro_name}</td>
+							<td><c:forEach items="${list}" var="c">${c.goodsCode} &lt;${c.goodsCode}&gt;,</c:forEach></td>
 						</tr>
 						<tr>
 							<th>이름</th>
@@ -62,10 +63,9 @@
 						</tr>
 						<tr>
 							<th>최종 결제 금액</th>
-							<td>총 상품금액 ${goods_price} - 적립금 <input type="text"
-								name="point" class="w3-input">
-								<button type="button" class="btn btn-dark" onclick="point()">포인트
-									사용</button>
+							<td>총 상품금액 ${c.goodsPrice} - 적립금 <input type="text" name="point" class="w3-input" value="${mem.memPoint}" style="width:150px">
+						<%-- <button type="button" class="btn btn-dark" onclick="point()">포인트
+									사용</button>--%>
 							</td>
 						</tr>
 						<tr>

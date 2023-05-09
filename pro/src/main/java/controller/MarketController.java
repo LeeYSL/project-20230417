@@ -125,8 +125,8 @@ public class MarketController extends MskimRequestMapping {
 			return "alert/alert";
 		}
 //		String memId = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
-		System.out.println("memId:"+ id);
-//		if (memId.equals)
+		System.out.println("id:"+ id);
+//		if (id.equals)
 			
 //		Member mem = mdao.selectOne(id);
 //		
@@ -135,6 +135,9 @@ public class MarketController extends MskimRequestMapping {
 //		if(memId.equals(cart1){
 //			
 //		}
+//		Cart cart = cartdao.selectFind(id);
+//
+//		System.out.println("memId:"+ cart.getMemId());
 		List<Cart> cartlist = cartdao.cartlist(id);
 		
 		System.out.println("cartlist:" + cartlist);
@@ -146,8 +149,56 @@ public class MarketController extends MskimRequestMapping {
 		
 		return "market/cartForm";
 	}
+	
+	@RequestMapping("delete")
+	public String delete(HttpServletRequest request, HttpServletResponse response) {
+		Cart cart = new Cart();
+		String id = (String) request.getSession().getAttribute("login");
+		int code = Integer.parseInt(request.getParameter("code"));
+		cart.setMemId(id);
+		cart.setGoodsCode(code);
+		if (cartdao.delete(cart)) { 
+			request.setAttribute("msg", "삭제 완료");
+			request.setAttribute("url", request.getContextPath() + "/market/cartForm");
+			return "alert/alert";
+		}
+		request.setAttribute("msg", "삭제 실패.");
+		request.setAttribute("url", request.getContextPath() + "/market/cartForm");
+		return "alert/alert";
+	}
+	
+	@RequestMapping("buyForm")
+	public String buyForm(HttpServletRequest request, HttpServletResponse response) {
+		String id = (String) request.getSession().getAttribute("login");
+		Member mem = mdao.selectOne(id);
+		request.setAttribute("mem", mem);
+		
+		String[] names = request.getParameterValues("prochks");
+		List<Cart> list = cartdao.selectGoodsName(names);
+		request.setAttribute("list", list);
+		return "market/buyForm";
+
+	}
+	
+	@RequestMapping("buy")
+	public String buy(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+//		if (cartdao.insert(otheritem)) { // cart 테이블에 게시물 등록했을경우
+//			request.setAttribute("msg", "주문 완료");
+//			request.setAttribute("url", request.getContextPath() + "/market/buyList");
+//			return "alert/alert";
+//		}
+//		request.setAttribute("msg", "주문 오류.");
+//		request.setAttribute("url", request.getContextPath() + "/market/buyList");
+		return "alert/alert";
+	}
 
 
-	
-	
-}
+}		
+		
+		
+		
+
+
+
+
