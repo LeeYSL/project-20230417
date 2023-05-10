@@ -30,19 +30,17 @@
 						<th>상품</th>
 						<th>가격</th>
 						<th>수량</th>
-						<th>구매일<br>
-						<th>배송상황?<br>
+						<th>배송지</th>
 					</tr>
+					<c:forEach var="b" items="${buylist}">
 					<tr>
-	
 				<%-- <td><input type="checkbox" name="prochk" class="prochk"></td>--%>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-				
+						<td>${b.goodsName}</td>
+						<td>${b.goodsPrice}</td>
+						<td>${b.cartQuantity}</td>
+						<td>${b.memAdress}</td>
 					</tr>
+				</c:forEach>
 				</table>
 			</form>
 		</div>

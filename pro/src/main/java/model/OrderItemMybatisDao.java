@@ -41,13 +41,13 @@ public class OrderItemMybatisDao {
 
 
 
-	public List<OrderItem> list(String id) {
+	public List<OrderItem> buylist(String id) {
 		SqlSession session = MybatisConnection.getConnection();
 		try {
 			map.clear();
 			map.put("id", id);
 
-			return session.getMapper(cls).list(map); // 매개변수 없고 전체 목록 다 조회해
+			return session.getMapper(cls).buylist(map); // 매개변수 없고 전체 목록 다 조회해
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

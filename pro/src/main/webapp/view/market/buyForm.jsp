@@ -7,25 +7,9 @@
 <meta charset="UTF-8">
 <title>굿즈구매</title>
 <link rel="stylesheet" href="${path}/css/main.css">
-<%--
-<script type="text/javascript">
-	function checkInfo() {
-		if($("#checkinfo").is(":checked")) {		
-		}	
-	}
-</script>
- --%>
+
 </head>
 <body>
-<%-- 
-<script type="text/javascript">
-	function payment(code) {
-		location.href = "${path}/market/buy?code="+code;
-	}
-
-
-</script>
---%>
 	<div id="main_div">
 		<h2 class="w3-center">굿즈구매</h2>
 		<div class="w3-container">
@@ -58,7 +42,7 @@
 						</tr>
 						<tr>
 							<th>주소</th>
-							<td><input type="text" name="adress" class="w3-input"
+							<td><input type="text" name="address" class="w3-input"
 								value="${mem.memAdress}"></td>
 						</tr>
 						<tr>
@@ -76,7 +60,7 @@
 							<th>최종 결제 금액</th>
 							<td>총 상품금액 ${goods.goodsPrice} - 적립금 <input type="text"
 								name="point" class="w3-input" value="${mem.memPoint}"
-								style="width: 150px"> <%-- <button type="button" class="btn btn-dark" onclick="point()">포인트
+								style="width: 130px"> <%-- <button type="button" class="btn btn-dark" onclick="point()">포인트
 									사용</button>--%>
 							</td>
 						</tr>

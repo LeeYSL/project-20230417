@@ -34,7 +34,7 @@
 					<tr>
 						<th><input type="checkbox" id="check" onchange="checkAll()"></th>
 						<th>상품</th>
-						<th>이름</th>
+						<th>상품명</th>
 						<th>수량</th>
 						<th>가격</th>
 						<th>삭제</th>
@@ -58,7 +58,7 @@
 
 					</c:forEach>
 					<tr>
-						<td colspan="6" style="text-align: center">
+						<td colspan="7" style="text-align: center">
 							<button type="submit" class="btn btn-dark" onclick="purchase()">구매하기</button>
 						</td>
 					</tr>

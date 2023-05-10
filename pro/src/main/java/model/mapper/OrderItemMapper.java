@@ -17,9 +17,9 @@ public interface OrderItemMapper {
 	@Select ("select ifnull(max(order_code),0) from orderitem")
 	int maxnum();
 	
-	@Select ({"<script>" ,"SELECT i.mem_id, i.order_code, i.cart_quantity, g.goods_name, g.goods_price, g.goods_img "
-					+ "FROM orderitem i , goods g, member m "
-					+ "WHERE i.goods_code = g.goods_code and c.mem_id= #{id} and i.mem_id= m.mem_id",
-					"</script>"})
-	List<OrderItem> list(Map<String, Object> map);
+	@Select ({"<script>" ,"SELECT i.order_code, i.mem_id, i.goods_code, i.cart_quantity, g.goods_name, g.goods_price, g.goods_img, f.mem_address "
+			+ "FROM  goods g, orderitem i, orderinfo f  "
+			+ "WHERE f.mem_id= #{id} and g.goods_code = i.goods_code and i.order_code = f.order_code ",
+				"</script>"})
+	List<OrderItem> buylist(Map<String, Object> map);
 }

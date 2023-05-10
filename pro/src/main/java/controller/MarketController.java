@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.annotation.WebInitParam;
@@ -143,6 +144,11 @@ public class MarketController extends MskimRequestMapping {
 
 	@RequestMapping("delete")
 	public String delete(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		Cart cart = new Cart();
 		String id = (String) request.getSession().getAttribute("login");
 		int code = Integer.parseInt(request.getParameter("code"));
@@ -159,40 +165,16 @@ public class MarketController extends MskimRequestMapping {
 		return "alert/alert";
 	}
 
-//	@RequestMapping("buy")
-//	public String buy(HttpServletRequest request, HttpServletResponse response) {
-//		OrderItem item = new OrderItem();
-//		String id = (String) request.getSession().getAttribute("login");
-//		int code = Integer.parseInt(request.getParameter("code"));
-//		int quantity = Integer.parseInt(request.getParameter("quantity"));
-//		int num = Integer.parseInt(request.getParameter("num"));
-//		
-//		
-//		int limit = 10;
-//		int orderCount = item.orderCount(id);
-//		
-//		int maxpage = (int) ((double) orderCount / limit + 0.95);
-//		int pageNum =1;
-//		int ordercode= orderCount - (pageNum-1) * limit; 
-//		item.setMemId(id);
-//		item.setGoodsCode(code);
-//		item.setCartQuantity(quantity);
-//
-//		if (itemdao.insert(item)) {
-//			request.setAttribute("msg", "성공");
-//			request.setAttribute("url", request.getContextPath() + "/market/buyForm");
-//			return "alert/alert";
-//		}
-//		request.setAttribute("msg", "오류.");
-//		request.setAttribute("url", request.getContextPath() + "/market/cartForm");
-//		return "alert/alert";
-//	}
 
 	@RequestMapping("buy")
 	public String buy(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		String id = (String) request.getSession().getAttribute("login");
 		OrderItem item = new OrderItem();
-//		Orderinfo info = new Orderinfo();
 		int code = Integer.parseInt(request.getParameter("goodsname"));
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		int num = itemdao.maxnum(); // 등록된 게시글의 최대 num값
@@ -202,13 +184,15 @@ public class MarketController extends MskimRequestMapping {
 		item.setMemId(id);
 		System.out.println("item" + item);
 		
-//		num = infodao.maxnum(); // 등록된 게시글의 최대 num값
-//		info.setOrderCode(++num);// 최대값+1
-//		info.setMemId(id);
+		Orderinfo info = new Orderinfo();
+		num = infodao.maxnum(); // 등록된 게시글의 최대 num값
+		info.setOrderCode(++num);// 최대값+1
+		info.setMemId(id);
+		String address = (String)request.getParameter("address");
+		info.setMemAddress(address);
+		System.out.println("info"+info);
 		
-		
-		
-		if (itemdao.insert(item)) {
+		if (itemdao.insert(item) && infodao.insert(info)) {//동시에 카트에서 굿즈 코드 같은거 없애고 싶음 중요함!!!
 			request.setAttribute("msg", "성공");
 			request.setAttribute("url", request.getContextPath() + "/market/buyList");
 			return "alert/alert";
@@ -220,6 +204,11 @@ public class MarketController extends MskimRequestMapping {
 
 	@RequestMapping("buyForm")
 	public String buyForm(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		String id = (String) request.getSession().getAttribute("login");
 		Member mem = mdao.selectOne(id);
 		request.setAttribute("mem", mem);
@@ -257,11 +246,14 @@ public class MarketController extends MskimRequestMapping {
 
 	@RequestMapping("buyList")
 	public String buyList(HttpServletRequest request, HttpServletResponse response) {
-	
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		String id =(String)request.getSession().getAttribute("login");
-		List<OrderItem> list = itemdao.list(id); // 굿즈 상품들 보임
-		request.setAttribute("list", list);
-		System.out.println("list:" + list);
+		List<OrderItem> buylist = itemdao.buylist(id); // 굿즈 상품들 보임
+		request.setAttribute("buylist", buylist);
 		return "market/buyList";
 
 	}
