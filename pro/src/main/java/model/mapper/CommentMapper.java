@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import model.Comment;
 
@@ -29,6 +30,10 @@ public interface CommentMapper {
 
     @Select("select * from comment where board_num = #{boardNum} and comment_num=#{commentNum}")
 	Comment selectOne(@Param("boardNum")int boardNum, @Param("commentNum")int commentNum);
+
+    
+    @Update("update comment set comment_content=#{commentContent} where #{boardNum} and comment_num=#{commentNum} " )
+	int update(Comment comm);
 
 	
 

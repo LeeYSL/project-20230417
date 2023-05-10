@@ -86,5 +86,16 @@ public class CommentMybatisDao {
 			return null;
 			
 		}
-
+		public boolean update(Comment comm) {
+			SqlSession session = MybatisConnection.getConnection();
+			try {
+				return session.getMapper(cls).update(comm) > 0;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				MybatisConnection.close(session);
+			}
+			return false;
+		}	
+		
 }

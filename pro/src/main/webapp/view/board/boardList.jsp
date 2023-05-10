@@ -63,7 +63,7 @@
 						</td>
 						<td>${b.memId}</td>
 						<%-- 오늘 등록된 게시물 날짜 format대로 출력하기 --%>
-						<td>${b.boardTime}</td>
+			            <td>${b.boardTime}</td> 
 						<td>${b.boardReadCnt}</td>
 					</tr>
 				</c:forEach>
