@@ -24,38 +24,38 @@
 				enctype="multipart-formdata">
 				<div class="form-group">
 					<table class="w3-table w3-border ">
-						<tr>
-							<th colspan="2" style="text-align: right"><input
-								type="checkbox" class="w3-right" id="checkinfo"
-								onclick="checkInfo()"> 내 정보 가져오기
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-						</tr>
-						
+
 						<tr>
 							<th>구매상품</th>
-						<%--	<td><c:forEach items="${list}" var="c">${c.goodsCode} &lt;수량:${c.cartQuantity}&gt;<br></c:forEach></td>
+							<%--	<td><c:forEach items="${list}" var="c">${c.goodsCode} &lt;수량:${c.cartQuantity}&gt;<br></c:forEach></td>
 						 --%>
-						 	<td><input type="hidden" name="goodsname" class="w3-input" value="${goods.goodsCode}">${goods.goodsName}</td>
+							<td><input type="hidden" name="goodsname" class="w3-input"
+								value="${goods.goodsCode}">${goods.goodsName}</td>
+						</tr>
+						<tr>
+							<th>수량</th>
+							<td><input type="text" name="quantity" class="w3-input"
+								value="${cart.cartQuantity}"></td>
 						</tr>
 						<tr>
 							<th>이름</th>
-							<td><input type="text" name="name" class="w3-input" value="${mem.memName}"></td>
+							<td><input type="text" name="name" class="w3-input"
+								value="${mem.memName}"></td>
 						</tr>
 						<tr>
 							<th>전화번호</th>
-							<td><input type="text" name="tel" class="w3-input" value="${mem.memPhone}"></td>
+							<td><input type="text" name="tel" class="w3-input"
+								value="${mem.memPhone}"></td>
 						</tr>
 						<tr>
 							<th>주소</th>
-							<td><input type="text" name="adress" class="w3-input" value="${mem.memAdress}"></td>
+							<td><input type="text" name="adress" class="w3-input"
+								value="${mem.memAdress}"></td>
 						</tr>
 						<tr>
 							<th>이메일</th>
-							<td><input type="text" name="email" class="w3-input" value="${mem.memEmail}"></td>
-						</tr>
-						<tr>
-							<th>배송시 요청사항</th>
-							<td><input type="text" name="request" class="w3-input"></td>
+							<td><input type="text" name="email" class="w3-input"
+								value="${mem.memEmail}"></td>
 						</tr>
 						<tr>
 							<th>결제수단</th>
@@ -65,14 +65,17 @@
 						</tr>
 						<tr>
 							<th>최종 결제 금액</th>
-							<td>총 상품금액 ${goods.goodsPrice} - 적립금 <input type="text" name="point" class="w3-input" value="${mem.memPoint}" style="width:150px">
-						<%-- <button type="button" class="btn btn-dark" onclick="point()">포인트
+							<td>총 상품금액 ${goods.goodsPrice} - 적립금 <input type="text"
+								name="point" class="w3-input" value="${mem.memPoint}"
+								style="width: 150px"> <%-- <button type="button" class="btn btn-dark" onclick="point()">포인트
 									사용</button>--%>
 							</td>
 						</tr>
 						<tr>
 							<th>총 결제 금액</th>
-							<td><!-- 다시해야함 --></td>
+							<td>
+								<!-- 다시해야함 -->
+							</td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">

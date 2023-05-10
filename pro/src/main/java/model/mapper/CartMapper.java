@@ -45,4 +45,7 @@ public interface CartMapper {
 		"</script>"})
 	List<Cart> list(Map<String, Object> map);
 
+ @Select("select * from cart where goods_code=#{code} and mem_id= #{memId}")
+	Cart selectOne(int code);
+
 }

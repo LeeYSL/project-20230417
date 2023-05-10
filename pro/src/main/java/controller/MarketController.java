@@ -192,7 +192,11 @@ public class MarketController extends MskimRequestMapping {
 	
 	@RequestMapping("buy")
 	public String buy(HttpServletRequest request, HttpServletResponse response) {
-		
+		String id = (String) request.getSession().getAttribute("login");
+		OrderItem item = new OrderItem();
+		int code = Integer.parseInt(request.getParameter("code"));
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
+		int num = Integer.parseInt(request.getParameter("num"));
 		
 	return "alert/alert";
 
@@ -205,17 +209,11 @@ public class MarketController extends MskimRequestMapping {
 		
 		int code = Integer.parseInt(request.getParameter("code"));
 		Goods goods = dao.selectOne(code);
-//		
-//		Cart cart = new Cart();
-//		String name =(String)request.getParameter("name"));
-//		int code = Integer.parseInt(request.getParameter("code"));
-//		cart.setGoodsCode(code);
-//		System.out.println(cart);
-//		
-//		String[] names = request.getParameterValues("prochks");
-//		List<Cart> list = cartdao.selectGoodsName(names);
-//		request.setAttribute("list", list);
+		Cart cart = cartdao.selectOne(code);
+		
+		
 		request.setAttribute("goods", goods);
+		request.setAttribute("cart", cart);
 		return "market/buyForm";
 
 	}
