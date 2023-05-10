@@ -38,5 +38,15 @@ public class GoodsMybatisDao {
 		return null;
 	}
 
-
+	public Goods selectOne(int code) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			return session.getMapper(cls).selectOne(code); //매개변수 없고 전체 목록 다 조회해
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return null;
+	}
 }

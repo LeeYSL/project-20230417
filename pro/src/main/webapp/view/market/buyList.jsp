@@ -26,8 +26,8 @@ OCTYPE html>
 			<form name="f" method="post" action="buyForm">
 				<table class="table table-hover">
 					<tr>
-						<th><input type="checkbox" id="check"
-							onchange="checkAll()"></th>
+					<%-- 	<th><input type="checkbox" id="check"
+							onchange="checkAll()"></th>--%>
 						<th>상품</th>
 						<th>가격</th>
 						<th>수량</th>
@@ -35,10 +35,10 @@ OCTYPE html>
 						<th>배송상황?<br>
 					</tr>
 					<tr>
-						<td><input type="checkbox" name="prochk" class="prochk"></td>
-						<td></td>
-						<td></td>
-						<td></td>
+				<%-- <td><input type="checkbox" name="prochk" class="prochk"></td>--%>
+						<td>${goodsName}</td>
+						<td>${ }</td>
+						<td>${ }</td>
 						<td></td>
 						<td></td>
 					</tr>

@@ -22,5 +22,8 @@ public interface GoodsMapper {
 		"</script>"})
 	List<Goods> list(Object object);
 
+	@Select("select * from goods where goods_code=#{code}")
+	Goods selectOne(int code);
+
 
 }

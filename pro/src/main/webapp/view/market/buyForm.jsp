@@ -33,7 +33,9 @@
 						
 						<tr>
 							<th>구매상품</th>
-							<td><c:forEach items="${list}" var="c">${c.goodsCode} &lt;${c.goodsCode}&gt;,</c:forEach></td>
+						<%--	<td><c:forEach items="${list}" var="c">${c.goodsCode} &lt;수량:${c.cartQuantity}&gt;<br></c:forEach></td>
+						 --%>
+						 	<td><input type="hidden" name="goodsname" class="w3-input" value="${goods.goodsCode}">${goods.goodsName}</td>
 						</tr>
 						<tr>
 							<th>이름</th>
@@ -63,18 +65,18 @@
 						</tr>
 						<tr>
 							<th>최종 결제 금액</th>
-							<td>총 상품금액 ${c.goodsPrice} - 적립금 <input type="text" name="point" class="w3-input" value="${mem.memPoint}" style="width:150px">
+							<td>총 상품금액 ${goods.goodsPrice} - 적립금 <input type="text" name="point" class="w3-input" value="${mem.memPoint}" style="width:150px">
 						<%-- <button type="button" class="btn btn-dark" onclick="point()">포인트
 									사용</button>--%>
 							</td>
 						</tr>
 						<tr>
 							<th>총 결제 금액</th>
-							<td>${goods_price}<!-- 다시해야함 --></td>
+							<td><!-- 다시해야함 --></td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">
-								<button type="button" class="btn btn-dark" onclick="payment()">결제하기</button>
+								<button type="submit" class="btn btn-dark" onclick="payment()">결제하기</button>
 							</td>
 						</tr>
 					</table>

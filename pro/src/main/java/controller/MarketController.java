@@ -13,19 +13,21 @@ import com.oreilly.servlet.MultipartRequest;
 
 import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
-import model.Board;
 import model.Cart;
 import model.CartMybatisDao;
 import model.Goods;
 import model.GoodsMybatisDao;
 import model.Member;
 import model.MemberMybatisDao;
+import model.OrderItem;
+import model.OrderItemMybatisDao;
 
 @WebServlet(urlPatterns = { "/market/*" }, initParams = { @WebInitParam(name = "view", value = "/view/") })
 public class MarketController extends MskimRequestMapping {
 	private GoodsMybatisDao dao = new GoodsMybatisDao();
 	private CartMybatisDao cartdao = new CartMybatisDao();
 	private MemberMybatisDao mdao = new MemberMybatisDao();
+	private OrderItemMybatisDao itemdao = new OrderItemMybatisDao();
 	/*
 	 * @RequestMapping("buyForm") public String buyForm(HttpServletRequest request,
 	 * HttpServletResponse response) { String id = (String)
@@ -36,7 +38,7 @@ public class MarketController extends MskimRequestMapping {
 	@RequestMapping("marketList")
 	public String marketList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		List<Goods> list = dao.list();
+		List<Goods> list = dao.list(); //굿즈 상품들 보임
 		request.setAttribute("list", list);
 		return "market/marketList";
 	}
@@ -93,16 +95,17 @@ public class MarketController extends MskimRequestMapping {
 	}
 	
 	
-	@RequestMapping("cart")
+	@RequestMapping("cart") //장바구니 추가 누르면 여기로 옴
 	public String cart(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		Cart cart = new Cart();
-		Goods goodsCode = (Goods) request.getSession().getAttribute("goods");
+//		Goods goodsCode = (Goods) request.getSession().getAttribute("goods");
 		String memId = (String) request.getSession().getAttribute("login");
 		int code = Integer.parseInt(request.getParameter("code"));
 		cart.setMemId(memId);
 		cart.setGoodsCode(code);
 		cart.setCartQuantity(1);
+		System.out.println(cart);
 	//	request.getSession().setAttribute("cart1", cart);
 		if (cartdao.insert(cart)) { // cart 테이블에 게시물 등록했을경우
 			request.setAttribute("msg", "장바구니 추가 완료");
@@ -117,33 +120,22 @@ public class MarketController extends MskimRequestMapping {
 
 	@RequestMapping("cartForm")
 	public String cartForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String id = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
+		String memId = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
 		
-		if (id == null) {// 로그인이 안돼있거나 관리자가 아니라면
+		if (memId == null) {// 로그인이 안돼있거나 관리자가 아니라면
 			request.setAttribute("msg", "로그인 해야 합니다..");
 			request.setAttribute("url", request.getContextPath() + "/market/marketList");
 			return "alert/alert";
 		}
-//		String memId = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
-		System.out.println("id:"+ id);
-//		if (id.equals)
-			
-//		Member mem = mdao.selectOne(id);
-//		
-//		String cart1 = (String)request.getSession().getAttribute("cart1.memId");
-//		String memId = (String)request.getSession().getAttribute("mem.memId");
-//		if(memId.equals(cart1){
-//			
-//		}
-//		Cart cart = cartdao.selectFind(id);
-//
-//		System.out.println("memId:"+ cart.getMemId());
-		List<Cart> cartlist = cartdao.cartlist(id);
-		
+
+		System.out.println("memId:"+ memId);
+
+		Cart cart = new Cart();		
+		System.out.println(cart);
+
+		List<Cart> cartlist = cartdao.cartlist(memId);
 		System.out.println("cartlist:" + cartlist);
-//		request.getSession().setAttribute("code", request.getParameter("goodsCode"));
-//		String code = (String) request.getSession().getAttribute("code");
-//		List<Cart> cartlist = cartdao.cartlist(code);
+
 	
 		request.setAttribute("cartlist", cartlist);
 		
@@ -157,6 +149,7 @@ public class MarketController extends MskimRequestMapping {
 		int code = Integer.parseInt(request.getParameter("code"));
 		cart.setMemId(id);
 		cart.setGoodsCode(code);
+
 		if (cartdao.delete(cart)) { 
 			request.setAttribute("msg", "삭제 완료");
 			request.setAttribute("url", request.getContextPath() + "/market/cartForm");
@@ -167,32 +160,100 @@ public class MarketController extends MskimRequestMapping {
 		return "alert/alert";
 	}
 	
+//	@RequestMapping("buy")
+//	public String buy(HttpServletRequest request, HttpServletResponse response) {
+//		OrderItem item = new OrderItem();
+//		String id = (String) request.getSession().getAttribute("login");
+//		int code = Integer.parseInt(request.getParameter("code"));
+//		int quantity = Integer.parseInt(request.getParameter("quantity"));
+//		int num = Integer.parseInt(request.getParameter("num"));
+//		
+//		
+//		int limit = 10;
+//		int orderCount = item.orderCount(id);
+//		
+//		int maxpage = (int) ((double) orderCount / limit + 0.95);
+//		int pageNum =1;
+//		int ordercode= orderCount - (pageNum-1) * limit; 
+//		item.setMemId(id);
+//		item.setGoodsCode(code);
+//		item.setCartQuantity(quantity);
+//
+//		if (itemdao.insert(item)) {
+//			request.setAttribute("msg", "성공");
+//			request.setAttribute("url", request.getContextPath() + "/market/buyForm");
+//			return "alert/alert";
+//		}
+//		request.setAttribute("msg", "오류.");
+//		request.setAttribute("url", request.getContextPath() + "/market/cartForm");
+//		return "alert/alert";
+//	}
+	
+	
+	@RequestMapping("buy")
+	public String buy(HttpServletRequest request, HttpServletResponse response) {
+		
+		
+	return "alert/alert";
+
+	}
 	@RequestMapping("buyForm")
 	public String buyForm(HttpServletRequest request, HttpServletResponse response) {
 		String id = (String) request.getSession().getAttribute("login");
 		Member mem = mdao.selectOne(id);
 		request.setAttribute("mem", mem);
 		
-		String[] names = request.getParameterValues("prochks");
-		List<Cart> list = cartdao.selectGoodsName(names);
-		request.setAttribute("list", list);
+		int code = Integer.parseInt(request.getParameter("code"));
+		Goods goods = dao.selectOne(code);
+//		
+//		Cart cart = new Cart();
+//		String name =(String)request.getParameter("name"));
+//		int code = Integer.parseInt(request.getParameter("code"));
+//		cart.setGoodsCode(code);
+//		System.out.println(cart);
+//		
+//		String[] names = request.getParameterValues("prochks");
+//		List<Cart> list = cartdao.selectGoodsName(names);
+//		request.setAttribute("list", list);
+		request.setAttribute("goods", goods);
 		return "market/buyForm";
 
 	}
 	
-	@RequestMapping("buy")
-	public String buy(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-//		if (cartdao.insert(otheritem)) { // cart 테이블에 게시물 등록했을경우
-//			request.setAttribute("msg", "주문 완료");
-//			request.setAttribute("url", request.getContextPath() + "/market/buyList");
-//			return "alert/alert";
-//		}
-//		request.setAttribute("msg", "주문 오류.");
+	@RequestMapping("purchase")
+	public String purchase(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		OrderItem item = new OrderItem();
+//		String memId = (String) request.getSession().getAttribute("login");
+//		System.out.println("memId="+memId);
+//		item.setMemId(memId);
+//		Goods goodsCode = (Goods) request.getSession().getAttribute("goods");
+//		System.out.println("goodsCode="+goodsCode);
+//		item.setGoodsCode(goodsCode);
+//		
+//		
+//		
+//		
+//		if (cartdao.insert(item)) { // cart 테이블에 게시물 등록했을경우
+//		request.setAttribute("msg", "주문 완료");
 //		request.setAttribute("url", request.getContextPath() + "/market/buyList");
+//		return "alert/alert";
+//	}
+//	request.setAttribute("msg", "주문 오류.");
+//	request.setAttribute("url", request.getContextPath() + "/market/buyList");
 		return "alert/alert";
-	}
 
+
+
+	}
+	
+	
+	
+	@RequestMapping("buyList")
+	public String buyList(HttpServletRequest request, HttpServletResponse response) {
+
+		return "alert/alert";
+
+	}
 
 }		
 		

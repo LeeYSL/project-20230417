@@ -12,8 +12,8 @@ import model.Cart;
 
 public interface CartMapper {
 	@Select ({"<script>" ,"SELECT c.mem_id, c.goods_code, c.cart_quantity, g.goods_name, g.goods_price, g.goods_img "
-			+ "FROM cart c , goods g "
-			+ "WHERE c.goods_code = g.goods_code  ",
+			+ "FROM cart c , goods g, member m "
+			+ "WHERE c.goods_code = g.goods_code and c.mem_id= #{memId} and c.mem_id= m.mem_id",
 			"</script>"}) 
 	List<Cart> cartlist(Map<String, Object> map);
 
@@ -34,7 +34,7 @@ public interface CartMapper {
 //	@Delete("delete from cart where goods_code=#{goodsCode}")
 //	int delete(int goodsCode);
 //
-	@Delete("delete from cart where goods_code=#{goodsCode}")
+	@Delete("delete from cart where goods_code=#{goodsCode}  and mem_id= #{memId}")
 	int delete(Cart cart);
 
 	@Select({"<script>",
