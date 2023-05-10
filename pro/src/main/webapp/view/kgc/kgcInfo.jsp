@@ -25,10 +25,11 @@
 				</fieldset>
 			</form>
 
-			<h4 class="h4Txt mt0">팀순위</h4>
+			<h4 class="h4Txt mt0"></h4>
 			<div class="tbl1 record w3-center">
 				<table cellspacing="0" summary="순위, 팀명, 경기수, 승, 패, 승점, 정보가 있습니다.">
 					<colgroup>
+						<col width="80px" />
 						<col width="80px" />
 						<col width="206px" />
 						<col width="109px" />
@@ -40,7 +41,7 @@
 					</colgroup>
 					<thead>
 						<tr>
-							<th scope="col">순위</th>
+							<th scope="col" colspan="2">팀 순위</th>
 							<th scope="col">팀명</th>
 							<th scope="col">경기수</th>
 							<th scope="col">승</th>
@@ -52,6 +53,7 @@
 					<c:forEach var="r" items="${recordList}">
 						<tr>
 							<th scope="col">${r.level}</th>
+							<th scope="col"><img class=logoimg src="${path}/image/logo/${r.teamImg}.png" class="logo" /></th>
 							<th scope="col">${r.teamName}</th>
 							<th scope="col">${r.gameNum}</th>
 							<th scope="col">${r.gameWin}</th>

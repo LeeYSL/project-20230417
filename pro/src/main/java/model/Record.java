@@ -10,7 +10,14 @@ public class Record {
 	private int winPoint;
 	private String leagueYear;
 	private String leagueName;
+	private String teamImg;
 	
+	public String getTeamImg() {
+		return teamImg;
+	}
+	public void setTeamImg(String teamImg) {
+		this.teamImg = teamImg;
+	}
 	public int getRecordNum() {
 		return recordNum;
 	}

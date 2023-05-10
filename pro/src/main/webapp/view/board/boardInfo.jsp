@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <%-- --%>
 <!DOCTYPE html>
@@ -21,21 +23,17 @@
 		<div class="w3-container w3-center">
 			<h2 class="w3-center">${board_name}</h2>
 			<table class="w3-table-all" style="height: 100px">
+			     <tr>
+					<th>제목</th>
+					<td>${b.boardTitle}</td>
+				</tr>
 				<tr>
 					<th>작성일:</th>
-					<td>${b.boardTime}</td>
+		<td><fmt:formatDate value="${b.boardTime}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 				<tr>
 					<th>작성자:</th>
 					<td>${b.memId}</td>
-				</tr>
-				<tr>
-					<th>조회수:</th>
-					<td>${b.boardReadCnt}</td>
-				</tr>
-				<tr>
-					<th>제목</th>
-					<td>${b.boardTitle}</td>
 				</tr>
 				<tr style="height: 400px">
 					<th>내용</th>
@@ -89,13 +87,13 @@
 						<th colspan="3" class="w3-center" style="text-align: center;">댓글
 							목록</th>
 					</tr>
-					<c:forEach var="c" items="${commList}">
+					<c:forEach var="c" items="${commList}"> <!-- name이 없으면 보낼 수 없고 받아만 온다. -->
 						<tr>
 							<th>작성자:${c.memId}</th>
 							<th>
 							  <input type="text" name="commentContent" value="${c.commentContent}" class="w3-input">
-							  <input type="hidden" name="boardNum" value="${param.boardNum}" >
-							  <input type="hidden" name="commentNum" value="${c.commentNum}" >
+							  <input type="hidden" name="boardNum" value="${param.boardNum}" > <!-- param은 url로 이동하는 것들을 받아옴ㄴ -->
+							  <input type="hidden" name="commentNum" value="${c.commentNum}" > <!-- request로 c 에 담아준 걸 넘겨준다 -->
 							</th>
 							<th class="w3-right">
 							<c:if test="${sessionScope.login != null && sessionScope.login ==c.memId }">
