@@ -17,6 +17,15 @@
  --%>
 </head>
 <body>
+<%-- 
+<script type="text/javascript">
+	function payment(code) {
+		location.href = "${path}/market/buy?code="+code;
+	}
+
+
+</script>
+--%>
 	<div id="main_div">
 		<h2 class="w3-center">굿즈구매</h2>
 		<div class="w3-container">

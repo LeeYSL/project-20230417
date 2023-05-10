@@ -33,7 +33,6 @@
 				<table class="table table-hover">
 					<tr>
 						<th><input type="checkbox" id="check" onchange="checkAll()"></th>
-						<th>번호</th>
 						<th>상품</th>
 						<th>이름</th>
 						<th>수량</th>
@@ -45,7 +44,6 @@
 
 						<tr>
 							<td><input type="checkbox" name="prochks" class="prochk"></td>
-							<td><input type="hidden" name="num" value="1"></td>
 							<td><img src="${path}/upload/goods/${c.goodsImg}"
 								class="goods"></td>
 							<td><input type="hidden" name="name" value="${c.goodsName}">${c.goodsName}</td>

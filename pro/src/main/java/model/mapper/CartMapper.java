@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import model.Cart;
@@ -45,7 +46,7 @@ public interface CartMapper {
 		"</script>"})
 	List<Cart> list(Map<String, Object> map);
 
- @Select("select * from cart where goods_code=#{code} and mem_id= #{memId}")
-	Cart selectOne(int code);
+	 @Select("select * from cart where goods_code=#{code} and mem_id= #{id}")
+		Cart selectOne(@Param("code")int code,@Param("id")String id );
 
 }

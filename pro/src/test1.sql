@@ -38,8 +38,8 @@ CREATE TABLE cart
 (
 	-- 아이디
 	mem_id varchar(15) NOT NULL COMMENT '아이디',
-	goods_code int NOT NULL,
 	cart_quantity int NOT NULL,
+	goods_code int NOT NULL,
 	PRIMARY KEY (mem_id, goods_code),
 	UNIQUE (mem_id)
 );
@@ -99,26 +99,24 @@ CREATE TABLE member
 
 CREATE TABLE orderinfo
 (
-	oder_code int NOT NULL,
+	order_code int NOT NULL,
 	-- 아이디
 	mem_id varchar(15) NOT NULL COMMENT '아이디',
 	mem_address varchar(200),
-	PRIMARY KEY (oder_code),
-	UNIQUE (oder_code),
-	UNIQUE (mem_id)
+	PRIMARY KEY (order_code),
+	UNIQUE (order_code)
 );
 
 
 CREATE TABLE orderitem
 (
-	oder_code int NOT NULL,
+	order_code int NOT NULL,
 	goods_code int NOT NULL,
 	cart_quantity int,
 	-- 아이디
 	mem_id varchar(15) NOT NULL COMMENT '아이디',
-	PRIMARY KEY (oder_code, goods_code),
-	UNIQUE (oder_code),
-	UNIQUE (mem_id)
+	PRIMARY KEY (order_code, goods_code),
+	UNIQUE (order_code)
 );
 
 

@@ -73,15 +73,26 @@ public class CartMybatisDao {
 		return null;
 	}
 
-	public Cart selectOne(int code) {
+//	public Cart selectOne(int code) {
+//		SqlSession session = MybatisConnection.getConnection();
+//		try {
+//			return session.getMapper(cls).selectOne(code); //매개변수 없고 전체 목록 다 조회해
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			MybatisConnection.close(session);
+//		}
+//		return null;
+//	}
+
+	public Cart selectOne(int code, String id) {
 		SqlSession session = MybatisConnection.getConnection();
 		try {
-			return session.getMapper(cls).selectOne(code); //매개변수 없고 전체 목록 다 조회해
+			return session.getMapper(cls).selectOne(code,id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			MybatisConnection.close(session);
 		}
 		return null;
-	}
-}
+	}}

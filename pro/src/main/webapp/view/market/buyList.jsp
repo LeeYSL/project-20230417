@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-OCTYPE html>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +34,14 @@ OCTYPE html>
 						<th>배송상황?<br>
 					</tr>
 					<tr>
+	
 				<%-- <td><input type="checkbox" name="prochk" class="prochk"></td>--%>
-						<td>${goodsName}</td>
-						<td>${ }</td>
-						<td>${ }</td>
 						<td></td>
 						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+				
 					</tr>
 				</table>
 			</form>
