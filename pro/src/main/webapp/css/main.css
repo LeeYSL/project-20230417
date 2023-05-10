@@ -82,12 +82,14 @@
     width: 70%;
 }
 
+.list dl dd ul {
+    list-style:none;
+}
+
 .list dl dd ul li a .bg_name {
     width: 180px;
     height: 38px;
     filter: alpha(opacity=80);
-    background-color: rgb(0, 0, 0);
-    position: absolute;
     top: 166px;
     left: 0;
     opacity: 0.80;

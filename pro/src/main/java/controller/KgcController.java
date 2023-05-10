@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -7,15 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
+import model.KgcMybatisDao;
+import model.Record;
 
 @WebServlet(urlPatterns = { "/kgc/*" }, initParams = { @WebInitParam(name = "view", value = "/view/") })
 public class KgcController extends MskimRequestMapping {
+	private KgcMybatisDao kdao = new KgcMybatisDao();
 
 	@RequestMapping("main")
 	public String goMain(HttpServletRequest request, HttpServletResponse response) {
 		return "kgc/main";
 	}
-	
+
 	@RequestMapping("map")
 	public String goMap(HttpServletRequest request, HttpServletResponse response) {
 		return "kgc/map";
@@ -23,6 +28,17 @@ public class KgcController extends MskimRequestMapping {
 
 	@RequestMapping("kgcInfo")
 	public String gokgcInfo(HttpServletRequest request, HttpServletResponse response) {
+		//연도리스트 조회
+		List<Record> yearList = kdao.yearList();
+		request.setAttribute("yearList", yearList);	
+		
+		//구단기록 데이터리스트 조회
+		String leagueYear = request.getParameter("leagueYear");
+		if(leagueYear == null) {
+			leagueYear = "20222023";
+		}
+		List<Record> recordList = kdao.list(leagueYear);
+		request.setAttribute("recordList", recordList);
 		return "kgc/kgcInfo";
 	}
 

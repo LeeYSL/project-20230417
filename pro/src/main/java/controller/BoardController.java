@@ -242,11 +242,11 @@ public class BoardController extends MskimRequestMapping {
 
 		System.out.println("boardNum:" + boardNum);
 		System.out.println("commentNum:" + commentNum);
-		
+
 		Comment c = cdao.selectOne(boardNum, commentNum);
 //		comm.setMemId(request.getParameter("memId"));
 		System.out.println("c :" + c);
-		
+
 //		if(id == null) {
 //			request.setAttribute("msg", "로그인 후 삭제 가");
 //			request.setAttribute(url, url);
@@ -258,43 +258,53 @@ public class BoardController extends MskimRequestMapping {
 //		}
 		if (!id.equals(c.getMemId())) {
 			request.setAttribute("msg", "본인 댓글만 삭제 할 수 있습니다.");
-			request.setAttribute("url",url);
+			request.setAttribute("url", url);
 			return "alert/alert";
 		}
 		if (cdao.delete(boardNum, commentNum)) {
 			return "redirect:" + url;
 
-		} 
-			request.setAttribute("msg", "아이디가 달라 삭제 불가능합니다.");
-			request.setAttribute(url, url);
-			return "alert/alert";
-		
+		}
+		request.setAttribute("msg", "아이디가 달라 삭제 불가능합니다.");
+		request.setAttribute(url, url);
+		return "alert/alert";
+
 	}
-       @RequestMapping("commupdate") 
-    	   public String commupdate(HttpServletRequest request, HttpServletResponse response) {
-    	   
-    	   int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-   		   int commentNum = Integer.parseInt(request.getParameter("commentNum"));
-   		   int CommentContent = Integer.parseInt(request.getParameter("commentContent"));
-   		   
-   		   String url = "boardInfo?boardNum=" + boardNum;
-   		   
-    	    try {
-   			request.setCharacterEncoding("UTF-8");
-   		 } catch (UnsupportedEncodingException e) {
-   		 	e.printStackTrace();
-   		 	
-   		 Comment c = cdao.selectOne(boardNum, commentNum);
-   		 c.setBoardNum(boardNum);
-   		 c.setCommentNum(commentNum);
-   		 c.setcommentContent(commentContent);
-   		 
-   		 	
-   		 	
-   		 }
-    		   
-    	   }
-       
+
+	@RequestMapping("commupdate")
+	public String commupdate(HttpServletRequest request, HttpServletResponse response) {
+
+		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+		int commentNum = Integer.parseInt(request.getParameter("commentNum"));
+		String commentContent = request.getParameter("commentContent");
+
+		String msg = null;
+		String url = "boardInfo?boardNum=" + boardNum;
+
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+
+			e.printStackTrace();
+		}
+		Comment c = cdao.selectOne(boardNum, commentNum);
+		c.setBoardNum(boardNum);
+		c.setCommentNum(commentNum);
+		c.setCommentContent(commentContent);
+		if (cdao.update(c)) {
+			msg = "댓글 수정 완료";
+			url = "boardInfo?boardNum=" + boardNum;
+			return "redirect:" + url;
+		} else {
+			msg = "댓글 수정 실패";
+			url = "boardInfo?boardNum=" + boardNum;
+		}
+
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		return "alert/alert";
+	}
+
 	@RequestMapping("updateForm")
 	public String updateForm(HttpServletRequest request, HttpServletResponse response) {
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));

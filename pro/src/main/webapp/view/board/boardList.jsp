@@ -44,7 +44,7 @@
 					<th>제목</th>
 					<th>작성자</th>
 					<th>등록일</th>
-					<th>조회수</th>
+					
 				</tr>
 				<c:forEach var="b" items="${list}">
 					<tr>
@@ -63,8 +63,9 @@
 						</td>
 						<td>${b.memId}</td>
 						<%-- 오늘 등록된 게시물 날짜 format대로 출력하기 --%>
-			            <td>${b.boardTime}</td> 
-						<td>${b.boardReadCnt}</td>
+						<td><fmt:formatDate value="${b.boardTime}" pattern="yyyy-MM-dd"/></td>
+			            
+						
 					</tr>
 				</c:forEach>
 

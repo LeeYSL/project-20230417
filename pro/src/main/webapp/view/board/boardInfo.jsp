@@ -82,7 +82,7 @@
 				</table>
 			</form>
 			<div>
-
+		       <form action="commupdate" method="post">
 				<table class="w3-table-all">
 
 					<tr>
@@ -92,24 +92,25 @@
 					<c:forEach var="c" items="${commList}">
 						<tr>
 							<th>작성자:${c.memId}</th>
-							<th>${c.commentContent}</th>
+							<th>
+							  <input type="text" name="commentContent" value="${c.commentContent}" class="w3-input">
+							  <input type="hidden" name="boardNum" value="${param.boardNum}" >
+							  <input type="hidden" name="commentNum" value="${c.commentNum}" >
+							</th>
 							<th class="w3-right">
-							<input type="hidden" name="boardNum" value="${b.boardNum}"> 
-							<input type="hidden" name="commentContent" value="${b.commentContent}"> 
-							
 							<c:if test="${sessionScope.login != null && sessionScope.login ==c.memId }">
 									<a class="btn btn-dark"
 										href="commdel?boardNum=${param.boardNum}&commentNum=${c.commentNum}">삭제</a>
 								</c:if> 
 								<c:if test="${sessionScope.login != null && sessionScope.login ==c.memId }">
-									<a class="btn btn-dark"
-										href="commupdate?boardNum=${param.boardNum}&commentNum=${c.commentNum}">수정</a>
+									<button type="submit" class="btn btn-dark">수정</button>
 								</c:if></th>
 
 						</tr>
 
 					</c:forEach>
 				</table>
+				</form>
 			</div>
 		</div>
 	</div>
