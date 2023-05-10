@@ -52,14 +52,17 @@
 				</tr>
 				<tr>
 					<td colspan="2" class="w3-center"><c:if
-							test="${boardid !='1' || sessionScpoe.login == 'admin'}">
-							<a href="updateForm?boardNum=${b.boardNum}" class="btn btn-dark">수정</a>
-							<a href="deleteForm?boardNum=${b.boardNum}" class="btn btn-dark">삭제</a>
+							test="${boardid !='1' || sessionScpoe.login == 'admin'}"> 
+								 <c:if test="${sessionScope.login != null && sessionScope.login ==b.memId }">
+							<a href="updateForm?boardNum=${b.boardNum}" class="btn btn-dark">수정</a></c:if>
+							 <c:if test="${sessionScope.login != null && sessionScope.login ==b.memId}">
+							<a href="deleteForm?boardNum=${b.boardNum}" class="btn btn-dark">삭제</a></c:if>
 						</c:if> <a href="boardList?boardId=${b.boardId}" class="btn btn-dark">목록</a></td>
 				</tr>
 			</table>
 			<form action="comment" method="post">
 				<input type="hidden" name="boardNum" value="${b.boardNum}">
+				<input type="hidden" name="MemId" value="${b.memId}">
 				<table class="w3-table-all">
 					<tr>
 						<th>
@@ -75,6 +78,7 @@
 			<div>
 			
 				<table class="w3-table-all">
+				
 					<tr>
 						<th colspan="3" class="w3-center" style="text-align:center; ">댓글 목록</th>
 					</tr>
@@ -83,8 +87,10 @@
 							<th>작성자:${c.memId}</th>
 							<th>${c.commentContent}</th>
 							<th class="w3-right">
+							<input type="hidden" name="boardNum" value="${b.boardNum}">
+							 <c:if test="${sessionScope.login != null && sessionScope.login ==c.memId }">
 							  <a class="btn btn-dark" 
-				               	href="commdel?boardNum=${param.boardNum}&commentNum=${c.commentNum}">삭제</a></th>
+				               	href="commdel?boardNum=${param.boardNum}&commentNum=${c.commentNum}">삭제</a></c:if></th>
 						</tr>
 					</c:forEach>
 				</table>

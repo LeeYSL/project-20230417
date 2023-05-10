@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.print.DocFlavor.STRING;
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -12,6 +13,8 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.annotations.Select;
 
 import com.oreilly.servlet.MultipartRequest;
 
@@ -208,8 +211,13 @@ public class BoardController extends MskimRequestMapping {
 		comm.setCommentContent(request.getParameter("comment"));
 		comm.setMemId(request.getParameter("memId"));
 		String id = (String) request.getSession().getAttribute("login");
+//		System.out.println("id:"+id); 왜 안찍어줘
 		comm.setMemId(id);
 		comm.setCommentNum(++commentNum);
+//		request.getSession().setAttribute("comm", comm); comm 세션에 저장했는데 왜 null?
+
+//    System.out.println("comm:" + comm);
+
 		if (comm.getMemId() == null) {
 			request.setAttribute("msg", "로그인 하셔야 댓글을 달 수 있습니다.");
 
@@ -224,17 +232,43 @@ public class BoardController extends MskimRequestMapping {
 	}
 
 	@RequestMapping("commdel")
-	public String commdel(HttpServletRequest request, HttpResponse response) {
+	public String commdel(HttpServletRequest request, HttpServletResponse response) {
+//		Comment comm = new Comment();
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 		int commentNum = Integer.parseInt(request.getParameter("commentNum"));
+//		String commId = (String)request.getParameter("memId");
 		String url = "boardInfo?boardNum=" + boardNum;
+		String id = (String) request.getSession().getAttribute("login");
 
+		System.out.println("boardNum:" + boardNum);
+		System.out.println("commentNum:" + commentNum);
+		
+		Comment c = cdao.selectOne(boardNum, commentNum);
+//		comm.setMemId(request.getParameter("memId"));
+		System.out.println("c :" + c);
+		
+//		if(id == null) {
+//			request.setAttribute("msg", "로그인 후 삭제 가");
+//			request.setAttribute(url, url);
+//		}
+//			
+//		if(id != null || id.equals(comm.getMemId())) {
+//			msg = "로그인 하셔야 삭제 가능합니다.";
+//			return "redirect:" + url;	
+//		}
+		if (!id.equals(c.getMemId())) {
+			request.setAttribute("msg", "본인 댓글만 삭제 할 수 있습니다.");
+			request.setAttribute("url",url);
+			return "alert/alert";
+		}
 		if (cdao.delete(boardNum, commentNum)) {
 			return "redirect:" + url;
-		}
-		request.setAttribute("msg", "답글 삭제 시 오류 발생");
-		request.setAttribute(url, url);
-		return "alert/alert";
+
+		} 
+			request.setAttribute("msg", "아이디가 달라 삭제 불가능합니다.");
+			request.setAttribute(url, url);
+			return "alert/alert";
+		
 	}
 
 	@RequestMapping("updateForm")
@@ -250,7 +284,7 @@ public class BoardController extends MskimRequestMapping {
 			if (id == null || !id.equals("admin")) {
 				request.setAttribute("msg", "관리자만 수정 가능합니다");
 				request.setAttribute("url", "boardList?boardId=NOTICE");
-				return "alert";
+				return "alert/alert";
 			}
 		}
 		Board b = dao.selectOne(boardNum);
@@ -274,20 +308,20 @@ public class BoardController extends MskimRequestMapping {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		int boardNum = Integer.parseInt(multi.getParameter("boardNum"));
 		board.setMemId(multi.getParameter("name"));
 		board.setBoardTitle(multi.getParameter("title"));
 		board.setBoardContent(multi.getParameter("content"));
 		board.setBoardNum(boardNum);
-		
-		//input type=file로 선택한 첨부파일이 없으면 기존의 첨부파일을 가져옴
+
+		// input type=file로 선택한 첨부파일이 없으면 기존의 첨부파일을 가져옴
 		if (multi.getFilesystemName("file") == null) {
-			board.setBoardFile(multi.getParameter("boardFile")); //DB첨부파일
+			board.setBoardFile(multi.getParameter("boardFile")); // DB첨부파일
 		} else {
-			board.setBoardFile(multi.getFilesystemName("file")); //새로 첨부한 첨부파일
+			board.setBoardFile(multi.getFilesystemName("file")); // 새로 첨부한 첨부파일
 		}
-		
+
 		String msg;
 		String url;
 		// 3

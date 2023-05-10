@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import model.Comment;
@@ -21,10 +22,13 @@ public interface CommentMapper {
 	
 	
     @Delete("delete from comment where board_num=#{boardNum} and comment_num=#{commentNum}")
-	int delete(int boardNum, int commentNum);
+	int delete(@Param("boardNum")int boardNum, @Param("commentNum")int commentNum);
     
     @Select("select * from comment where board_num = #{boardNum}")
     List<Comment> list(int boardNum);
+
+    @Select("select * from comment where board_num = #{boardNum} and comment_num=#{commentNum}")
+	Comment selectOne(@Param("boardNum")int boardNum, @Param("commentNum")int commentNum);
 
 	
 

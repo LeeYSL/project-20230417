@@ -37,7 +37,8 @@
 	<div id="main_div" style="padding-bottom: 400px;">
 		<h2 id="title" class="w3-center"></h2>
 		<div class="w3-container">
-			<table class="w3-table-all">
+		<input type="hidden" name="sessionScope" value="${sessionScope.login}">
+			<table class="w3-table-all">	
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
@@ -85,7 +86,8 @@
 				</tr>
 				<tr>
 					<td colspan="5" style="text-align: center;">
-						<button type="submit" class="btn btn-dark">게시글 작성</button>
+					  <c:if test="${sessionScope.login != null }">
+						<button type="submit" class="btn btn-dark">게시글 작성</button></c:if>
 					</td>
 				</tr>
 			</table>

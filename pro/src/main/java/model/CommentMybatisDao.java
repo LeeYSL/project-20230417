@@ -72,4 +72,19 @@ public class CommentMybatisDao {
 			return null;
 
 		}
+		public Comment selectOne(int boardNum, int commentNum) {
+			SqlSession session = MybatisConnection.getConnection();
+		
+			try {
+				return session.getMapper(cls).selectOne(boardNum,commentNum);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				MybatisConnection.close(session);
+			}
+			return null;
+			
+		}
+
 }

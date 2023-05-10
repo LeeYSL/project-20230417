@@ -47,6 +47,7 @@
 								id="file">
 						<tr>
 							<td colspan="2" style="text-align: center">
+							  
 								<button type="submit" class="btn btn-dark">등록</button>
 							</td>
 						</tr>
