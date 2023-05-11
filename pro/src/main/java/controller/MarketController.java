@@ -192,6 +192,7 @@ public class MarketController extends MskimRequestMapping {
 		info.setMemAddress(address);
 		System.out.println("info"+info);
 		
+		
 		if (itemdao.insert(item) && infodao.insert(info)) {//동시에 카트에서 굿즈 코드 같은거 없애고 싶음 중요함!!!
 			request.setAttribute("msg", "성공");
 			request.setAttribute("url", request.getContextPath() + "/market/buyList");

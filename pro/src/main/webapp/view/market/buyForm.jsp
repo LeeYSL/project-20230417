@@ -7,14 +7,25 @@
 <meta charset="UTF-8">
 <title>굿즈구매</title>
 <link rel="stylesheet" href="${path}/css/main.css">
+<script type="text/javascript">
 
+function input_check(f) {
+	if(f.cash.value() > f.point.value()){
+		alert("포인트가 부족하여 결제 불가능합니다.")
+		return false;
+	}
+	return true;
+}
+
+
+</script>
 </head>
 <body>
 	<div id="main_div">
 		<h2 class="w3-center">굿즈구매</h2>
 		<div class="w3-container">
 			<form action="buy" method="post" name="f"
-				enctype="multipart-formdata">
+				onsubmit="return input_check(this)" enctype="multipart-formdata">
 				<div class="form-group">
 					<table class="w3-table w3-border ">
 
@@ -50,24 +61,26 @@
 							<td><input type="text" name="email" class="w3-input"
 								value="${mem.memEmail}"></td>
 						</tr>
-						<tr>
+		<%-- 			<tr>
 							<th>결제수단</th>
 							<td><input type="radio" name="pay" checked value="1">카드
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 								type="radio" name="pay" checked value="2">계좌이체</td>
-						</tr>
-						<tr>
+						</tr>--%>	
+						<tr> 
 							<th>최종 결제 금액</th>
-							<td>총 상품금액 ${goods.goodsPrice} - 포인트 <input type="text"
+							<td>상품금액 ${goods.goodsPrice} - 포인트 ${mem.memPoint} 
+							<input type="hidden" name="point" value="${mem.memPoint}">
+							<input type="hidden" name="cash" value="${goods.goodsPrice}">
+							<%--  <input type="text"
 								name="point" class="w3-input" value="${mem.memPoint}"
-								style="width: 130px"> <%-- <button type="button" class="btn btn-dark" onclick="point()">포인트
+								style="width: 130px">  <button type="button" class="btn btn-dark" onclick="point()">포인트
 									사용</button>--%>
 							</td>
 						</tr>
 						<tr>
 							<th>총 결제 금액</th>
-							<td>
-								<!-- 다시해야함 -->
+							<td>${goods.goodsPrice - mem.memPoint}
 							</td>
 						</tr>
 						<tr>

@@ -17,7 +17,7 @@
 </head>
 <body>
 
-	<h2 class="w3-center">비밀번호 찾기</h2>
+	<h3 class="w3-center">비밀번호 찾기</h3>
 	<div class="w3-container">
 		<form action="pwSearch" method="post" name="f"
 			enctype="multipart-formdata">

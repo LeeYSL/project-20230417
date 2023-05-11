@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<link rel="stylesheet" href="${path}/css/main.css">
 <script type="text/javascript">
 	//회원가입 버튼 눌렀을 때
 	function input_check(f) {

@@ -32,7 +32,7 @@
 			<form name="f" method="post" action="buyForm">
 				<table class="table table-hover">
 					<tr>
-						<th><input type="checkbox" id="check" onchange="checkAll()"></th>
+		<%-- 		<th><input type="checkbox" id="check" onchange="checkAll()"></th>   --%>		
 						<th>상품</th>
 						<th>상품명</th>
 						<th>수량</th>
@@ -43,7 +43,7 @@
 					<c:forEach var="c" items="${cartlist}">
 
 						<tr>
-							<td><input type="checkbox" name="prochks" class="prochk"></td>
+				<%--			<td><input type="checkbox" name="prochks" class="prochk"></td>   --%>		
 							<td><img src="${path}/upload/goods/${c.goodsImg}"
 								class="goods"></td>
 							<td><input type="hidden" name="name" value="${c.goodsName}">${c.goodsName}</td>
@@ -57,11 +57,11 @@
 						</tr>
 
 					</c:forEach>
-					<tr>
+			<%--			<tr>
 						<td colspan="7" style="text-align: center">
 							<button type="submit" class="btn btn-dark" onclick="purchase()">구매하기</button>
 						</td>
-					</tr>
+					</tr>   --%>	
 
 				</table>
 			</form>
