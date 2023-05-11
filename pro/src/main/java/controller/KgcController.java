@@ -13,11 +13,13 @@ import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
 import model.Game;
 import model.KgcMybatisDao;
+import model.ProfileMybatisDao;
 import model.Record;
 
 @WebServlet(urlPatterns = { "/kgc/*" }, initParams = { @WebInitParam(name = "view", value = "/view/") })
 public class KgcController extends MskimRequestMapping {
 	private KgcMybatisDao kdao = new KgcMybatisDao();
+	private ProfileMybatisDao pdao = new ProfileMybatisDao();
 	private String gameYear;
 
 	@RequestMapping("main")
@@ -63,7 +65,6 @@ public class KgcController extends MskimRequestMapping {
 
 	@RequestMapping("player")
 	public String goplayer(HttpServletRequest request, HttpServletResponse response) {
-		public String goplayer(HttpServletRequest request, HttpServletResponse response) {
 		      List<Profile> list = pdao.list();
 		      request.setAttribute("list", list);  
 		return "kgc/player";

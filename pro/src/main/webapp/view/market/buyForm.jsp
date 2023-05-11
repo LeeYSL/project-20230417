@@ -58,7 +58,7 @@
 						</tr>
 						<tr>
 							<th>최종 결제 금액</th>
-							<td>총 상품금액 ${goods.goodsPrice} - 적립금 <input type="text"
+							<td>총 상품금액 ${goods.goodsPrice} - 포인트 <input type="text"
 								name="point" class="w3-input" value="${mem.memPoint}"
 								style="width: 130px"> <%-- <button type="button" class="btn btn-dark" onclick="point()">포인트
 									사용</button>--%>
