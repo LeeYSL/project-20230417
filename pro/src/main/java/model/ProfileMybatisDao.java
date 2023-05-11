@@ -6,10 +6,10 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import model.mapper.KgcMapper;
+import model.mapper.ProfileMapper;
 
 public class ProfileMybatisDao {
-	private Class<KgcMapper> cls = KgcMapper.class;
+	private Class<ProfileMapper> cls = ProfileMapper.class;
 	private Map<String, Object> map = new HashMap<>();
 
 	public List<Profile> list() {

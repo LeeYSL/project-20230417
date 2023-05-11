@@ -65,7 +65,7 @@ public class KgcController extends MskimRequestMapping {
 	}
 
 	@RequestMapping("player")
-	public String goplayer(HttpServletRequest request, HttpServletResponse response) {
+	public String player(HttpServletRequest request, HttpServletResponse response) {
 		      List<Profile> list = pdao.list();
 		      request.setAttribute("list", list);  
 		return "kgc/player";
