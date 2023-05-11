@@ -6,16 +6,18 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import model.mapper.ProfileMapper;
+import model.mapper.ProfileinfoMapper;
 
-public class ProfileMybatisDao {
-	private Class<ProfileMapper> cls = ProfileMapper.class;
+
+
+public class ProfileinfoMybatisDao {
+	private Class<ProfileinfoMapper> cls = ProfileinfoMapper.class;
 	private Map<String, Object> map = new HashMap<>();
 
-	public List<Profile> list() {
+	public List<Profileinfo> list() {
 		SqlSession session = MybatisConnection.getConnection();
 		try {
-			return session.getMapper(cls).list(null); //매개변수 없고 전체 목록 다 조회해
+			return session.getMapper(cls).list(); // 매개변수 없고 전체 목록 다 조회해
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -23,4 +25,5 @@ public class ProfileMybatisDao {
 		}
 		return null;
 	}
+
 }
