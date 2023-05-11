@@ -22,8 +22,8 @@ public interface KgcMapper {
 	List<Record> list(String leagueYear);
 	
 	
-    @Select("select league_year, league_name from record GROUP BY league_year, league_name order by league_year desc")
-	List<Record> gameDayList();
+    @Select("select game_day from game GROUP BY game_day")
+	List<Game> gameDayList();
 
     
     @Select("SELECT *, "

@@ -21,6 +21,7 @@ public class KgcController extends MskimRequestMapping {
 	private KgcMybatisDao kdao = new KgcMybatisDao();
 	private ProfileMybatisDao pdao = new ProfileMybatisDao();
 	private String gameYear;
+	private Object gameDay;
 
 	@RequestMapping("main")
 	public String goMain(HttpServletRequest request, HttpServletResponse response) {
@@ -50,16 +51,16 @@ public class KgcController extends MskimRequestMapping {
 	@RequestMapping("Game")
 	public String goGame(HttpServletRequest request, HttpServletResponse response) {
 		
-		List<Game> gameDaylist = kdao.gameDaylist(gameDay);
-		request.setAttribute("gameDaylist", gameDaylist);	
+		List<Game> gameDayList = kdao.gameDayList();
+		request.setAttribute("gameDayList", gameDayList);	
 		
 
 		String leagueYear = request.getParameter("leagueYear");
 		if(leagueYear == null) {
 			leagueYear = "20222023";
 		}
-		List<Record> recordList = kdao.list(leagueYear);
-		request.setAttribute("recordList", recordList);
+		List<Game> gameYearlist = kdao.gameYearlist(gameDay);
+		request.setAttribute("gameYearlist", gameYearlist);
 		return "kgc/game";
 	}
 

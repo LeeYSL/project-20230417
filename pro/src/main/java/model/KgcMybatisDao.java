@@ -32,7 +32,7 @@ public class KgcMybatisDao {
 		}
 		return null;
 	}
-	public List<Record> gameDayList() {
+	public List<Game> gameDayList() {
 		SqlSession session = MybatisConnection.getConnection();
 		try {
 			return session.getMapper(cls).gameDayList(); // 매개변수 없고 전체 목록 다 조회해
