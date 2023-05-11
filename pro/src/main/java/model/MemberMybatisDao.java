@@ -1,6 +1,7 @@
 package model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -98,5 +99,45 @@ public class MemberMybatisDao {
 	 	}
 	 	return null;
 	}
+	
+
+	public boolean mupdate(Member member) {
+			SqlSession session = MybatisConnection.getConnection();
+			try {
+				int cnt = session.getMapper(cls).mupdate(member);
+				return cnt > 0;		
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				MybatisConnection.close(session);
+			}
+			return false;
+		}
+	public int memberCount() {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			return session.getMapper(cls).memberCount(null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return 0;
+	}
+	public List<Member> list(int pageNum, int limit) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			map.put("sLimit", (pageNum - 1) * limit);
+			map.put("eLimit", limit);
+			return session.getMapper(cls).list(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return null;
+
+}
+	
 	
 }

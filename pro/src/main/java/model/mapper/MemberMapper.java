@@ -1,5 +1,8 @@
 package model.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -39,6 +42,18 @@ public interface MemberMapper {
 			+ " where mem_id=#{memId} and mem_email=#{memEmail} and mem_name=#{memName} ")
 	String pwSearch(@Param("memId")String memId,@Param("memEmail")String memEmail,@Param("memName")String memName);
 
+	@Update("update member set mem_point=#{memPoint} "
+			+ "where mem_id=#{memId}")
+	int mupdate(Member member);
 
+	@Select("select count(*) from member")
+	int memberCount(Object object);
+
+	@Select ({"<script>" ,"SELECT * FROM member order by mem_id " 
+			+ " limit #{sLimit}, #{eLimit}",
+			"</script>"})
+	List<Member> list(Map<String, Object> map);
+
+	
 
 }

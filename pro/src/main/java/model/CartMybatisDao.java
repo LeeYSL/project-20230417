@@ -12,20 +12,20 @@ public class CartMybatisDao {
 	private Class<CartMapper> cls = CartMapper.class;
 	private Map<String, Object> map = new HashMap<>();
 
-	public List<Cart> cartlist(String memId) {
-		SqlSession session = MybatisConnection.getConnection();
-		try {
-			map.clear();
-			map.put("memId", memId);
-
-			return session.getMapper(cls).cartlist(map); // 매개변수 없고 전체 목록 다 조회해
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			MybatisConnection.close(session);
-		}
-		return null;
-	}
+//	public List<Cart> cartlist(String memId) {
+//		SqlSession session = MybatisConnection.getConnection();
+//		try {
+//			map.clear();
+//			map.put("memId", memId);
+//
+//			return session.getMapper(cls).cartlist(map); // 매개변수 없고 전체 목록 다 조회해
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			MybatisConnection.close(session);
+//		}
+//		return null;
+//	}
 
 	public boolean insert(Cart cart) {
 		SqlSession session = MybatisConnection.getConnection();
@@ -95,4 +95,39 @@ public class CartMybatisDao {
 			MybatisConnection.close(session);
 		}
 		return null;
-	}}
+	}
+
+	public List<Cart> cartlist(String memId, int pageNum, int limit) {
+		SqlSession session = MybatisConnection.getConnection();
+
+		try {
+			map.clear();
+			map.put("memId", memId);
+			map.put("sLimit", (pageNum - 1) * limit);
+			map.put("eLimit", limit);
+
+			return session.getMapper(cls).cartlist(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return null;
+
+	}
+
+	public int goodsCount(String memId) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			map.clear();
+			map.put("memId", memId);
+
+			return session.getMapper(cls).goodsCount(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return 0;
+	}	
+}

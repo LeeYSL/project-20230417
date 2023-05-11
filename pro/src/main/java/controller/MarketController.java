@@ -14,6 +14,7 @@ import com.oreilly.servlet.MultipartRequest;
 
 import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
+import model.Board;
 import model.Cart;
 import model.CartMybatisDao;
 import model.Goods;
@@ -41,14 +42,62 @@ public class MarketController extends MskimRequestMapping {
 
 	@RequestMapping("marketList")
 	public String marketList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		request.getSession().setAttribute("pageNum", "1");
+		int pageNum = 1;
+		try {
+			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		} catch (NumberFormatException e) {
+		}
+		int limit = 10;
 
-		List<Goods> list = dao.list(); // 굿즈 상품들 보임
+		int goodsCount = dao.goodsCount(); // 게시판 종류별 전체 게시물 수 리턴
+
+		List<Goods> list = dao.list(pageNum, limit);// list를 만들건데 board 타입을 넣어서 만든다.
+
+		int maxpage = (int) ((double) goodsCount / limit + 0.95);
+		/*
+		 * startpage : 화면에 출력될 시작 페이지 현재페이지 | 시작페이지 1 1 1/10.0 => 0.1 + 0.9 => (int)1.0
+		 * -1 => 0 * 10 +1 => 1 10 1 11 11 505 501 int startpage= ((int)(pageNum/10.0 +
+		 * 0.9) -1)*10 +1; //10.0 -> 한페이지에 10개 보여줌
+		 */
+		int startpage = ((int) (pageNum / 10.0 + 0.9) - 1) * 10 +1 ;
+		/*
+		 * endpage : 화면에 출력할 마지막 페이지 번호. 한 화면에 10개의 페이지를 보여줌
+		 */
+		int endpage = startpage + 9;
+		// endpage 는 maxpage를 넘어가면 안됨
+		if (endpage > maxpage)
+			endpage = maxpage;
+
+		// 글 번호
+		int boardnum = goodsCount - (pageNum - 1) * limit;
+
 		request.setAttribute("list", list);
+		request.setAttribute("startpage", startpage);
+		request.setAttribute("endpage", endpage);
+		request.setAttribute("maxpage", maxpage);
+		request.setAttribute("boardnum", boardnum);
+		request.setAttribute("pageNum", pageNum);
+		
+
+//		List<Goods> list = dao.list(); // 굿즈 상품들 보임
+//		request.setAttribute("list", list);
 		return "market/marketList";
 	}
 
 	@RequestMapping("marketForm")
 	public String marketForm(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		String login = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
 
 		if (login == null || !login.equals("admin")) {// 로그인이 안돼있거나 관리자가 아니라면
@@ -61,6 +110,11 @@ public class MarketController extends MskimRequestMapping {
 
 	@RequestMapping("market")
 	public String write(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		String path = request.getServletContext().getRealPath("/") + "/upload/goods/";
 		// getServletContext() : ServletContext 객체를 가져온다
 		// getRealPath("/") : 지정한 path에 해당되는 실제 경로를 반환
@@ -98,6 +152,11 @@ public class MarketController extends MskimRequestMapping {
 
 	@RequestMapping("cart") // 장바구니 추가 누르면 여기로 옴
 	public String cart(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 
 		Cart cart = new Cart();
 //		Goods goodsCode = (Goods) request.getSession().getAttribute("goods");
@@ -121,6 +180,11 @@ public class MarketController extends MskimRequestMapping {
 
 	@RequestMapping("cartForm")
 	public String cartForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		String memId = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
 
 		if (memId == null) {// 로그인이 안돼있거나 관리자가 아니라면
@@ -133,9 +197,52 @@ public class MarketController extends MskimRequestMapping {
 
 		Cart cart = new Cart();
 		System.out.println(cart);
+		
+		
+		
+		request.getSession().setAttribute("pageNum", "1");
+		int pageNum = 1;
+		try {
+			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		} catch (NumberFormatException e) {
+		}
+		int limit = 10;
 
-		List<Cart> cartlist = cartdao.cartlist(memId);
-		System.out.println("cartlist:" + cartlist);
+		int goodsCount = cartdao.goodsCount(memId); // 게시판 종류별 전체 게시물 수 리턴
+
+		List<Cart> cartlist = cartdao.cartlist(memId,pageNum, limit);// list를 만들건데 board 타입을 넣어서 만든다.
+
+		int maxpage = (int) ((double) goodsCount / limit + 0.95);
+		/*
+		 * startpage : 화면에 출력될 시작 페이지 현재페이지 | 시작페이지 1 1 1/10.0 => 0.1 + 0.9 => (int)1.0
+		 * -1 => 0 * 10 +1 => 1 10 1 11 11 505 501 int startpage= ((int)(pageNum/10.0 +
+		 * 0.9) -1)*10 +1; //10.0 -> 한페이지에 10개 보여줌
+		 */
+		int startpage = ((int) (pageNum / 10.0 + 0.9) - 1) * 10 +1 ;
+		/*
+		 * endpage : 화면에 출력할 마지막 페이지 번호. 한 화면에 10개의 페이지를 보여줌
+		 */
+		int endpage = startpage + 9;
+		// endpage 는 maxpage를 넘어가면 안됨
+		if (endpage > maxpage)
+			endpage = maxpage;
+
+		// 글 번호
+		int boardnum = goodsCount - (pageNum - 1) * limit;
+
+
+		request.setAttribute("startpage", startpage);
+		request.setAttribute("endpage", endpage);
+		request.setAttribute("maxpage", maxpage);
+		request.setAttribute("boardnum", boardnum);
+		request.setAttribute("pageNum", pageNum);
+		
+		
+		
+		
+
+	//	List<Cart> cartlist = cartdao.cartlist(memId);
+
 
 		request.setAttribute("cartlist", cartlist);
 
@@ -192,9 +299,19 @@ public class MarketController extends MskimRequestMapping {
 		info.setMemAddress(address);
 		System.out.println("info"+info);
 		
+		Cart cart = new Cart();
+		cart.setMemId(id);
+		cart.setGoodsCode(code);
 		
-		if (itemdao.insert(item) && infodao.insert(info)) {//동시에 카트에서 굿즈 코드 같은거 없애고 싶음 중요함!!!
-			request.setAttribute("msg", "성공");
+		
+		Member member = new Member();
+		int point  = Integer.parseInt(request.getParameter("afterPoint"));
+		member.setMemId(id);
+		member.setMemPoint(point); //변경될포인트
+
+		
+		if (itemdao.insert(item) && infodao.insert(info) && cartdao.delete(cart) && mdao.mupdate(member)) {//동시에 카트에서 굿즈 코드 같은거 없애고 싶음 중요함!!!
+			request.setAttribute("msg", "주문완료");
 			request.setAttribute("url", request.getContextPath() + "/market/buyList");
 			return "alert/alert";
 		}
@@ -253,10 +370,100 @@ public class MarketController extends MskimRequestMapping {
 			e.printStackTrace();
 		}
 		String id =(String)request.getSession().getAttribute("login");
-		List<OrderItem> buylist = itemdao.buylist(id); // 굿즈 상품들 보임
+		
+		request.getSession().setAttribute("pageNum", "1");
+		int pageNum = 1;
+		try {
+			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		} catch (NumberFormatException e) {
+		}
+		int limit = 10;
+
+		int oderCount = itemdao.oderCount(id); // 게시판 종류별 전체 게시물 수 리턴
+
+		List<OrderItem> buylist = itemdao.buylist(id,pageNum, limit);// list를 만들건데 board 타입을 넣어서 만든다.
+
+		int maxpage = (int) ((double) oderCount / limit + 0.95);
+		/*
+		 * startpage : 화면에 출력될 시작 페이지 현재페이지 | 시작페이지 1 1 1/10.0 => 0.1 + 0.9 => (int)1.0
+		 * -1 => 0 * 10 +1 => 1 10 1 11 11 505 501 int startpage= ((int)(pageNum/10.0 +
+		 * 0.9) -1)*10 +1; //10.0 -> 한페이지에 10개 보여줌
+		 */
+		int startpage = ((int) (pageNum / 10.0 + 0.9) - 1) * 10 +1 ;
+		/*
+		 * endpage : 화면에 출력할 마지막 페이지 번호. 한 화면에 10개의 페이지를 보여줌
+		 */
+		int endpage = startpage + 9;
+		// endpage 는 maxpage를 넘어가면 안됨
+		if (endpage > maxpage)
+			endpage = maxpage;
+
+		// 글 번호
+		int boardnum = oderCount - (pageNum - 1) * limit;
+
+
+		request.setAttribute("startpage", startpage);
+		request.setAttribute("endpage", endpage);
+		request.setAttribute("maxpage", maxpage);
+		request.setAttribute("boardnum", boardnum);
+		request.setAttribute("pageNum", pageNum);
+		
+		
+	//	List<OrderItem> buylist = itemdao.buylist(id); // 굿즈 상품들 보임
 		request.setAttribute("buylist", buylist);
 		return "market/buyList";
 
 	}
+	@RequestMapping("list")
+	public String list(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String id =(String)request.getSession().getAttribute("login");
+		
+		request.getSession().setAttribute("pageNum", "1");
+		int pageNum = 1;
+		try {
+			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		} catch (NumberFormatException e) {
+		}
+		int limit = 10;
 
+		int totalCount = itemdao.totalCount(); // 게시판 종류별 전체 게시물 수 리턴
+
+		List<OrderItem> tlist = itemdao.tlist(pageNum, limit);// list를 만들건데 board 타입을 넣어서 만든다.
+
+		int maxpage = (int) ((double) totalCount / limit + 0.95);
+		/*
+		 * startpage : 화면에 출력될 시작 페이지 현재페이지 | 시작페이지 1 1 1/10.0 => 0.1 + 0.9 => (int)1.0
+		 * -1 => 0 * 10 +1 => 1 10 1 11 11 505 501 int startpage= ((int)(pageNum/10.0 +
+		 * 0.9) -1)*10 +1; //10.0 -> 한페이지에 10개 보여줌
+		 */
+		int startpage = ((int) (pageNum / 10.0 + 0.9) - 1) * 10 +1 ;
+		/*
+		 * endpage : 화면에 출력할 마지막 페이지 번호. 한 화면에 10개의 페이지를 보여줌
+		 */
+		int endpage = startpage + 9;
+		// endpage 는 maxpage를 넘어가면 안됨
+		if (endpage > maxpage)
+			endpage = maxpage;
+
+		// 글 번호
+		int boardnum = totalCount - (pageNum - 1) * limit;
+
+
+		request.setAttribute("startpage", startpage);
+		request.setAttribute("endpage", endpage);
+		request.setAttribute("maxpage", maxpage);
+		request.setAttribute("boardnum", boardnum);
+		request.setAttribute("pageNum", pageNum);
+		
+		
+	//	List<OrderItem> buylist = itemdao.buylist(id); // 굿즈 상품들 보임
+		request.setAttribute("tlist", tlist);
+		return "market/list";
+
+	}
 }

@@ -12,12 +12,18 @@ import model.Cart;
 
 
 public interface CartMapper {
-	@Select ({"<script>" ,"SELECT c.mem_id, c.goods_code, c.cart_quantity, g.goods_name, g.goods_price, g.goods_img "
-			+ "FROM cart c , goods g, member m "
-			+ "WHERE c.goods_code = g.goods_code and c.mem_id= #{memId} and c.mem_id= m.mem_id",
-			"</script>"}) 
-	List<Cart> cartlist(Map<String, Object> map);
+//	@Select ({"<script>" ,"SELECT c.mem_id, c.goods_code, c.cart_quantity, g.goods_name, g.goods_price, g.goods_img "
+//			+ "FROM cart c , goods g, member m "
+//			+ "WHERE c.goods_code = g.goods_code and c.mem_id= #{memId} and c.mem_id= m.mem_id",
+//			"</script>"}) 
+//	List<Cart> cartlist(Map<String, Object> map);
 
+	@Select ({"<script>" ,"SELECT c.mem_id, c.goods_code, c.cart_quantity, g.goods_name, g.goods_price, g.goods_img "
+	+ "FROM cart c , goods g, member m "
+	+ "WHERE c.goods_code = g.goods_code and c.mem_id= #{memId} and c.mem_id= m.mem_id"
+	+ " limit #{sLimit}, #{eLimit}",
+	"</script>"}) 
+ List<Cart> cartlist(Map<String, Object> map);
 	
 	@Insert("insert into cart (goods_code, mem_id, cart_quantity )" 
 			+ " values (#{goodsCode},#{memId},1)")	
@@ -48,5 +54,8 @@ public interface CartMapper {
 
 	 @Select("select * from cart where goods_code=#{code} and mem_id= #{id}")
 		Cart selectOne(@Param("code")int code,@Param("id")String id );
+
+	 @Select("select count(*) from cart where mem_id=#{memId}")
+	int goodsCount(Map<String, Object> map);
 
 }

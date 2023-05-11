@@ -6,37 +6,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 리스트</title>
+<title>전체 구매 목록</title>
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
-<script type="text/javascript">
-function Remove(code) {
-	location.href = "${path}/member/delete?id="+code;
-}
 
-</script>
-		<div id="container-1">
-		<h2 class="w3-center">회원 리스트</h2>
+	<div id="container-1">
+		<h2 class="w3-center">전체 구매 목록</h2>
 		<div class="w3-container">
 			<form name="f" method="post" action="list">
 				<table class="table table-hover">
 					<tr>
 						<th>아이디</th>
-						<th>이메일</th>
-						<th>포지션</th>
-						<th>포인트</th>
-		<%--				<th>강제탈퇴</th> --%>
+						<th>상품</th>
+						<th>가격</th>
+						<th>수량</th>
+						<th>배송지</th>
 					</tr>
-					<c:forEach var="m" items="${list}">
+					<c:forEach var="t" items="${tlist}">
 
 						<tr>
-							<td>${m.memId}</td>
-							<td>${m.memEmail}</td>
-							<td>${m.memPosition==1?"관리자":m.memPosition==2?"선수":"일반"}</td>
-							<td>${m.memPoint}</td>
-	<%-- 				<td><button type="button" class="btn btn-dark"
-									onclick="Remove(${m.memId})">탈퇴</button></td> --%>	
+							<td>${t.memId}</td>
+							<td>${t.goodsName}</td>
+							<td>${t.goodsPrice}</td>
+							<td>${t.cartQuantity}</td>
+							<td>${t.memAdress}</td>
 						</tr>
 
 					</c:forEach>
@@ -49,15 +43,15 @@ function Remove(code) {
 								test="${pageNum <=1 }">
 							[이전]
 						</c:if> <c:if test="${pageNum > 1 }">
-								<a href="list?pageNum=${pageNum-1}">[이전]</a>
+								<a href="market?pageNum=${pageNum-1}">[이전]</a>
 							</c:if> <c:forEach var="a" begin="${startpage}" end="${endpage}">
 								<c:if test="${a==pageNum}">[${a}]</c:if>
 								<c:if test="${a != pageNum }">
-									<a href="list?pageNum=${a}">[${a}]</a>
+									<a href="market?pageNum=${a}">[${a}]</a>
 								</c:if>
 							</c:forEach> <c:if test="${pageNum >= maxpage}">[다음]</c:if> <c:if
 								test="${pageNum < maxpage}">
-								<a href="list?pageNum=${pageNum+1}">[다음]</a>
+								<a href="market?pageNum=${pageNum+1}">[다음]</a>
 							</c:if></td>
 					</tr>
 				</table>

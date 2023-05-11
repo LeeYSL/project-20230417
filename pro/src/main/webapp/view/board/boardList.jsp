@@ -71,6 +71,8 @@
 
 				<tr>
 					<td colspan="5" style="text-align: right">
+					</td>
+					</tr>
 				<tr>
 					<td colspan="5" style="text-align: center;"><c:if
 							test="${pageNum <=1 }">[이전]</c:if> <c:if test="${pageNum > 1 }">

@@ -40,7 +40,7 @@ function input_check(f) {
 						<tr>
 							<th>수량</th>
 							<td><input type="text" name="quantity" class="w3-input"
-								value="${cart.cartQuantity}"></td>
+								value="${cart.cartQuantity}" readonly></td>
 						</tr>
 						<tr>
 							<th>이름</th>

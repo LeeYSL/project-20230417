@@ -20,7 +20,7 @@
 					<dd>					
 						<ul>
 						<c:forEach var="p" items="${m.value}">
-							<li><a href="profile?num=${p.num}"> <img
+							<li><%-- <a href="profile?num=${p.num}">--%> <a><img
 									id="profileimg" src="${path}/image/profile1/${p.num}.png"
 									alt="No.${p.num} ${p.name}" /> <span class="bg_name"><em>No.${p.num}</em><strong>${p.name}</strong></span>
 							</a></li></c:forEach>

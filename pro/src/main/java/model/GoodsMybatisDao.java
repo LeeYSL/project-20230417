@@ -49,4 +49,33 @@ public class GoodsMybatisDao {
 		}
 		return null;
 	}
+
+
+	public int goodsCount() {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			return session.getMapper(cls).goodsCount(null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return 0;
+	}
+
+
+	public List<Goods> list(int pageNum, int limit) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			map.put("sLimit", (pageNum - 1) * limit);
+			map.put("eLimit", limit);
+			return session.getMapper(cls).list(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return null;
+
+}
 }

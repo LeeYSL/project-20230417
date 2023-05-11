@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
+import model.Goods;
 import model.Member;
 import model.MemberMybatisDao;
 
@@ -102,7 +104,51 @@ public class MemberController extends MskimRequestMapping {
 	}
 
 	@RequestMapping("list")
-	public String goList(HttpServletRequest request, HttpServletResponse response) {
+	public String list(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		request.getSession().setAttribute("pageNum", "1");
+		int pageNum = 1;
+		try {
+			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		} catch (NumberFormatException e) {
+		}
+		int limit = 10;
+
+		int memberCount = dao.memberCount(); // 게시판 종류별 전체 게시물 수 리턴
+
+		List<Member> list = dao.list(pageNum, limit);// list를 만들건데 board 타입을 넣어서 만든다.
+
+		int maxpage = (int) ((double) memberCount / limit + 0.95);
+		/*
+		 * startpage : 화면에 출력될 시작 페이지 현재페이지 | 시작페이지 1 1 1/10.0 => 0.1 + 0.9 => (int)1.0
+		 * -1 => 0 * 10 +1 => 1 10 1 11 11 505 501 int startpage= ((int)(pageNum/10.0 +
+		 * 0.9) -1)*10 +1; //10.0 -> 한페이지에 10개 보여줌
+		 */
+		int startpage = ((int) (pageNum / 10.0 + 0.9) - 1) * 10 +1 ;
+		/*
+		 * endpage : 화면에 출력할 마지막 페이지 번호. 한 화면에 10개의 페이지를 보여줌
+		 */
+		int endpage = startpage + 9;
+		// endpage 는 maxpage를 넘어가면 안됨
+		if (endpage > maxpage)
+			endpage = maxpage;
+
+		// 글 번호
+		int boardnum = memberCount - (pageNum - 1) * limit;
+
+		request.setAttribute("list", list);
+		request.setAttribute("startpage", startpage);
+		request.setAttribute("endpage", endpage);
+		request.setAttribute("maxpage", maxpage);
+		request.setAttribute("boardnum", boardnum);
+		request.setAttribute("pageNum", pageNum);
+	
+		
 		return "member/list";
 	}
 

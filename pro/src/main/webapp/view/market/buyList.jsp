@@ -41,6 +41,26 @@
 						<td>${b.memAdress}</td>
 					</tr>
 				</c:forEach>
+					<tr>
+					<td colspan="4" style="text-align: right"></td>
+				</tr>
+
+				<tr>
+					<td colspan="4" style="text-align: center;"><c:if
+							test="${pageNum <=1 }">
+							[이전]
+						</c:if> <c:if test="${pageNum > 1 }">
+							<a href="buyList?pageNum=${pageNum-1}">[이전]</a>
+						</c:if> <c:forEach var="a" begin="${startpage}" end="${endpage}">
+							<c:if test="${a==pageNum}">[${a}]</c:if>
+							<c:if test="${a != pageNum }">
+								<a href="buyList?pageNum=${a}">[${a}]</a>
+							</c:if>
+						</c:forEach> <c:if test="${pageNum >= maxpage}">[다음]</c:if> <c:if
+							test="${pageNum < maxpage}">
+							<a href="buyList?pageNum=${pageNum+1}">[다음]</a>
+						</c:if></td>
+				</tr>
 				</table>
 			</form>
 		</div>

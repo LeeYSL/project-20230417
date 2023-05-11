@@ -41,6 +41,11 @@ public class BoardController extends MskimRequestMapping {
 	 */
 	@RequestMapping("boardList")
 	public String boardList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		if (request.getParameter("boardId") != null) { // 만약 boardid 가 null 이 아니면
 			request.getSession().setAttribute("boardId", request.getParameter("boardId")); // 보드 아이디를 가져와서 boardid라는 변수에
 																							// 넣고
@@ -94,6 +99,11 @@ public class BoardController extends MskimRequestMapping {
 
 	@RequestMapping("writeForm")
 	public String writeForm(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		String boardId = (String) request.getSession().getAttribute("boardId"); // session의 boardId값을 가져온다.
 		String id = (String) request.getSession().getAttribute("login");
 		// Member id = mdao.selectOne(id); 왜 안 돼?
@@ -131,6 +141,11 @@ public class BoardController extends MskimRequestMapping {
 
 	@RequestMapping("write")
 	public String write(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		String path = request.getServletContext().getRealPath("/") + "/upload/board/";
 		System.out.println("path : " + path);
 		// getServletContext() : ServletContext 객체를 가져온다
@@ -173,6 +188,11 @@ public class BoardController extends MskimRequestMapping {
 
 	@RequestMapping("boardInfo")
 	public String boardInfo(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 //		int commentNum =Integer.parseInt(request.getParameter("commentNum"));
 //		int  boardTime =Integer.parseInt(request.getParameter("boardTime"));
@@ -195,6 +215,7 @@ public class BoardController extends MskimRequestMapping {
 
 	@RequestMapping("comment")
 	public String comment(HttpServletRequest request, HttpServletResponse response) {
+		
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
@@ -233,6 +254,11 @@ public class BoardController extends MskimRequestMapping {
 
 	@RequestMapping("commdel")
 	public String commdel(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 //		Comment comm = new Comment();
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 		int commentNum = Integer.parseInt(request.getParameter("commentNum"));
@@ -274,6 +300,12 @@ public class BoardController extends MskimRequestMapping {
 	@RequestMapping("commupdate")
 	public String commupdate(HttpServletRequest request, HttpServletResponse response) {
 
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+
+			e.printStackTrace();
+		}
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 		int commentNum = Integer.parseInt(request.getParameter("commentNum"));
 		String commentContent = request.getParameter("commentContent");
@@ -307,6 +339,11 @@ public class BoardController extends MskimRequestMapping {
 
 	@RequestMapping("updateForm")
 	public String updateForm(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 		String boardId = (String) request.getSession().getAttribute("boardId");
 		if (boardId == null) {
@@ -329,6 +366,11 @@ public class BoardController extends MskimRequestMapping {
 
 	@RequestMapping("update")
 	public String update(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		// 1
 		Board board = new Board();
 		String path = request.getServletContext().getRealPath("/") + "upload/board/file/";
@@ -375,12 +417,18 @@ public class BoardController extends MskimRequestMapping {
 
 	@RequestMapping("deleteForm")
 	public String deleteForm(HttpServletRequest request, HttpServletResponse response) {
+		
 		// request.setAttribute("boardNum", request.getParameter("boardNum"));
 		return "board/deleteForm";
 	}
 
 	@RequestMapping("delete")
 	public String delete(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 		String id = (String) request.getSession().getAttribute("login");
 		Board b = dao.selectOne(boardNum);
