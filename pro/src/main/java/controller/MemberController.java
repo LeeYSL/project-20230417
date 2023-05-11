@@ -53,7 +53,7 @@ public class MemberController extends MskimRequestMapping {
 
 		String pw = dao.pwSearch(id, email, name);
 		if (pw != null) {
-			String showPass = pw.substring(2, pw.length()) + "**";
+			String showPass = pw.substring(0, 2) + "**";
 			request.setAttribute("showPass", showPass);
 		} else {
 			request.setAttribute("msg", "비밀번호를 찾을 수 없습니다.");

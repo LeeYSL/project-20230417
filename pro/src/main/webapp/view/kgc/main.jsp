@@ -256,6 +256,11 @@
 
 
 <script>
+	$('.w3-circle').on('click', function() {
+		//swiper의 이미지를 클릭하면 선수단으로 이동
+		location.href="player";
+	});
+
 	new Swiper('.swiper', {
 		//자동 재생
 		autoplay : {
