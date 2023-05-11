@@ -14,31 +14,29 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<c:forEach var="p" items="${list}">
+<title>${p.name}</title>
+</c:forEach>
 </head>
 <body>
 	<div id="container-1">
 		<h2 id="title" class="w3-center">선수?</h2>
 		<div class="w3-container">
-			<img src="${path}/image/profile/0.jpg"
-				width="960px" height="516px" alt="메가왓티 퍼티위" />
+			<img src="${path}/image/profile/${p.num}.jpg"
+				width="960px" height="516px" alt="${p.name}" />
 			<!--player_profile_00.jpg에서 00은 리스트페이지에서 쏘는 넘버링으로 하겠습니다 -->
 			<div class="p_namebox">
 				<h4 class="player_tt">
-					No.- Opposite(Spiker) <strong>메가왓티 퍼티위</strong>
+					No.- Opposite(Spiker) <strong>${p.name}</strong>
 				</h4>
 			</div>
 			<ul class="player_detail">
-				<li><em>포지션</em>아포짓(스파이커)</li>
-				<li><em>배번</em>-</li>
-				<li><em>생년월일</em>1999.09.20</li>
-				<!-- <li><em>혈액형</em>-</li>
-						<li><em>소속팀 년차</em>1</li> -->
-				<!-- <li><em>가족관계</em></li> -->
-				<li><em>출신학교</em>-</li>
-				<li><em>신장</em>
-				<!-- /체중</em> -->185cm<!--  / --> <!-- </li> -->
-			</ul>
+				<li><em>포지션</em>${p.position}</li>
+				<li><em>배번</em>${p.num}</li>
+				<li><em>생년월일</em>${p.birthday}</li>
+				<li><em>출신학교</em>${p.school}</li>
+				<li><em>신장</em>${p.height}</li>
+		</ul>
 		</div>
 	</div>
 </body>

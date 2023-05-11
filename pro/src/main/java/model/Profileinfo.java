@@ -7,6 +7,8 @@ public class Profileinfo {
 		private String birthday;
 		private String school;
 		private String height;
+		private String numposition;
+		
 		public String getName() {
 			return name;
 		}
@@ -43,11 +45,17 @@ public class Profileinfo {
 		public void setHeight(String height) {
 			this.height = height;
 		}
+		public String getNumposition() {
+			return numposition;
+		}
+		public void setNumposition(String numposition) {
+			this.numposition = numposition;
+		}
 		@Override
 		public String toString() {
-			return "Profile [name=" + name + ", position=" + position + ", num=" + num + ", birthday=" + birthday
-					+ ", school=" + school + ", height=" + height + "]";
+			return "Profileinfo [name=" + name + ", position=" + position + ", num=" + num + ", birthday=" + birthday
+					+ ", school=" + school + ", height=" + height + ", numposition=" + numposition + "]";
 		}
-		
+
 
 	}

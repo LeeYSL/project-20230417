@@ -10,4 +10,10 @@ public interface ProfileinfoMapper {
 @Select("select* from profileinfo")
 	List<Profileinfo> list();
 
+@Select("select distinct numposition from profileinfo")
+List<String> positionnames();
+
+@Select("select* from profileinfo where numposition= #{value}")
+List<Profileinfo> positionlist(String s);
+
 }

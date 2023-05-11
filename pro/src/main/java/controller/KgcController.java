@@ -1,6 +1,8 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -73,10 +75,15 @@ public class KgcController extends MskimRequestMapping {
 
 	@RequestMapping("player")
 	public String player(HttpServletRequest request, HttpServletResponse response) {
-		      List<Profileinfo> list = pdao.list();
-		      request.setAttribute("list", list);  
+		Map <String,List<Profileinfo>> map = new HashMap<>();
+		List<String> plist = pdao.positionnames();
+		for(String s : plist) {
+			List<Profileinfo> list = pdao.positionlist(s);
+			map.put(s, list);		}
+	    request.setAttribute("map", map);  
 		return "kgc/player";
 	}
+	
 	@RequestMapping("song")
 	public String gosong(HttpServletRequest request, HttpServletResponse response) {
 		return "kgc/song";

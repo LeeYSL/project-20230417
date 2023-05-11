@@ -26,4 +26,28 @@ public class ProfileinfoMybatisDao {
 		return null;
 	}
 
+	public List<String> positionnames() {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			return session.getMapper(cls).positionnames(); // 매개변수 없고 전체 목록 다 조회해
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return null;
+	}
+
+	public List<Profileinfo> positionlist(String s) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			return session.getMapper(cls).positionlist(s); // 매개변수 없고 전체 목록 다 조회해
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return null;
+	}
+
 }
