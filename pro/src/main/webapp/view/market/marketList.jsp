@@ -40,7 +40,7 @@
 						</c:if>
 						<td width="25%">
 							<div class="goodsdiv w3-center">
-								<img src="${path}/upload/goods/${g.goodsImg}" class="goodsimg">
+								<img src="${path}/image/goods/${g.goodsImg}" class="goodsimg">
 								<div class="w3-center">${g.goodsName}</div>
 								<div class="w3-center">${g.goodsPrice}</div>
 								<c:if test="${sessionScope.login != null}">

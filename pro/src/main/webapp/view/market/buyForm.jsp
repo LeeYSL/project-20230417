@@ -10,7 +10,8 @@
 <script type="text/javascript">
 
 function input_check(f) {
-	if(f.cash.value() > f.point.value()){
+	//상품금액이 포인트보다 크면 submit안되게 조건 추가
+	if(parseInt(f.cash.value) > parseInt(f.point.value)){
 		alert("포인트가 부족하여 결제 불가능합니다.")
 		return false;
 	}
@@ -66,22 +67,21 @@ function input_check(f) {
 							<td><input type="radio" name="pay" checked value="1">카드
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 								type="radio" name="pay" checked value="2">계좌이체</td>
-						</tr>--%>	
+						</tr>--%>
 						<tr> 
-							<th>최종 결제 금액</th>
-							<td>상품금액 ${goods.goodsPrice} - 포인트 ${mem.memPoint} 
-							<input type="hidden" name="point" value="${mem.memPoint}">
-							<input type="hidden" name="cash" value="${goods.goodsPrice}">
-							<%--  <input type="text"
-								name="point" class="w3-input" value="${mem.memPoint}"
-								style="width: 130px">  <button type="button" class="btn btn-dark" onclick="point()">포인트
-									사용</button>--%>
-							</td>
+							<th>상품금액</th>
+							<td><input type="text" name="cash" class="w3-input"
+								value="${goods.goodsPrice}" readonly></td>
+						</tr>	
+						<tr> 
+							<th>내 포인트</th>
+							<td><input type="text" name="point" class="w3-input"
+								value="${mem.memPoint}" readonly></td>
 						</tr>
 						<tr>
-							<th>총 결제 금액</th>
-							<td>${goods.goodsPrice - mem.memPoint}
-							</td>
+							<th>결제 후 포인트</th>
+							<td><input type="text" name="point" class="w3-input"
+								value="${goods.goodsPrice - mem.memPoint}" readonly></td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">

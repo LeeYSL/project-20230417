@@ -90,7 +90,7 @@ public class MemberController extends MskimRequestMapping {
 		mem.setMemAdress(request.getParameter("adress"));
 		mem.setMemEmail(request.getParameter("email"));
 		mem.setMemPosition(Integer.parseInt(request.getParameter("type")));
-		mem.setMemPoint(3000);
+		mem.setMemPoint(30000);
 		if (dao.insert(mem)) {
 			request.setAttribute("msg", mem.getMemName() + "님 회원가입을 축하합니다.");
 			request.setAttribute("url", "loginForm");

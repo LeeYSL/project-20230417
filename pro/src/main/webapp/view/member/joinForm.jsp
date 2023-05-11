@@ -109,7 +109,7 @@
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">*회원가입을 하시면
-								3,000포인트가 적립됩니다!</td>
+								30,000포인트가 적립됩니다!</td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">
