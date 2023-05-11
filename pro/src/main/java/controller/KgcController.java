@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
+import model.Game;
 import model.KgcMybatisDao;
 import model.Record;
 
 @WebServlet(urlPatterns = { "/kgc/*" }, initParams = { @WebInitParam(name = "view", value = "/view/") })
 public class KgcController extends MskimRequestMapping {
 	private KgcMybatisDao kdao = new KgcMybatisDao();
+	private String gameYear;
 
 	@RequestMapping("main")
 	public String goMain(HttpServletRequest request, HttpServletResponse response) {
@@ -40,6 +42,21 @@ public class KgcController extends MskimRequestMapping {
 		List<Record> recordList = kdao.list(leagueYear);
 		request.setAttribute("recordList", recordList);
 		return "kgc/kgcInfo";
+	}
+	@RequestMapping("Game")
+	public String goGame(HttpServletRequest request, HttpServletResponse response) {
+		
+		List<Game> gameDaylist = kdao.gameDaylist(gameDay);
+		request.setAttribute("gameDaylist", gameDaylist);	
+		
+
+		String leagueYear = request.getParameter("leagueYear");
+		if(leagueYear == null) {
+			leagueYear = "20222023";
+		}
+		List<Record> recordList = kdao.list(leagueYear);
+		request.setAttribute("recordList", recordList);
+		return "kgc/game";
 	}
 
 	@RequestMapping("player")
