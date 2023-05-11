@@ -22,15 +22,15 @@ public interface KgcMapper {
 	List<Record> list(String leagueYear);
 	
 	
-    @Select("select game_day from game GROUP BY game_day")
-	List<Game> gameDayList();
+    @Select("select game_day from game")
+	List<Game> gameList();
 
     
     @Select("SELECT *, "
             + " (SELECT team_img FROM team b WHERE a.home_team = b.team_name) AS home_img,"
 		    + " (SELECT team_img FROM team b WHERE a.away_team = b.team_name) AS away_img "
             + " FROM game a "
-            + " WHERE substr(game_day,1,6) = '202210';")
+            + " WHERE substr(game_day,1,6) = #{gameDay}")
 	List<Game> gameYearlist(String gameDay);
 
 }

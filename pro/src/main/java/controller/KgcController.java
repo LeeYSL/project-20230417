@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.openqa.selenium.devtools.v110.profiler.model.Profile;
+
 
 import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
@@ -21,7 +21,7 @@ public class KgcController extends MskimRequestMapping {
 	private KgcMybatisDao kdao = new KgcMybatisDao();
 	private ProfileMybatisDao pdao = new ProfileMybatisDao();
 	private String gameYear;
-	private Object gameDay;
+	private String gameDay;
 
 	@RequestMapping("main")
 	public String goMain(HttpServletRequest request, HttpServletResponse response) {
@@ -48,28 +48,32 @@ public class KgcController extends MskimRequestMapping {
 		request.setAttribute("recordList", recordList);
 		return "kgc/kgcInfo";
 	}
-	@RequestMapping("Game")
-	public String goGame(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping("game")
+	public String game(HttpServletRequest request, HttpServletResponse response) {
 		
-		List<Game> gameDayList = kdao.gameDayList();
-		request.setAttribute("gameDayList", gameDayList);	
+		List<Game> gameList = kdao.gameList();
+		 System.out.println("gameList:" + gameList);
 		
+		request.setAttribute("gameList", gameList);	
+		 System.out.println("gameList:" + gameList);
 
-		String leagueYear = request.getParameter("leagueYear");
-		if(leagueYear == null) {
-			leagueYear = "20222023";
+		String gameDay = request.getParameter("gameDay");
+		if(gameDay == null) {
+			gameDay = "202303";
 		}
 		List<Game> gameYearlist = kdao.gameYearlist(gameDay);
 		request.setAttribute("gameYearlist", gameYearlist);
+		 System.out.println("gameYearlist:" + gameYearlist);
+		
 		return "kgc/game";
 	}
 
-	@RequestMapping("player")
-	public String player(HttpServletRequest request, HttpServletResponse response) {
-		      List<Profile> list = pdao.list();
-		      request.setAttribute("list", list);  
-		return "kgc/player";
-	}
+//	@RequestMapping("player")
+//	public String player(HttpServletRequest request, HttpServletResponse response) {
+//		      List<Profile> list = pdao.list();
+//		      request.setAttribute("list", list);  
+//		return "kgc/player";
+//	}
 
 	@RequestMapping("song")
 	public String gosong(HttpServletRequest request, HttpServletResponse response) {

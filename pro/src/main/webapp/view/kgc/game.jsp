@@ -14,17 +14,21 @@
 	<div id="contents">
 		<!-- location menu -->
 		<div class="page_location"></div>
-		<form name="game" action="game?">
+		<form name="game" action="game">
 			<div class="sel_area">
-				<select name="mm" onchange="form.submit();" title="월선택"
+				<select name="gameDay" onchange="form.submit();" title="일정 선택"
 					class="selec" style="width: 90px">
+					<c:forEach var = "d" items="${gameList}">
+					<option <c:if test="${d.gameDay eq param.gameDay}">selected</c:if> value="${d.gameDay}"></option>
+			<!--  
 					<option value="202210">2022.10</option>
 					<option value="202211">2022.11</option>
 					<option value="202212">2022.12</option>
 					<option value="202301">2023.01</option>
 					<option value="202302">2023.02</option>
-					<option value="202303">2023.03</option>
-
+					<option value="202303">2023.03</option> 
+			-->
+                </c:forEach>
 				</select>
 			</div>
 		</form>
@@ -42,16 +46,15 @@
 			<col width="*" />
 		</colgroup>
 		<tbody>
-			<c:forEach var="r" items="${recordList}">
+			<c:forEach var="g" items="${gameYearlist}">
 				<tr>
-					<th scope="col">${r.level}</th>
-					<th scope="col"><img class=logoimg
-						src="${path}/image/logo/${r.teamImg}.png" class="logo" /></th>
-					<th scope="col">${r.teamName}</th>
-					<th scope="col">${r.gameNum}</th>
-					<th scope="col">${r.gameWin}</th>
-					<th scope="col">${r.gameLose}</th>
-					<th scope="col">${r.winPoint}</th>
+					<th scope="col">${g.homeTeam}</th>
+				    <th scope="col">${g.awayTeam}</th>
+					<th scope="col">${g.homeWin}</th>
+					<th scope="col">${g.awayWin}</th>
+					<th scope="col">${g.gameDay}</th>
+					<th scope="col">${g.homeImg}</th>
+					<th scope="col">${g.awayImg}</th>
 				</tr>
 			</c:forEach>
 		</tbody>
