@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-	  
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,15 +11,16 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
-	<div id="main_div">
-	<!-- CONTENTS START -->
-	<div id="contents">
-		<form action="join" method="post" name="f" onsubmit="return input_check(this)">
+	<div id="container-1">
+		<!-- CONTENTS START -->
+		<form action="join" method="post" name="f"
+			onsubmit="return input_check(this)">
 			<!-- location menu -->
 			<h3 class="h3Txt center">홈구장 충무체육관 안내</h3>
 
 			<div class="tbl1">
-				<table cellspacing="0" class="tbl" summary="시설명, 부지면적, 건축면적, 연면적, 층수, 수용인원, 좌석수, 개장년도의 정보가 있습니다.">
+				<table cellspacing="0" class="tbl"
+					summary="시설명, 부지면적, 건축면적, 연면적, 층수, 수용인원, 좌석수, 개장년도의 정보가 있습니다.">
 					<thead>
 						<tr class="center">
 							<th scope="col">시설명</th>
@@ -47,16 +48,18 @@
 				</table>
 			</div>
 
-      <br>
+			<br>
 			<div class="center">
-				<img src="${path}/image/map2.jpg"alt="좌석배치도" />
+				<img src="${path}/image/map2.jpg" alt="좌석배치도" />
 			</div>
 			<h4 class="center">좌석배치도</h4>
-		
-			<br><br><br>
+
+			<br>
+			<br>
+			<br>
 
 			<h4 class="h5Txt center mg10">찾아오시는 길</h4>
-      <div class="center">
+			<div class="center">
 				<img src="${path}/image/map1.png" alt="약도 이미지" />
 			</div>
 
@@ -78,8 +81,7 @@
 				<li>구단사무국 T.042)600-1783 F.042)600-1785</li>
 			</ul>
 		</form>
-	</div>
-	<!-- //CONTENTS -->
+		<!-- //CONTENTS -->
 	</div>
 </body>
 </html>

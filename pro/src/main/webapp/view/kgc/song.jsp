@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
-	<div id="main_div">
+	<div id="container-1">
 	<h2 class="w3-center">공식 응원가</h2>
 	<div class="container">
 		<form action="song" method="post" name="f" enctype="multipart-formdata">

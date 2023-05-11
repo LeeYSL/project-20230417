@@ -34,7 +34,7 @@
 			})
 		});
 	</script>
-	<div id="main_div" style="padding-bottom: 400px;">
+	<div id="container-1">
 		<h2 id="title" class="w3-center"></h2>
 		<div class="w3-container">
 		<input type="hidden" name="sessionScope" value="${sessionScope.login}">
