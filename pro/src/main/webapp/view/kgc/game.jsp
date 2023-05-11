@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
-	<div id="container-1">
-			<h2 class="w3-center">경기일정</h2>
+	<div style="padding-left:400px" id="container-1">
+			<h2 class="w3-center" style="padding-right: 170px">경기일정</h2>
 		<!-- location menu -->
 		<div class="page_location"></div>
 		<form name="game" action="game">
