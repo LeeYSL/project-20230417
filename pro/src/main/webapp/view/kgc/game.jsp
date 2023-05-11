@@ -18,17 +18,10 @@
 			<div class="sel_area">
 				<select name="gameDay" onchange="form.submit();" title="일정 선택"
 					class="selec" style="width: 90px">
-					<c:forEach var = "d" items="${gameList}">
-					<option <c:if test="${d.gameDay eq param.gameDay}">selected</c:if> value="${d.gameDay}"></option>
-			<!--  
-					<option value="202210">2022.10</option>
-					<option value="202211">2022.11</option>
-					<option value="202212">2022.12</option>
-					<option value="202301">2023.01</option>
-					<option value="202302">2023.02</option>
-					<option value="202303">2023.03</option> 
-			-->
-                </c:forEach>
+					<c:forEach var="d" items="${gameList}">
+						<option <c:if test="${d.gameDay eq param.gameDay}">selected</c:if>
+							value="${d.gameDay}">${d.gameDay}</option>
+					</c:forEach>
 				</select>
 			</div>
 		</form>
@@ -45,16 +38,27 @@
 			<col width="141px" />
 			<col width="*" />
 		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col" colspan="2">홈 팀</th>
+				<th scope="col" colspan="2">원정 팀</th>
+				<th scope="col">홈팀 승</th>
+				<th scope="col">원정팀 승</th>
+				<th scope="col">경기 날짜</th>
+			</tr>
+		</thead>
 		<tbody>
 			<c:forEach var="g" items="${gameYearlist}">
 				<tr>
 					<th scope="col">${g.homeTeam}</th>
-				    <th scope="col">${g.awayTeam}</th>
+					<th scope="col"><img class=logoimg
+						src="${path}/image/logo/${g.homeImg}.png" class="logo" /></th>
+					<th scope="col">${g.awayTeam}</th>
+					<th scope="col"><img class=logoimg
+						src="${path}/image/logo/${g.awayImg}.png" class="logo" /></th>
 					<th scope="col">${g.homeWin}</th>
 					<th scope="col">${g.awayWin}</th>
 					<th scope="col">${g.gameDay}</th>
-					<th scope="col">${g.homeImg}</th>
-					<th scope="col">${g.awayImg}</th>
 				</tr>
 			</c:forEach>
 		</tbody>

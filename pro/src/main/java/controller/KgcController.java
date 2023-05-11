@@ -39,6 +39,8 @@ public class KgcController extends MskimRequestMapping {
 		//연도리스트 조회
 		List<Record> yearList = kdao.yearList();
 		request.setAttribute("yearList", yearList);	
+		 System.out.println("yearList:" + yearList);
+
 		
 		//구단기록 데이터리스트 조회
 		String leagueYear = request.getParameter("leagueYear");
@@ -53,7 +55,7 @@ public class KgcController extends MskimRequestMapping {
 	public String game(HttpServletRequest request, HttpServletResponse response) {
 		
 		List<Game> gameList = kdao.gameList();
-		 System.out.println("gameList:" + gameList);
+
 		
 		request.setAttribute("gameList", gameList);	
 		 System.out.println("gameList:" + gameList);
@@ -68,14 +70,6 @@ public class KgcController extends MskimRequestMapping {
 		
 		return "kgc/game";
 	}
-
-
-//	@RequestMapping("player")
-//	public String player(HttpServletRequest request, HttpServletResponse response) {
-//		      List<Profile> list = pdao.list();
-//		      request.setAttribute("list", list);  
-//		return "kgc/player";
-//	}
 
 	@RequestMapping("player")
 	public String player(HttpServletRequest request, HttpServletResponse response) {

@@ -22,7 +22,7 @@ public interface KgcMapper {
 	List<Record> list(String leagueYear);
 	
 	
-    @Select("select game_day from game")
+    @Select("select substr(game_day,1,6) AS game_day from game")
 	List<Game> gameList();
 
     
