@@ -17,9 +17,7 @@ public interface GoodsMapper {
 	@Select ("select ifnull(max(goods_num),0) from goods")
 	int maxnum();
 
-	@Select({"<script>",
-		"select * from goods",
-		"</script>"})
+	@Select("select * from goods")
 	List<Goods> list(Object object);
 
 	@Select("select * from goods where goods_code=#{code}")
