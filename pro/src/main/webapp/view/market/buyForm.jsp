@@ -81,7 +81,7 @@ function input_check(f) {
 						<tr>
 							<th>결제 후 포인트</th>
 							<td><input type="text" name="point" class="w3-input"
-								value="${goods.goodsPrice - mem.memPoint}" readonly></td>
+								value="${mem.memPoint - goods.goodsPrice }" readonly></td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">

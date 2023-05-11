@@ -44,7 +44,7 @@
 
 						<tr>
 				<%--			<td><input type="checkbox" name="prochks" class="prochk"></td>   --%>		
-							<td><img src="${path}/upload/goods/${c.goodsImg}"
+							<td><img src="${path}/image/goods/${c.goodsImg}"
 								class="goods"></td>
 							<td><input type="hidden" name="name" value="${c.goodsName}">${c.goodsName}</td>
 							<td><input type="text" value="1" name="quantity"
