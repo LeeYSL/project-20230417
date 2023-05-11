@@ -28,8 +28,8 @@
 	</div>
 	<table>
 		<colgroup>
-			<col width="80px" />
-			<col width="80px" />
+			<col width="100px" />
+			<col width="100x" />
 			<col width="206px" />
 			<col width="109px" />
 			<col width="93px" />
