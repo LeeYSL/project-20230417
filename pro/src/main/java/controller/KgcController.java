@@ -69,22 +69,20 @@ public class KgcController extends MskimRequestMapping {
 		return "kgc/game";
 	}
 
-<<<<<<< HEAD
+
 //	@RequestMapping("player")
 //	public String player(HttpServletRequest request, HttpServletResponse response) {
 //		      List<Profile> list = pdao.list();
 //		      request.setAttribute("list", list);  
 //		return "kgc/player";
 //	}
-=======
+
 	@RequestMapping("player")
 	public String player(HttpServletRequest request, HttpServletResponse response) {
 		      List<Profileinfo> list = pdao.list();
 		      request.setAttribute("list", list);  
 		return "kgc/player";
 	}
->>>>>>> branch 'master' of https://github.com/LeeYSL/project-20230417.git
-
 	@RequestMapping("song")
 	public String gosong(HttpServletRequest request, HttpServletResponse response) {
 		return "kgc/song";
