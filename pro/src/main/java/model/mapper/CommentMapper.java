@@ -31,8 +31,7 @@ public interface CommentMapper {
     @Select("select * from comment where board_num = #{boardNum} and comment_num=#{commentNum}")
 	Comment selectOne(@Param("boardNum")int boardNum, @Param("commentNum")int commentNum);
 
-    
-    @Update("update comment set comment_content=#{commentContent} where #{boardNum} and comment_num=#{commentNum} " )
+    @Update("update comment set comment_content=#{commentContent} where board_num=#{boardNum} and comment_num=#{commentNum} " )
 	int update(Comment comm);
 
 	
