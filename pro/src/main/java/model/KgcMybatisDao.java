@@ -32,10 +32,10 @@ public class KgcMybatisDao {
 		}
 		return null;
 	}
-	public List<Record> yearList() {
+	public List<Record> gameDayList() {
 		SqlSession session = MybatisConnection.getConnection();
 		try {
-			return session.getMapper(cls).yearList(); // 매개변수 없고 전체 목록 다 조회해
+			return session.getMapper(cls).gameDayList(); // 매개변수 없고 전체 목록 다 조회해
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

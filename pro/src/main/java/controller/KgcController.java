@@ -7,6 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.openqa.selenium.devtools.v110.profiler.model.Profile;
+
 import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
 import model.Game;
@@ -61,6 +63,9 @@ public class KgcController extends MskimRequestMapping {
 
 	@RequestMapping("player")
 	public String goplayer(HttpServletRequest request, HttpServletResponse response) {
+		public String goplayer(HttpServletRequest request, HttpServletResponse response) {
+		      List<Profile> list = pdao.list();
+		      request.setAttribute("list", list);  
 		return "kgc/player";
 	}
 
