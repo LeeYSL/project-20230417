@@ -11,7 +11,8 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
-	<div id="contents">
+	<div id="container-1">
+			<h2 class="w3-center">경기일정</h2>
 		<!-- location menu -->
 		<div class="page_location"></div>
 		<form name="game" action="game">
@@ -25,7 +26,6 @@
 				</select>
 			</div>
 		</form>
-	</div>
 	<table>
 		<colgroup>
 			<col width="100px" />
@@ -63,5 +63,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	</div>
 </body>
 </html>
