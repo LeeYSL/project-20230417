@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
-	<div id="main_div">
+	<div id="container-1">
 			<h2 id="title" class="w3-center">기록실</h2>
 			<p class="w3-center">경기 결과</p>
 			<form name="form" action="kgcInfo">
@@ -26,7 +26,7 @@
 			</form>
 
 			<h4 class="h4Txt mt0"></h4>
-			<div  style="text-align: centet">
+			
 				<table cellspacing="0" summary="순위, 팀명, 경기수, 승, 패, 승점, 정보가 있습니다.">
 					<colgroup>
 						<col width="80px" />
@@ -36,7 +36,6 @@
 						<col width="93px" />
 						<col width="100px" />
 						<col width="100px" />
-						<col width="141px" />
 						<col width="*" />
 					</colgroup>
 					<thead>
@@ -63,7 +62,7 @@
 					</c:forEach>
 					</tbody>
 				</table>
-			</div>
+			
 		</div>
 
 </body>
