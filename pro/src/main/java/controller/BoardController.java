@@ -299,11 +299,17 @@ public class BoardController extends MskimRequestMapping {
 
 	@RequestMapping("commupdate")
 	public String commupdate(HttpServletRequest request, HttpServletResponse response) {
-
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
 
+<<<<<<< HEAD
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+
+=======
+>>>>>>> branch 'master' of https://github.com/LeeYSL/project-20230417.git
 			e.printStackTrace();
 		}
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
@@ -313,12 +319,6 @@ public class BoardController extends MskimRequestMapping {
 		String msg = null;
 		String url = "boardInfo?boardNum=" + boardNum;
 
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-
-			e.printStackTrace();
-		}
 		Comment c = cdao.selectOne(boardNum, commentNum);
 		c.setBoardNum(boardNum);
 		c.setCommentNum(commentNum);

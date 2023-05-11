@@ -16,6 +16,12 @@
 		let op = "width=500,height=350,left=50,top=150"
 		open(page, "", op)
 	}
+	
+	function update_comment(btn){
+		$('input[name="commentContent"]').attr('value', $(btn).parents('th').siblings('th[name="contents"]').children('input[name="commentContent"]').val());
+		$('input[name="commentNum"]').attr('value', $(btn).parents('th').siblings('th[name="contents"]').children('input[name="commentNum"]').val());
+		document.commUpdate.submit();
+	}
 </script>
 </head>
 <body>
@@ -79,7 +85,7 @@
 			</table>
 		</form>
 		<div>
-			<form action="commupdate" method="post">
+			<form name="commUpdate" action="commupdate" method="post">
 				<table class="w3-table-all">
 
 					<tr>
@@ -90,7 +96,7 @@
 						<!-- name이 없으면 보낼 수 없고 받아만 온다. -->
 						<tr>
 							<th>작성자:${c.memId}</th>
-							<th><input type="text" name="commentContent"
+							<th name="contents"><input type="text" name="commentContent"
 								value="${c.commentContent}" class="w3-input"> <input
 								type="hidden" name="boardNum" value="${param.boardNum}">
 								<!-- param은 url로 이동하는 것들을 받아옴ㄴ --> <input type="hidden"
@@ -102,7 +108,7 @@
 										href="commdel?boardNum=${param.boardNum}&commentNum=${c.commentNum}">삭제</a>
 								</c:if> <c:if
 									test="${sessionScope.login != null && sessionScope.login ==c.memId }">
-									<button type="submit" class="btn btn-dark">수정</button>
+									<button type="button" onclick="javascript:update_comment(this)" class="btn btn-dark">수정</button>
 								</c:if></th>
 
 						</tr>
