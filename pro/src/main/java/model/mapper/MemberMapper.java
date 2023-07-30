@@ -54,6 +54,15 @@ public interface MemberMapper {
 			"</script>"})
 	List<Member> list(Map<String, Object> map);
 
+
+	@Update("update member set mem_point=#{memPoint}+#{pointPrice} where mem_id = #{memId}") 
+	int addpoint(@Param("pointPrice")int pointPrice, @Param("memPoint")int memPoint,@Param("memId")String memId); 
+
+
+//	@Update("update member set mem_point=#{memPoint}+#{pointPrice} where mem_id = #{memId}") 
+//	
+//	Member addpoint(@Param("memId")String memId, @Param("pointPrice")int pointPrice, @Param("memPoint")int memPoint);
+
 	
 
 }

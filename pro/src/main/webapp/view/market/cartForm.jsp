@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -8,7 +9,21 @@
 <meta charset="UTF-8">
 <title>장바구니</title>
 <link rel="stylesheet" href="${path}/css/main.css">
-</head>
+<style type="text/css">
+th {
+	background: #343a40;
+	color : white;
+}
+th, td {
+	text-align: center;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+
+</style>
+</head> 
 <body>
 	<script type="text/javascript">
 	function checkAll() {
@@ -24,11 +39,12 @@
 	function cartAdd(code) {
 		location.href = "${path}/market/buyForm?code="+code;
 	}
+	
 
 </script>
 	<div id="main_div">
 		<h2 class="w3-center">장바구니</h2>
-		<div class="w3-container">
+		<div class="w3-container" style="padding: 40px;">
 			<form name="f" method="post" action="buyForm">
 				<table class="table table-hover">
 					<tr>
@@ -37,19 +53,27 @@
 						<th>상품명</th>
 						<th>수량</th>
 						<th>가격</th>
+						<th>합계</th>
 						<th>삭제</th>
 						<th>구매</th>
 					</tr>
 					<c:forEach var="c" items="${cartlist}">
 
-						<tr>
-				<%--			<td><input type="checkbox" name="prochks" class="prochk"></td>   --%>		
-							<td><img src="${path}/image/goods/${c.goodsImg}"
-								class="goods"></td>
-							<td><input type="hidden" name="name" value="${c.goodsName}">${c.goodsName}</td>
-							<td><input type="text" value="1" name="quantity"
-								style="width: 40px"></td>
-							<td>${c.goodsPrice}</td>
+						<tr>		
+							<td>
+								<a href="../market/detail?code=${c.goodsCode}">
+									<img src="../goods/file/${c.goodsImg}"
+								class="goods">
+								</a>	
+							</td>
+							<td>
+								<a href="../market/detail?code=${c.goodsCode}">
+									<input type="hidden" name="name" value="${c.goodsName}">${c.goodsName}
+								</a>
+							</td>
+							<td>${c.cartQuantity}</td>
+							<td><fmt:formatNumber value="${c.goodsPrice}" pattern="###,###" />원	</td>				
+							<td><fmt:formatNumber value="${c.goodsPrice* c.cartQuantity}" pattern="###,###" />원	</td>
 							<td><button type="button" class="btn btn-dark"
 									onclick="cartRemove(${c.goodsCode})">삭제</button></td>
 							<td><button type="button" class="btn btn-dark"
@@ -57,12 +81,9 @@
 						</tr>
 
 					</c:forEach>
-									<tr>
-					<td colspan="6" style="text-align: right"></td>
-				</tr>
 
 				<tr>
-					<td colspan="6" style="text-align: center;"><c:if
+					<td colspan="7" style="text-align: center;"><c:if
 							test="${pageNum <=1 }">
 							[이전]
 						</c:if> <c:if test="${pageNum > 1 }">

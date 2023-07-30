@@ -26,7 +26,7 @@ public interface CartMapper {
  List<Cart> cartlist(Map<String, Object> map);
 	
 	@Insert("insert into cart (goods_code, mem_id, cart_quantity )" 
-			+ " values (#{goodsCode},#{memId},1)")	
+			+ " values (#{goodsCode},#{memId},#{cartQuantity})")	
 	int insert(Cart cart);
 
 	@Select("select mem_id from cart")
@@ -57,5 +57,9 @@ public interface CartMapper {
 
 	 @Select("select count(*) from cart where mem_id=#{memId}")
 	int goodsCount(Map<String, Object> map);
+
+		@Insert("insert into cart (goods_code, mem_id, cart_quantity )" 
+				+ " values (#{goodsCode},#{memId},#{cartQuantity})")		 
+	int cartinsert(Cart cart);
 
 }

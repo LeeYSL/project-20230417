@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <meta charset="UTF-8">
 <title>구매목록</title>
@@ -17,36 +18,57 @@
 		}
 	}
 </script>
+<style type="text/css">
+th {
+	background: #343a40;
+	color : white;
+}
+th, td {
+	text-align: center;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+
+</style>
 </head>
 <body>
 	<div id="main_div">
 		<h2 class="w3-center">구매목록</h2>
-		<div class="w3-container">
+		<div class="w3-container" style="padding:40px;">
 			<form name="f" method="post" action="buyForm">
 				<table class="table table-hover">
 					<tr>
-					<%-- 	<th><input type="checkbox" id="check"
-							onchange="checkAll()"></th>--%>
-						<th>상품</th>
-						<th>가격</th>
-						<th>수량</th>
-						<th>배송지</th>
+						<th width="10%"></th>
+						<th width="20%">상품</th>
+						<th width="10%">가격</th>
+						<th width="5%">수량</th>
+						<th width="45%">배송지</th>
+						<th width="10%">구매일</th>
 					</tr>
 					<c:forEach var="b" items="${buylist}">
-					<tr>
-				<%-- <td><input type="checkbox" name="prochk" class="prochk"></td>--%>
-						<td>${b.goodsName}</td>
-						<td>${b.goodsPrice}</td>
+					<tr>	
+						<td>
+							<a href="../market/detail?code=${b.goodsCode}">
+								<img src="../goods/file/${b.goodsImg}" style="width: 50px; height: 50px;">
+							</a>
+						</td>							
+						<td>
+							<a href="../market/detail?code=${b.goodsCode}">
+								${b.goodsName}
+							</a>
+						</td>
+						
+						<td><fmt:formatNumber value="${b.goodsPrice}" pattern="###,###" />원</td>
 						<td>${b.cartQuantity}</td>
-						<td>${b.memAdress}</td>
+						<td>${b.memAddress}</td>
+						<td><fmt:formatDate value="${b.orderDate}" pattern="yyyy-MM-dd"/></td>
 					</tr>
 				</c:forEach>
-					<tr>
-					<td colspan="4" style="text-align: right"></td>
-				</tr>
 
 				<tr>
-					<td colspan="4" style="text-align: center;"><c:if
+					<td colspan="6" style="text-align: center;"><c:if
 							test="${pageNum <=1 }">
 							[이전]
 						</c:if> <c:if test="${pageNum > 1 }">

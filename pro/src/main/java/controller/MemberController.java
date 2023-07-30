@@ -10,14 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
-import model.Goods;
+import model.AccountMybatisDao;
 import model.Member;
 import model.MemberMybatisDao;
 
 @WebServlet(urlPatterns = { "/member/*" }, initParams = { @WebInitParam(name = "view", value = "/view/") })
 public class MemberController extends MskimRequestMapping {
 	private MemberMybatisDao dao = new MemberMybatisDao();
-
+	private AccountMybatisDao accountdao = new AccountMybatisDao();
+	
 	@RequestMapping("idSearch")
 	public String idSearch(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -96,6 +97,7 @@ public class MemberController extends MskimRequestMapping {
 		if (dao.insert(mem)) {
 			request.setAttribute("msg", mem.getMemName() + "님 회원가입을 축하합니다.");
 			request.setAttribute("url", "loginForm");
+			accountdao.insert(mem.getMemId());
 		} else {
 			request.setAttribute("msg", mem.getMemName() + "님 회원가입 시 오류 발생되었습니다.");
 			request.setAttribute("url", "joinForm");

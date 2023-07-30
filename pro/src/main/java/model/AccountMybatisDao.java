@@ -6,17 +6,42 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import model.mapper.GoodsMapper;
+import model.mapper.AccountMapper;
 
-public class GoodsMybatisDao {
-	private Class<GoodsMapper> cls = GoodsMapper.class;
+public class AccountMybatisDao {
+	private Class<AccountMapper> cls = AccountMapper.class;
 	private Map<String, Object> map = new HashMap<>();
+	
+	public void insert(String memId) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			session.getMapper(cls).insert(memId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			MybatisConnection.close(session);
+		}
+	}
 
-	public boolean insert(Goods goods) {
+
+	public void pointinsert(String memId, int pointPrice, String name, int memPoint) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			session.getMapper(cls).pointinsert(memId,pointPrice,name,memPoint);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			MybatisConnection.close(session);
+		}
+	
+	}
+
+
+	public boolean minus(String memId, int price, String name, int nowpoint) {
 		SqlSession session = MybatisConnection.getConnection();
 		try {
 
-			return session.getMapper(cls).insert(goods) > 0;
+			return session.getMapper(cls).minus(memId,price,name,nowpoint) > 0;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -24,49 +49,14 @@ public class GoodsMybatisDao {
 		}
 		return false;
 	}
-	public int maxcode() {
-		SqlSession session = MybatisConnection.getConnection();
-		try {
-			return session.getMapper(cls).maxcode();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			MybatisConnection.close(session);
-		}
-		return 0;
-	}
-
-	public List<Goods> list() {
-		SqlSession session = MybatisConnection.getConnection();
-		try {
-			return session.getMapper(cls).list(null); //매개변수 없고 전체 목록 다 조회해
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			MybatisConnection.close(session);
-		}
-		return null;
-	}
-
-	public Goods selectOne(int code) {
-		SqlSession session = MybatisConnection.getConnection();
-		try {
-			return session.getMapper(cls).selectOne(code);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			MybatisConnection.close(session);
-		}
-		return null;
-	}
 
 
-	public int goodsCount() {
+	public int accountCount(String id) {
 		SqlSession session = MybatisConnection.getConnection();
 		try {
-			return session.getMapper(cls).goodsCount(null);
+			return session.getMapper(cls).accountCount(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 		} finally {
 			MybatisConnection.close(session);
 		}
@@ -74,18 +64,24 @@ public class GoodsMybatisDao {
 	}
 
 
-	public List<Goods> list(int pageNum, int limit) {
+	public List<Account> accounntlist(String id, int pageNum, int limit) {
 		SqlSession session = MybatisConnection.getConnection();
 		try {
 			map.put("sLimit", (pageNum - 1) * limit);
 			map.put("eLimit", limit);
-			return session.getMapper(cls).list(map);
+			map.put("id", id);
+			return session.getMapper(cls).accounntlist(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			MybatisConnection.close(session);
 		}
 		return null;
+	}
+
+
+
 
 }
-}
+
+

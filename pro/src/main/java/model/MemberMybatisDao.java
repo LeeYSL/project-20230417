@@ -138,6 +138,28 @@ public class MemberMybatisDao {
 		return null;
 
 }
+//	public Member addpoint(int pointPrice, int memPoint, String memId) {
+//		SqlSession session = MybatisConnection.getConnection();
+//		try {
+//			return session.getMapper(cls).addpoint(memId,pointPrice,memPoint);	
+//		} catch (Exception e) {
+//	 		e.printStackTrace();
+//	 	} finally {
+//	 		MybatisConnection.close(session);
+//	 	}
+//	 	return null;
+//	}
+	public void addpoint(int pointPrice, int memPoint, String memId) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			session.getMapper(cls).addpoint(pointPrice,memPoint,memId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			MybatisConnection.close(session);
+		}
+	}
+
 	
 	
 }

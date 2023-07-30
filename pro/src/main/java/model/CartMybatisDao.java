@@ -129,5 +129,21 @@ public class CartMybatisDao {
 			MybatisConnection.close(session);
 		}
 		return 0;
+	}
+
+	public boolean cartinsert(Cart cart) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			int cnt = session.getMapper(cls).cartinsert(cart);
+			if (cnt > 0)
+				return true;
+			else
+				return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return false;
 	}	
 }

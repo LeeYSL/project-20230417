@@ -14,7 +14,7 @@ import com.oreilly.servlet.MultipartRequest;
 
 import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
-import model.Board;
+import model.AccountMybatisDao;
 import model.Cart;
 import model.CartMybatisDao;
 import model.Goods;
@@ -25,6 +25,7 @@ import model.OrderInfoMybatisDao;
 import model.OrderItem;
 import model.OrderItemMybatisDao;
 import model.Orderinfo;
+import model.PointMybatisDao;
 
 @WebServlet(urlPatterns = { "/market/*" }, initParams = { @WebInitParam(name = "view", value = "/view/") })
 public class MarketController extends MskimRequestMapping {
@@ -33,12 +34,8 @@ public class MarketController extends MskimRequestMapping {
 	private MemberMybatisDao mdao = new MemberMybatisDao();
 	private OrderItemMybatisDao itemdao = new OrderItemMybatisDao();
 	private OrderInfoMybatisDao infodao = new OrderInfoMybatisDao();
-	/*
-	 * @RequestMapping("buyForm") public String buyForm(HttpServletRequest request,
-	 * HttpServletResponse response) { String id = (String)
-	 * request.getSession().getAttribute("login"); Member mem = dao.selectOne(id);
-	 * request.setAttribute("mem", mem); return "market/buyForm"; }
-	 */
+	private AccountMybatisDao accountdao = new AccountMybatisDao();
+
 
 	@RequestMapping("marketList")
 	public String marketList(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -115,7 +112,7 @@ public class MarketController extends MskimRequestMapping {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String path = request.getServletContext().getRealPath("/") + "/upload/goods/";
+		String path = request.getServletContext().getRealPath("/") + "goods/file/";
 		// getServletContext() : ServletContext 객체를 가져온다
 		// getRealPath("/") : 지정한 path에 해당되는 실제 경로를 반환
 		File f = new File(path);
@@ -130,17 +127,18 @@ public class MarketController extends MskimRequestMapping {
 		} // 파일업로드끝
 			// 파라미터 Board 객체에 저장
 		Goods goods = new Goods(); // db goods의 객체를 만든다?
-		goods.setGoodsCode(Integer.parseInt(multi.getParameter("num")));
+		goods.setGoodsNum(Integer.parseInt(multi.getParameter("num")));
 		goods.setGoodsPrice(Integer.parseInt(multi.getParameter("price")));
 		goods.setGoodsName(multi.getParameter("name"));// name이 content인 파라미터 값을 보드객체의 BoardTitle에 저장한다.
 		goods.setGoodsImg(multi.getFilesystemName("file"));// name이 file인 파라미터 값을 보드객체의 BoardTitle에 저장한다.
+		goods.setGoodsDescription(multi.getFilesystemName("description"));// name이 description인 파라미터 값을 보드객체의 BoardTitle에 저장한다.		
 		String id = (String) request.getSession().getAttribute("login");
 		request.getSession().setAttribute("goods", goods); // 세션저장
 
 		if (goods.getGoodsImg() == null)
 			goods.setGoodsImg(""); // 업로드 파일이 없는 경우 빈문자열
-//		int num = dao.maxnum(); // 등록된 게시글의 최대 num 값
-//		goods.setGoodsNum(++num); // 최대값 +1
+		int code = dao.maxcode(); // 등록된 게시글의 최대 num 값
+		goods.setGoodsCode(++code); // 최대값 +1
 		if (dao.insert(goods)) { // board 테이블에 게시물 등록했을경우
 			return "redirect:marketList"; // 등록되면 list로 전달
 		}
@@ -159,24 +157,85 @@ public class MarketController extends MskimRequestMapping {
 		}
 
 		Cart cart = new Cart();
-//		Goods goodsCode = (Goods) request.getSession().getAttribute("goods");
 		String memId = (String) request.getSession().getAttribute("login");
 		int code = Integer.parseInt(request.getParameter("code"));
 		cart.setMemId(memId);
 		cart.setGoodsCode(code);
 		cart.setCartQuantity(1);
 		System.out.println(cart);
-		// request.getSession().setAttribute("cart1", cart);
+
+		if(memId == null) {
+			request.setAttribute("msg", "로그인 해야 합니다.");
+			request.setAttribute("url", request.getContextPath() + "/member/loginForm");
+			return "alert/alert";			
+		}		
+		
 		if (cartdao.insert(cart)) { // cart 테이블에 게시물 등록했을경우
 			request.setAttribute("msg", "장바구니 추가 완료");
 			request.setAttribute("url", request.getContextPath() + "/market/marketList");
 			return "alert/alert";
-			// return "redirect:marketList"; // 등록되면 list로 전달
-		}
+		} else { 
+			
 		request.setAttribute("msg", "장바구니에 있는 상품입니다.");
 		request.setAttribute("url", request.getContextPath() + "/market/marketList");
 		return "alert/alert";
+		}
 	}
+	@RequestMapping("cartAdd") // 장바구니 추가 누르면 여기로 옴
+	public String cartAdd(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		Cart cart = new Cart();
+//		Goods goodsCode = (Goods) request.getSession().getAttribute("goods");
+		String memId = (String) request.getSession().getAttribute("login");
+		int code = Integer.parseInt(request.getParameter("code"));
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
+		
+		cart.setMemId(memId);
+		cart.setGoodsCode(code);
+		cart.setCartQuantity(quantity);
+		System.out.println(cart);
+		// request.getSession().setAttribute("cart1", cart);
+		if(memId == null) {
+			request.setAttribute("msg", "로그인 해야 합니다.");
+			request.setAttribute("url", request.getContextPath() + "/member/loginForm");
+			return "alert/alert";			
+		}
+		if (cartdao.cartinsert(cart)) { // cart 테이블에 게시물 등록했을경우
+			request.setAttribute("msg", "장바구니 추가 완료");
+			request.setAttribute("url", request.getContextPath() + "/market/cartForm");
+			return "alert/alert";
+			// return "redirect:marketList"; // 등록되면 list로 전달
+		} else { 
+			
+		request.setAttribute("msg", "장바구니에 있는 상품입니다.");
+		request.setAttribute("url", request.getContextPath() + "/market/detail?code="+code);
+		return "alert/alert";
+		}
+	}	
+	
+	@RequestMapping("detail") // 장바구니 추가 누르면 여기로 옴
+	public String detail(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		int code = Integer.parseInt(request.getParameter("code"));
+		Goods goods = dao.selectOne(code);
+		request.setAttribute("goods", goods);
+
+		return "market/detail";
+	}	
+	
+	
+	
+	
 
 	@RequestMapping("cartForm")
 	public String cartForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -285,6 +344,7 @@ public class MarketController extends MskimRequestMapping {
 		int code = Integer.parseInt(request.getParameter("goodsname"));
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		int num = itemdao.maxnum(); // 등록된 게시글의 최대 num값
+		String name = request.getParameter("name"); 
 		item.setOrderCode(++num);// 최대값+1
 		item.setGoodsCode(code);
 		item.setCartQuantity(quantity);
@@ -305,12 +365,15 @@ public class MarketController extends MskimRequestMapping {
 		
 		
 		Member member = new Member();
+		int nowpoint = Integer.parseInt(request.getParameter("point"));
 		int point  = Integer.parseInt(request.getParameter("afterPoint"));
 		member.setMemId(id);
 		member.setMemPoint(point); //변경될포인트
+		
+		int price = Integer.parseInt(request.getParameter("price"));
 
 		
-		if (itemdao.insert(item) && infodao.insert(info) && cartdao.delete(cart) && mdao.mupdate(member)) {//동시에 카트에서 굿즈 코드 같은거 없애고 싶음 중요함!!!
+		if (itemdao.insert(item) && infodao.insert(info) && cartdao.delete(cart) && mdao.mupdate(member) && accountdao.minus(member.getMemId(),price,name,nowpoint)) {//동시에 카트에서 굿즈 코드 같은거 없애고 싶음 중요함!!!
 			request.setAttribute("msg", "주문완료");
 			request.setAttribute("url", request.getContextPath() + "/market/buyList");
 			return "alert/alert";

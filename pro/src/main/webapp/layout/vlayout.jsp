@@ -74,11 +74,6 @@ html, body {
 				class="fa fa-bars"></i>
 			</a> <a href="${path}/kgc/main" class="w3-bar-item w3-button w3-white"><img
 				src="${path}/image/kgclogo2.png" width="100%" height="40px"></a>
-			<!-- <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">KGC</a>
-	 <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Player</a>
-	 <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Community</a>
-	 <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Market</a>
-	 <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Notice</a>   -->
 			<div class="w3-dropdown-hover w3-hide-small">
 				<button class="w3-button" title="Notifications">
 					KGC <i class="fa fa-caret-down"></i>
@@ -112,9 +107,9 @@ html, body {
 					MARKET<i class="fa fa-caret-down"></i>
 				</button>
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-					<a href="https://www.vticket.co.kr/kgc-schedule-round1"
-						class="w3-bar-item w3-button" target="_blank">TICKET</a> <a
-						href="${path}/market/marketList" class="w3-bar-item w3-button">GOODS</a>
+						<a href="${path}/market/marketList" class="w3-bar-item w3-button">상품</a>
+					<a href="https://tickets.interpark.com/special/sports/promotion?seq=21&"
+						class="w3-bar-item w3-button" target="_blank">티켓</a> 
 				</div>
 			</div>
 			<div class="w3-dropdown-hover w3-hide-small">
@@ -143,13 +138,15 @@ html, body {
 					${sessionScope.login}님 MYPAGE<i class="fa fa-caret-down"></i>
 				</button>  
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block">
-					<a href="${path}/member/info" class="w3-bar-item w3-button">회원정보</a>
+					<a href="${path}/member/info" class="w3-bar-item w3-button">회원 정보</a>
+					<a href="${path}/point/pointAccount" class="w3-bar-item w3-button">포인트 내역</a>
+					<a href="${path}/point/pointList" class="w3-bar-item w3-button">포인트 충전</a>
 					<a href="${path}/market/cartForm" class="w3-bar-item w3-button">장바구니</a>
-					<a href="${path}/market/buyList" class="w3-bar-item w3-button">구매목록</a>
+					<a href="${path}/market/buyList" class="w3-bar-item w3-button">구매 목록</a>
 					<c:if test="${sessionScope.login == 'admin' }">
-						<a href="${path}/market/marketForm" class="w3-bar-item w3-button">상품추가</a>
-						<a href="${path}/member/list" class="w3-bar-item w3-button">회원리스트</a>
-						<a href="${path}/market/list" class="w3-bar-item w3-button">전체 구매 리스트</a>
+						<a href="${path}/market/marketForm" class="w3-bar-item w3-button">상품 추가</a>
+						<a href="${path}/member/list" class="w3-bar-item w3-button">회원 리스트</a>
+						<a href="${path}/market/list" class="w3-bar-item w3-button">회원 구매 리스트</a>
 					</c:if>
 				</div>
 			</div>	

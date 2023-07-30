@@ -5,6 +5,7 @@ public class Goods {
 	private String goodsName;
 	private int goodsPrice;
 	private String goodsImg;
+	private String goodsDescription;
 	private int goodsNum;
 	public int getGoodsCode() {
 		return goodsCode;
@@ -30,6 +31,12 @@ public class Goods {
 	public void setGoodsImg(String goodsImg) {
 		this.goodsImg = goodsImg;
 	}
+	public String getGoodsDescription() {
+		return goodsDescription;
+	}
+	public void setGoodsDescription(String goodsDescription) {
+		this.goodsDescription = goodsDescription;
+	}
 	public int getGoodsNum() {
 		return goodsNum;
 	}
@@ -39,8 +46,9 @@ public class Goods {
 	@Override
 	public String toString() {
 		return "Goods [goodsCode=" + goodsCode + ", goodsName=" + goodsName + ", goodsPrice=" + goodsPrice
-				+ ", goodsImg=" + goodsImg + ", goodsNum=" + goodsNum + "]";
+				+ ", goodsImg=" + goodsImg + ", goodsDescription=" + goodsDescription + ", goodsNum=" + goodsNum + "]";
 	}
+
 	
 
 }

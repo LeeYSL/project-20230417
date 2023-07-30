@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+	td,tr {
+		background: white;
+	}
+
 #contents {
 	margin-top: 65px;
 	padding: 15px 40px 15px 40px;
@@ -81,6 +85,7 @@ dl dd ul li {
 	height: 200px;
 }
 
+
 .goodsdiv {
 	width: 250px;
 	height: 300px;
@@ -92,6 +97,7 @@ dl dd ul li {
 }
 
 /*===================================*/
+
 #container-1 {
 	padding-left: 300px;
 	padding-right: 300px;

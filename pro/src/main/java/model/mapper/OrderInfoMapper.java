@@ -9,8 +9,8 @@ public interface OrderInfoMapper {
 	@Select ("select ifnull(max(order_code),0) from orderinfo")
 	int maxnum();
 
-	@Insert("insert into orderinfo (order_code, mem_id, mem_address )" 
-			+ " values (#{orderCode},#{memId},#{memAddress})")
+	@Insert("insert into orderinfo (order_code, mem_id, mem_address, order_date )" 
+			+ " values (#{orderCode},#{memId},#{memAddress}, now())")
 	int insert(Orderinfo info);
 
 }

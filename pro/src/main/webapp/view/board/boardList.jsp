@@ -7,7 +7,7 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <title>게시판</title>
 <link rel="stylesheet" href="${path}/css/main.css">

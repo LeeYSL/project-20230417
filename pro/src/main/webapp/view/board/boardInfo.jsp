@@ -12,7 +12,7 @@
 <title>게시물 상세보기</title>
 <link rel="stylesheet" href="${path}/css/main.css">
 <script type="text/javascript">
-	function win_open() {
+	function win_open() { 
 		let op = "width=500,height=350,left=50,top=150"
 		open(page, "", op)
 	}

@@ -2,6 +2,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Drop Tables */
 
+DROP TABLE IF EXISTS account;
 DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS board;
 DROP TABLE IF EXISTS cart;
@@ -10,11 +11,24 @@ DROP TABLE IF EXISTS orderitem;
 DROP TABLE IF EXISTS goods;
 DROP TABLE IF EXISTS orderinfo;
 DROP TABLE IF EXISTS member;
+DROP TABLE IF EXISTS point;
 
 
 
 
 /* Create Tables */
+
+CREATE TABLE account
+(
+	account_plus int NOT NULL,
+	account_minus int NOT NULL,
+	-- 아이디
+	mem_id varchar(15) NOT NULL COMMENT '아이디',
+	account_date datetime NOT NULL,
+	account_reason varchar(200) NOT NULL,
+	account_total int NOT NULL
+);
+
 
 CREATE TABLE board
 (
@@ -38,8 +52,8 @@ CREATE TABLE cart
 (
 	-- 아이디
 	mem_id varchar(15) NOT NULL COMMENT '아이디',
-	cart_quantity int NOT NULL,
 	goods_code int NOT NULL,
+	cart_quantity int NOT NULL,
 	PRIMARY KEY (mem_id, goods_code),
 	UNIQUE (mem_id)
 );
@@ -99,24 +113,35 @@ CREATE TABLE member
 
 CREATE TABLE orderinfo
 (
-	order_code int NOT NULL,
+	oder_code int NOT NULL,
 	-- 아이디
 	mem_id varchar(15) NOT NULL COMMENT '아이디',
 	mem_address varchar(200),
-	PRIMARY KEY (order_code),
-	UNIQUE (order_code)
+	PRIMARY KEY (oder_code),
+	UNIQUE (oder_code),
+	UNIQUE (mem_id)
 );
 
 
 CREATE TABLE orderitem
 (
-	order_code int NOT NULL,
+	oder_code int NOT NULL,
 	goods_code int NOT NULL,
 	cart_quantity int,
 	-- 아이디
 	mem_id varchar(15) NOT NULL COMMENT '아이디',
-	PRIMARY KEY (order_code, goods_code),
-	UNIQUE (order_code)
+	PRIMARY KEY (oder_code, goods_code),
+	UNIQUE (oder_code),
+	UNIQUE (mem_id)
+);
+
+
+CREATE TABLE point
+(
+	point_name varchar(200),
+	point_price int,
+	point_img varchar(200),
+	point_code int
 );
 
 

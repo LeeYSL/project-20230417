@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마켓</title>
+<title>포인트 충전</title>
 <style type="text/css">
 
 	.pagenumstyle {
@@ -25,24 +25,17 @@ a {
 	text-decoration: none;
 	color: black;
 }
-.goodsimg {
-	width: 200px;
-	height: 200px;
-}
 
 </style>
 	<script type="text/javascript">
 		$(function() {
 			//게시글 작성 버튼 클릭 시 이벤트 호출
 			$('#btn').on('click', function() {
-				location.href = "${path}/market/marketForm";
+				location.href = "${path}/point/pointForm";
 			})
 		});
-		function cartAdd(code) {
-			location.href = "${path}/market/cart?code="+code;
-		};
-		function detail(code) {
-			loaction.href="${path}/market/detail?code="+code;
+		function pointAdd(code) {
+			location.href = "${path}/point/pointBuy?code="+code;
 		};
 	</script>
 <link rel="stylesheet" href="${path}/css/main.css">
@@ -50,32 +43,25 @@ a {
 <body>
 	<div id="container-1">
 		<div class="w3-container w3-center">
-			<h2 class="w3-center" style="padding:40px;">마켓</h2>
-
+			<h2 class="w3-center" style="padding:40px;">포인트 충전</h2>
 			<c:set var="i" value="0" />
 			<c:set var="j" value="5" />
 			<table class="w3-table-all">
-				<c:forEach var="g" items="${list}">
+				<c:forEach var="point" items="${list}">
 					<c:if test="${i%j==0}">
 						<tr>
 					</c:if>
 					<td width="20%">
 						<div class="goodsdiv w3-center">
-						<a href="detail?code=${g.goodsCode}">
-							<img src="../goods/file/${g.goodsImg}" class="goodsimg" onMouseOver="this.src='${path}/image/logo/marketdetail.png'"
-								onMouseOut="this.src='../goods/file/${g.goodsImg}'" border="0">
-
-							</a>
-							
-							<input type="hidden" name="goodsCode" value="${g.goodsCode}">
-							<div class="w3-center">${g.goodsName}</div>
-							<div class="w3-center"><fmt:formatNumber value="${g.goodsPrice}" pattern="###,###" />원</div>
-							
+							<img src="../upload/point/${point.pointImg}" class="goodsimg">							
+							<input type="hidden" name="pointCode" value="${point.pointCode}">
+							<div class="w3-center"><fmt:formatNumber value="${point.pointPrice}" pattern="###,###" />원</div>
+							<c:if test="${sessionScope.login != null}">
 								<div>
-									<button type="button" class="btn btn-dark w3-center" id="cart"
-										onclick="cartAdd(${g.goodsCode})">장바구니 추가</button>
+									<button type="button" class="btn btn-dark w3-center" id="point"
+										onclick="pointAdd(${point.pointCode})">포인트 구매</button>
 								</div>
-							
+							</c:if>
 						</div>
 					</td>
 					<c:if test="${i%j == j-1}">
@@ -85,21 +71,21 @@ a {
 				</c:forEach>
 
 			</table>
-
+		
 			<div class="pagenumstyle">
 				<c:if
 							test="${pageNum <=1 }">
 							[이전]
 						</c:if> <c:if test="${pageNum > 1 }">
-							<a href="marketList?pageNum=${pageNum-1}">[이전]</a>
+							<a href="pointBuy?pageNum=${pageNum-1}">[이전]</a>
 						</c:if> <c:forEach var="a" begin="${startpage}" end="${endpage}">
 							<c:if test="${a==pageNum}">[${a}]</c:if>
 							<c:if test="${a != pageNum }">
-								<a href="marketList?pageNum=${a}">[${a}]</a>
+								<a href="pointBuy?pageNum=${a}">[${a}]</a>
 							</c:if>
 						</c:forEach> <c:if test="${pageNum >= maxpage}">[다음]</c:if> <c:if
 							test="${pageNum < maxpage}">
-							<a href="marketList?pageNum=${pageNum+1}">[다음]</a>
+							<a href="pointBuy?pageNum=${pageNum+1}">[다음]</a>
 						</c:if>
 			</div>
 			<div class="pagenumstyle">

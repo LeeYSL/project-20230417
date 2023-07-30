@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 리스트</title>
+<title>포인트 거래내역</title>
 <style type="text/css">
 th {
 	background: #343a40;
@@ -25,39 +25,32 @@ a {
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
-<script type="text/javascript">
-function Remove(code) { 
-	location.href = "${path}/member/delete?id="+code;
-}
-
-</script>
 		<div id="container-1">
-		<h2 class="w3-center">회원 리스트</h2>
+		<h2 class="w3-center">포인트 거래내역</h2>
 		<div class="w3-container" style="padding:40px;">
 			<form name="f" method="post" action="list">
 				<table class="table table-hover">
 					<tr>
-						<th width="20%">아이디</th>
-						<th width="20%">이메일</th>
-						<th width="20%">전화번호</th>
-						<th width="10%">포지션</th>
-						<th width="20%">포인트</th>
-						<th width="10%"></th>
+						<th width="5%">번호</th>
+						<th width="20%">날짜</th>
+						<th width="30%">이유</th>
+						<th width="15%">증가</th>
+						<th width="15%">감소</th>
+						<th width="15%">총포인트</th>
 					</tr>
-					<c:forEach var="m" items="${list}">
+					<c:forEach var="a" items="${list}">
 
 						<tr>
+							<td>${boardnum}</td>
+							<c:set var="boardnum" value="${boardnum-1}" />
+							<td><fmt:formatDate value="${a.accountDate}" pattern="yyyy-MM-dd hh:mm:ss"/></td>
 							<td>
-								<a href="info?memId=${m.memId}">
-									${m.memId}
-								</a>
-							</td>
-							<td>${m.memEmail}</td>
-							<td>${m.memPhone}</td>
-							<td>${m.memPosition==1?"관리자":m.memPosition==2?"선수":"일반"}</td>
-							<td><fmt:formatNumber value="${m.memPoint}" pattern="###,###" />원</td>
-			 				<td><button type="button" class="btn btn-dark"
-									onclick="Remove(${m.memId})">탈퇴</button></td>
+								<c:if test="${a.accountReason== null}">가입 축하금 30,000원</c:if>
+								<c:if test="${a.accountPlus> 0}">${a.accountReason} 충전</c:if>
+							<c:if test="${a.accountMinus> 0}">${a.accountReason} 구매</c:if></td>
+							<td><fmt:formatNumber value="${a.accountPlus}" pattern="###,###" />원</td>
+							<td><fmt:formatNumber value="${a.accountMinus}" pattern="###,###" />원</td>
+							<td><fmt:formatNumber value="${a.accountTotal}" pattern="###,###" />원</td> 
 						</tr>
 
 					</c:forEach>
@@ -67,15 +60,15 @@ function Remove(code) {
 								test="${pageNum <=1 }">
 							[이전]
 						</c:if> <c:if test="${pageNum > 1 }">
-								<a href="list?pageNum=${pageNum-1}">[이전]</a>
+								<a href="pointAccount?pageNum=${pageNum-1}">[이전]</a>
 							</c:if> <c:forEach var="a" begin="${startpage}" end="${endpage}">
 								<c:if test="${a==pageNum}">[${a}]</c:if>
 								<c:if test="${a != pageNum }">
-									<a href="list?pageNum=${a}">[${a}]</a>
+									<a href="pointAccount?pageNum=${a}">[${a}]</a>
 								</c:if>
 							</c:forEach> <c:if test="${pageNum >= maxpage}">[다음]</c:if> <c:if
 								test="${pageNum < maxpage}">
-								<a href="list?pageNum=${pageNum+1}">[다음]</a>
+								<a href="pointAccount?pageNum=${pageNum+1}">[다음]</a>
 							</c:if></td>
 					</tr>
 				</table>

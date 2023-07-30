@@ -31,6 +31,11 @@ function input_check(f) {
 		alert("상품 사진을 등록하세요.")
 		return false;
 	}
+	
+	if (f.description.value.trim() == "") {
+		alert("상품 사진을 등록하세요.")
+		return false;
+	}
 	return true;
 }
 
@@ -39,14 +44,14 @@ function input_check(f) {
 </head>
 <body>
 	<div id="main_div">
-		<h2 class="w3-center">상품등록</h2>
-		<div class="w3-container">
+		<h2 class="w3-center" >상품등록</h2>
+		<div class="w3-container" style="padding:40px;">
 			<form action="market" method="post" name="f"
 				onsubmit="return input_check(this)" enctype="multipart/form-data">
 				<div class="form-group">
 					<table class="w3-table w3-border ">
 						<tr>
-							<th>상품번호</th>
+							<th>재고수량</th>
 							<td><input type="text" name="num" class="w3-input"></td>
 						</tr>
 						<tr>
@@ -63,8 +68,12 @@ function input_check(f) {
 								id="file"></td>
 						</tr>
 						<tr>
+							<th>상품설명</th>
+							<td><input type="file" name="description" class="w3-input"></td>
+						</tr>
+						<tr>
 							<td colspan="2" style="text-align: center">
-								<button type="submit" class="btn btn-dark">등록</button>
+								<button type="submit" class="btn btn-dark">상품등록</button>
 							</td>
 						</tr>
 					</table>

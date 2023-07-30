@@ -17,7 +17,7 @@ public interface OrderItemMapper {
 	@Select ("select ifnull(max(order_code),0) from orderitem")
 	int maxnum();
 	
-	@Select ({"<script>" ,"SELECT i.order_code, i.mem_id, i.goods_code, i.cart_quantity, g.goods_name, g.goods_price, g.goods_img, f.mem_address "
+	@Select ({"<script>" ,"SELECT i.order_code, i.mem_id, i.goods_code, i.cart_quantity, g.goods_name, g.goods_price, g.goods_img, f.mem_address, f.order_date "
 			+ "FROM  goods g, orderitem i, orderinfo f  "
 			+ "WHERE f.mem_id= #{id} and g.goods_code = i.goods_code and i.order_code = f.order_code "
 			+ " order by i.order_code desc "
@@ -34,7 +34,7 @@ public interface OrderItemMapper {
 
 		 
 
-			@Select ({"<script>" ,"SELECT i.order_code, i.mem_id, i.goods_code, i.cart_quantity, g.goods_name, g.goods_price, g.goods_img, f.mem_address "
+			@Select ({"<script>" ,"SELECT i.order_code, i.mem_id, i.goods_code, i.cart_quantity, g.goods_name, g.goods_price, g.goods_img, f.mem_address, f.order_date "
 					+ "FROM  goods g, orderitem i, orderinfo f  "
 					+ "WHERE f.mem_id= i.mem_id and g.goods_code = i.goods_code and i.order_code = f.order_code "
 					+ " order by i.order_code desc "

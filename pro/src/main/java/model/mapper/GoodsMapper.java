@@ -11,12 +11,12 @@ import model.Goods;
 
 public interface GoodsMapper {
 	
-	@Insert("insert into goods (goods_code, goods_name, goods_price, goods_img, goods_num )" 
-			+ " values (#{goodsCode},#{goodsName},#{goodsPrice},#{goodsImg},#{goodsNum})")
+	@Insert("insert into goods (goods_code, goods_name, goods_price, goods_img, goods_num, goods_description )" 
+			+ " values (#{goodsCode},#{goodsName},#{goodsPrice},#{goodsImg},#{goodsNum},#{goodsDescription})")
 	int insert(Goods goods);
 
-	@Select ("select ifnull(max(goods_num),0) from goods")
-	int maxnum();
+	@Select ("select ifnull(max(goods_code),0) from goods")
+	int maxcode();
 
 //	@Select("select * from goods")
 //	List<Goods> list(Object object);

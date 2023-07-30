@@ -20,7 +20,7 @@
 	</script>
 	<div id="main_div">
 		<div class="w3-container w3-center">
-		<h2 class="w3-center">상품정보</h2>
+		<h2 class="w3-center" style="padding:40px;">상품정보</h2>
 			<form action="buy" method="post" name="f"
 				enctype="multipart-formdata">
 				<div class="form-group">
@@ -45,7 +45,6 @@
 								</c:if> 
 								<c:if test="${!empty c.goodsImg}">
 									<a href="../upload/marktet/${c.goodsImg}">${c.goodsImg}</a>
-									<!-- 머슨말이지... -->
 								</c:if>
 							</td>
 						</tr>

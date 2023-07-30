@@ -13,7 +13,7 @@ import org.checkerframework.checker.units.qual.degrees;
 import model.Board;
 import model.Member;
 public interface BoardMapper {
-	@Select ("select ifnull(max(board_num),0) from board") //이게 뭔말인지...
+	@Select ("select ifnull(max(board_num),0) from board") 
 	int maxnum();
 	
 	@Insert("insert into board (board_num, board_content, board_file, board_title, "

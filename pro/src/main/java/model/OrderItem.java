@@ -1,14 +1,17 @@
 package model;
 
+import java.util.Date;
+
 public class OrderItem {
 	private int orderCode;
 	private int goodsCode;
 	private int cartQuantity;
 	private String memId;
 	private int goodsPrice;
-	private String memAdress;
+	private String memAddress;
 	private String goodsImg;
 	private String goodsName;
+	private Date orderDate;
 	
 
 	public int getOrderCode() {
@@ -51,54 +54,46 @@ public class OrderItem {
 		this.goodsPrice = goodsPrice;
 	}
 
-	/**
-	 * @return the memAddress
-	 */
-	public String getMemAdress() {
-		return memAdress;
+	public String getMemAddress() {
+		return memAddress;
 	}
 
-	/**
-	 * @param memAddress the memAddress to set
-	 */
-	public void setMemAddress(String memAdress) {
-		this.memAdress = memAdress;
+	public void setMemAddress(String memAddress) {
+		this.memAddress = memAddress;
 	}
 
-	/**
-	 * @return the goodsImg
-	 */
 	public String getGoodsImg() {
 		return goodsImg;
 	}
 
-	/**
-	 * @param goodsImg the goodsImg to set
-	 */
 	public void setGoodsImg(String goodsImg) {
 		this.goodsImg = goodsImg;
 	}
 
-	/**
-	 * @return the goodsName
-	 */
 	public String getGoodsName() {
 		return goodsName;
 	}
 
-	/**
-	 * @param goodsName the goodsName to set
-	 */
 	public void setGoodsName(String goodsName) {
 		this.goodsName = goodsName;
+	}
+
+	public Date getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	@Override
 	public String toString() {
 		return "OrderItem [orderCode=" + orderCode + ", goodsCode=" + goodsCode + ", cartQuantity=" + cartQuantity
-				+ ", memId=" + memId + ", goodsPrice=" + goodsPrice + ", memAdress=" + memAdress + ", goodsImg="
-				+ goodsImg + ", goodsName=" + goodsName + "]";
+				+ ", memId=" + memId + ", goodsPrice=" + goodsPrice + ", memAddress=" + memAddress + ", goodsImg="
+				+ goodsImg + ", goodsName=" + goodsName + ", orderDate=" + orderDate + "]";
 	}
+
+
 
 
 

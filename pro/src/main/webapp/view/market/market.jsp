@@ -8,4 +8,4 @@
     }else
       alert("게시물 등록 실패")
       location.href="marketForm" 
-   </script>
+   </script> 
