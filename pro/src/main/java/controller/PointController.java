@@ -77,8 +77,9 @@ public class PointController extends MskimRequestMapping {
 		if(loginMem.getMemPosition() != 1 ) {
 			request.setAttribute("msg", "관리자만 사용 가능합니다.");
 			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
 		}
-		return "alert/alert";			
+		return "point/pointForm";
 	}	
 	
 	@RequestMapping("point")
