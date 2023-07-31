@@ -145,13 +145,7 @@ public class MemberController extends MskimRequestMapping {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String position = (String) request.getSession().getAttribute("position");
 
-		if(position != "1") {
-			request.setAttribute("msg", "관리자만 사용 가능합니다.");
-			request.setAttribute("url", request.getContextPath() + "/kgc/main");
-			return "alert/alert";	
-		}	
 		request.getSession().setAttribute("pageNum", "1");
 		int pageNum = 1;
 		try {
@@ -181,6 +175,13 @@ public class MemberController extends MskimRequestMapping {
 
 		// 글 번호
 		int boardnum = memberCount - (pageNum - 1) * limit;
+		
+		
+		Member loginMem = (Member)request.getSession().getAttribute("loginMem");
+		if(loginMem.getMemPosition() != 1 ) {
+			request.setAttribute("msg", "관리자만 사용 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+		}
 
 		request.setAttribute("list", list);
 		request.setAttribute("startpage", startpage);
