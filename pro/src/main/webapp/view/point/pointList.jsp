@@ -13,7 +13,7 @@
 	$(document).ready(function(){
 		var $images1 = $("#container1 img");
 		
-		showGallery($images1,5,220,220); 
+		showGallery($images1,5,250,250); 
 	});
 	
 	function showGallery($images,count,width,height){
@@ -64,7 +64,7 @@ div.image-container img {
 	position: absolute;
 	left:0;
 	top:0;
-	width: 220px;
+	width: 180px;
 }
 </style>
 <script type="text/javascript">
