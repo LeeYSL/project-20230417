@@ -73,12 +73,11 @@ public class PointController extends MskimRequestMapping {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String position = (String) request.getSession().getAttribute("position");
-
-		if(position != "1") {
+		Member loginMem = (Member)request.getSession().getAttribute("loginMem");
+		if(loginMem.getMemPosition() != 1 ) {
 			request.setAttribute("msg", "관리자만 사용 가능합니다.");
 			request.setAttribute("url", request.getContextPath() + "/kgc/main");
-		}	
+		}
 		return "alert/alert";			
 	}	
 	
@@ -108,14 +107,13 @@ public class PointController extends MskimRequestMapping {
 		point.setPointPrice(Integer.parseInt(multi.getParameter("price")));
 		point.setPointName(multi.getParameter("name"));
 		point.setPointImg(multi.getFilesystemName("file"));
-		String id = (String) request.getSession().getAttribute("login");
-		String position = (String) request.getSession().getAttribute("position");
+
 		request.getSession().setAttribute("point", point); 
-		if(position != "1") {
+		Member loginMem = (Member)request.getSession().getAttribute("loginMem");
+		if(loginMem.getMemPosition() != 1 ) {
 			request.setAttribute("msg", "관리자만 사용 가능합니다.");
 			request.setAttribute("url", request.getContextPath() + "/kgc/main");
-			return "alert/alert";			
-		}	
+		}
 		if (pointdao.insert(point)) { 
 			return "redirect:pointBuy"; 
 		}

@@ -111,13 +111,12 @@ public class MemberController extends MskimRequestMapping {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String position = (String) request.getSession().getAttribute("position");
-
-		if(position != "1") {
+		Member loginMem = (Member)request.getSession().getAttribute("loginMem");
+		if(loginMem.getMemPosition() != 1 ) {
 			request.setAttribute("msg", "관리자만 사용 가능합니다.");
 			request.setAttribute("url", request.getContextPath() + "/kgc/main");
 			return "alert/alert";	
-		}	 
+		}
 		Member mem = new Member();
 		mem.setMemId(request.getParameter("id"));
 		mem.setMemPw(request.getParameter("pass"));
