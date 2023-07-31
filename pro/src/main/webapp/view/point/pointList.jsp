@@ -22,8 +22,8 @@
 		for(var i=0;i<length;i++) {
 			var $img = $images.eq(i);
 			
-			var x = 100+((i%count)*width);
-			var y = 100+(parseInt(i/count)*height);
+			var x = 20+((i%count)*width);
+			var y = 70+(parseInt(i/count)*height);
 			
 			$img.css({
 				left:x,
@@ -35,7 +35,7 @@
 
 <style type="text/css">
 .pagenumstyle {
-	padding: 30px;
+	padding-top: 30px;
 }
 
 th {
@@ -92,42 +92,6 @@ div.image-container img {
 				</a>
 				</c:forEach>	
 			</div>
-<%--
-			<c:set var="i" value="0" />
-			<c:set var="j" value="5" />
-				<table class="w3-table-all">
-					<c:forEach var="point" items="${list}">
-						<c:if test="${i%j==0}">
-							<tr>
-						</c:if>
-						<td width="20%">
-							<div class="goodsdiv w3-center">
-								<img src="../upload/point/${point.pointImg}" class="goodsimg">
-								<input type="hidden" name="pointCode" value="${point.pointCode}">
-								<div class="w3-center">
-									<fmt:formatNumber value="${point.pointPrice}" pattern="###,###" />
-									원
-								</div>
-								<c:if test="${sessionScope.login != null}">
-									<div>
-										<button type="button" class="btn btn-dark w3-center"
-											id="point" onclick="pointAdd(${point.pointCode})">포인트
-											구매</button>
-									</div>
-								</c:if>
-							</div>
-						</td>
-						<c:if test="${i%j == j-1}">
-							</tr>
-						</c:if>
-						<c:set var="i" value="${i+1}" />
-					</c:forEach>
-
-				</table>
-
-
-
---%>
 				<div class="pagenumstyle">
 					<c:if test="${pageNum <=1 }">
 							[이전]

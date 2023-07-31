@@ -9,6 +9,29 @@
 <head>
 <meta charset="UTF-8">
 <title>마켓</title>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var $images1 = $("#container1 img");
+		
+		showGallery($images1,5,250,250); 
+	});
+	
+	function showGallery($images,count,width,height){
+		var length = $images.length;
+		
+		for(var i=0;i<length;i++) {
+			var $img = $images.eq(i);
+			
+			var x = 20+((i%count)*width);
+			var y = 70+(parseInt(i/count)*height);
+			
+			$img.css({
+				left:x,
+				top:y
+			});
+		}
+	}
+</script>
 <style type="text/css">
 
 	.pagenumstyle {
@@ -28,6 +51,20 @@ a {
 .goodsimg {
 	width: 200px;
 	height: 200px;
+}
+#container-1 {
+	position : relative;
+}
+div.image-container{
+	position : relative;
+	border:none;
+	height: 500px;
+}
+div.image-container img {
+	position: absolute;
+	left:0;
+	top:0;
+	width: 180px;
 }
 
 </style>
@@ -49,9 +86,18 @@ a {
 </head>
 <body>
 	<div id="container-1">
-		<div class="w3-container w3-center">
-			<h2 class="w3-center" style="padding:40px;">마켓</h2>
+			<h2 class="w3-center">마켓</h2>
+		<div class="w3-container w3-center" style="padding:40px;">
 
+			<div class="image-container" id="container1">
+				<c:forEach var="g" items="${list}">
+				<a href="detail?code=${g.goodsCode}">
+					<img src="../goods/file/${g.goodsImg}" class="goodsimg" onMouseOver="this.src='${path}/image/logo/marketdetail.png'"
+								onMouseOut="this.src='../goods/file/${g.goodsImg}'" border="0">
+				</a>
+				</c:forEach>	
+			</div>
+<%--
 			<c:set var="i" value="0" />
 			<c:set var="j" value="5" />
 			<table class="w3-table-all">
@@ -85,7 +131,7 @@ a {
 				</c:forEach>
 
 			</table>
-
+ --%>
 			<div class="pagenumstyle">
 				<c:if
 							test="${pageNum <=1 }">
