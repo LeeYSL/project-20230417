@@ -132,12 +132,12 @@
 	<div id="container-1">
 		<div class="w3-container w3-center">
 			<h2 class="w3-center" style="padding: 40px;">포인트 구매</h2>
-			<table class="w3-table-all">
-				<tr>
-					<td style="width: 500px; text-align: center"><img
+			<table class="w3-table-all" >
+				<tr style="border: 0.1px solid white;">
+					<td style="width: 50%; text-align: center; border: none;"><img
 						src="../upload/point/${point.pointImg}"
-						style="width: 500px; height: 500px;"></td>
-					<td style="width: 300px; padding-top: 100px; padding-right: 30px;">
+						style="width: 300px; height: 300px;"></td>
+					<td style="width: 50%;  padding-right: 30px;">
 					
 							<input type="hidden" name="email" value="${mem.memEmail}"> 
 							<input type="hidden" name="name" value="${mem.memName}">
