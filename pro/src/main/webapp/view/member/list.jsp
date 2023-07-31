@@ -25,12 +25,6 @@ a {
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
-<script type="text/javascript">
-function Remove(code) { 
-	location.href = "${path}/member/delete?id="+code;
-}
-
-</script>
 		<div id="container-1">
 		<h2 class="w3-center">회원 리스트</h2>
 		<div class="w3-container" style="padding:40px;">
@@ -42,7 +36,6 @@ function Remove(code) {
 						<th width="20%">전화번호</th>
 						<th width="10%">포지션</th>
 						<th width="20%">포인트</th>
-						<th width="10%"></th>
 					</tr>
 					<c:forEach var="m" items="${list}">
 
@@ -56,8 +49,7 @@ function Remove(code) {
 							<td>${m.memPhone}</td>
 							<td>${m.memPosition==1?"관리자":m.memPosition==2?"선수":"일반"}</td>
 							<td><fmt:formatNumber value="${m.memPoint}" pattern="###,###" />원</td>
-			 				<td><button type="button" class="btn btn-dark"
-									onclick="Remove(${m.memId})">탈퇴</button></td>
+
 						</tr>
 
 					</c:forEach>

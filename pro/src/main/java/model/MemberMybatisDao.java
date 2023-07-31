@@ -159,6 +159,18 @@ public class MemberMybatisDao {
 			MybatisConnection.close(session);
 		}
 	}
+	public Member selectPosition(String id) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			return session.getMapper(cls).selectPosition(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			MybatisConnection.close(session);
+		}
+		return null;
+	
+	}
 
 	
 	

@@ -57,8 +57,8 @@ a {
 						<th>삭제</th>
 						<th>구매</th>
 					</tr>
+					<c:if test="${goodsCount > 0}">
 					<c:forEach var="c" items="${cartlist}">
-
 						<tr>		
 							<td>
 								<a href="../market/detail?code=${c.goodsCode}">
@@ -98,12 +98,12 @@ a {
 							<a href="cartForm?pageNum=${pageNum+1}">[다음]</a>
 						</c:if></td>
 				</tr>
-			<%--			<tr>
-						<td colspan="7" style="text-align: center">
-							<button type="submit" class="btn btn-dark" onclick="purchase()">구매하기</button>
-						</td>
-					</tr>   --%>	
-
+				</c:if>
+										<c:if test="${goodsCount ==  0}">
+											<tr>
+												<th colspan="7" style="text-align: center;background: white; color:black;" >장바구니에 담은 물건이 없습니다.</th>
+											</tr>
+										</c:if>				
 				</table>
 			</form>
 		</div>

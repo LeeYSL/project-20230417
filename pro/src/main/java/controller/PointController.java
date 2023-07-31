@@ -42,22 +42,15 @@ public class PointController extends MskimRequestMapping {
 		}
 		int limit = 10;
 
-		int pointCount = pointdao.pointCount(); // 게시판 종류별 전체 게시물 수 리턴
+		int pointCount = pointdao.pointCount(); 
 
-		List<Point> list = pointdao.list(pageNum, limit);// list를 만들건데 board 타입을 넣어서 만든다.
+		List<Point> list = pointdao.list(pageNum, limit);
 
 		int maxpage = (int) ((double) pointCount / limit + 0.95);
-		/*
-		 * startpage : 화면에 출력될 시작 페이지 현재페이지 | 시작페이지 1 1 1/10.0 => 0.1 + 0.9 => (int)1.0
-		 * -1 => 0 * 10 +1 => 1 10 1 11 11 505 501 int startpage= ((int)(pageNum/10.0 +
-		 * 0.9) -1)*10 +1; //10.0 -> 한페이지에 10개 보여줌
-		 */
+
 		int startpage = ((int) (pageNum / 10.0 + 0.9) - 1) * 10 +1 ;
-		/*
-		 * endpage : 화면에 출력할 마지막 페이지 번호. 한 화면에 10개의 페이지를 보여줌
-		 */
+
 		int endpage = startpage + 9;
-		// endpage 는 maxpage를 넘어가면 안됨
 		if (endpage > maxpage)
 			endpage = maxpage;
 
@@ -70,10 +63,24 @@ public class PointController extends MskimRequestMapping {
 		request.setAttribute("maxpage", maxpage);
 		request.setAttribute("boardnum", boardnum);
 		request.setAttribute("pageNum", pageNum);
-		
+		request.setAttribute("pointCount", pageNum);
 		return "point/pointList";
 	}
-	
+	@RequestMapping("pointForm")
+	public String pointForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String position = (String) request.getSession().getAttribute("position");
+
+		if(position != "1") {
+			request.setAttribute("msg", "관리자만 사용 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+		}	
+		return "alert/alert";			
+	}	
 	
 	@RequestMapping("point")
 	public String write(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -83,8 +90,7 @@ public class PointController extends MskimRequestMapping {
 			e.printStackTrace();
 		}
 		String path = request.getServletContext().getRealPath("/") + "/upload/point/";
-		// getServletContext() : ServletContext 객체를 가져온다
-		// getRealPath("/") : 지정한 path에 해당되는 실제 경로를 반환
+
 		File f = new File(path);
 		if (!f.exists())
 			f.mkdirs();
@@ -94,17 +100,18 @@ public class PointController extends MskimRequestMapping {
 			multi = new MultipartRequest(request, path, size, "UTF-8");
 		} catch (IOException e) {
 			e.printStackTrace();
-		} // 파일업로드끝
-			// 파라미터 Board 객체에 저장
+		} 
+			
 		
-		Point point = new Point(); // db goods의 객체를 만든다?
+		Point point = new Point(); 
 		point.setPointCode(Integer.parseInt(multi.getParameter("code")));
 		point.setPointPrice(Integer.parseInt(multi.getParameter("price")));
-		point.setPointName(multi.getParameter("name"));// name이 content인 파라미터 값을 보드객체의 BoardTitle에 저장한다.
-		point.setPointImg(multi.getFilesystemName("file"));// name이 file인 파라미터 값을 보드객체의 BoardTitle에 저장한다.
+		point.setPointName(multi.getParameter("name"));
+		point.setPointImg(multi.getFilesystemName("file"));
 		String id = (String) request.getSession().getAttribute("login");
-		request.getSession().setAttribute("point", point); // 세션저장
-		if(!id.equals("admin") || id ==null) {
+		String position = (String) request.getSession().getAttribute("position");
+		request.getSession().setAttribute("point", point); 
+		if(position != "1") {
 			request.setAttribute("msg", "관리자만 사용 가능합니다.");
 			request.setAttribute("url", request.getContextPath() + "/kgc/main");
 			return "alert/alert";			
@@ -113,7 +120,7 @@ public class PointController extends MskimRequestMapping {
 			return "redirect:pointBuy"; 
 		}
 		
-		// 게시물 등록 실패시 실행되는 부분
+
 		request.setAttribute("msg", "게시물 등록 실패");
 		request.setAttribute("url", request.getContextPath() + "/point/pointForm");
 		return "alert/alert";
@@ -193,22 +200,16 @@ public class PointController extends MskimRequestMapping {
 		}
 		int limit = 10;
 
-		int accountCount = accountdao.accountCount(id); // 게시판 종류별 전체 게시물 수 리턴
+		int accountCount = accountdao.accountCount(id); 
 
-		List<Account> list = accountdao.accounntlist(id,pageNum, limit);// list를 만들건데 board 타입을 넣어서 만든다.
+		List<Account> list = accountdao.accounntlist(id,pageNum, limit);
 
 		int maxpage = (int) ((double) accountCount / limit + 0.95);
-		/*
-		 * startpage : 화면에 출력될 시작 페이지 현재페이지 | 시작페이지 1 1 1/10.0 => 0.1 + 0.9 => (int)1.0
-		 * -1 => 0 * 10 +1 => 1 10 1 11 11 505 501 int startpage= ((int)(pageNum/10.0 +
-		 * 0.9) -1)*10 +1; //10.0 -> 한페이지에 10개 보여줌
-		 */
+
 		int startpage = ((int) (pageNum / 10.0 + 0.9) - 1) * 10 +1 ;
-		/*
-		 * endpage : 화면에 출력할 마지막 페이지 번호. 한 화면에 10개의 페이지를 보여줌
-		 */
+
 		int endpage = startpage + 9;
-		// endpage 는 maxpage를 넘어가면 안됨
+
 		if (endpage > maxpage)
 			endpage = maxpage;
 

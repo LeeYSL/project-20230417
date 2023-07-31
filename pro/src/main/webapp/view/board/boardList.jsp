@@ -11,6 +11,20 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 <link rel="stylesheet" href="${path}/css/main.css">
+<style type="text/css">
+th {
+	background: #343a40;
+	color : white;
+}
+th, td {
+	text-align: center;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+
+</style>
 </head>
 <body>
 	<script type="text/javascript">
@@ -34,9 +48,9 @@
 			})
 		});
 	</script>
-	<div id="container-1">
+	<div id="main_div">
 		<h2 id="title" class="w3-center"></h2>
-		<div class="w3-container">
+		<div class="w3-container" style="padding: 40px;">
 		<input type="hidden" name="sessionScope" value="${sessionScope.login}">
 			<table class="w3-table-all">	
 				<tr>

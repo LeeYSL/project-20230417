@@ -47,6 +47,7 @@ a {
 						<th width="45%">배송지</th>
 						<th width="10%">구매일</th>
 					</tr>
+					<c:if test="${oderCount > 0}">
 					<c:forEach var="b" items="${buylist}">
 					<tr>	
 						<td>
@@ -66,7 +67,7 @@ a {
 						<td><fmt:formatDate value="${b.orderDate}" pattern="yyyy-MM-dd"/></td>
 					</tr>
 				</c:forEach>
-
+			
 				<tr>
 					<td colspan="6" style="text-align: center;"><c:if
 							test="${pageNum <=1 }">
@@ -83,6 +84,12 @@ a {
 							<a href="buyList?pageNum=${pageNum+1}">[다음]</a>
 						</c:if></td>
 				</tr>
+				</c:if>
+										<c:if test="${oderCount ==  0}">
+											<tr>
+												<th colspan="6" style="text-align: center;background: white; color:black;" >구매 내역이 없습니다.</th>
+											</tr>
+										</c:if>
 				</table>
 			</form>
 		</div>

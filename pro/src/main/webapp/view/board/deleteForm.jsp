@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 삭제</title>
+<link rel="stylesheet" href="${path}/css/main.css">
 <script type="text/javascript">
 	function delete_no() {
 		//뒤로가기
@@ -21,15 +22,17 @@
 </script>
 </head>
 <body>
-	<div class="container">
+	<div id="main_div">
+		<h2 class="w3-center">게시글 삭제</h2>
+		<div class="w3-container" style="padding: 40px;">
 		<form action="delete" method="post" name="f"
 			enctype="multipart-formdata">
 			<div class="form-group">
 				<input type="hidden" name="boardNum" value="${param.boardNum}">
 				<table class="w3-table w3-border ">
 					<!-- boardNum을 받아올  -->
-					<tr>
-						<th colspan="2">글을 삭제하시겠습니까?</th>
+					<tr height="100px;">
+						<th colspan="2" style="text-align: center;">글을 삭제하시겠습니까?</th>
 					</tr>
 					<tr>
 						<td style="text-align: center" class="w3-input">
@@ -40,6 +43,7 @@
 				</table>
 			</div>
 		</form>
+	</div>
 	</div>
 </body>
 </html>

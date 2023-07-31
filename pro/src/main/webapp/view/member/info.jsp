@@ -19,7 +19,7 @@
 <body>
 	<div id="main_div">
 		<h2 class="w3-center">회원 상세 정보</h2>
-		<div class="w3-container">
+		<div class="w3-container" style="padding: 40px;">
 			<form action="updateForm" method="post" name="f"
 				enctype="multipart-formdata">
 				<div class="form-group">

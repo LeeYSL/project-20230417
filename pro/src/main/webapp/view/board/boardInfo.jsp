@@ -25,27 +25,29 @@
 </script>
 </head>
 <body>
-	<div id="container-1">
+	<div id="main_div">
 		<h2 class="w3-center">${board_name}</h2>
+		<div class="w3-container" style="padding: 40px;">
+
 		<table class="w3-table-all" style="height: 100px">
 			<tr>
-				<th>제목</th>
+				<th width="10%">제목</th>
 				<td>${b.boardTitle}</td>
 			</tr>
 			<tr>
-				<th>작성일:</th>
+				<th width="10%">작성일:</th>
 				<td><fmt:formatDate value="${b.boardTime}" pattern="yyyy-MM-dd" /></td>
 			</tr>
 			<tr>
-				<th>작성자:</th>
+				<th width="10%">작성자:</th>
 				<td>${b.memId}</td>
 			</tr>
 			<tr style="height: 400px">
-				<th>내용</th>
+				<th width="10%">내용</th>
 				<td>${b.boardContent}</td>
 			</tr>
 			<tr>
-				<th>첨부파일</th>
+				<th width="10%">첨부파일</th>
 				<td><c:if test="${empty b.boardFile}">
 						&nbsp;
 					</c:if> <c:if test="${!empty b.boardFile}">
@@ -75,7 +77,7 @@
 					<th>
 					<td>${sessionScope.login}</td>
 					<c:if test="${sessionScope.login != null}">
-						<th><input type="text" name="comment" class="w3-input">
+						<th><input type="text" name="comment" class="w3-input" >
 					</c:if>
 					<c:if test="${sessionScope.login != null}">
 						<th><button type="submit" class="btn btn-dark"
@@ -96,7 +98,8 @@
 						<!-- name이 없으면 보낼 수 없고 받아만 온다. -->
 						<tr>
 							<th>작성자:${c.memId}</th>
-							<th name="contents"><input type="text" name="commentContent"
+							<th name="contents" height="auto;" width="80%">
+								<input type="text" style="width:100%; height:40px;" name="commentContent"
 								value="${c.commentContent}" class="w3-input"> <input
 								type="hidden" name="boardNum" value="${param.boardNum}">
 								<!-- param은 url로 이동하는 것들을 받아옴ㄴ --> <input type="hidden"
@@ -118,6 +121,6 @@
 			</form>
 		</div>
 	</div>
-
+</div>
 </body>
 </html>

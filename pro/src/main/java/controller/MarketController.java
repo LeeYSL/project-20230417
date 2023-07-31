@@ -95,9 +95,11 @@ public class MarketController extends MskimRequestMapping {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String login = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
 
-		if (login == null || !login.equals("admin")) {// 로그인이 안돼있거나 관리자가 아니라면
+		String login = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
+		String position = (String) request.getSession().getAttribute("position"); // session의 login값 가져온다.
+		
+			if(position != "1") {// 로그인이 안돼있거나 관리자가 아니라면
 			request.setAttribute("msg", "관리자만 글쓰기가 가능합니다.");
 			request.setAttribute("url", request.getContextPath() + "/market/marketList");
 			return "alert/alert";
@@ -162,7 +164,6 @@ public class MarketController extends MskimRequestMapping {
 		cart.setMemId(memId);
 		cart.setGoodsCode(code);
 		cart.setCartQuantity(1);
-		System.out.println(cart);
 
 		if(memId == null) {
 			request.setAttribute("msg", "로그인 해야 합니다.");
@@ -198,8 +199,7 @@ public class MarketController extends MskimRequestMapping {
 		cart.setMemId(memId);
 		cart.setGoodsCode(code);
 		cart.setCartQuantity(quantity);
-		System.out.println(cart);
-		// request.getSession().setAttribute("cart1", cart);
+
 		if(memId == null) {
 			request.setAttribute("msg", "로그인 해야 합니다.");
 			request.setAttribute("url", request.getContextPath() + "/member/loginForm");
@@ -252,13 +252,9 @@ public class MarketController extends MskimRequestMapping {
 			return "alert/alert";
 		}
 
-		System.out.println("memId:" + memId);
 
 		Cart cart = new Cart();
-		System.out.println(cart);
-		
-		
-		
+
 		request.getSession().setAttribute("pageNum", "1");
 		int pageNum = 1;
 		try {
@@ -295,14 +291,7 @@ public class MarketController extends MskimRequestMapping {
 		request.setAttribute("maxpage", maxpage);
 		request.setAttribute("boardnum", boardnum);
 		request.setAttribute("pageNum", pageNum);
-		
-		
-		
-		
-
-	//	List<Cart> cartlist = cartdao.cartlist(memId);
-
-
+		request.setAttribute("goodsCount", goodsCount);
 		request.setAttribute("cartlist", cartlist);
 
 		return "market/cartForm";
@@ -349,7 +338,7 @@ public class MarketController extends MskimRequestMapping {
 		item.setGoodsCode(code);
 		item.setCartQuantity(quantity);
 		item.setMemId(id);
-		System.out.println("item" + item);
+
 		
 		Orderinfo info = new Orderinfo();
 		num = infodao.maxnum(); // 등록된 게시글의 최대 num값
@@ -357,8 +346,7 @@ public class MarketController extends MskimRequestMapping {
 		info.setMemId(id);
 		String address = (String)request.getParameter("address");
 		info.setMemAddress(address);
-		System.out.println("info"+info);
-		
+
 		Cart cart = new Cart();
 		cart.setMemId(id);
 		cart.setGoodsCode(code);
@@ -403,24 +391,6 @@ public class MarketController extends MskimRequestMapping {
 
 	@RequestMapping("purchase")
 	public String purchase(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		OrderItem item = new OrderItem();
-//		String memId = (String) request.getSession().getAttribute("login");
-//		System.out.println("memId="+memId);
-//		item.setMemId(memId);
-//		Goods goodsCode = (Goods) request.getSession().getAttribute("goods");
-//		System.out.println("goodsCode="+goodsCode);
-//		item.setGoodsCode(goodsCode);
-//		
-//		
-//		
-//		
-//		if (cartdao.insert(item)) { // cart 테이블에 게시물 등록했을경우
-//		request.setAttribute("msg", "주문 완료");
-//		request.setAttribute("url", request.getContextPath() + "/market/buyList");
-//		return "alert/alert";
-//	}
-//	request.setAttribute("msg", "주문 오류.");
-//	request.setAttribute("url", request.getContextPath() + "/market/buyList");
 		return "alert/alert";
 
 	}
@@ -470,6 +440,7 @@ public class MarketController extends MskimRequestMapping {
 		request.setAttribute("maxpage", maxpage);
 		request.setAttribute("boardnum", boardnum);
 		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("oderCount", oderCount);
 		
 		
 	//	List<OrderItem> buylist = itemdao.buylist(id); // 굿즈 상품들 보임
@@ -484,6 +455,13 @@ public class MarketController extends MskimRequestMapping {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+		String position = (String) request.getSession().getAttribute("position"); // session의 login값 가져온다.
+		
+		if(position != "1") {// 로그인이 안돼있거나 관리자가 아니라면
+		request.setAttribute("msg", "관리자만 글쓰기가 가능합니다.");
+		request.setAttribute("url", request.getContextPath() + "/market/marketList");
+		return "alert/alert";
+	}
 		String id =(String)request.getSession().getAttribute("login");
 		
 		request.getSession().setAttribute("pageNum", "1");

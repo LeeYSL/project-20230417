@@ -56,7 +56,10 @@ public interface MemberMapper {
 
 
 	@Update("update member set mem_point=#{memPoint}+#{pointPrice} where mem_id = #{memId}") 
-	int addpoint(@Param("pointPrice")int pointPrice, @Param("memPoint")int memPoint,@Param("memId")String memId); 
+	int addpoint(@Param("pointPrice")int pointPrice, @Param("memPoint")int memPoint,@Param("memId")String memId);
+
+	@Select("select mem_position from member where mem_id=#{id}")	
+	Member selectPosition(String id); 
 
 
 //	@Update("update member set mem_point=#{memPoint}+#{pointPrice} where mem_id = #{memId}") 

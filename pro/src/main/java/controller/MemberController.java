@@ -104,6 +104,39 @@ public class MemberController extends MskimRequestMapping {
 		}
 		return "alert/alert";
 	}
+	@RequestMapping("joinAdd")
+	public String joinAdd(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String position = (String) request.getSession().getAttribute("position");
+
+		if(position != "1") {
+			request.setAttribute("msg", "관리자만 사용 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";	
+		}	 
+		Member mem = new Member();
+		mem.setMemId(request.getParameter("id"));
+		mem.setMemPw(request.getParameter("pass"));
+		mem.setMemName(request.getParameter("name"));
+		mem.setMemPhone(request.getParameter("tel"));
+		mem.setMemAdress(request.getParameter("adress"));
+		mem.setMemEmail(request.getParameter("email"));
+		mem.setMemPosition(Integer.parseInt(request.getParameter("type")));
+		mem.setMemPoint(30000);
+		if (dao.insert(mem)) {
+			request.setAttribute("msg", mem.getMemName() + "님 추가하였습니다.");
+			request.setAttribute("url", "joinAdd");
+			accountdao.insert(mem.getMemId());
+		} else {
+			request.setAttribute("msg", mem.getMemName() + "님 회원가입 시 오류 발생되었습니다.");
+			request.setAttribute("url", "joinAdd");
+		}
+		return "alert/alert";
+	}
 
 	@RequestMapping("list")
 	public String list(HttpServletRequest request, HttpServletResponse response) {
@@ -112,7 +145,13 @@ public class MemberController extends MskimRequestMapping {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
+		String position = (String) request.getSession().getAttribute("position");
+
+		if(position != "1") {
+			request.setAttribute("msg", "관리자만 사용 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";	
+		}	
 		request.getSession().setAttribute("pageNum", "1");
 		int pageNum = 1;
 		try {
@@ -164,6 +203,7 @@ public class MemberController extends MskimRequestMapping {
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		Member mem = dao.selectLogin(id, pass);
+		Member position = dao.selectPosition(id);
 		String msg = null;
 		String url = null;
 		if (mem == null) {
@@ -171,6 +211,9 @@ public class MemberController extends MskimRequestMapping {
 			url = "loginForm";
 		} else {
 			request.getSession().setAttribute("login", id);
+			request.getSession().setAttribute("loginMem", mem);
+			request.getSession().setAttribute("position", position);
+			
 			msg = "반갑습니다." + mem.getMemName() + "님";
 
 			url = "../kgc/main";

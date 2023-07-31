@@ -143,9 +143,10 @@ html, body {
 					<a href="${path}/point/pointList" class="w3-bar-item w3-button">포인트 충전</a>
 					<a href="${path}/market/cartForm" class="w3-bar-item w3-button">장바구니</a>
 					<a href="${path}/market/buyList" class="w3-bar-item w3-button">구매 목록</a>
-					<c:if test="${sessionScope.login == 'admin' }">
+					<c:if test="${sessionScope.loginMem.memPosition == '1' }">
 						<a href="${path}/market/marketForm" class="w3-bar-item w3-button">상품 추가</a>
 						<a href="${path}/member/list" class="w3-bar-item w3-button">회원 리스트</a>
+						<a href="${path}/member/joinAdd" class="w3-bar-item w3-button">관리자/선수 추가</a>
 						<a href="${path}/market/list" class="w3-bar-item w3-button">회원 구매 리스트</a>
 					</c:if>
 				</div>

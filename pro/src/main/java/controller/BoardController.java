@@ -147,9 +147,6 @@ public class BoardController extends MskimRequestMapping {
 			e.printStackTrace();
 		}
 		String path = request.getServletContext().getRealPath("/") + "/upload/board/";
-		System.out.println("path : " + path);
-		// getServletContext() : ServletContext 객체를 가져온다
-		// getRealPath("/") : 지정한 path에 해당되는 실제 경로를 반환
 		File f = new File(path);
 		if (!f.exists())
 			f.mkdirs();
@@ -208,7 +205,6 @@ public class BoardController extends MskimRequestMapping {
 
 //		if(boardReadCnt==null || !boardReadCnt.equals("f"));
 		List<Comment> commList = cdao.list(boardNum);
-		System.out.println("commlist:" + commList);
 		request.setAttribute("commList", commList);
 		return "board/boardInfo";
 	}
@@ -232,12 +228,10 @@ public class BoardController extends MskimRequestMapping {
 		comm.setCommentContent(request.getParameter("comment"));
 		comm.setMemId(request.getParameter("memId"));
 		String id = (String) request.getSession().getAttribute("login");
-//		System.out.println("id:"+id); 왜 안찍어줘
+
 		comm.setMemId(id);
 		comm.setCommentNum(++commentNum);
-//		request.getSession().setAttribute("comm", comm); comm 세션에 저장했는데 왜 null?
 
-//    System.out.println("comm:" + comm);
 
 		if (comm.getMemId() == null) {
 			request.setAttribute("msg", "로그인 하셔야 댓글을 달 수 있습니다.");
@@ -259,29 +253,16 @@ public class BoardController extends MskimRequestMapping {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-//		Comment comm = new Comment();
+
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 		int commentNum = Integer.parseInt(request.getParameter("commentNum"));
-//		String commId = (String)request.getParameter("memId");
+
 		String url = "boardInfo?boardNum=" + boardNum;
 		String id = (String) request.getSession().getAttribute("login");
 
-		System.out.println("boardNum:" + boardNum);
-		System.out.println("commentNum:" + commentNum);
 
 		Comment c = cdao.selectOne(boardNum, commentNum);
-//		comm.setMemId(request.getParameter("memId"));
-		System.out.println("c :" + c);
 
-//		if(id == null) {
-//			request.setAttribute("msg", "로그인 후 삭제 가");
-//			request.setAttribute(url, url);
-//		}
-//			
-//		if(id != null || id.equals(comm.getMemId())) {
-//			msg = "로그인 하셔야 삭제 가능합니다.";
-//			return "redirect:" + url;	
-//		}
 		if (!id.equals(c.getMemId())) {
 			request.setAttribute("msg", "본인 댓글만 삭제 할 수 있습니다.");
 			request.setAttribute("url", url);

@@ -20,7 +20,6 @@ a {
 	text-decoration: none;
 	color: black;
 }
-
 </style>
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
