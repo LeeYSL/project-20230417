@@ -167,7 +167,10 @@
 									<td colspan="2" style="text-align: center"><input
 										type="button" value="상품목록" class="btn btn-dark w3-center"
 										onclick="location.href='pointList'">
-
+										<c:if test="${sessionScope.loginMem.memPosition == '1' }">
+											<input type="button" value="포인트수정" class="btn btn-dark w3-center"
+												onclick="location.href='pointUpdate?code=${point.pointCode}'">								
+										</c:if>	
 									</td>
 								</tr>
 							</table>

@@ -9,6 +9,14 @@
 <title>회원가입</title>
 <link rel="stylesheet" href="${path}/css/main.css">
 <script type="text/javascript">
+
+function searchAddress() {
+	new daum.Postcode({
+		oncomplete : function(data) { // oncomplete : 콜백함수
+			$("#address").val(data.address);
+		}
+	}).open();
+}
 	//회원가입 버튼 눌렀을 때
 	function input_check(f) {
 		if (f.id.value.trim() == "") {
@@ -81,34 +89,29 @@
 		}
 	}
 
-	function searchAddress() {
-		new daum.Postcode({
-			oncomplete : function(data) { // oncomplete : 콜백함수
-				$("#address").val(data.address);
-			}
-		}).open();
-	}
+
 </script>
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
 	<div id="main_div">
-		<h2 class="w3-center">관리자/선수 추가</h2>
-		<div class="w3-container" style="padding: 40px;">
+		<h2 class="w3-center">회원가입</h2>
+		<div class="w3-container">
 			<form action="joinAdd" method="post" name="f"
 				onsubmit="return input_check(this)" enctype="multipart-formdata">
 				<div class="form-group">
 					<table class="w3-table w3-border ">
 						<tr>
 							<td>아이디</td>
-							<td style="padding-right: 360px;"><input type="text"
-								name="id" class="w3-input">
+							<td style="padding-right: 250px;"><input type="text"
+								name="id" class="w3-input" placeholder="영문자,숫자 조합으로 5~15자리">
 								<button type="button" class="btn btn-dark float-right"
-									onclick="idChk()">중복체크</button></td>
+									onclick="idChk()">아이디 중복체크</button></td>
 						</tr>
 						<tr>
 							<td>비밀번호</td>
-							<td><input type="password" name="pass" class="w3-input"></td>
+							<td><input type="password" name="pass" class="w3-input"
+								placeholder="영문자+숫자+특수문자 조합으로 8~15자리"></td>
 						</tr>
 						<tr>
 							<td>이름</td>
@@ -125,17 +128,14 @@
 						</tr>
 						<tr>
 							<td>이메일</td>
-							<td><input type="text" name="email" class="w3-input"></td>
+							<td><input type="text" name="email" class="w3-input"
+								placeholder="(알파벳,숫자)@(알파벳,숫자).(알파벳,숫자)"></td>
 						</tr>
 						<tr>
 							<td>회원 유형</td>
 							<td>
 							<input type="radio" name="type" value="1">관리자 
 							<input type="radio" name="type" value="2">선수 
-						</tr>
-						<tr>
-							<td colspan="2" style="text-align: center">*회원가입을 하시면
-								30,000포인트가 적립됩니다!</td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">

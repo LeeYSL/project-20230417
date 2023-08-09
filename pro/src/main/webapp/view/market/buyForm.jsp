@@ -123,8 +123,8 @@ function searchAddress() {
 						<tr>
 							<th>결제 후 포인트</th>
 							<td><input type="hidden" name="afterPoint" class="w3-input"
-								value="${mem.memPoint - goods.goodsPrice }">
-								<fmt:formatNumber value="${mem.memPoint - goods.goodsPrice}" pattern="###,###" />원
+								value="${mem.memPoint - goods.goodsPrice * cart.cartQuantity }">
+								<fmt:formatNumber value="${mem.memPoint - goods.goodsPrice * cart.cartQuantity}" pattern="###,###" />원
 							</td>
 						</tr>
 					</table>

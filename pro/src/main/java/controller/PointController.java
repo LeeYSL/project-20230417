@@ -16,6 +16,7 @@ import gdu.mskim.MskimRequestMapping;
 import gdu.mskim.RequestMapping;
 import model.Account;
 import model.AccountMybatisDao;
+import model.Goods;
 import model.Member;
 import model.MemberMybatisDao;
 import model.Point;
@@ -73,15 +74,91 @@ public class PointController extends MskimRequestMapping {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+		String id = (String) request.getSession().getAttribute("login");
 		Member loginMem = (Member)request.getSession().getAttribute("loginMem");
-		if(loginMem.getMemPosition() != 1 ) {
+		if(id == null) {
 			request.setAttribute("msg", "관리자만 사용 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
+		}else if(loginMem.getMemPosition() != 1 ) {
+			request.setAttribute("msg", "관리자만 등록 가능합니다.");
 			request.setAttribute("url", request.getContextPath() + "/kgc/main");
 			return "alert/alert";			
 		}
 		return "point/pointForm";
 	}	
-	
+
+	@RequestMapping("pointUpdate")
+	public String pointUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String id = (String) request.getSession().getAttribute("login");
+		Member loginMem = (Member)request.getSession().getAttribute("loginMem");
+		if(id == null) {
+			request.setAttribute("msg", "관리자만 사용 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
+		}else if(loginMem.getMemPosition() != 1 ) {
+			request.setAttribute("msg", "관리자만 등록 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
+		}
+		int code = Integer.parseInt(request.getParameter("code"));
+		Point point = pointdao.selectOne(code);
+		request.setAttribute("point", point);
+		return "point/pointUpdate";
+	}
+	@RequestMapping("update")
+	public String update(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String path = request.getServletContext().getRealPath("/") + "/upload/point/";
+
+		File f = new File(path);
+		if (!f.exists())
+			f.mkdirs();
+		int size = 10 * 1024 * 1024;
+		MultipartRequest multi = null;
+		try {
+			multi = new MultipartRequest(request, path, size, "UTF-8");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+		Point point = new Point(); 
+		point.setPointPrice(Integer.parseInt(multi.getParameter("price")));
+		point.setPointName(multi.getParameter("name"));
+
+
+		// input type=file로 선택한 첨부파일이 없으면 기존의 첨부파일을 가져옴
+		if (multi.getFilesystemName("file") == null) {
+			point.setPointImg(multi.getParameter("pointImg")); // DB첨부파일
+		} else {
+			point.setPointImg(multi.getFilesystemName("file")); // 새로 첨부한 첨부파일
+		}
+		int code = Integer.parseInt(multi.getParameter("code"));
+		point.setPointCode(code); 
+			
+		String msg;
+		String url;
+		if (pointdao.update(point)) { // board 테이블에 게시물 등록했을경우
+			msg = "게시물 수정 완료";
+			url = "pointList";			
+			return "redirect:" + url; // 등록되면 list로 전달
+		}  else {
+			msg = "게시물 수정 실패";
+			url = "/point/pointUpdate?code=" + code;
+		}
+		// 게시물 등록 실패시 실행되는 부분
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		return "alert/alert";
+	}	
 	@RequestMapping("point")
 	public String write(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
@@ -110,10 +187,16 @@ public class PointController extends MskimRequestMapping {
 		point.setPointImg(multi.getFilesystemName("file"));
 
 		request.getSession().setAttribute("point", point); 
+		String id = (String) request.getSession().getAttribute("login");
 		Member loginMem = (Member)request.getSession().getAttribute("loginMem");
-		if(loginMem.getMemPosition() != 1 ) {
+		if(id == null) {
 			request.setAttribute("msg", "관리자만 사용 가능합니다.");
 			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
+		}else if(loginMem.getMemPosition() != 1 ) {
+			request.setAttribute("msg", "관리자만 등록 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
 		}
 		if (pointdao.insert(point)) { 
 			return "redirect:pointBuy"; 

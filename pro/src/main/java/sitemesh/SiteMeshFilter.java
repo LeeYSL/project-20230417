@@ -19,6 +19,7 @@ public class SiteMeshFilter extends ConfigurableSiteMeshFilter {
 		builder.addDecoratorPath("/member/*","/layout/vlayout.jsp")
 		.addExcludedPath("/member/id*")
 		.addExcludedPath("/member/pw*")
+		.addExcludedPath("/member/dropForm")
 		.addExcludedPath("/member/deleteForm");
 		
 

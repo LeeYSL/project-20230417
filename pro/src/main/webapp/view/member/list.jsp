@@ -22,6 +22,13 @@ a {
 }
 
 </style>
+<script type="text/javascript">
+	   function win_open(page) {
+		   let op="width=500,height=350,left=50,top=150"
+		   open(page,"",op)
+	   }
+
+</script>
 <link rel="stylesheet" href="${path}/css/main.css">
 </head>
 <body>
@@ -36,19 +43,19 @@ a {
 						<th width="20%">전화번호</th>
 						<th width="10%">포지션</th>
 						<th width="20%">포인트</th>
+						<th width="10%"></th>
 					</tr>
 					<c:forEach var="m" items="${list}">
 
 						<tr>
-							<td>
-								<a href="info?memId=${m.memId}">
-									${m.memId}
-								</a>
-							</td>
+							<td>${m.memId}</td>
 							<td>${m.memEmail}</td>
 							<td>${m.memPhone}</td>
 							<td>${m.memPosition==1?"관리자":m.memPosition==2?"선수":"일반"}</td>
 							<td><fmt:formatNumber value="${m.memPoint}" pattern="###,###" />원</td>
+							<td>
+								<button type="button" name="id" value="${m.memId}" class="btn btn-dark" onclick="win_open('dropForm?id=${m.memId}')">강제탈퇴</button>
+							</td>
 
 						</tr>
 

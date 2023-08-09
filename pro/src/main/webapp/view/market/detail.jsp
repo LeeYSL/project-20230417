@@ -53,9 +53,14 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan="3" style="text-align: center"><input
-									type="button" value="상품목록" class="btn btn-dark w3-center"
-									onclick="location.href='marketList'"></td>
+								<td colspan="3" style="text-align: center">
+									<input type="button" value="상품목록" class="btn btn-dark w3-center"
+										onclick="location.href='marketList'">
+										<c:if test="${sessionScope.loginMem.memPosition == '1' }">
+											<input type="button" value="상품수정" class="btn btn-dark w3-center"
+												onclick="location.href='marketUpdate?code=${goods.goodsCode}'">								
+										</c:if>	
+								</td>						
 							</tr>
 						</table>
 

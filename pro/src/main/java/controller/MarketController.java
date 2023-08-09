@@ -95,18 +95,43 @@ public class MarketController extends MskimRequestMapping {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-
-		String login = (String) request.getSession().getAttribute("login"); // session의 login값 가져온다.
-		String position = (String) request.getSession().getAttribute("position"); // session의 login값 가져온다.
-		
-			if(position != "1") {// 로그인이 안돼있거나 관리자가 아니라면
-			request.setAttribute("msg", "관리자만 글쓰기가 가능합니다.");
-			request.setAttribute("url", request.getContextPath() + "/market/marketList");
-			return "alert/alert";
+		String id = (String) request.getSession().getAttribute("login");
+		Member loginMem = (Member)request.getSession().getAttribute("loginMem");
+		if(id == null) {
+			request.setAttribute("msg", "관리자만 사용 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
+		}else if(loginMem.getMemPosition() != 1 ) {
+			request.setAttribute("msg", "관리자만 등록 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
 		}
 		return "market/marketForm";
 	}
 
+	@RequestMapping("marketUpdate")
+	public String marketUpdate(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String id = (String) request.getSession().getAttribute("login");
+		Member loginMem = (Member)request.getSession().getAttribute("loginMem");
+		if(id == null) {
+			request.setAttribute("msg", "관리자만 사용 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
+		}else if(loginMem.getMemPosition() != 1 ) {
+			request.setAttribute("msg", "관리자만 수정 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
+		}
+		int code = Integer.parseInt(request.getParameter("code"));
+		Goods goods = dao.selectOne(code);
+		request.setAttribute("goods", goods);
+		return "market/marketUpdate";
+	}
 	@RequestMapping("market")
 	public String write(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
@@ -149,7 +174,61 @@ public class MarketController extends MskimRequestMapping {
 		request.setAttribute("url", request.getContextPath() + "/market/marketForm");
 		return "alert/alert";
 	}
+	@RequestMapping("update")
+	public String update(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String path = request.getServletContext().getRealPath("/") + "goods/file/";
+		// getServletContext() : ServletContext 객체를 가져온다
+		// getRealPath("/") : 지정한 path에 해당되는 실제 경로를 반환
+		File f = new File(path);
+		if (!f.exists())
+			f.mkdirs();
+		int size = 10 * 1024 * 1024;
+		MultipartRequest multi = null;
+		try {
+			multi = new MultipartRequest(request, path, size, "UTF-8");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} // 파일업로드끝
+			// 파라미터 Board 객체에 저장
+		Goods goods = new Goods(); // db goods의 객체를 만든다?
+		goods.setGoodsNum(Integer.parseInt(multi.getParameter("num")));
+		goods.setGoodsPrice(Integer.parseInt(multi.getParameter("price")));
+		goods.setGoodsName(multi.getParameter("name"));// name이 content인 파라미터 값을 보드객체의 BoardTitle에 저장한다.
+	//	request.getSession().setAttribute("goods", goods); // 세션저장
 
+		// input type=file로 선택한 첨부파일이 없으면 기존의 첨부파일을 가져옴
+		if (multi.getFilesystemName("file") == null) {
+			goods.setGoodsImg(multi.getParameter("goodsImg")); // DB첨부파일
+		} else {
+			goods.setGoodsImg(multi.getFilesystemName("file")); // 새로 첨부한 첨부파일
+		}
+		if (multi.getFilesystemName("description") == null) {
+			goods.setGoodsDescription(multi.getParameter("goodsDescription")); // DB첨부파일
+		} else {
+			goods.setGoodsDescription(multi.getFilesystemName("description")); // 새로 첨부한 첨부파일
+		}			
+		String msg;
+		String url;
+		int code = Integer.parseInt(multi.getParameter("code"));
+		goods.setGoodsCode(code); 
+		if (dao.update(goods)) { // board 테이블에 게시물 등록했을경우
+			msg = "게시물 수정 완료";
+			url = "marketList";			
+			return "redirect:" + url; // 등록되면 list로 전달
+		}  else {
+			msg = "게시물 수정 실패";
+			url = "/market/maketUpdate?code=" + code;
+		}
+		// 게시물 등록 실패시 실행되는 부분
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		return "alert/alert";
+	}
 	@RequestMapping("cart") // 장바구니 추가 누르면 여기로 옴
 	public String cart(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
@@ -455,14 +534,17 @@ public class MarketController extends MskimRequestMapping {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String position = (String) request.getSession().getAttribute("position"); // session의 login값 가져온다.
-		
-		if(position != "1") {// 로그인이 안돼있거나 관리자가 아니라면
-		request.setAttribute("msg", "관리자만 글쓰기가 가능합니다.");
-		request.setAttribute("url", request.getContextPath() + "/market/marketList");
-		return "alert/alert";
-	}
-		String id =(String)request.getSession().getAttribute("login");
+		String id = (String) request.getSession().getAttribute("login");
+		Member loginMem = (Member)request.getSession().getAttribute("loginMem");
+		if(id == null) {
+			request.setAttribute("msg", "관리자만 사용 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
+		}else if(loginMem.getMemPosition() != 1 ) {
+			request.setAttribute("msg", "관리자만 등록 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
+		}
 		
 		request.getSession().setAttribute("pageNum", "1");
 		int pageNum = 1;

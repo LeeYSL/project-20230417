@@ -111,11 +111,16 @@ public class MemberController extends MskimRequestMapping {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+		String id = (String) request.getSession().getAttribute("login");
 		Member loginMem = (Member)request.getSession().getAttribute("loginMem");
-		if(loginMem.getMemPosition() != 1 ) {
+		if(id == null) {
 			request.setAttribute("msg", "관리자만 사용 가능합니다.");
 			request.setAttribute("url", request.getContextPath() + "/kgc/main");
-			return "alert/alert";	
+			return "alert/alert";			
+		}else if(loginMem.getMemPosition() != 1 ) {
+			request.setAttribute("msg", "관리자만 등록 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
 		}
 		Member mem = new Member();
 		mem.setMemId(request.getParameter("id"));
@@ -124,11 +129,11 @@ public class MemberController extends MskimRequestMapping {
 		mem.setMemPhone(request.getParameter("tel"));
 		mem.setMemAdress(request.getParameter("adress"));
 		mem.setMemEmail(request.getParameter("email"));
-		mem.setMemPosition(Integer.parseInt(request.getParameter("type")));
+		mem.setMemPosition(Integer.parseInt(request.getParameter("type")));		
 		mem.setMemPoint(30000);
 		if (dao.insert(mem)) {
 			request.setAttribute("msg", mem.getMemName() + "님 추가하였습니다.");
-			request.setAttribute("url", "joinAdd");
+			request.setAttribute("url", "list");
 			accountdao.insert(mem.getMemId());
 		} else {
 			request.setAttribute("msg", mem.getMemName() + "님 회원가입 시 오류 발생되었습니다.");
@@ -175,11 +180,16 @@ public class MemberController extends MskimRequestMapping {
 		// 글 번호
 		int boardnum = memberCount - (pageNum - 1) * limit;
 		
-		
+		String id = (String) request.getSession().getAttribute("login");
 		Member loginMem = (Member)request.getSession().getAttribute("loginMem");
-		if(loginMem.getMemPosition() != 1 ) {
+		if(id == null) {
 			request.setAttribute("msg", "관리자만 사용 가능합니다.");
 			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
+		}else if(loginMem.getMemPosition() != 1 ) {
+			request.setAttribute("msg", "관리자만 등록 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/kgc/main");
+			return "alert/alert";			
 		}
 
 		request.setAttribute("list", list);
@@ -354,5 +364,19 @@ public class MemberController extends MskimRequestMapping {
 		request.setAttribute("msg", msg);
 		return "member/idChk";
 
+	}
+
+	@RequestMapping("dropForm")
+	public String drop(HttpServletRequest request, HttpServletResponse response) {
+		String id = request.getParameter("id");
+		String msg = null;
+		if (dao.delete(id)) {// id를 기준으로 지워
+			msg = id + "고객님 강제 탈퇴 성공";
+		}  else {
+			msg = "탈퇴 오류.";
+
+		}
+		request.setAttribute("msg", msg);
+		return "member/dropForm";
 	}
 }

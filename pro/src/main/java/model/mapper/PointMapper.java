@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import model.Point;
 
@@ -24,5 +25,12 @@ public interface PointMapper {
 
 	@Select("select * from point where point_code=#{code}")	
 	Point selectOne(int code);
+
+	@Update({"<script>"
+			+ "update point set point_name=#{pointName}, point_price=#{pointPrice} "
+			+ "<if test='pointImg != null'>, point_img=#{pointImg} </if>"
+			+ " where point_code=#{pointCode} "
+			+ "</script>"})	
+	int update(Point point);
 
 }

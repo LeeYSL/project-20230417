@@ -88,4 +88,16 @@ public class GoodsMybatisDao {
 		return null;
 
 }
+	public boolean update(Goods goods) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+
+			return session.getMapper(cls).update(goods) > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return false;
+	}
 }

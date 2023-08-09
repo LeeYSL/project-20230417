@@ -5,8 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
-import model.Cart;
 import model.Goods;
 
 public interface GoodsMapper {
@@ -32,6 +32,14 @@ public interface GoodsMapper {
 			+ " limit #{sLimit}, #{eLimit}",
 			"</script>"})
 	List<Goods> list(Map<String, Object> map);
+
+	@Update({"<script>"
+			+ "update goods set goods_name=#{goodsName}, goods_price=#{goodsPrice}, "
+			+ "<if test='goodsImg != null'> goods_img=#{goodsImg}, </if>"
+			+ "<if test='goodsDescription != null'> goods_description=#{goodsDescription}, </if>"
+			+ " goods_num=#{goodsNum}  where goods_code=#{goodsCode} "
+			+ "</script>"})
+	int update(Goods goods);
 
 
 }

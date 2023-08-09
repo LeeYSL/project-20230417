@@ -60,4 +60,16 @@ public class PointMybatisDao {
 		}
 		return null;
 	}
+	public boolean update(Point point) {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+
+			return session.getMapper(cls).update(point) > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return false;
+	}
 }
