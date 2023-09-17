@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 상세보기</title>
-<link rel="stylesheet" href="${path}/css/main.css">
+<link rel="stylesheet" href="${path}/css/main.css?ver=20230810">
 <script type="text/javascript">
 	function win_open() { 
 		let op = "width=500,height=350,left=50,top=150"

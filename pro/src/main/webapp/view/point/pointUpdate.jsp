@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>포인트 수정</title>
-<link rel="stylesheet" href="${path}/css/main.css">
+<link rel="stylesheet" href="${path}/css/main.css?ver=20230810">
 <script type="text/javascript">
 $(function() {
 	//첨부파일 삭제 버튼 클릭 시 이벤트 호출

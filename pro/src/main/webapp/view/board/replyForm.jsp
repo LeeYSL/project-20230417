@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 답글 쓰기</title>
-<link rel="stylesheet" href="${path}/css/main.css">
+<link rel="stylesheet" href="${path}/css/main.css?ver=20230810">
 </head>
 <body>
 

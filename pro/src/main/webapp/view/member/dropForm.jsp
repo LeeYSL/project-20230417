@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
-<link rel="stylesheet" href="${path}/css/main.css">
+<link rel="stylesheet" href="${path}/css/main.css?ver=20230810">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://www.w3schools.com/lib/w3-theme-black.css">

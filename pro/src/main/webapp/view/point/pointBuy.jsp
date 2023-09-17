@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>포인트구매</title>
-<link rel="stylesheet" href="${path}/css/main.css">
+<link rel="stylesheet" href="${path}/css/main.css?ver=20230810">
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script> 

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 상세 정보</title>
-<link rel="stylesheet" href="${path}/css/main.css">
+<link rel="stylesheet" href="${path}/css/main.css?ver=20230810">
 <script type="text/javascript">
 	function deleteForm() {	
 		location.href="member/deleteForm";

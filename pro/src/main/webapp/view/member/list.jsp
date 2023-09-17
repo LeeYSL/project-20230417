@@ -29,7 +29,7 @@ a {
 	   }
 
 </script>
-<link rel="stylesheet" href="${path}/css/main.css">
+<link rel="stylesheet" href="${path}/css/main.css?ver=20230810">
 </head>
 <body>
 		<div id="container-1">

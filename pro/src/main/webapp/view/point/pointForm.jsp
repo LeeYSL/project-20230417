@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>포인트 등록</title>
-<link rel="stylesheet" href="${path}/css/main.css">
+<link rel="stylesheet" href="${path}/css/main.css?ver=20230810">
 <script type="text/javascript">
 
 function input_check(f) {
